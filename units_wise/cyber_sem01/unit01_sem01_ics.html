@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 — Introduction to Cyber Security | ICS MCA Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+<!-- ════════ UNIT 1 ICS INLINE STYLES ════════ -->
+<style>
+
+  /* ── CRIME TYPE CARD GRID (3-col) ── */
+  .crime-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .ctg-card {
+    padding: 1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .ctg-card:nth-child(3n)        { border-right: none; }
+  .ctg-card:nth-last-child(-n+3) { border-bottom: none; }
+  .ctg-card .ctg-icon  { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .ctg-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .ctg-card p  { font-size: 0.85rem; line-height: 1.55; }
+  .ctg-card .ctg-eg {
+    margin-top: 0.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-top: var(--border-thin);
+    padding-top: 0.3rem;
+  }
+  .cc-red    { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .cc-amber  { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .cc-blue   { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .cc-purple { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .cc-green  { background:#f0faf2; border-left:4px solid #1a7a34; }
+  .cc-dark   { background:#f0f0ee; border-left:4px solid #3a3a36; }
+
+  /* ── TIMELINE (History) ── */
+  .history-timeline {
+    position: relative;
+    margin: 1.5rem 0;
+    padding-left: 2.2rem;
+  }
+  .history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.65rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--black);
+  }
+  .ht-item {
+    position: relative;
+    margin-bottom: 1.4rem;
+  }
+  .ht-item::before {
+    content: '';
+    position: absolute;
+    left: -1.68rem;
+    top: 0.55rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--black);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--black);
+  }
+  .ht-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    margin-bottom: 0.15rem;
+  }
+  .ht-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .ht-desc { font-size: 0.9rem; line-height: 1.6; color: var(--gray-700); }
+  .ht-item.ht-red::before   { background:#c0392b; box-shadow:0 0 0 2px #c0392b; }
+  .ht-item.ht-amber::before { background:#e6ac00; box-shadow:0 0 0 2px #e6ac00; }
+  .ht-item.ht-blue::before  { background:#0c8da0; box-shadow:0 0 0 2px #0c8da0; }
+  .ht-item.ht-green::before { background:#1a7a34; box-shadow:0 0 0 2px #1a7a34; }
+  .ht-item.ht-purple::before{ background:#6f42c1; box-shadow:0 0 0 2px #6f42c1; }
+
+  /* ── CIA TRIAD DISPLAY ── */
+  .cia-triad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .cia-col {
+    padding: 1.2rem 1rem;
+    border-right: 2px solid var(--black);
+    text-align: center;
+  }
+  .cia-col:last-child { border-right: none; }
+  .cia-col .cia-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .cia-col .cia-word {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+  }
+  .cia-col p { font-size: 0.85rem; text-align: left; line-height: 1.55; }
+  .cia-col .cia-eg {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    text-align: left;
+    color: var(--gray-500);
+  }
+  .cia-c { background:#eef8ff; }
+  .cia-c .cia-letter { color:#0c8da0; }
+  .cia-i { background:#f0faf2; }
+  .cia-i .cia-letter { color:#1a7a34; }
+  .cia-a { background:#fff9ec; }
+  .cia-a .cia-letter { color:#e6ac00; }
+
+  /* ── HACKER TYPE CARDS ── */
+  .hacker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .hk-card {
+    padding: 1.1rem 1rem;
+    border-right: 2px solid var(--black);
+  }
+  .hk-card:last-child { border-right: none; }
+  .hk-card .hk-hat {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.4rem;
+    text-align: center;
+  }
+  .hk-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.98rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.35rem;
+    border-bottom: var(--border-thin);
+    text-align: center;
+  }
+  .hk-card ul { padding-left: 1.1rem; font-size: 0.85rem; }
+  .hk-card li { margin: 0.3rem 0; }
+  .hk-white  { background:#f0faf2; }
+  .hk-black  { background:#f0f0ee; }
+  .hk-grey   { background:#eef8ff; }
+
+  /* ── PHASE STRIP ── */
+  .phase-strip {
+    display: flex; gap: 0; margin: 1.2rem 0; overflow-x: auto;
+  }
+  .phase-block {
+    flex: 1; min-width: 110px; padding: 0.9rem 0.6rem;
+    text-align: center; border-right: 2px solid #fff;
+    font-family: 'Source Serif 4', serif;
+  }
+  .phase-block:last-child { border-right: none; }
+  .phase-block .ph-num   { font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:700; display:block; margin-bottom:0.2rem; }
+  .phase-block .ph-title { font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.25rem; }
+  .phase-block .ph-desc  { font-size:0.74rem; line-height:1.4; opacity:0.86; }
+  .ph-1 { background:#fde8d8; color:#7d3c00; }
+  .ph-2 { background:#fff3cd; color:#8a6500; }
+  .ph-3 { background:#d1ecf1; color:#065a68; }
+  .ph-4 { background:#d4edda; color:#155724; }
+  .ph-5 { background:#e2d9f3; color:#4a1d96; }
+  .ph-6 { background:#f8d7da; color:#922b21; }
+
+  /* ── BULLYING IMPACT BOXES ── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .imp-card {
+    padding: 1rem 1.1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .imp-card:nth-child(even) { border-right: none; }
+  .imp-card:nth-last-child(-n+2) { border-bottom: none; }
+  .imp-card .imp-icon { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+  .imp-card h4 { font-family:'Playfair Display',serif; font-size:0.96rem; margin-bottom:0.3rem; }
+  .imp-card p  { font-size:0.86rem; line-height:1.56; }
+  .imp-a { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .imp-b { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .imp-c { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .imp-d { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .imp-e { background:#fde8d8; border-left:4px solid #e67e22; }
+  .imp-f { background:#f0faf2; border-left:4px solid #1a7a34; }
+
+  @media(max-width:680px){
+    .crime-type-grid { grid-template-columns: 1fr; }
+    .ctg-card        { border-right:none !important; border-bottom:2px solid var(--black) !important; }
+    .ctg-card:last-child { border-bottom:none !important; }
+    .hacker-grid     { grid-template-columns: 1fr; }
+    .hk-card         { border-right:none; border-bottom:2px solid var(--black); }
+    .hk-card:last-child { border-bottom:none; }
+    .cia-triad       { grid-template-columns: 1fr; }
+    .cia-col         { border-right:none; border-bottom:2px solid var(--black); }
+    .cia-col:last-child{ border-bottom:none; }
+    .impact-grid     { grid-template-columns: 1fr; }
+    .imp-card        { border-right:none !important; }
+    .phase-strip     { flex-wrap:wrap; }
+    .phase-block     { min-width:44%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ NAVIGATION ════════════ -->
+<nav class="top-nav">
+  <a href="ICS_Index.html" class="nav-brand"><span>ICS</span> · Introduction to Cyber Security</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="ics_sem01_index.html">Home</a></li>
+    <li><a href="#" class="active">Unit 1</a></li>
+    <li><a href="unit02_sem01_ics.html">Unit 2</a></li>
+    <li><a href="#">Unit 3</a></li>
+    <li><a href="#">Unit 4</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════ PAGE HEADER ════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 01 · Introduction to Cyber Security</div>
+  <h1>Introduction to<br>Cyber Security</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester I · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>10 Topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~16–18 Marks</strong></div>
+    <div class="quick-info-item">Key Focus<strong>Concepts, Types &amp; Hacking</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Foundational</strong></div>
+  </div>
+</header>
+
+<!-- ════════════ TOC ════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t1-1">1.1 — Cyber Crime and Cyber Space</a></li>
+      <li><a href="#t1-2">1.2 — History &amp; Evolution of Cyber Crime</a></li>
+      <li><a href="#t1-3">1.3 — Traditional Problems with Computer Crime</a></li>
+      <li><a href="#t1-4">1.4 — Computer Security</a></li>
+      <li><a href="#t1-5">1.5 — Threats, Harm &amp; Vulnerabilities</a></li>
+      <li><a href="#t1-6">1.6 — Cyber Security Fundamentals</a></li>
+      <li><a href="#t1-7">1.7 — Types of Cybercrime</a></li>
+      <li><a href="#t1-8">1.8 — Hacking &amp; Ethical Hacking</a></li>
+      <li><a href="#t1-9">1.9 — Cyber Bullying &amp; Cyber Stalking</a></li>
+      <li><a href="#t1-10">1.10 — Impact of Cyber Bullying &amp; Cyber Stalking</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ════════════ MAIN CONTENT ════════════ -->
+<main class="content-wrap">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.1 — CYBER CRIME AND CYBER SPACE
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-1">
+  <div class="topic-label">Topic 1.1</div>
+  <h2 class="topic-title">Introduction to Cyber Crime and Cyber Space</h2>
+
+  <div class="concept-box">
+    <strong>Cyber Space</strong> is the virtual environment created by interconnected digital systems — the internet, private networks, devices, and the data flowing through them. It is not a physical place but a domain where electronic communication, commerce, social interaction, governance, and increasingly warfare occur. <strong>Cyber Crime</strong> is any criminal or unlawful activity committed using cyberspace as the medium, the target, or both.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Know three roles a computer plays in crime: <strong>Tool</strong> (phishing, fraud), <strong>Target</strong> (hacking, ransomware), <strong>Witness</strong> (log files as evidence). India's primary law is the <strong>IT Act 2000 (amended 2008)</strong>. Cyberspace was first defined by William Gibson in his 1984 novel <em>Neuromancer</em>.
+  </div>
+
+  <h3>Defining Cyber Space</h3>
+  <p><strong>Cyberspace</strong> encompasses:</p>
+  <ul>
+    <li>The global internet and all connected private networks (intranets, extranets)</li>
+    <li>All digital devices — computers, smartphones, IoT devices, servers, routers</li>
+    <li>All data stored, processed, or transmitted across these systems</li>
+    <li>The software, operating systems, and applications running on these devices</li>
+    <li>Human users interacting with and through these systems</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Key Characteristics of Cyberspace</div>
+    <strong>Borderless:</strong> A cybercriminal in Russia can attack a bank in Mumbai in milliseconds — national borders mean nothing. <br>
+    <strong>Anonymous:</strong> VPNs, Tor, and fake identities make attribution extremely difficult. <br>
+    <strong>Asymmetric:</strong> A single attacker with minimal resources can cause damage worth billions. <br>
+    <strong>Persistent:</strong> Once data is stolen or published online, it can never be fully recalled. <br>
+    <strong>Interconnected:</strong> Attacking one system can cascade through hundreds of connected systems.
+  </div>
+
+  <h3>Defining Cyber Crime</h3>
+  <p><strong>Cyber Crime</strong> is any illegal act for which knowledge of computer technology is essential for its perpetration, investigation, or prosecution. It can broadly be classified based on the role of the computer:</p>
+
+  <table class="data-table no-bold">
+    <thead><tr><th>Computer Role</th><th>Definition</th><th>Example</th><th>IT Act Section</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Computer as Target</strong></td>
+        <td>The computer or network itself is the victim — the attacker seeks to damage, disrupt, or infiltrate it</td>
+        <td>Hacking a bank server; ransomware on hospital systems; DDoS on government websites</td>
+        <td>Sec 43, 66, 66F</td>
+      </tr>
+      <tr>
+        <td><strong>Computer as Tool</strong></td>
+        <td>The computer is used to commit a traditional crime in a new digital medium</td>
+        <td>Online fraud; phishing; cyberstalking; distribution of obscene material</td>
+        <td>Sec 66C, 66D, 67</td>
+      </tr>
+      <tr>
+        <td><strong>Computer as Witness</strong></td>
+        <td>The computer contains digital evidence of a crime (online or offline)</td>
+        <td>Email logs proving insider trading; CCTV footage; WhatsApp messages as evidence</td>
+        <td>IT Act Sec 65B (evidence admissibility)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Relationship Between Cyber Crime and Cyber Space</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 1.1 — Cyber Crime Ecosystem: Actors, Medium, and Targets</div>
+    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;font-size:9.5px;">
+      <defs>
+        <marker id="arr1" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0,0 6,3 0,6" fill="#555"/>
+        </marker>
+      </defs>
+      <!-- Actors -->
+      <rect x="10" y="30" width="160" height="140" rx="3" fill="#fdf2f2" stroke="#c0392b" stroke-width="2"/>
+      <text x="90" y="54" text-anchor="middle" font-family="'Playfair Display',serif" fill="#721c24" font-weight="700" font-size="11">THREAT ACTORS</text>
+      <text x="90" y="72"  text-anchor="middle" fill="#922b21" font-size="8.5">🦹 Hackers (Black Hat)</text>
+      <text x="90" y="88"  text-anchor="middle" fill="#922b21" font-size="8.5">🏴 Nation-State Groups</text>
+      <text x="90" y="104" text-anchor="middle" fill="#922b21" font-size="8.5">💰 Cyber Criminals</text>
+      <text x="90" y="120" text-anchor="middle" fill="#922b21" font-size="8.5">🎭 Hacktivists</text>
+      <text x="90" y="136" text-anchor="middle" fill="#922b21" font-size="8.5">😈 Script Kiddies</text>
+      <text x="90" y="152" text-anchor="middle" fill="#922b21" font-size="8.5">🕵️ Insider Threats</text>
+
+      <!-- Arrow -->
+      <line x1="172" y1="100" x2="258" y2="100" stroke="#555" stroke-width="1.8" marker-end="url(#arr1)"/>
+      <text x="215" y="93" text-anchor="middle" fill="#555" font-size="8">attacks via</text>
+
+      <!-- Cyberspace -->
+      <rect x="260" y="20" width="200" height="160" rx="3" fill="#0a0a0a"/>
+      <text x="360" y="48" text-anchor="middle" font-family="'Playfair Display',serif" fill="#fff" font-weight="700" font-size="12">CYBERSPACE</text>
+      <text x="360" y="66"  text-anchor="middle" fill="#aaa" font-size="8.5">🌐 Internet / WWW</text>
+      <text x="360" y="82"  text-anchor="middle" fill="#aaa" font-size="8.5">📱 Mobile Networks</text>
+      <text x="360" y="98"  text-anchor="middle" fill="#aaa" font-size="8.5">🏭 Corporate Intranets</text>
+      <text x="360" y="114" text-anchor="middle" fill="#aaa" font-size="8.5">☁️ Cloud Platforms</text>
+      <text x="360" y="130" text-anchor="middle" fill="#aaa" font-size="8.5">🌑 Dark Web / Tor</text>
+      <text x="360" y="146" text-anchor="middle" fill="#aaa" font-size="8.5">📡 IoT / Smart Devices</text>
+      <text x="360" y="166" text-anchor="middle" fill="#7ee787" font-size="8">→ The medium of all cybercrime</text>
+
+      <!-- Arrow -->
+      <line x1="462" y1="100" x2="548" y2="100" stroke="#555" stroke-width="1.8" marker-end="url(#arr1)"/>
+      <text x="505" y="93" text-anchor="middle" fill="#555" font-size="8">to harm</text>
+
+      <!-- Targets -->
+      <rect x="550" y="30" width="160" height="140" rx="3" fill="#eef8ff" stroke="#0c8da0" stroke-width="2"/>
+      <text x="630" y="54" text-anchor="middle" font-family="'Playfair Display',serif" fill="#065a68" font-weight="700" font-size="11">TARGETS</text>
+      <text x="630" y="72"  text-anchor="middle" fill="#065a68" font-size="8.5">🏦 Banks &amp; Financial</text>
+      <text x="630" y="88"  text-anchor="middle" fill="#065a68" font-size="8.5">🏛️ Government Portals</text>
+      <text x="630" y="104" text-anchor="middle" fill="#065a68" font-size="8.5">🏥 Healthcare Systems</text>
+      <text x="630" y="120" text-anchor="middle" fill="#065a68" font-size="8.5">👤 Individual Citizens</text>
+      <text x="630" y="136" text-anchor="middle" fill="#065a68" font-size="8.5">🏢 Corporations</text>
+      <text x="630" y="152" text-anchor="middle" fill="#065a68" font-size="8.5">⚡ Critical Infrastructure</text>
+    </svg>
+  </div>
+
+  <div class="case-box">
+    <div class="case-label">🇮🇳 India Context — Scale of the Problem</div>
+    India reported over <strong>15.92 lakh cybercrime complaints</strong> on the National Cyber Crime Reporting Portal (cybercrime.gov.in) between 2019 and 2023, with financial fraud being the dominant category. India ranks among the top five countries globally for cybercrime incidents. The National Cyber Crime Helpline <strong>1930</strong> receives thousands of calls daily. CERT-IN processes tens of thousands of incident reports annually, reflecting how deeply cyberspace has penetrated — and how extensively it is exploited — in India's digital economy.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IT Act 2000 (as amended 2008), MEITY: https://www.meity.gov.in/content/information-technology-act</li>
+      <li>MHA I4C Annual Cybercrime Report 2023: https://www.mha.gov.in</li>
+      <li>Gibson, W. — Neuromancer, Ace Books, 1984 (coined "cyberspace")</li>
+      <li>Gordon &amp; Ford — "On the Definition and Classification of Cybercrime", Journal in Computer Virology, 2006</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.2 — HISTORY AND EVOLUTION OF CYBER CRIME
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-2">
+  <div class="topic-label">Topic 1.2</div>
+  <h2 class="topic-title">History and Evolution of Cyber Crime</h2>
+
+  <div class="concept-box">
+    Cyber crime did not begin with the internet. It evolved gradually alongside computing technology — from early telephone-line manipulation in the 1960s, through the first computer viruses in the 1980s, to the sophisticated nation-state attacks and AI-assisted fraud of the 2020s. Understanding this evolution is essential to predicting where threats will emerge next.
+  </div>
+
+  <h3>Key Milestones in the History of Cyber Crime</h3>
+
+  <div class="history-timeline">
+
+    <div class="ht-item ht-blue">
+      <div class="ht-year">1960s — The Era of Phone Phreaking</div>
+      <div class="ht-title">Birth of System Exploitation</div>
+      <div class="ht-desc"><strong>Phone Phreaking</strong> — manipulating telephone switching systems using tone signals to make free long-distance calls. John Draper ("Captain Crunch") discovered that a toy whistle from a cereal box produced a 2600 Hz tone that gave free access to AT&amp;T long-distance lines. This was the world's first recorded exploitation of a technological system. These early phreakers became the first generation of hackers.</div>
+    </div>
+
+    <div class="ht-item ht-amber">
+      <div class="ht-year">1970s — First Computer Frauds</div>
+      <div class="ht-title">Insider Crimes and Early Hacking</div>
+      <div class="ht-desc">The first documented computer crimes were financial fraud by insiders with privileged access — bank employees manipulating account records, employees stealing computer time. The first hacking tools (password crackers, network sniffers) emerged from academic and military research networks. ARPANET — the predecessor to the internet — was already being probed for weaknesses.</div>
+    </div>
+
+    <div class="ht-item ht-red">
+      <div class="ht-year">1980s — The Virus Era Begins</div>
+      <div class="ht-title">First Malware and the "414s" Case</div>
+      <div class="ht-desc">The <strong>Morris Worm (1988)</strong> — the first major internet worm, created by Robert Morris — crashed approximately 6,000 computers (10% of the internet at that time). The <strong>414s</strong> hacker group broke into 60 computer systems including Los Alamos National Laboratory. The first computer viruses appeared on floppy disks. Pakistan's <strong>Brain virus (1986)</strong> was the first IBM PC virus — ironically created by two brothers to protect their software from piracy. USA passes the <strong>Computer Fraud and Abuse Act (CFAA) 1986</strong>.</div>
+    </div>
+
+    <div class="ht-item ht-purple">
+      <div class="ht-year">1990s — The Internet Crime Explosion</div>
+      <div class="ht-title">Web-Based Crime, Kevin Mitnick, and Y2K</div>
+      <div class="ht-desc">The commercialisation of the internet in the early 1990s created an explosion of new crime opportunities. <strong>Kevin Mitnick</strong> — the world's most famous hacker — was arrested in 1995 for hacking into dozens of corporate and government systems. Credit card fraud moved online. The first web defacements occurred. <strong>Phishing</strong> attacks were coined in 1996, targeting AOL users. India passed the <strong>IT Act 2000</strong> — its first cybercrime legislation — at the end of this era.</div>
+    </div>
+
+    <div class="ht-item ht-red">
+      <div class="ht-year">2000s — Organised Crime Goes Online</div>
+      <div class="ht-title">Botnets, Identity Theft, and Nation-State Attacks</div>
+      <div class="ht-desc">Cybercrime professionalised. <strong>Botnets</strong> allowed criminals to control millions of infected machines. <strong>Identity theft</strong> became a mass crime — the TJX data breach (2007) exposed 94 million card records. <strong>Stuxnet (2010)</strong> — a joint US-Israel operation — physically destroyed Iranian nuclear centrifuges using a computer worm, marking the birth of cyber warfare as a geopolitical tool. India amended its IT Act in <strong>2008</strong> to address new threats like identity theft, cyber terrorism, and cyber stalking.</div>
+    </div>
+
+    <div class="ht-item ht-amber">
+      <div class="ht-year">2010s — Ransomware, APTs, and Mega-Breaches</div>
+      <div class="ht-title">Ransomware Epidemic and Nation-State Espionage</div>
+      <div class="ht-desc"><strong>Ransomware</strong> became a billion-dollar criminal industry — WannaCry (2017) infected 230,000 systems in 150 countries. The <strong>SolarWinds</strong> supply-chain attack (2020) compromised 18,000 organisations including US Federal agencies undetected for 9 months. <strong>Social media</strong> became a major vector for fraud, fake news, and influence operations. India saw the rise of the Jamtara vishing and SIM swap gangs. Data breaches exposed billions of records globally.</div>
+    </div>
+
+    <div class="ht-item ht-green">
+      <div class="ht-year">2020s — AI-Powered Crime and Deepfakes</div>
+      <div class="ht-title">AI-Assisted Fraud, Crypto Crime, and Digital Arrests</div>
+      <div class="ht-desc"><strong>Artificial Intelligence</strong> dramatically lowered the skill barrier for cybercrime — AI generates convincing phishing emails, voice clones for vishing, and deepfake videos for fraud. <strong>Cryptocurrency</strong> enabled anonymous ransom payments and money laundering. In India, the <strong>"Digital Arrest" scam</strong> emerged — fake CBI/police video calls extorting crores from victims. The <strong>DPDPA 2023</strong> and India's expanding cyber law framework respond to this new threat landscape.</div>
+    </div>
+
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 1.2 — Evolution of Cyber Crime: Complexity and Scale Over Time</div>
+    <div class="chart-container">
+      <canvas id="evolutionChart"></canvas>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Sterling, B. — The Hacker Crackdown, Bantam Books, 1992</li>
+      <li>Mitnick, K. &amp; Simon, W. — The Art of Intrusion, Wiley, 2005</li>
+      <li>CERT-IN Historical Incident Reports: https://www.cert-in.org.in</li>
+      <li>Rid, T. — Rise of the Machines: A Cybernetic History, Norton, 2016</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.3 — TRADITIONAL PROBLEMS WITH COMPUTER CRIME
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-3">
+  <div class="topic-label">Topic 1.3</div>
+  <h2 class="topic-title">Traditional Problems Associated with Computer Crime</h2>
+
+  <div class="concept-box">
+    Computer crime presents unique challenges that make it fundamentally different from traditional physical crime. These challenges exist at every level — detection, investigation, prosecution, and prevention — and stem from the technical nature of digital evidence, the borderless nature of the internet, and the rapid pace at which technology outpaces law.
+  </div>
+
+  <h3>Core Traditional Problems</h3>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🌍</span>
+      <h4>Jurisdictional Problems</h4>
+      <p>A cybercriminal in Country A attacks a victim in Country B using servers in Country C. Which country's law applies? Whose police have authority to investigate and arrest? Different countries have different laws, extradition treaties, and cooperation levels — many countries do not extradite their own citizens for computer crimes.</p>
+      <div class="ctg-eg">Example: Jamtara gang operated in India targeting Indian banks — but when attackers are overseas, extradition becomes near-impossible</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🕶️</span>
+      <h4>Anonymity of the Attacker</h4>
+      <p>Attackers use VPNs, proxy servers, the Tor network, and fake identities to conceal their real IP address and identity. Tracing an attack through multiple international anonymisation layers — each in a different legal jurisdiction — can take months or years, by which time the attacker has moved on.</p>
+      <div class="ctg-eg">Example: A phishing server hosted in Romania, accessed through Tor, run by someone in Nigeria — each hop requires a separate legal order</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">💾</span>
+      <h4>Digital Evidence Challenges</h4>
+      <p>Digital evidence is volatile, easily altered, and requires strict handling procedures (chain of custody, hashing, Section 65B certificate in India) to be admissible in court. Metadata may be spoofed. Logs may be cleared. Encrypted communications may be mathematically impossible to read. Many courts still struggle to evaluate complex technical evidence.</p>
+      <div class="ctg-eg">Anvar P.V. vs P.K. Basheer (2015): Supreme Court ruled electronic evidence inadmissible without Section 65B certificate</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">⏱️</span>
+      <h4>Speed of Attack vs Speed of Law</h4>
+      <p>A cyber attack can be planned, executed, and the attacker can cover their tracks — all within minutes. By the time a victim notices, reports the crime, a police officer registers an FIR, and an investigating officer with the right skills takes up the case, days or weeks may have passed — and evidence is long gone.</p>
+      <div class="ctg-eg">WannaCry encrypted 230,000 systems in 24 hours — legal system takes months to investigate</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">📚</span>
+      <h4>Lack of Awareness and Reporting</h4>
+      <p>Most victims of cyber crime never report it — out of embarrassment, fear of reputational damage (corporations), or simply not knowing how. Organisations hide data breaches to avoid regulatory penalties and public loss of trust. This means official crime statistics dramatically undercount the true scale of cyber crime.</p>
+      <div class="ctg-eg">Only an estimated 1 in 10 cybercrime victims reports the crime to police (NASSCOM study)</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">👮</span>
+      <h4>Shortage of Skilled Investigators</h4>
+      <p>Investigating cyber crime requires specialised skills in digital forensics, network analysis, malware analysis, and legal procedure — skills that most police officers do not have. India's cyber crime cells are overwhelmed, understaffed, and often lack modern forensic tools. Training investigators takes years while the threat evolves by the month.</p>
+      <div class="ctg-eg">India has fewer than 2,000 certified digital forensic investigators for a country of 1.4 billion people</div>
+    </div>
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">⚖️</span>
+      <h4>Inadequate Legal Framework</h4>
+      <p>Laws take years to draft, debate, and pass. Technology evolves in months. The IT Act 2000 was written before smartphones, social media, cloud computing, or AI existed — it has struggled to keep pace. New offences (deepfakes, crypto crime, AI fraud) often have no specific legal provision and must be prosecuted under general provisions that may not perfectly fit.</p>
+      <div class="ctg-eg">No specific Indian law for deepfake crimes as of 2024 — prosecuted under IT Act Sec 66E or 67A</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🔁</span>
+      <h4>Difficulty of Attribution</h4>
+      <p>Proving in court that a specific person committed a specific cyber attack is extremely difficult. IP addresses can be spoofed. Malware can be deployed through compromised third-party machines. Defence attorneys routinely challenge attribution — "someone else used my Wi-Fi," "I was infected with a RAT," "the logs were fabricated." Technical attribution requires multiple independent strands of evidence.</p>
+      <div class="ctg-eg">Nation-state attackers specifically use tools and code from other countries' hacking groups to mislead attribution</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🌐</span>
+      <h4>Lack of International Cooperation</h4>
+      <p>Cybercrime is inherently international but law enforcement is national. The Budapest Convention on Cybercrime (2001) — the main international treaty — has only 65 signatories and India is not among them. Mutual Legal Assistance Treaties (MLATs) for obtaining evidence from foreign countries can take 6–18 months — by which time servers are wiped and suspects have fled.</p>
+      <div class="ctg-eg">India relies on bilateral arrangements with the USA to obtain data from US tech companies — each request takes months</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ The Dark Figure of Cyber Crime</div>
+    Criminologists use the term <strong>"dark figure"</strong> to describe the gap between actual crime and reported crime. In cyber crime, the dark figure is enormous — estimates suggest only 5–15% of cyber crimes are ever reported. This makes accurate crime statistics nearly impossible and policy planning extremely difficult. The dark figure is caused by victim embarrassment, organisational self-interest in hiding breaches, lack of awareness of reporting channels, and low confidence that reporting will lead to any meaningful outcome.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Grabosky, P. — "The Nature of Cybercrime" in Cyber Crime and Society, Sage, 2007</li>
+      <li>Wall, D.S. — Cybercrime: The Transformation of Crime in the Information Age, Polity Press, 2007</li>
+      <li>Budapest Convention on Cybercrime: https://www.coe.int/en/web/cybercrime/the-budapest-convention</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.4 — COMPUTER SECURITY
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-4">
+  <div class="topic-label">Topic 1.4</div>
+  <h2 class="topic-title">Computer Security</h2>
+
+  <div class="concept-box">
+    <strong>Computer Security</strong> (also called Cybersecurity or Information Technology Security) is the protection of computer systems, networks, programs, and data from digital attacks, unauthorised access, damage, or disruption. Its goal is to ensure that information systems continue to work as intended, that data retains its integrity, and that only authorised parties can access, modify, or destroy information.
+  </div>
+
+  <h3>The CIA Triad — Foundation of Computer Security</h3>
+  <p>All computer security objectives can be reduced to three core properties known as the <strong>CIA Triad</strong>. Every security control, policy, and tool serves at least one of these three goals:</p>
+
+  <div class="cia-triad">
+    <div class="cia-col cia-c">
+      <span class="cia-letter">C</span>
+      <span class="cia-word">Confidentiality</span>
+      <p>Information is accessible only to those who are authorised to access it. Prevents unauthorised disclosure — keeping secrets secret. Achieved through encryption, access controls, and need-to-know policies.</p>
+      <div class="cia-eg">Threat: A hacker stealing your email login credentials and reading your private messages violates Confidentiality.<br>Control: AES-256 encryption of stored data; MFA for login.</div>
+    </div>
+    <div class="cia-col cia-i">
+      <span class="cia-letter">I</span>
+      <span class="cia-word">Integrity</span>
+      <p>Information and systems are only modified by authorised parties through authorised processes. Prevents unauthorised alteration — ensuring data is accurate and trustworthy. Achieved through hashing, digital signatures, and access controls.</p>
+      <div class="cia-eg">Threat: An attacker altering ₹50,000 to ₹5,00,000 in a bank transaction record violates Integrity.<br>Control: SHA-256 checksums; write-protected logs; digital signatures.</div>
+    </div>
+    <div class="cia-col cia-a">
+      <span class="cia-letter">A</span>
+      <span class="cia-word">Availability</span>
+      <p>Systems, networks, and data are accessible to authorised users when they need them. Prevents denial of service — ensuring business continuity. Achieved through redundancy, backups, DDoS protection, and disaster recovery.</p>
+      <div class="cia-eg">Threat: A DDoS attack flooding a hospital's patient management system making it unavailable violates Availability.<br>Control: CDN, load balancers, redundant servers, offline backups.</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Extended Model — CIA + AAA</div>
+    Modern security models extend CIA with three additional properties: <strong>Authentication</strong> (verifying identity — who are you?), <strong>Authorisation</strong> (verifying permissions — what can you do?), and <strong>Accountability / Non-Repudiation</strong> (ensuring actions can be traced — who did what and when?). Together these six properties form a complete security framework.
+  </div>
+
+  <h3>Goals of Computer Security</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Goal</th><th>Description</th><th>How Achieved</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Prevention</strong></td><td>Stop attacks and unauthorised access from occurring in the first place</td><td>Firewalls, strong passwords, MFA, patch management, security awareness training</td></tr>
+      <tr><td><strong>Detection</strong></td><td>Identify attacks and security incidents as quickly as possible</td><td>SIEM, IDS/IPS, antivirus, log monitoring, security audits</td></tr>
+      <tr><td><strong>Response</strong></td><td>Contain and eradicate threats, minimise damage when incidents occur</td><td>Incident response plan, SOC team, forensic investigation, law enforcement engagement</td></tr>
+      <tr><td><strong>Recovery</strong></td><td>Restore systems and data to normal operation after an incident</td><td>Backups, disaster recovery plan, business continuity plan</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Levels of Computer Security</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">💻</span>
+      <h4>Physical Security</h4>
+      <p>Protecting the physical hardware from theft, damage, or unauthorised physical access. Includes locked server rooms, security guards, CCTV, biometric access controls, and environmental protections against fire and flood.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🌐</span>
+      <h4>Network Security</h4>
+      <p>Protecting data as it travels across networks and protecting the network infrastructure itself. Includes firewalls, VPNs, network segmentation, IDS/IPS, Wi-Fi security (WPA3), and monitoring for unusual traffic patterns.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📱</span>
+      <h4>Application Security</h4>
+      <p>Protecting software applications from vulnerabilities and exploitation. Includes secure coding practices, code review, web application firewalls (WAF), input validation, regular security testing, and patch management.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🗄️</span>
+      <h4>Data Security</h4>
+      <p>Protecting data wherever it lives — at rest (stored on disk), in transit (moving across a network), and in use (being processed in memory). Includes encryption, access controls, data classification, and data loss prevention (DLP).</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🆔</span>
+      <h4>Identity &amp; Access Management</h4>
+      <p>Ensuring that only authorised users can access systems and data, and only to the extent permitted by their role. Includes authentication (passwords, MFA, biometrics), authorisation (RBAC), and identity governance.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🧑‍💼</span>
+      <h4>Operational Security</h4>
+      <p>The policies, procedures, and practices that ensure day-to-day security operations are effective. Includes security policies, employee training, incident response procedures, vendor management, and change management controls.</p>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Stallings, W. — Computer Security: Principles and Practice, 4th Ed., Pearson</li>
+      <li>NIST Cybersecurity Framework 2.0: https://www.nist.gov/cyberframework</li>
+      <li>ISO/IEC 27001:2022 — Information Security Management Systems</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.5 — THREATS, HARM, VULNERABILITIES
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-5">
+  <div class="topic-label">Topic 1.5</div>
+  <h2 class="topic-title">Threats, Harm, and Vulnerabilities</h2>
+
+  <div class="concept-box">
+    Three fundamental concepts underpin all of computer security: <strong>Threat</strong> (the potential danger), <strong>Vulnerability</strong> (the weakness that makes the threat possible), and <strong>Harm</strong> (the actual damage caused when a threat exploits a vulnerability). Risk exists at the intersection of all three.
+  </div>
+
+  <div class="formula-box">Risk = Threat × Vulnerability × Impact (Harm)</div>
+
+  <h3>Understanding Threats</h3>
+  <p>A <strong>Threat</strong> is any potential event or action that could cause harm to an information system or its data. Threats can be:</p>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Intentional Threats</h4>
+      <ul>
+        <li>Deliberate acts by human threat actors with malicious intent</li>
+        <li>External: hackers, organised crime, nation-states, competitors</li>
+        <li>Internal: disgruntled employees, insider espionage, sabotage</li>
+        <li>Examples: hacking, phishing, ransomware, data theft, corporate espionage</li>
+        <li>These are the primary focus of cyber security defences</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Unintentional Threats</h4>
+      <ul>
+        <li>Accidental harm caused by human error or environmental factors</li>
+        <li>Employee mistakes: misconfigured servers, accidental data deletion</li>
+        <li>Natural disasters: fire, flood, earthquake, power surge destroying hardware</li>
+        <li>System failures: hardware malfunctions, software bugs, network outages</li>
+        <li>Just as dangerous as intentional threats — often more frequent</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Understanding Vulnerabilities</h3>
+  <p>A <strong>Vulnerability</strong> is a weakness or gap in a system's security — in software, hardware, processes, or human behaviour — that can be exploited by a threat to cause harm.</p>
+
+  <table class="data-table no-bold">
+    <thead><tr><th>Vulnerability Type</th><th>Description</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Software Vulnerability</strong></td><td>Bugs, flaws, or errors in code that can be exploited</td><td>Unpatched OS, SQL injection flaw in login page, Log4Shell</td></tr>
+      <tr><td><strong>Hardware Vulnerability</strong></td><td>Physical flaws or weaknesses in hardware design</td><td>Spectre/Meltdown CPU flaws; unencrypted laptop; open USB port</td></tr>
+      <tr><td><strong>Network Vulnerability</strong></td><td>Weaknesses in network configuration or protocols</td><td>Open Wi-Fi, unencrypted Telnet, weak firewall rules, default router password</td></tr>
+      <tr><td><strong>Human Vulnerability</strong></td><td>People are susceptible to manipulation and make mistakes</td><td>Employee clicks phishing link; shares password; uses "123456"</td></tr>
+      <tr><td><strong>Configuration Weakness</strong></td><td>Systems configured insecurely — often during deployment</td><td>AWS S3 bucket left public; default admin credentials not changed</td></tr>
+      <tr><td><strong>Procedural Weakness</strong></td><td>Inadequate security policies or failure to follow them</td><td>No patch management process; no backup policy; no access review</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Understanding Harm</h3>
+  <p><strong>Harm</strong> (also called Impact) is the actual damage caused to an organisation, individual, or system when a threat successfully exploits a vulnerability. Harm can be categorised as:</p>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">💸</span>
+      <h4>Financial Harm</h4>
+      <p>Direct monetary losses — theft of funds, ransom payments, cost of recovery, regulatory fines, lost business, and litigation costs. Often the most immediately measurable impact.</p>
+      <div class="ctg-eg">Avg cost of a data breach in India: ₹17.9 crore (IBM Cost of a Data Breach Report 2023)</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🏆</span>
+      <h4>Reputational Harm</h4>
+      <p>Loss of customer trust, brand damage, and decline in business value. Often more severe and long-lasting than financial losses — customers switch to competitors after a breach and may never return.</p>
+      <div class="ctg-eg">Sony PlayStation Network breach (2011): 77 million accounts; network offline 23 days; $170M in losses</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">⚖️</span>
+      <h4>Legal / Regulatory Harm</h4>
+      <p>Penalties under data protection laws (DPDPA 2023 — up to ₹250 crore), IT Act, sectoral regulations (RBI, SEBI). Directors may face personal criminal liability for negligent security practices.</p>
+      <div class="ctg-eg">GDPR fine: Meta (WhatsApp) fined €225 million for transparency violations (2022)</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🧠</span>
+      <h4>Psychological Harm</h4>
+      <p>Suffered by individuals — victims of cyberstalking, cyber bullying, identity theft, sextortion, and romance scams often experience severe anxiety, depression, PTSD, and in extreme cases, suicidal ideation.</p>
+      <div class="ctg-eg">Sextortion victims report depression, social withdrawal, and academic failure as primary impacts</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🏗️</span>
+      <h4>Operational Harm</h4>
+      <p>Disruption to business processes and service delivery. Ransomware that disables hospital systems can delay surgeries, divert ambulances, and directly endanger patient lives. OT/ICS attacks can disrupt power, water, or transport services.</p>
+      <div class="ctg-eg">AIIMS Delhi ransomware (2022): Hospital operations disrupted for 2+ weeks; patient data of 3–4 crore affected</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🔐</span>
+      <h4>Data Harm</h4>
+      <p>Loss, theft, or corruption of valuable data — personal records, intellectual property, trade secrets, research data. Unlike physical theft, data can be copied — the original may remain while a thief has a perfect duplicate.</p>
+      <div class="ctg-eg">CoWIN vaccination data breach (2023): Aadhaar, phone numbers, vaccine certificates of crores of Indians reportedly leaked</div>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IBM Security — Cost of a Data Breach Report India 2023: https://www.ibm.com/reports/data-breach</li>
+      <li>NIST SP 800-30 Rev.1 — Guide for Conducting Risk Assessments: https://csrc.nist.gov</li>
+      <li>Pfleeger, C. &amp; Pfleeger, S. — Security in Computing, 5th Ed., Prentice Hall</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.6 — CYBER SECURITY FUNDAMENTALS
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-6">
+  <div class="topic-label">Topic 1.6</div>
+  <h2 class="topic-title">Cyber Security Fundamentals</h2>
+
+  <div class="concept-box">
+    <strong>Cyber Security</strong> is the body of technologies, processes, and practices designed to protect networks, devices, programs, and data from attack, damage, or unauthorised access — with the overarching goal of maintaining the CIA triad (Confidentiality, Integrity, Availability) across all digital assets. It is not a product you buy — it is an ongoing process of risk management.
+  </div>
+
+  <h3>Core Principles of Cyber Security</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🛡️</span>
+      <h4>Defence in Depth</h4>
+      <p>Apply multiple overlapping layers of security controls so that if one fails, others remain. Like a medieval castle — moat, walls, guards, keep. No single control is relied upon absolutely. Also called "layered security."</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔑</span>
+      <h4>Least Privilege</h4>
+      <p>Every user, process, and system should have the minimum level of access rights needed to perform its function — and nothing more. Limits the damage if an account is compromised. A cashier should not have access to the entire bank database.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🚫</span>
+      <h4>Separation of Duties</h4>
+      <p>Critical tasks should require the involvement of more than one person. No single person should be able to perform a sensitive action from start to finish. Prevents insider fraud. A fund transfer should require both initiation AND approval by different people.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🎯</span>
+      <h4>Zero Trust</h4>
+      <p>"Never trust, always verify." Every user, device, and network connection — even internal ones — must be continuously authenticated and authorised. Assumes breach: no network is inherently trusted. The modern replacement for perimeter-only security.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🔒</span>
+      <h4>Security by Design</h4>
+      <p>Security must be built into systems from the very beginning — not bolted on as an afterthought. Applies to software development (secure SDLC), network architecture (DMZ from day one), and policy development (privacy by design).</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📝</span>
+      <h4>Accountability</h4>
+      <p>Every action on a system should be traceable to a specific user or process — through audit logs, monitoring, and digital signatures. Accountability deters insider threats and supports forensic investigation after incidents.</p>
+    </div>
+  </div>
+
+  <h3>Cyber Security Framework — NIST CSF 2.0 (6 Functions)</h3>
+  <p>The <strong>NIST Cybersecurity Framework (CSF)</strong> is the most widely adopted global framework for managing cyber security risk. Version 2.0 (2024) adds a sixth function — Govern — to the original five:</p>
+
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">GV</span>
+      <span class="ph-title">Govern</span>
+      <span class="ph-desc">Establish cybersecurity risk management strategy, policy, roles and responsibilities (new in CSF 2.0)</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">ID</span>
+      <span class="ph-title">Identify</span>
+      <span class="ph-desc">Understand assets, risks, governance, and supply chain — what needs protecting?</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">PR</span>
+      <span class="ph-title">Protect</span>
+      <span class="ph-desc">Implement safeguards — access control, encryption, training, secure development</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">DE</span>
+      <span class="ph-title">Detect</span>
+      <span class="ph-desc">Monitor for anomalies and security events — SIEM, IDS, log analysis, threat intelligence</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">RS</span>
+      <span class="ph-title">Respond</span>
+      <span class="ph-desc">Take action on detected incidents — contain, eradicate, communicate, improve</span>
+    </div>
+    <div class="phase-block ph-6">
+      <span class="ph-num">RC</span>
+      <span class="ph-title">Recover</span>
+      <span class="ph-desc">Restore capabilities after incidents — backups, disaster recovery, lessons learned</span>
+    </div>
+  </div>
+
+  <h3>Key Cyber Security Terminologies</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Attack Vector</strong></td><td>The pathway or method an attacker uses to gain unauthorised access to a system</td><td>Phishing email, unpatched software, weak password, compromised supply chain</td></tr>
+      <tr><td><strong>Attack Surface</strong></td><td>The total set of points where an attacker could try to enter or extract data from an environment</td><td>All internet-facing servers, all employee devices, all third-party integrations</td></tr>
+      <tr><td><strong>Exploit</strong></td><td>A piece of code or technique that takes advantage of a specific vulnerability to cause unintended behaviour</td><td>EternalBlue exploit for Windows SMB vulnerability used by WannaCry</td></tr>
+      <tr><td><strong>Payload</strong></td><td>The malicious code that an exploit delivers and executes on the target system after successfully exploiting a vulnerability</td><td>Ransomware encryption engine; remote access trojan (RAT)</td></tr>
+      <tr><td><strong>Zero-Day</strong></td><td>A vulnerability that is unknown to the software vendor and has no available patch — attackers exploit it before defenders know it exists</td><td>Log4Shell (CVE-2021-44228) — disclosed and exploited before patches were available</td></tr>
+      <tr><td><strong>Patch</strong></td><td>A software update that fixes a known security vulnerability or bug</td><td>Microsoft Patch Tuesday releases — monthly security updates for Windows</td></tr>
+      <tr><td><strong>Firewall</strong></td><td>A network security device that monitors and controls incoming/outgoing traffic based on defined security rules</td><td>Blocks all inbound connections on port 23 (Telnet) — forcing use of secure SSH</td></tr>
+      <tr><td><strong>Encryption</strong></td><td>Converting readable data (plaintext) into an unreadable format (ciphertext) that can only be decoded with the correct key</td><td>HTTPS uses TLS encryption; WhatsApp uses end-to-end encryption</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>NIST Cybersecurity Framework 2.0: https://doi.org/10.6028/NIST.CSWP.29</li>
+      <li>National Cyber Security Policy 2013, MEITY: https://www.meity.gov.in</li>
+      <li>Anderson, R. — Security Engineering, 3rd Ed. (free): https://www.cl.cam.ac.uk/~rja14/book.html</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.7 — TYPES OF CYBERCRIME
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-7">
+  <div class="topic-label">Topic 1.7</div>
+  <h2 class="topic-title">Types of Cybercrime</h2>
+
+  <div class="concept-box">
+    Cybercrime is not a single offence — it is a broad umbrella covering dozens of distinct criminal activities united by their use of digital technology. Classification helps law enforcement apply the correct legal provision, helps organisations prioritise their defences, and helps victims identify where to report.
+  </div>
+
+  <h3>Primary Classification — By Target</h3>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🖥️</span>
+      <h4>Crimes Against Computer Systems</h4>
+      <p>The computer or network is the primary victim. The attacker seeks to gain unauthorised access, disrupt operations, steal stored data, or destroy system integrity.</p>
+      <div class="ctg-eg">Hacking · Ransomware · DDoS · Malware · Data Breach · System Sabotage</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">👤</span>
+      <h4>Crimes Against Individuals</h4>
+      <p>Targeting specific people to harm them financially, psychologically, reputationally, or physically — using digital technology as the weapon or medium of attack.</p>
+      <div class="ctg-eg">Cyber Stalking · Cyber Bullying · Identity Theft · Sextortion · Harassment · Defamation</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">🏢</span>
+      <h4>Crimes Against Organisations</h4>
+      <p>Targeting businesses, government bodies, or institutions to steal intellectual property, financial data, classified information, or to disrupt their operations.</p>
+      <div class="ctg-eg">Corporate Espionage · Trade Secret Theft · BEC / CEO Fraud · Insider Theft · Supply Chain Attack</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🏛️</span>
+      <h4>Crimes Against Society / State</h4>
+      <p>Threatening public order, national security, or democratic institutions. The most severe category — often involves nation-state actors or organised terrorist groups.</p>
+      <div class="ctg-eg">Cyber Terrorism · Critical Infrastructure Attack · Election Interference · Disinformation Campaign</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">💰</span>
+      <h4>Financial / Economic Cybercrimes</h4>
+      <p>A broad category of crimes motivated by financial gain — using digital technology to steal money, evade taxes, launder proceeds of crime, or commit fraud at scale.</p>
+      <div class="ctg-eg">Online Banking Fraud · UPI Fraud · Crypto Theft · Investment Scam · Phishing · Lottery Fraud</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🌑</span>
+      <h4>Content-Based Cybercrimes</h4>
+      <p>Creation, distribution, or possession of illegal digital content — material that is harmful, prohibited, or used to facilitate other crimes.</p>
+      <div class="ctg-eg">CSAM · Hate Speech Online · Fake News · Obscene Material · Piracy · Deepfake Pornography</div>
+    </div>
+  </div>
+
+  <h3>Specific Types of Cybercrime — Detailed</h3>
+
+  <h4>1. Hacking (Unauthorised Access)</h4>
+  <p>Gaining access to a computer system or network without permission. Ranges from exploratory ("I just wanted to see if I could") to malicious (stealing data, planting malware, destroying systems). Punishable under <strong>IT Act Section 66</strong> — up to 3 years imprisonment and ₹5 lakh fine.</p>
+
+  <h4>2. Phishing</h4>
+  <p>Sending fraudulent emails, messages, or creating fake websites impersonating legitimate organisations to trick victims into revealing credentials, financial information, or installing malware. The most prevalent cybercrime globally. Under <strong>IT Act Section 66D</strong> (cheating by impersonation using computer resource).</p>
+
+  <h4>3. Identity Theft</h4>
+  <p>Stealing personal information (name, Aadhaar, PAN, bank account details, OTP) to impersonate the victim — for financial fraud, credit card crime, or avoiding detection for other crimes. <strong>IT Act Section 66C</strong> — up to 3 years imprisonment and ₹1 lakh fine.</p>
+
+  <h4>4. Ransomware</h4>
+  <p>Malware that encrypts the victim's files and demands payment (typically in cryptocurrency) for the decryption key. Modern ransomware groups also steal data before encrypting ("double extortion") and threaten to publish it. India's AIIMS Delhi attack (2022) is the landmark Indian ransomware case.</p>
+
+  <h4>5. Cyberstalking</h4>
+  <p>Using digital technology to persistently follow, monitor, harass, or threaten a specific individual — causing them fear and distress. Covered under <strong>IT Act Section 66A</strong> (struck down in 2015), now prosecuted under <strong>IPC/BNS Section 354D</strong>. Detailed in Topic 1.9.</p>
+
+  <h4>6. Cyber Bullying</h4>
+  <p>Using digital platforms to deliberately harm, harass, humiliate, or threaten individuals — particularly common among school-age children and teenagers. Detailed in Topic 1.9.</p>
+
+  <h4>7. Online Fraud and Scams</h4>
+  <p>Includes banking fraud, investment scams, lottery fraud, job offer fraud, and the emerging "Digital Arrest" scam unique to India. Total financial fraud losses in India exceeded ₹11,000 crore in 2023 (MHA I4C data).</p>
+
+  <h4>8. Denial of Service (DoS / DDoS)</h4>
+  <p>Flooding a server or network with traffic to make it unavailable to legitimate users. Distributed DoS uses thousands of compromised machines (botnet) to amplify the attack. Targets include bank websites, government portals, and e-commerce platforms during peak periods.</p>
+
+  <h4>9. Child Sexual Abuse Material (CSAM)</h4>
+  <p>Creation, distribution, or possession of sexual material involving minors. The most severely punished cybercrime — <strong>IT Act Section 67B</strong>: up to 5 years (first offence) or 7 years (subsequent) imprisonment. Actively monitored by INTERPOL, CBI, and state cyber cells in India.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 1.3 — India Cybercrime Complaints by Category 2023 (MHA I4C)</div>
+    <div class="chart-container">
+      <canvas id="crimeChart"></canvas>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IT Act 2000, Sections 43, 66, 66B–F, 67, 67A, 67B: https://www.meity.gov.in</li>
+      <li>MHA I4C — National Cybercrime Reporting Portal Annual Report: https://cybercrime.gov.in</li>
+      <li>UNODC — Comprehensive Study on Cybercrime: https://www.unodc.org/unodc/en/cybercrime</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.8 — HACKING & ETHICAL HACKING
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-8">
+  <div class="topic-label">Topic 1.8</div>
+  <h2 class="topic-title">Hacking &amp; Ethical Hacking</h2>
+
+  <div class="concept-box">
+    <strong>Hacking</strong> is the practice of identifying and exploiting weaknesses in a computer system or network — with or without authorisation. While popularly associated with criminal activity, hacking itself is a neutral technical skill. The intent and authorisation of the person performing it determine whether it is a crime or a valuable security service.
+  </div>
+
+  <h3>Types of Hackers — The Hat Classification</h3>
+
+  <div class="hacker-grid">
+    <div class="hk-card hk-white">
+      <span class="hk-hat">🤍</span>
+      <h4>White Hat Hacker</h4>
+      <ul>
+        <li>Also called <strong>Ethical Hackers</strong> or Penetration Testers</li>
+        <li>Always have <em>explicit written permission</em> from the system owner before testing</li>
+        <li>Discover vulnerabilities and report them responsibly to the organisation</li>
+        <li>Work within defined scope and rules of engagement</li>
+        <li>Help organisations fix weaknesses <em>before</em> criminals can exploit them</li>
+        <li>Often hold certifications: CEH, OSCP, CISSP</li>
+        <li>Legal status: <strong>Completely legal and encouraged</strong></li>
+      </ul>
+    </div>
+    <div class="hk-card hk-black">
+      <span class="hk-hat">🖤</span>
+      <h4>Black Hat Hacker</h4>
+      <ul>
+        <li>Malicious hackers who attack systems <em>without authorisation</em></li>
+        <li>Motivated by financial gain, revenge, notoriety, or ideology</li>
+        <li>Steal data, plant malware, extort victims, sell stolen credentials</li>
+        <li>Often part of organised criminal groups or nation-state units</li>
+        <li>Cover tracks to avoid detection and prosecution</li>
+        <li>Constitute the primary threat actors in cybersecurity</li>
+        <li>Legal status: <strong>Criminal — IT Act Section 66 and beyond</strong></li>
+      </ul>
+    </div>
+    <div class="hk-card hk-grey">
+      <span class="hk-hat">🩶</span>
+      <h4>Grey Hat Hacker</h4>
+      <ul>
+        <li>Operate between white and black hat — break in without permission but don't cause deliberate harm</li>
+        <li>Typically discover a vulnerability, then inform the victim organisation (sometimes demanding payment)</li>
+        <li>Do not steal data or deploy malware — purely exploratory</li>
+        <li>May publicly disclose vulnerability if organisation ignores them</li>
+        <li>Controversial: well-intentioned but still operating illegally</li>
+        <li>Legal status: <strong>Still illegal — unauthorised access regardless of intent</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Other Hacker Categories</div>
+    <strong>Script Kiddie:</strong> Uses pre-written tools without understanding the underlying techniques. Low skill, high nuisance value. <br>
+    <strong>Hacktivist:</strong> Ideologically or politically motivated — Anonymous, India vs Pakistan cyber skirmishes. <br>
+    <strong>Nation-State Hacker:</strong> Government-sponsored — APT28 (Russia), Lazarus Group (North Korea), APT41 (China). <br>
+    <strong>Insider Threat:</strong> Legitimate employee abusing trusted access. <br>
+    <strong>Cyber Terrorist:</strong> Uses hacking to cause fear, harm, or advance a political/religious agenda.
+  </div>
+
+  <h3>Ethical Hacking — Penetration Testing</h3>
+  <p><strong>Ethical Hacking</strong> (Penetration Testing or "pen testing") is the authorised, systematic attempt to penetrate a target system's defences to find vulnerabilities before malicious hackers do. It is a critical component of any mature security programme.</p>
+
+  <h4>The Penetration Testing Methodology — 5 Phases</h4>
+
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">1</span>
+      <span class="ph-title">Reconnaissance</span>
+      <span class="ph-desc">Gather intelligence about the target — OSINT, DNS lookups, WHOIS, social media. Passive (no direct contact) or Active (scanning).</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">2</span>
+      <span class="ph-title">Scanning &amp; Enumeration</span>
+      <span class="ph-desc">Identify open ports, running services, OS versions, and potential vulnerabilities using tools like Nmap, Nessus, Nikto.</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">3</span>
+      <span class="ph-title">Gaining Access</span>
+      <span class="ph-desc">Exploit identified vulnerabilities to enter the target system — Metasploit, Burp Suite, custom exploits. Document every step.</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">4</span>
+      <span class="ph-title">Maintaining Access</span>
+      <span class="ph-desc">Simulate how an attacker would establish persistence (backdoors, scheduled tasks). Test if detection systems alert on this behaviour.</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">5</span>
+      <span class="ph-title">Reporting</span>
+      <span class="ph-desc">Document all findings with evidence, risk ratings, and specific remediation recommendations. Present to client. Remove all test artefacts.</span>
+    </div>
+  </div>
+
+  <h3>Types of Penetration Tests</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Type</th><th>Tester's Knowledge</th><th>Simulates</th><th>Best For</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Black Box Test</strong></td><td>No prior knowledge of target — starts from zero like a real attacker</td><td>External attacker with no inside information</td><td>Testing external attack surface; most realistic scenario</td></tr>
+      <tr><td><strong>White Box Test</strong></td><td>Full knowledge — source code, architecture, credentials, network diagrams provided</td><td>Insider threat or attacker with extensive intelligence</td><td>Thorough code review; maximum coverage in minimum time</td></tr>
+      <tr><td><strong>Grey Box Test</strong></td><td>Partial knowledge — some credentials, network diagrams but not full source code access</td><td>Compromised insider account or authenticated web user</td><td>Most common approach — balances realism with thoroughness</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Ethical Hacking vs Malicious Hacking — Key Differences</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Ethical Hacking ✅</h4>
+      <ul>
+        <li>Written authorisation from the system owner (Rules of Engagement)</li>
+        <li>Defined scope — only agreed systems are tested</li>
+        <li>All findings reported to the organisation</li>
+        <li>No data stolen or used for personal gain</li>
+        <li>All test access removed after engagement</li>
+        <li>Conducted by certified professionals (CEH, OSCP)</li>
+        <li>Legal and encouraged by organisations and regulators</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Malicious Hacking ❌</h4>
+      <ul>
+        <li>No authorisation — purely criminal act</li>
+        <li>No scope boundaries — attackers target anything of value</li>
+        <li>Findings used for personal gain, sold, or published maliciously</li>
+        <li>Data stolen, systems damaged, malware planted</li>
+        <li>Backdoors left for persistent future access</li>
+        <li>Conducted anonymously to evade law enforcement</li>
+        <li>Illegal — IT Act Sec 66, up to 3 years + fine</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Bug Bounty Programmes — India Context</div>
+    Major Indian organisations run <strong>Bug Bounty Programmes</strong> — publicly inviting ethical hackers to discover and report vulnerabilities in their systems in exchange for monetary rewards. Flipkart, NPCI (UPI), Indian Government's CERT-IN, and private banks have such programmes. Globally, Google, Microsoft, Facebook, and Apple pay millions in bug bounties annually. This is the intersection of ethical hacking and commercial security practice.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>EC-Council — CEH (Certified Ethical Hacker) Courseware</li>
+      <li>Mitnick, K. — The Art of Hacking, Wiley, 2017</li>
+      <li>OWASP Testing Guide: https://owasp.org/www-project-web-security-testing-guide</li>
+      <li>Offensive Security — OSCP Certification: https://www.offensive-security.com</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.9 — CYBER BULLYING & CYBER STALKING
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-9">
+  <div class="topic-label">Topic 1.9</div>
+  <h2 class="topic-title">Cyber Bullying and Cyber Stalking</h2>
+
+  <div class="concept-box">
+    <strong>Cyber Bullying</strong> and <strong>Cyber Stalking</strong> are two of the most psychologically damaging forms of cybercrime — primarily because they target individuals personally, are often sustained over long periods, and can follow the victim into every space in their digital life. Unlike physical bullying or stalking, the digital form never stops when the victim "goes home."
+  </div>
+
+  <h3>Cyber Bullying — Definition and Forms</h3>
+
+  <p><strong>Cyber Bullying</strong> is the use of digital technology — social media, messaging apps, online gaming platforms, email — to deliberately and repeatedly harm, intimidate, humiliate, or exclude another person. It differs from a single rude message or argument: it is systematic, sustained, and intended to cause harm.</p>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Key Distinction — Cyber Bullying vs Online Conflict</div>
+    <strong>Cyber Bullying</strong> has three defining characteristics: it is <em>intentional</em> (deliberate, not accidental), it is <em>repetitive</em> (happens more than once or persists), and there is a <em>power imbalance</em> (the bully has some advantage — popularity, numbers, personal information — over the victim). A one-time rude comment, however hurtful, is not cyber bullying by this definition.
+  </div>
+
+  <h4>Forms of Cyber Bullying</h4>
+  <table class="data-table no-bold">
+    <thead><tr><th>Form</th><th>Description</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Harassment</strong></td><td>Sending repeated offensive, rude, or threatening messages to a person</td><td>Flooding someone's Instagram DMs with abusive messages after a disagreement</td></tr>
+      <tr><td><strong>Cyberstalking</strong></td><td>Persistent monitoring, following, and threatening — overlaps significantly with cyber stalking (covered next)</td><td>Tracking someone's location through their social media check-ins; monitoring all their posts</td></tr>
+      <tr><td><strong>Denigration (Trash-Talk)</strong></td><td>Posting cruel, false, or embarrassing statements about someone to damage their reputation</td><td>Creating a fake "hate page" about a classmate; posting edited embarrassing photos</td></tr>
+      <tr><td><strong>Impersonation / Fraping</strong></td><td>Hacking or creating a fake account pretending to be the victim and posting harmful content</td><td>Logging into someone's Facebook and posting offensive content to damage their reputation</td></tr>
+      <tr><td><strong>Outing and Trickery</strong></td><td>Sharing someone's private, embarrassing, or sensitive information without consent; tricking them into revealing it</td><td>Sharing private photos or messages; revealing someone's sexual orientation without consent</td></tr>
+      <tr><td><strong>Exclusion</strong></td><td>Deliberately and cruelly excluding someone from an online group, game, or community</td><td>Blocking someone from a WhatsApp group used by the whole class; excluding from gaming teams</td></tr>
+      <tr><td><strong>Flaming</strong></td><td>Online fights using angry, profane, or extremely hostile messages</td><td>Starting a public "flame war" against someone in a gaming forum or comment section</td></tr>
+      <tr><td><strong>Sextortion</strong></td><td>Using intimate images or videos (obtained consensually or through deception) to coerce, blackmail, or humiliate the victim</td><td>Threatening to share intimate photos unless the victim pays money or sends more images</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Cyber Stalking — Definition and Characteristics</h3>
+
+  <p><strong>Cyber Stalking</strong> is the use of electronic communication to stalk or harass a person or group — involving persistent, unwanted surveillance, contact, or threats that cause fear in the victim. It is the digital equivalent of physical stalking — following, watching, and threatening — but with the added power of technology: it can be done remotely, anonymously, and 24 hours a day.</p>
+
+  <h4>Characteristics of Cyber Stalking</h4>
+  <ul>
+    <li><strong>Persistent:</strong> Repeated contact or surveillance over an extended period — not a single incident</li>
+    <li><strong>Unwanted:</strong> The victim has made clear (or it is obvious) that the contact is not welcome</li>
+    <li><strong>Fear-inducing:</strong> A reasonable person in the victim's position would feel fear for their safety or wellbeing</li>
+    <li><strong>Often escalates:</strong> Begins with online contact, may escalate to physical surveillance, threats, or violence</li>
+    <li><strong>Can be anonymous:</strong> Stalker may hide behind fake accounts, making it difficult for victims to identify or report them</li>
+  </ul>
+
+  <h4>Methods Used in Cyber Stalking</h4>
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">📍</span>
+      <h4>Location Tracking</h4>
+      <p>Using social media check-ins, geotagged photos, or covertly installed spyware/stalkerware to monitor the victim's physical location in real time without their knowledge.</p>
+      <div class="ctg-eg">Extracting GPS coordinates from photos posted on Instagram to locate the victim's home</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">📧</span>
+      <h4>Persistent Messaging</h4>
+      <p>Flooding the victim with unwanted messages, calls, emails, or social media interactions — often switching to new accounts when blocked. The volume and persistence itself constitutes the threat.</p>
+      <div class="ctg-eg">Creating 50+ fake WhatsApp accounts after being blocked to continue contact</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🖥️</span>
+      <h4>Identity Monitoring</h4>
+      <p>Systematically watching and archiving all of the victim's online activity — every post, every photo, every comment — to build a profile and maintain a sense of control over the victim's life.</p>
+      <div class="ctg-eg">Screenshotting every social media post; noting every person the victim interacts with online</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🎭</span>
+      <h4>False Reporting / Campaigns</h4>
+      <p>Filing false reports against the victim with platforms, employers, or police. Organising "cancel campaigns" or coordinated harassment by multiple accounts — also called "brigading" or "dogpiling."</p>
+      <div class="ctg-eg">Mass-reporting a journalist's social media account as spam to get it suspended</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">☎️</span>
+      <h4>Threatening Communication</h4>
+      <p>Sending explicit threats of violence, sexual harm, or damage to reputation — sometimes targeting the victim's family members or employers to amplify the intimidation.</p>
+      <div class="ctg-eg">"I know where you live and I will come there" sent via anonymous email after identifying the victim's address</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">📱</span>
+      <h4>Spyware / Stalkerware</h4>
+      <p>Installing hidden monitoring software on the victim's phone or computer — often by an intimate partner — to read all messages, track location, listen to calls, and take covert photographs.</p>
+      <div class="ctg-eg">Commercially available "parental control" apps repurposed to monitor an intimate partner without consent</div>
+    </div>
+  </div>
+
+  <h3>Legal Framework — India</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Offence</th><th>Applicable Law</th><th>Punishment</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Cyber Stalking (Woman)</strong></td>
+        <td>IPC Section 354D / BNS Section 78 — Stalking (including electronic stalking)</td>
+        <td>First conviction: up to 3 years + fine. Second: up to 5 years + fine</td>
+      </tr>
+      <tr>
+        <td><strong>Cyber Bullying / Harassment</strong></td>
+        <td>IT Act Section 67 (obscene material); BNS Section 351 (criminal intimidation); Sec 507 (anonymous threat)</td>
+        <td>3–7 years depending on severity and content</td>
+      </tr>
+      <tr>
+        <td><strong>Sextortion / Non-Consensual Intimate Images</strong></td>
+        <td>IT Act Section 66E (privacy violation) + Section 67A (sexually explicit material online)</td>
+        <td>Sec 66E: up to 3 years + ₹2 lakh. Sec 67A: up to 5 years + ₹10 lakh</td>
+      </tr>
+      <tr>
+        <td><strong>Impersonation / Fake Account</strong></td>
+        <td>IT Act Section 66D (impersonation using computer resource)</td>
+        <td>Up to 3 years + up to ₹1 lakh fine</td>
+      </tr>
+      <tr>
+        <td><strong>Sending Obscene Messages / Defamation</strong></td>
+        <td>IT Act Section 67; IPC/BNS Section 499–500 (defamation); Sec 507 (criminal intimidation by anonymous communication)</td>
+        <td>2–5 years depending on section applied</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="case-box">
+    <div class="case-label">🇮🇳 Real Case — Cyber Stalking in India</div>
+    In one of India's earliest landmark cyber stalking cases, <strong>Manish Kathuria</strong> created a fake Yahoo! Messenger profile impersonating <strong>Ritu Kohli</strong>, a Delhi woman, and posted her phone number in online chat rooms inviting men to call her with obscene messages at all hours. She received hundreds of threatening and obscene calls. She complained to Delhi Police, and Kathuria was arrested under the then-applicable IPC Section 509 (words/gestures intended to insult the modesty of a woman). This case directly contributed to cyber stalking being specifically addressed in the IT Act 2000 amendment of 2008.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IT Act 2000, Sections 66D, 66E, 67, 67A: https://www.meity.gov.in</li>
+      <li>BNS 2023, Section 78 (Stalking): https://legislative.gov.in</li>
+      <li>Patchin, J.W. &amp; Hinduja, S. — Cyberbullying Research Center: https://cyberbullying.org</li>
+      <li>National Commission for Women — Cyber Safety: https://ncw.nic.in</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 1.10 — IMPACT OF CYBER BULLYING AND CYBER STALKING
+══════════════════════════════════════ -->
+<section class="topic-section" id="t1-10">
+  <div class="topic-label">Topic 1.10</div>
+  <h2 class="topic-title">Impact of Cyber Bullying and Cyber Stalking</h2>
+
+  <div class="concept-box">
+    The harm caused by cyber bullying and cyber stalking extends far beyond what is immediately visible. Unlike a bruise from physical assault, the wounds are psychological — and they can last for years. The digital nature of these crimes means the harm is permanent (screenshots, posts that cannot be deleted), pervasive (it follows the victim into every space — home, school, work), and witnessed by an audience (peer humiliation is amplified by social media).
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Mental Health Note</div>
+    This topic covers serious mental health impacts including depression, anxiety, and in some cases suicidal ideation. If you or someone you know is experiencing distress related to online harassment, please reach out to: <strong>iCall (India): 9152987821</strong> · <strong>Vandrevala Foundation: 1860-2662-345</strong> · <strong>National Cyber Crime Helpline: 1930</strong>. You are not alone, and help is available.
+  </div>
+
+  <h3>Impact on Individuals — Victims</h3>
+
+  <div class="impact-grid">
+    <div class="imp-card imp-a">
+      <span class="imp-icon">🧠</span>
+      <h4>Psychological and Mental Health Impact</h4>
+      <p>The most severe and lasting harm. Victims consistently report persistent anxiety, clinical depression, post-traumatic stress disorder (PTSD), panic attacks, feelings of helplessness, and low self-worth. Many develop social anxiety disorder — fearing online interaction entirely. In the most tragic cases, severe cyber bullying has led to suicide — documented cases include teenagers in India, the USA, and the UK. The "<strong>always-on</strong>" nature of social media means there is no escape, no safe space to recover — the bullying follows the victim to bed, to the dinner table, to the bathroom.</p>
+    </div>
+    <div class="imp-card imp-b">
+      <span class="imp-icon">📚</span>
+      <h4>Academic and Professional Impact</h4>
+      <p>Victims — particularly school and college students — experience significant decline in academic performance. Inability to concentrate, reluctance to attend school (absenteeism), dropping from courses or extracurricular activities, and in severe cases, dropping out of education entirely. Adults who are cyber stalked or harassed at work lose productivity, request transfers, take extended medical leave, or resign — with serious long-term career consequences. The constant state of hypervigilance (always checking if they're being watched or targeted) consumes enormous cognitive resources.</p>
+    </div>
+    <div class="imp-card imp-c">
+      <span class="imp-icon">🤝</span>
+      <h4>Social and Relationship Impact</h4>
+      <p>Victims withdraw from social interactions — both online and offline — out of fear, embarrassment, and distrust. Friendships deteriorate as victims become isolated. Romantic relationships are damaged — either by the stalker's interference or by the victim's inability to trust new relationships. Family relationships suffer as victims struggle to explain their changed behaviour and as families themselves become targeted (stalkers often contact victims' family members to amplify pressure). The victim's entire social world can collapse inward over time.</p>
+    </div>
+    <div class="imp-card imp-d">
+      <span class="imp-icon">💸</span>
+      <h4>Financial Impact</h4>
+      <p>Direct costs include therapy and counselling fees, legal fees for restraining orders or criminal complaints, costs of changing phone numbers, email addresses, and social media accounts. Reputational damage from false information spread by bullies or stalkers can cost victims employment, business contracts, and professional opportunities. Sextortion victims may pay ransoms to prevent image release — losing significant sums with no guarantee of compliance from the extortionist. Identity theft (often accompanying cyber stalking) causes direct financial losses and years of credit repair.</p>
+    </div>
+    <div class="imp-card imp-e">
+      <span class="imp-icon">😴</span>
+      <h4>Physical Health Impact</h4>
+      <p>The chronic stress of being persistently targeted manifests physically — disrupted sleep (insomnia, nightmares), appetite changes (loss of appetite or stress-eating), headaches, stomach problems, and a weakened immune system. In extreme cases, victims develop psychosomatic conditions directly linked to their trauma. Physical safety is also a direct concern when online stalking escalates to physical surveillance, showing up at the victim's home or workplace, or explicit threats of physical violence — which are not rare in the most severe cases.</p>
+    </div>
+    <div class="imp-card imp-f">
+      <span class="imp-icon">🔒</span>
+      <h4>Digital Life and Privacy Impact</h4>
+      <p>Victims often delete social media accounts, change phone numbers, use pseudonyms online, and avoid posting photos or location information — essentially being driven off the digital public sphere. This digital exile has its own costs: loss of social connection, professional networking opportunities, and the right to participate freely in public discourse. Some victims move homes, change jobs, or alter their daily routines to avoid a stalker — losing the freedom and spontaneity of normal life.</p>
+    </div>
+  </div>
+
+  <h3>Impact on Families</h3>
+  <p>Cyber bullying and stalking do not only affect the direct victim. Families experience:</p>
+  <ul>
+    <li><strong>Parental distress:</strong> Parents of cyber bullied children report significant anxiety, guilt ("I should have monitored their online use"), and helplessness — especially when the school or police cannot immediately intervene</li>
+    <li><strong>Sibling impact:</strong> Younger siblings may be targeted as a way to reach or pressure the primary victim</li>
+    <li><strong>Family conflict:</strong> Disagreements about how to respond — remove all devices? Change schools? Involve police? — create tension within families</li>
+    <li><strong>Financial burden:</strong> Therapy, legal costs, and potentially relocation fall on the family unit</li>
+  </ul>
+
+  <h3>Societal Impact</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Level</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>School / College Level</strong></td><td>Toxic classroom and campus culture; fear among students; reduced participation; schools forced to develop anti-cyber bullying policies; strain on counselling resources</td></tr>
+      <tr><td><strong>Workplace Level</strong></td><td>Reduced productivity; increased absenteeism; hostile work environment litigation; reputational damage to organisations where harassment occurs among employees</td></tr>
+      <tr><td><strong>Social Media Platforms</strong></td><td>Erosion of safe spaces for expression; self-censorship by users; platforms under regulatory pressure to moderate content more aggressively; advertiser flight from toxic environments</td></tr>
+      <tr><td><strong>Public Discourse</strong></td><td>Valuable voices — particularly women, minorities, and activists — driven off online platforms by coordinated harassment, chilling free speech and democratic participation</td></tr>
+      <tr><td><strong>Mental Health System</strong></td><td>Increasing demand for mental health services among youth; need for trained counsellors who understand technology and online harm specifically; new clinical frameworks for "digital trauma"</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Prevention and Response Strategies</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🧑‍🏫</span>
+      <h4>Education and Awareness</h4>
+      <p>Age-appropriate cyber safety education in schools; digital citizenship curricula; teacher and parent training on recognising signs of cyber bullying; awareness campaigns by CERT-IN, NCW, and state police.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📱</span>
+      <h4>Platform-Level Controls</h4>
+      <p>Reporting tools on all social media platforms; content moderation; account suspension for harassment; blocking and privacy controls; anonymous tip reporting; platform cooperation with law enforcement.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">⚖️</span>
+      <h4>Legal Action and Support</h4>
+      <p>File complaint on cybercrime.gov.in; call helpline 1930; approach local cyber crime police cell; seek restraining order; preserve evidence (screenshots with timestamps); engage victim support organisations (NCW, iCall).</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 1.4 — Impact Severity: Cyber Bullying vs Cyber Stalking by Victim Category</div>
+    <div class="chart-container">
+      <canvas id="impactChart"></canvas>
+    </div>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 1 — Final Takeaway</div>
+    <p>Cyber security is not merely a technical discipline — it is a social, legal, and human challenge. From understanding what cyber space is and how crime evolved within it, to grasping the psychological devastation of cyber bullying and stalking, Unit 1 establishes that security is ultimately about protecting <em>people</em> — their money, their data, their safety, their mental health, and their right to participate freely in the digital world. Every technical control we study in later units exists in service of this fundamentally human goal.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Hinduja, S. &amp; Patchin, J.W. — Bullying Beyond the Schoolyard, Corwin Press, 2015</li>
+      <li>Cyberbullying Research Center: https://cyberbullying.org</li>
+      <li>National Commission for Women — Cyber Safety Guide: https://ncw.nic.in</li>
+      <li>iCall Mental Health Helpline (India): https://icallhelpline.org · 9152987821</li>
+      <li>Cyber Crime Reporting Portal: https://cybercrime.gov.in · Helpline: 1930</li>
+      <li>UNICEF — Cyberbullying: What it is and how to stop it: https://www.unicef.org/end-violence/cyberbullying</li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>Introduction to Cyber Security · Unit 01 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="ICS_Index.html">🏠 Home</a>
+      <a href="unit02_sem01_ics.html">Unit 2 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · SPPU · Design &amp; Developed by Sumit Thakare</span>
+  </div>
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+// Nav mobile close
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'))
+);
+// Back to top
+window.addEventListener('scroll', () => {
+  document.querySelector('.back-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+// ── CHARTS ──
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// Chart 1 — Evolution of cybercrime (line chart)
+const ctx1 = document.getElementById('evolutionChart');
+new Chart(ctx1, {
+  type: 'line',
+  data: {
+    labels: ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'],
+    datasets: [
+      {
+        label: 'Attack Sophistication',
+        data: [1, 2, 3, 5, 7, 8, 10],
+        borderColor: '#c0392b', backgroundColor: 'rgba(192,57,43,0.08)',
+        borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true
+      },
+      {
+        label: 'Scale / Number of Victims',
+        data: [1, 1, 2, 4, 7, 9, 10],
+        borderColor: '#0c8da0', backgroundColor: 'rgba(12,141,160,0.08)',
+        borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true
+      },
+      {
+        label: 'Financial Impact (Relative)',
+        data: [1, 1, 2, 3, 6, 8, 10],
+        borderColor: '#e6ac00', backgroundColor: 'rgba(230,172,0,0.08)',
+        borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: true, max: 11, title: { display: true, text: 'Relative Score (1–10)' }, grid: { color: '#eee' } },
+      x: { grid: { display: false } }
+    },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+// Chart 2 — India Cybercrime by Category (Doughnut)
+const ctx2 = document.getElementById('crimeChart');
+new Chart(ctx2, {
+  type: 'doughnut',
+  data: {
+    labels: ['Financial Fraud (UPI/Banking)', 'Social Media Crimes', 'Job/Employment Fraud', 'Investment Scams', 'Cyber Stalking/Bullying', 'Ransomware/Malware', 'Others'],
+    datasets: [{
+      data: [35, 18, 14, 13, 9, 5, 6],
+      backgroundColor: [
+        'rgba(192,57,43,0.85)', 'rgba(111,66,193,0.85)', 'rgba(26,122,52,0.85)',
+        'rgba(12,141,160,0.85)', 'rgba(230,172,0,0.85)', 'rgba(10,10,10,0.80)', 'rgba(150,150,150,0.65)'
+      ],
+      borderColor: '#fafaf8', borderWidth: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
+    }
+  }
+});
+
+// Chart 3 — Impact chart (bar)
+const ctx3 = document.getElementById('impactChart');
+new Chart(ctx3, {
+  type: 'bar',
+  data: {
+    labels: ['Psychological\nImpact', 'Academic\nImpact', 'Social\nIsolation', 'Financial\nImpact', 'Physical\nHealth', 'Digital\nExclusion'],
+    datasets: [
+      {
+        label: 'Cyber Bullying Victims',
+        data: [8.5, 7.5, 7, 4, 5, 6.5],
+        backgroundColor: 'rgba(192,57,43,0.75)',
+        borderColor: '#c0392b', borderWidth: 2, borderRadius: 3
+      },
+      {
+        label: 'Cyber Stalking Victims',
+        data: [9.5, 6, 8.5, 6.5, 7, 9],
+        backgroundColor: 'rgba(111,66,193,0.75)',
+        borderColor: '#6f42c1', borderWidth: 2, borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom' } },
+    scales: {
+      y: {
+        beginAtZero: true, max: 10,
+        title: { display: true, text: 'Severity Score (1–10, based on research)' },
+        grid: { color: '#eee' }
+      },
+      x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>
