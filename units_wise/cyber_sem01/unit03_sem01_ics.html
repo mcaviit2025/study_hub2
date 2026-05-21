@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 — Identity Theft &amp; Financial Fraud | ICS MCA Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+<!-- ════════ UNIT 3 ICS INLINE STYLES ════════ -->
+<style>
+
+  /* ── IDENTITY TYPE CARD GRID (3-col) ── */
+  .crime-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .ctg-card {
+    padding: 1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .ctg-card:nth-child(3n)        { border-right: none; }
+  .ctg-card:nth-last-child(-n+3) { border-bottom: none; }
+  .ctg-card .ctg-icon  { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .ctg-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .ctg-card p  { font-size: 0.85rem; line-height: 1.55; }
+  .ctg-card .ctg-eg {
+    margin-top: 0.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-top: var(--border-thin);
+    padding-top: 0.3rem;
+  }
+  .cc-red    { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .cc-amber  { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .cc-blue   { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .cc-purple { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .cc-green  { background:#f0faf2; border-left:4px solid #1a7a34; }
+  .cc-dark   { background:#f0f0ee; border-left:4px solid #3a3a36; }
+
+  /* ── TECHNIQUE GRID (2-col) ── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .tech-card {
+    padding: 1.1rem 1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .tech-card:nth-child(even) { border-right: none; }
+  .tech-card:nth-last-child(-n+2) { border-bottom: none; }
+  .tech-card .tech-icon { font-size: 1.6rem; display: block; margin-bottom: 0.35rem; }
+  .tech-card h4 { font-family: 'Playfair Display', serif; font-size: 0.97rem; margin-bottom: 0.3rem; padding-bottom: 0.3rem; border-bottom: var(--border-thin); }
+  .tech-card p  { font-size: 0.85rem; line-height: 1.56; }
+  .tech-card .tech-eg {
+    margin-top: 0.45rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-top: var(--border-thin);
+    padding-top: 0.3rem;
+  }
+  .tc-red    { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .tc-amber  { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .tc-blue   { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .tc-purple { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .tc-green  { background:#f0faf2; border-left:4px solid #1a7a34; }
+  .tc-dark   { background:#f0f0ee; border-left:4px solid #3a3a36; }
+
+  /* ── FRAUD TYPE CARDS (3-col) ── */
+  .fraud-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .fraud-card {
+    padding: 1.1rem 1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .fraud-card:nth-child(3n) { border-right: none; }
+  .fraud-card:nth-last-child(-n+3) { border-bottom: none; }
+  .fraud-card .fr-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; text-align: center; }
+  .fraud-card h4 { font-family: 'Playfair Display', serif; font-size: 0.96rem; margin-bottom: 0.35rem; text-align: center; padding-bottom: 0.3rem; border-bottom: var(--border-thin); }
+  .fraud-card p  { font-size: 0.84rem; line-height: 1.55; }
+  .fraud-card .fr-eg {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--gray-500);
+    border-top: var(--border-thin);
+    padding-top: 0.3rem;
+  }
+  .fr-red    { background:#fdf2f2; }
+  .fr-amber  { background:#fff9ec; }
+  .fr-blue   { background:#eef8ff; }
+  .fr-purple { background:#f3f0fa; }
+  .fr-green  { background:#f0faf2; }
+  .fr-dark   { background:#f0f0ee; }
+
+  /* ── IMPACT GRID (2×3) ── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .imp-card {
+    padding: 1rem 1.1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .imp-card:nth-child(even) { border-right: none; }
+  .imp-card:nth-last-child(-n+2) { border-bottom: none; }
+  .imp-card .imp-icon { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+  .imp-card h4 { font-family:'Playfair Display',serif; font-size:0.96rem; margin-bottom:0.3rem; }
+  .imp-card p  { font-size:0.86rem; line-height:1.56; }
+  .imp-a { background:#fdf2f2; border-left:4px solid #c0392b; }
+  .imp-b { background:#fff9ec; border-left:4px solid #e6ac00; }
+  .imp-c { background:#f3f0fa; border-left:4px solid #6f42c1; }
+  .imp-d { background:#eef8ff; border-left:4px solid #0c8da0; }
+  .imp-e { background:#fde8d8; border-left:4px solid #e67e22; }
+  .imp-f { background:#f0faf2; border-left:4px solid #1a7a34; }
+
+  /* ── CASE STUDY CARD ── */
+  .case-study-block {
+    border: var(--border);
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+  .cs-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.7rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .cs-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(255,255,255,0.18);
+    padding: 0.18rem 0.55rem;
+    border: 1px solid rgba(255,255,255,0.35);
+    flex-shrink: 0;
+  }
+  .cs-title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .cs-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cs-col {
+    padding: 1rem 1.1rem;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    font-size: 0.86rem;
+    line-height: 1.58;
+  }
+  .cs-col:nth-child(even) { border-right: none; }
+  .cs-col:last-child, .cs-col:nth-last-child(-n+2) { border-bottom: none; }
+  .cs-col-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  .cs-col h4 { font-family:'Playfair Display',serif; font-size:0.92rem; margin-bottom:0.3rem; }
+  .cs-verdict {
+    grid-column: 1 / -1;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.86rem;
+    border-top: 2px solid var(--black);
+    background: #f9f9f7;
+  }
+  .cs-verdict strong { font-family:'Playfair Display',serif; }
+  .cs-red    .cs-header { background: #c0392b; }
+  .cs-amber  .cs-header { background: #b07d00; }
+  .cs-blue   .cs-header { background: #0c6d7e; }
+  .cs-purple .cs-header { background: #5a3099; }
+  .cs-green  .cs-header { background: #145c28; }
+
+  /* ── PHASE STRIP ── */
+  .phase-strip {
+    display: flex; gap: 0; margin: 1.2rem 0; overflow-x: auto;
+  }
+  .phase-block {
+    flex: 1; min-width: 110px; padding: 0.9rem 0.6rem;
+    text-align: center; border-right: 2px solid #fff;
+    font-family: 'Source Serif 4', serif;
+  }
+  .phase-block:last-child { border-right: none; }
+  .phase-block .ph-num   { font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:700; display:block; margin-bottom:0.2rem; }
+  .phase-block .ph-title { font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.25rem; }
+  .phase-block .ph-desc  { font-size:0.74rem; line-height:1.4; opacity:0.86; }
+  .ph-1 { background:#fde8d8; color:#7d3c00; }
+  .ph-2 { background:#fff3cd; color:#8a6500; }
+  .ph-3 { background:#d1ecf1; color:#065a68; }
+  .ph-4 { background:#d4edda; color:#155724; }
+  .ph-5 { background:#e2d9f3; color:#4a1d96; }
+  .ph-6 { background:#f8d7da; color:#922b21; }
+
+  /* ── COMPARE GRID ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: var(--border);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .compare-card {
+    padding: 1rem 1.1rem;
+    border-right: 2px solid var(--black);
+    font-size: 0.86rem;
+    line-height: 1.58;
+  }
+  .compare-card:last-child { border-right: none; }
+  .compare-card h4 { font-family:'Playfair Display',serif; font-size:0.97rem; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:var(--border-thin); }
+  .compare-card ul { padding-left:1.1rem; }
+  .compare-card li { margin:0.3rem 0; }
+
+  @media(max-width:680px){
+    .crime-type-grid  { grid-template-columns: 1fr; }
+    .ctg-card         { border-right:none !important; border-bottom:2px solid var(--black) !important; }
+    .ctg-card:last-child { border-bottom:none !important; }
+    .tech-grid        { grid-template-columns: 1fr; }
+    .tech-card        { border-right:none !important; border-bottom:2px solid var(--black) !important; }
+    .tech-card:last-child { border-bottom:none !important; }
+    .fraud-grid       { grid-template-columns: 1fr; }
+    .fraud-card       { border-right:none !important; border-bottom:2px solid var(--black) !important; }
+    .fraud-card:last-child { border-bottom:none !important; }
+    .impact-grid      { grid-template-columns: 1fr; }
+    .imp-card         { border-right:none !important; }
+    .cs-body          { grid-template-columns: 1fr; }
+    .cs-col           { border-right:none !important; }
+    .compare-grid     { grid-template-columns: 1fr; }
+    .compare-card     { border-right:none; border-bottom:2px solid var(--black); }
+    .compare-card:last-child { border-bottom:none; }
+    .phase-strip      { flex-wrap:wrap; }
+    .phase-block      { min-width:44%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ NAVIGATION ════════════ -->
+<nav class="top-nav">
+  <a href="ICS_Index.html" class="nav-brand"><span>ICS</span> · Introduction to Cyber Security</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="ics_sem01_index.html">Home</a></li>
+    <li><a href="unit01_sem01_ics.html">Unit 1</a></li>
+    <li><a href="unit02_sem01_ics.html">Unit 2</a></li>
+    <li><a href="#" class="active">Unit 3</a></li>
+    <li><a href="#">Unit 4</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════ PAGE HEADER ════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 03 · Identity Theft &amp; Financial Fraud</div>
+  <h1>Identity Theft and<br>Financial Fraud</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester I · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>3 Sections · 16 Sub-topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~16–18 Marks</strong></div>
+    <div class="quick-info-item">Key Focus<strong>Fraud Types, Techniques &amp; Case Studies</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Intermediate</strong></div>
+  </div>
+</header>
+
+<!-- ════════════ TOC ════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t3-1">3.1 — Identity Theft (Types)</a></li>
+      <li><a href="#t3-2">3.2 — Techniques of Identity Theft</a></li>
+      <li><a href="#t3-3">3.3 — Financial Frauds</a></li>
+      <li><a href="#t3-4">3.4 — Impact of Identity Theft &amp; Financial Fraud</a></li>
+      <li><a href="#t3-5">3.5 — Real-World Case Studies</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ════════════ MAIN CONTENT ════════════ -->
+<main class="content-wrap">
+
+<!-- ══════════════════════════════════════
+     TOPIC 3.1 — IDENTITY THEFT
+══════════════════════════════════════ -->
+<section class="topic-section" id="t3-1">
+  <div class="topic-label">Topic 3.1</div>
+  <h2 class="topic-title">Identity Theft</h2>
+
+  <div class="concept-box">
+    <strong>Identity Theft</strong> is the fraudulent acquisition and use of another person's private identifying information — name, Aadhaar number, PAN, date of birth, bank account details, or biometrics — to impersonate them for financial gain, evade law enforcement, or cause harm. It is one of the fastest-growing categories of cybercrime globally, with the <strong>FTC (USA)</strong> reporting over 1.1 million cases in 2022, and India's <strong>NCRB</strong> reporting a 24.4% increase in identity-related fraud between 2020 and 2023.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Know the <strong>four types</strong> of identity theft: Financial, Medical, Criminal, and Synthetic. India's key law is <strong>Section 66C (IT Act 2008)</strong> — punishment for identity theft: up to 3 years imprisonment + ₹1 lakh fine. <strong>Section 66D</strong> covers cheating by personation using computer resources. DPDPA 2023 additionally governs misuse of personal data.
+  </div>
+
+  <h3>What Constitutes "Identity"?</h3>
+  <p>An individual's identity in the digital world comprises multiple data points that, alone or in combination, uniquely identify them:</p>
+
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">🪪</span>
+      <span class="ph-title">Personal IDs</span>
+      <span class="ph-desc">Name, DOB, gender, Aadhaar, PAN, Passport, Voter ID, driving licence</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">💳</span>
+      <span class="ph-title">Financial Data</span>
+      <span class="ph-desc">Bank account number, IFSC, credit/debit card numbers, CVV, UPI ID, net banking credentials</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">🌐</span>
+      <span class="ph-title">Digital Identity</span>
+      <span class="ph-desc">Email IDs, social media accounts, usernames, passwords, OTPs, device fingerprints</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">🏥</span>
+      <span class="ph-title">Medical Data</span>
+      <span class="ph-desc">ABHA health ID, insurance policy numbers, medical history, prescriptions, blood group</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">🧬</span>
+      <span class="ph-title">Biometrics</span>
+      <span class="ph-desc">Fingerprints, iris scan, facial geometry, voice print — non-changeable; theft is permanent</span>
+    </div>
+  </div>
+
+  <!-- 3.1.1 -->
+  <h3 id="t3-1-1">3.1.1 — Personal Information (Financial) Identity Theft</h3>
+  <p><strong>Personal information theft</strong> — the most common form — involves stealing an individual's identifying data to open fraudulent financial accounts, take loans, make purchases, or drain existing accounts. The victim typically discovers the fraud only after receiving unexpected bills, loan rejection notices, or credit score alerts.</p>
+
+  <div class="example-box">
+    <div class="ex-label">What Thieves Do With Your Personal Information</div>
+    <strong>Open new credit lines:</strong> Apply for credit cards or personal loans using your PAN, Aadhaar, and stolen financial history.<br><br>
+    <strong>File fraudulent tax returns:</strong> Submit ITR using your PAN to claim refunds before you do — CBDT reports thousands of such cases annually.<br><br>
+    <strong>Utility and subscription fraud:</strong> Take new mobile SIM connections, electricity connections, or streaming service subscriptions in your name.<br><br>
+    <strong>Take over existing accounts:</strong> Use stolen credentials to access your savings account, UPI, or investment portfolio and drain funds.<br><br>
+    <strong>Sell your data:</strong> Package and sell your complete profile on dark web marketplaces — Indian PAN+Aadhaar+bank details sell for ₹200–₹2,000 per record.
+  </div>
+
+  <table class="data-table no-bold">
+    <thead><tr><th>Data Point Stolen</th><th>Fraud Enabled</th><th>Recovery Difficulty</th></tr></thead>
+    <tbody>
+      <tr><td>PAN Card</td><td>Fictitious ITR filing, loan applications, demat account opening</td><td>Medium — freeze PAN with CBDT, file affidavit</td></tr>
+      <tr><td>Aadhaar Number</td><td>SIM swap, new bank account, eKYC abuse, property registration</td><td>Hard — UIDAI lock Aadhaar biometrics, change registered mobile</td></tr>
+      <tr><td>Bank Account + Password</td><td>Drain savings, NEFT/RTGS transfers, UPI frauds</td><td>Hard — file FIR, approach bank within 3 days for liability</td></tr>
+      <tr><td>Credit Card Data</td><td>Online shopping, cash advances, card-not-present transactions</td><td>Moderate — chargeback within 30 days if reported promptly</td></tr>
+      <tr><td>Email + Password</td><td>Password reset attacks on linked accounts (bank, Demat, UPI)</td><td>Moderate — 2FA recovery, account freezing</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.1.2 -->
+  <h3 id="t3-1-2">3.1.2 — Medical Identity Theft</h3>
+  <p><strong>Medical identity theft</strong> occurs when someone uses another person's identity to obtain healthcare services, prescription drugs, or medical insurance benefits — or to submit fraudulent claims to insurance companies. It is particularly dangerous because it can corrupt the victim's medical records, potentially leading to life-threatening treatment errors.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card tc-red">
+      <span class="tech-icon">🏥</span>
+      <h4>Healthcare Service Fraud</h4>
+      <p>The thief uses your ABHA ID, insurance policy number, or employee medical card to receive hospitalisation, surgery, diagnostic tests, or specialist consultations — leaving their medical history recorded under your identity. Your medical record now contains their blood group, allergies, diagnoses, and prescriptions, which can fatally mislead doctors treating you in an emergency.</p>
+      <div class="tech-eg">India: Stolen CGHS beneficiary cards used to claim free treatment at empanelled hospitals</div>
+    </div>
+    <div class="tech-card tc-amber">
+      <span class="tech-icon">💊</span>
+      <h4>Prescription Drug Fraud</h4>
+      <p>Controlled substances (opioids, sedatives, stimulants) are obtained using forged prescriptions bearing a doctor's registration number and a patient's legitimate insurance ID. The drugs are then sold illegally. The victim may find their insurance exhausted for legitimate prescriptions, or be flagged by pharmacies for "excessive" drug purchases they never made.</p>
+      <div class="tech-eg">US: "Pill mill" networks stole thousands of patient identities to submit Medicare prescription claims</div>
+    </div>
+    <div class="tech-card tc-blue">
+      <span class="tech-icon">📋</span>
+      <h4>Insurance Claim Fraud</h4>
+      <p>False medical bills, inflated treatment costs, or entirely fictitious hospitalisations are submitted to insurance companies using a real patient's identity and policy number. The insurer pays out; the victim's policy is depleted or cancelled for "overuse," and their premium surges. This is frequently an insider crime — hospital billing staff fabricate or inflate claims.</p>
+      <div class="tech-eg">India: ₹500 crore+ in fraudulent Ayushman Bharat claims detected, often using stolen beneficiary IDs (2023)</div>
+    </div>
+    <div class="tech-card tc-purple">
+      <span class="tech-icon">🔬</span>
+      <h4>Research and Data Fraud</h4>
+      <p>Medical researchers or pharmaceutical companies use real patient data (names, diagnoses, demographics) without consent in clinical trial documentation, research publications, or regulatory submissions. This is less financially motivated but violates privacy and may expose the victim's sensitive health conditions to employers, insurers, or the public.</p>
+      <div class="tech-eg">DPDPA 2023, Section 4 — prohibits processing sensitive health data without explicit consent</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Why Medical Identity Theft Is Uniquely Dangerous</div>
+    Unlike financial identity theft — where banks can reverse fraudulent transactions — <strong>corrupted medical records cannot be "reversed."</strong> If a thief with Type A blood receives surgery under your identity, your record now shows a blood transfusion of Type A blood. In a real emergency, receiving the wrong blood type can be fatal. Victims spend years trying to get their correct medical history restored — often without success. Additionally, Indian health data is protected under the DPDPA 2023, but enforcement infrastructure is still developing.
+  </div>
+
+  <!-- 3.1.3 -->
+  <h3 id="t3-1-3">3.1.3 — Criminal Identity Theft</h3>
+  <p><strong>Criminal identity theft</strong> occurs when a person arrested or questioned by police provides the identity of someone else — using their stolen ID documents, driving licence, or fabricated documents — to avoid being recorded under their own name. The innocent victim may later discover outstanding warrants, criminal records, or unpaid court fines in their name that they had no knowledge of.</p>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🚔</span>
+      <h4>False Arrest Identity</h4>
+      <p>At the time of arrest or police questioning, the perpetrator presents the victim's genuine driving licence, voter ID, or fabricated documents. The crime (drug possession, traffic offence, assault) is recorded under the victim's name in police records. The victim discovers this when stopped by police, denied employment, or refused a visa — sometimes years later.</p>
+      <div class="ctg-eg">Real Case: Bengaluru victim found had 3 FIRs registered under her name across 2 states — perpetrator used her lost Aadhaar card</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">📜</span>
+      <h4>Warrant and Court Record Fraud</h4>
+      <p>When the criminal fails to appear for court hearings (after being bailed or summoned in the victim's name), arrest warrants are issued against the victim. These show up on background checks, employment verifications, and passport/visa applications, severely affecting the victim's personal and professional life. Clearing such records requires extensive legal proceedings across multiple jurisdictions.</p>
+      <div class="ctg-eg">Victims have been denied government jobs, overseas visas, and even arrested at airports due to outstanding warrants in their name</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🛂</span>
+      <h4>Immigration and Border Fraud</h4>
+      <p>Stolen passports and identity documents are used to cross international borders, claim refugee status in a third country, or obtain visas under a false identity. The real passport holder may find their travel documents flagged by Interpol or border agencies — making international travel impossible and triggering interrogations at every crossing.</p>
+      <div class="ctg-eg">Interpol maintains a Stolen and Lost Travel Documents (SLTD) database — 100+ million documents registered, 250,000+ hits at borders annually</div>
+    </div>
+  </div>
+
+  <div class="formula-box">Criminal Identity Theft = Stolen Identity Used to Commit or Evade Crime → Victim Gets the Criminal Record</div>
+
+  <!-- 3.1.4 -->
+  <h3 id="t3-1-4">3.1.4 — Synthetic Identity Theft</h3>
+  <p><strong>Synthetic identity theft</strong> is the most sophisticated and fastest-growing form of identity fraud. Rather than stealing a complete existing identity, fraudsters <em>create an entirely new fictional identity</em> by combining real elements (a legitimate PAN or Aadhaar number — often of a child, deceased person, or someone with no credit history) with fabricated details (false name, address, date of birth). This synthetic persona is then used to build credit histories, obtain loans, and execute large-scale fraud before disappearing.</p>
+
+  <div class="example-box">
+    <div class="ex-label">How Synthetic Identity Fraud Works — The "Bust-Out" Cycle</div>
+    <strong>Step 1 — Obtain a real identifying number:</strong> Steal a child's PAN, the Aadhaar of a recently deceased person, or purchase a "thin file" victim's number (someone with no credit history) from the dark web.<br><br>
+    <strong>Step 2 — Build the synthetic persona:</strong> Pair the real number with a fictional name, invented address, and a newly created email address and mobile number.<br><br>
+    <strong>Step 3 — Establish credit history:</strong> Apply for secured credit cards with small limits. Make all payments on time for 12–24 months to build a strong credit profile for the fictional identity.<br><br>
+    <strong>Step 4 — Expand and escalate:</strong> Once credit score is high enough, apply for large personal loans, high-limit credit cards, and business loans across multiple banks simultaneously.<br><br>
+    <strong>Step 5 — "Bust out":</strong> Max out all credit limits within days, withdraw all loan proceeds, and completely disappear. The fictitious identity ceases to exist. Banks are left with uncollectable NPAs. The real person whose number was used has no idea they are associated with these debts — until credit checks and collection calls begin.
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Synthetic vs Traditional Identity Theft</h4>
+      <ul>
+        <li><strong>Traditional:</strong> Steals a real, complete identity — victim discovers fraud quickly as their accounts are misused</li>
+        <li><strong>Synthetic:</strong> Creates a new identity — the real victim may never know their PAN was used in a synthetic profile</li>
+        <li><strong>Detection:</strong> Traditional theft triggers fraud alerts on existing accounts; synthetic fraud has no "victim" to raise an alarm for months/years</li>
+        <li><strong>Scale:</strong> Synthetic fraud is typically larger — fraudsters can maintain multiple synthetic identities simultaneously</li>
+        <li><strong>Recovery:</strong> Traditional victims can clear their credit; synthetic fraud leaves real number-holders with incorrect credit associations</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Who Is Most Vulnerable?</h4>
+      <ul>
+        <li><strong>Children:</strong> Their PAN/Aadhaar numbers exist but are never used for credit — perfect "clean" numbers for synthetic profiles; not discovered until child applies for first loan at age 18–25</li>
+        <li><strong>Deceased persons:</strong> Numbers remain valid for months/years after death before systems are updated</li>
+        <li><strong>Elderly with no digital presence:</strong> Rarely monitor credit scores; fraud goes undetected for years</li>
+        <li><strong>Migrant workers:</strong> Often have Aadhaar but limited formal banking history — attractive thin-file targets</li>
+        <li><strong>Long-term NRIs:</strong> Indian identity documents active but not monitored domestically</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>FTC Identity Theft Report 2023: https://www.ftc.gov/reports/identity-theft</li>
+      <li>RBI — Cyber Security Framework for Banks: https://www.rbi.org.in</li>
+      <li>UIDAI — Protect Your Aadhaar: https://uidai.gov.in/en/my-aadhaar/protect-your-aadhaar.html</li>
+      <li>Javelin Strategy — 2023 Identity Fraud Study: https://javelinstrategy.com</li>
+      <li>IT Act 2008 — Section 66C (Identity Theft), Section 66D (Cheating by Personation)</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 3.2 — TECHNIQUES OF IDENTITY THEFT
+══════════════════════════════════════ -->
+<section class="topic-section" id="t3-2">
+  <div class="topic-label">Topic 3.2</div>
+  <h2 class="topic-title">Techniques of Identity Theft</h2>
+
+  <div class="concept-box">
+    Identity thieves deploy a sophisticated, multi-layered arsenal of techniques — ranging from highly technical cyberattacks to low-tech physical methods. Understanding how identity is stolen is essential for building appropriate defences. The four primary categories of technique are: <strong>Phishing &amp; Social Engineering</strong>, <strong>Malware &amp; Keyloggers</strong>, <strong>Data Breaches &amp; Leaks</strong>, and <strong>Skimming &amp; Cloning</strong>.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    For exams: map each technique to its category, the type of data it steals, and a real Indian example. The most used technique in India is <strong>phishing via SMS/WhatsApp (smishing)</strong> — particularly fake bank and TRAI messages. Skimming is declining due to EMV chips but still occurs at ATMs. Keyloggers are used in corporate espionage.
+  </div>
+
+  <!-- 3.2.1 -->
+  <h3 id="t3-2-1">3.2.1 — Phishing and Social Engineering</h3>
+  <p><strong>Phishing</strong> is the fraudulent attempt to obtain sensitive information by disguising as a trustworthy entity in electronic communication. <strong>Social engineering</strong> is the broader category — manipulating human psychology (fear, urgency, greed, authority, trust) to bypass technical security controls. These are the #1 vector for identity theft globally.</p>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">📧</span>
+      <h4>Email Phishing</h4>
+      <p>Fraudulent emails mimicking banks, IT department, UIDAI, IRCTC, or HDFC/SBI. Contain malicious links to fake login pages that harvest credentials. Spoofed sender addresses make them appear legitimate. Spear phishing targets specific individuals with personalised content harvested from social media.</p>
+      <div class="ctg-eg">Example: "Your SBI account will be suspended — verify Aadhaar at [fake-sbi.in]"</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">📱</span>
+      <h4>Smishing (SMS Phishing)</h4>
+      <p>Fraudulent SMS messages impersonating banks (OTP update), TRAI (SIM suspension), Aadhaar (KYC deadline), or income tax (refund pending). Links in SMS redirect to credential-harvesting pages. Extremely effective because SMS appears more trustworthy than email to many users, and links are harder to inspect on mobile screens.</p>
+      <div class="ctg-eg">India's most common fraud vector — "Your KYC is expired. Click [link] to complete or your UPI will be blocked"</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">📞</span>
+      <h4>Vishing (Voice Phishing)</h4>
+      <p>Fraudulent phone calls by actors impersonating bank fraud teams ("your card was used in Delhi — please verify OTP"), TRAI officials ("your number has been used in money laundering"), CBI/police ("digital arrest" scams), or customs officers ("package containing drugs — pay fine to avoid arrest"). Creates extreme urgency and fear to override rational thinking.</p>
+      <div class="ctg-eg">India 2023: "Digital Arrest" vishing scam — victims paid ₹2,000–₹40 lakh to fake CBI officers over video calls</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">🎣</span>
+      <h4>Spear Phishing and Whaling</h4>
+      <p><strong>Spear phishing</strong> targets specific individuals using personalised information (name, employer, recent transactions) gathered from LinkedIn, social media, or prior data breaches — making the attack highly convincing. <strong>Whaling</strong> specifically targets senior executives (CEOs, CFOs) whose credentials provide access to high-value systems and authorisation of large fund transfers.</p>
+      <div class="ctg-eg">BEC (Business Email Compromise) — fake CEO email instructs CFO to transfer ₹5 crore to a vendor account; actual CEO was never involved</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🔗</span>
+      <h4>Fake Websites and Typosquatting</h4>
+      <p>Fraudsters register domains nearly identical to legitimate ones (sbi-online-bank.in, hdfc-netbanking.com, irctc-refund.in) and build pixel-perfect copies of real banking or government websites. Victims redirected through phishing links enter their full credentials, which are immediately captured. Typosquatting exploits predictable spelling errors in URLs typed manually.</p>
+      <div class="ctg-eg">CERT-IN reported 2,000+ fake banking websites in 2022; most used HTTPS to appear legitimate</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">🎁</span>
+      <h4>Pretexting and Baiting</h4>
+      <p><strong>Pretexting</strong> involves fabricating a scenario (pretext) to extract information — e.g., posing as a bank employee conducting a "security audit" to obtain account details. <strong>Baiting</strong> offers something enticing (free gift, job offer, lottery win) to lure victims into providing information or installing malware. Common on WhatsApp and Telegram in India.</p>
+      <div class="ctg-eg">"You have won ₹10 lakh in SBI lucky draw! Share your Aadhaar and bank details to claim" — WhatsApp baiting campaign</div>
+    </div>
+  </div>
+
+  <!-- 3.2.2 -->
+  <h3 id="t3-2-2">3.2.2 — Malware and Keyloggers</h3>
+  <p><strong>Malware</strong> (malicious software) is any software intentionally designed to cause damage or unauthorised access to computer systems. <strong>Keyloggers</strong> are a specific type of malware — or hardware device — that record every keystroke made on a device, capturing passwords, credit card numbers, and personal details without the victim's knowledge.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card tc-red">
+      <span class="tech-icon">⌨️</span>
+      <h4>Software Keyloggers</h4>
+      <p>Programs that run invisibly in the background, recording every keystroke into an encrypted log file that is periodically transmitted to the attacker's server. Installed through phishing attachments, malicious downloads, or software vulnerabilities. Capture login credentials for banking, email, and UPI applications — everything typed, including OTPs entered manually.</p>
+      <div class="tech-eg">Zeus Trojan — contained a keylogger module; stole $70M+ from bank accounts globally</div>
+    </div>
+    <div class="tech-card tc-amber">
+      <span class="tech-icon">🖥️</span>
+      <h4>Remote Access Trojans (RATs)</h4>
+      <p>Malware that gives attackers full remote control of the victim's device — they can view the screen in real time, access files, activate the camera and microphone, take screenshots of banking sessions, and manipulate applications. Particularly dangerous in financial fraud because the attacker can literally watch the victim log in, then take over the session.</p>
+      <div class="tech-eg">AnyDesk abuse — victims tricked into installing AnyDesk, attacker gains full remote control and executes bank transfers</div>
+    </div>
+    <div class="tech-card tc-blue">
+      <span class="tech-icon">🦠</span>
+      <h4>Banking Trojans and Form Grabbers</h4>
+      <p>Specialised malware that sits inside web browsers and captures data as it is being submitted in online forms — before encryption is applied. Banking Trojans like Emotet, Dridex, and TrickBot specifically target financial websites. They can also perform "man-in-the-browser" attacks — modifying what you see in your browser while silently altering transactions behind the scenes.</p>
+      <div class="tech-eg">Dridex — infected 900,000+ systems globally; specialised in harvesting online banking credentials</div>
+    </div>
+    <div class="tech-card tc-purple">
+      <span class="tech-icon">📲</span>
+      <h4>Mobile Malware and Spyware</h4>
+      <p>Malicious Android APKs distributed outside official app stores — disguised as banking apps, government apps (fake Aadhaar apps, UMANG clones), or utility tools. Read SMS messages (capturing OTPs), access contacts, intercept calls, and transmit all data to attackers. iOS users face less risk due to stricter app review but are not immune to spyware (e.g., Pegasus).</p>
+      <div class="tech-eg">India 2023: Fake "TRAI App" APK spread via WhatsApp — intercepted all OTPs sent to the victim's mobile number</div>
+    </div>
+    <div class="tech-card tc-green">
+      <span class="tech-icon">🎴</span>
+      <h4>Hardware Keyloggers</h4>
+      <p>Physical devices — small USB dongles or keyboard-cable interceptors — plugged between the keyboard and computer. Record all keystrokes to internal memory. Used in corporate espionage (installed inside offices) or at cyber cafes. Undetectable by antivirus software since they are hardware, not software. Must be physically retrieved by the attacker to collect the data.</p>
+      <div class="tech-eg">Found at cyber cafes in Mumbai (2021) — customers' banking passwords stored on hardware keyloggers inside keyboards</div>
+    </div>
+    <div class="tech-card tc-dark">
+      <span class="tech-icon">🕸️</span>
+      <h4>Ransomware with Data Exfiltration</h4>
+      <p>Modern ransomware ("double extortion") attacks not only encrypt the victim's data but first exfiltrate it — including any stored identity documents, customer databases, employee records, and financial data. This data is then used for identity theft or sold on dark web markets if the ransom is not paid. Every ransomware victim is now also an identity theft victim.</p>
+      <div class="tech-eg">AIIMS Delhi ransomware (2022) — patient records of 40 million Indians including senior politicians were compromised</div>
+    </div>
+  </div>
+
+  <!-- 3.2.3 -->
+  <h3 id="t3-2-3">3.2.3 — Data Breaches and Leaks</h3>
+  <p>A <strong>data breach</strong> is an incident in which unauthorised parties gain access to confidential data held by an organisation — through hacking, insider theft, or system misconfiguration. A <strong>data leak</strong> is the accidental or intentional exposure of sensitive data without a specific attack (e.g., an unsecured database publicly accessible on the internet). Both result in massive quantities of personal data entering dark web markets.</p>
+
+  <div class="example-box">
+    <div class="ex-label">The Data Breach Ecosystem — From Theft to Fraud</div>
+    <strong>1. The Breach:</strong> Attacker compromises an organisation's database (e-commerce, bank, hospital, telco) containing millions of user records with names, emails, phone numbers, passwords, and financial details.<br><br>
+    <strong>2. The Market:</strong> Stolen data is packaged and listed on dark web marketplaces (BreachForums, RaidForums before takedown) — often within hours of the breach. Indian data sells at a significant discount due to high supply volume.<br><br>
+    <strong>3. The Buyers:</strong> Other criminals purchase the data — phishing gangs use emails and passwords for credential stuffing; loan fraudsters use personal details for synthetic identity construction; scammers use phone numbers for vishing campaigns.<br><br>
+    <strong>4. Credential Stuffing:</strong> Stolen username/password pairs are automatically tested across hundreds of websites (banks, UPI apps, investment platforms) — because most users reuse passwords, attackers gain access to multiple accounts from a single breach.<br><br>
+    <strong>5. The Long Tail:</strong> Breached data circulates for years — the 2013 Yahoo breach (3 billion records) was still being used for fraud in 2021. Victims of major Indian breaches remain at risk indefinitely.
+  </div>
+
+  <table class="data-table no-bold">
+    <thead><tr><th>Notable Indian Data Breach</th><th>Year</th><th>Records Affected</th><th>Data Compromised</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>UIDAI / Aadhaar (Alleged)</strong></td><td>2018</td><td>~1.1 billion</td><td>Name, Aadhaar number, biometrics, linked phone</td><td>Claimed access to Aadhaar database via UIDAI portal vulnerability; UIDAI disputed scale but acknowledged unauthorised access</td></tr>
+      <tr><td><strong>AIIMS New Delhi</strong></td><td>2022</td><td>~40 million patients</td><td>Medical records, personal IDs of politicians and celebrities</td><td>Critical healthcare services disrupted for weeks; ransomware demand of ₹200 crore in crypto</td></tr>
+      <tr><td><strong>MobiKwik</strong></td><td>2021</td><td>~100 million users</td><td>KYC documents (Aadhaar, PAN), addresses, bank details, credit card hashes</td><td>Data sold on dark web; company denied breach but independent researchers confirmed dataset</td></tr>
+      <tr><td><strong>BigBasket</strong></td><td>2020</td><td>~20 million users</td><td>Email IDs, hashed passwords, phone numbers, addresses</td><td>Credential stuffing attacks on linked payment and delivery accounts</td></tr>
+      <tr><td><strong>Domino's India</strong></td><td>2021</td><td>~18 crore orders; 10 lakh credit cards</td><td>Order history with GPS coordinates, credit card data, phone numbers</td><td>800GB database listed for ₹40 lakh on dark web; stalking risk from location data</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3.2.4 -->
+  <h3 id="t3-2-4">3.2.4 — Skimming and Cloning</h3>
+  <p><strong>Skimming</strong> is the unauthorised capture of payment card data using a device secretly attached to or embedded in a legitimate card-reading terminal — ATMs, point-of-sale (POS) machines, or fuel pump card readers. <strong>Cloning</strong> is the subsequent process of encoding the stolen card data onto a blank card to create a counterfeit duplicate.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card tc-red">
+      <span class="tech-icon">🏧</span>
+      <h4>ATM Skimmers</h4>
+      <p>Thin overlay devices placed over the genuine card slot that read the magnetic stripe as the card is inserted. Accompanied by a hidden camera (disguised as a brochure holder, lighting fixture, or fake keypad overlay) to capture the PIN being entered. Data is stored internally or transmitted via Bluetooth to a nearby attacker. The victim's card is returned normally — they have no idea the attack occurred.</p>
+      <div class="tech-eg">South Indian Bank ATM skimming ring (2023) — 47 ATMs compromised across Bengaluru; 2,000+ cards cloned</div>
+    </div>
+    <div class="tech-card tc-amber">
+      <span class="tech-icon">🛒</span>
+      <h4>POS Terminal Skimming</h4>
+      <p>Legitimate-looking replacement POS terminals or internal modifications to genuine ones are installed at retail outlets — often with insider participation from a store employee. Every card swiped (or even inserted for chip transactions in compromised devices) has its magnetic stripe data captured. PIN capture overlays or cameras record the PIN. Common in restaurants, petrol stations, and tourist-area shops.</p>
+      <div class="tech-eg">Delhi restaurant chain (2022) — manager replaced 12 POS machines with skimmer-enabled units; 3,200+ cards compromised</div>
+    </div>
+    <div class="tech-card tc-blue">
+      <span class="tech-icon">📡</span>
+      <h4>RFID/NFC Skimming (Contactless)</h4>
+      <p>Contactless payment cards (RuPay, Visa payWave, Mastercard Contactless) broadcast card details via radio waves when tapped. Specialised RFID readers concealed in crowded places (metro stations, queues, markets) can read card data from a few centimetres away without the victim knowing. While limited transaction data is exposed, card numbers and expiry dates can be captured for Card-Not-Present (CNP) fraud online.</p>
+      <div class="tech-eg">Mitigation: RFID-blocking card wallets; RBI limits contactless transactions to ₹5,000 without PIN</div>
+    </div>
+    <div class="tech-card tc-purple">
+      <span class="tech-icon">💻</span>
+      <h4>Digital Skimming (Web Skimming / Magecart)</h4>
+      <p>Malicious JavaScript code injected into the payment page of e-commerce websites that silently captures card details as they are typed by the customer — before they are encrypted and sent to the payment processor. The customer completes the purchase normally. The attacker receives a real-time copy of all card data entered. Also called "formjacking." Often targets third-party plugins used by multiple stores.</p>
+      <div class="tech-eg">Magecart attacks compromised British Airways, Ticketmaster, Newegg — 500,000+ cards stolen per incident</div>
+    </div>
+  </div>
+
+  <div class="formula-box">Skimming Attack = Card Data Capture (Stripe/NFC/Web) + PIN Capture + Card Cloning → Fraudulent Transactions</div>
+
+  <h3>Defence Against Skimming</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🔍</span>
+      <h4>Inspect Before Use</h4>
+      <p>Wiggle the card slot before inserting — genuine ATM slots are solid and immovable. Look for extra hardware near the PIN pad. If anything looks tampered with or added, don't use that ATM and report to the bank.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🙋</span>
+      <h4>Cover the PIN Pad</h4>
+      <p>Always cover the PIN pad with your other hand when entering your PIN — even if no one appears nearby. Cameras can be hidden anywhere. This remains effective even if a card skimmer is present because the PIN is required to complete ATM transactions.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📲</span>
+      <h4>Chip + Alerts + Limits</h4>
+      <p>Use EMV chip transactions instead of magnetic stripe swipes wherever possible. Enable SMS and app alerts for every transaction. Set daily ATM withdrawal and online spending limits via your banking app. Report unrecognised transactions immediately.</p>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>CERT-IN Annual Report 2022–23: https://www.cert-in.org.in/PDF/CERT-In_Annual-Report-2022.pdf</li>
+      <li>RBI — Report on Trend and Progress of Banking in India 2022–23</li>
+      <li>Have I Been Pwned — Check breach exposure: https://haveibeenpwned.com</li>
+      <li>Hadnagy, C. — Social Engineering: The Science of Human Hacking, 2nd Ed., Wiley, 2018</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 3.3 — FINANCIAL FRAUDS
+══════════════════════════════════════ -->
+<section class="topic-section" id="t3-3">
+  <div class="topic-label">Topic 3.3</div>
+  <h2 class="topic-title">Financial Frauds</h2>
+
+  <div class="concept-box">
+    <strong>Financial fraud</strong> is the deliberate deception of individuals, organisations, or systems to obtain money, assets, or financial advantage through false pretences, manipulation of financial instruments, or exploitation of digital payment systems. It is distinct from identity theft — identity theft is the <em>means</em>; financial fraud is often the <em>end goal</em>. India's <strong>Ministry of Home Affairs</strong> Cyber Crime Wing reported ₹10,319 crore lost to financial cyber fraud in 2023 alone.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    The seven financial fraud types in this syllabus: <strong>(1) Credit Card Fraud, (2) Insurance Fraud, (3) Investment/Securities Fraud, (4) Online Banking Fraud, (5) Account Takeover, (6) False Invoicing/Billing, (7) Impact.</strong> Know the relevant Indian laws: <strong>IT Act Sec 66C/66D</strong>, <strong>IPC Sec 415–420</strong> (cheating), <strong>SEBI Act 1992</strong> (securities), <strong>Insurance Act 1938</strong>, and the newer <strong>DPDPA 2023</strong>.
+  </div>
+
+  <!-- 3.3.1 -->
+  <h3 id="t3-3-1">3.3.1 — Credit Card Fraud</h3>
+  <p><strong>Credit card fraud</strong> is the unauthorised use of a credit or debit card (or card details) to purchase goods, withdraw cash, or conduct financial transactions. It is the single largest category of financial fraud reported in India — with RBI reporting 6,700+ credit/debit card fraud cases worth ₹276 crore in FY 2022–23.</p>
+
+  <div class="fraud-grid">
+    <div class="fraud-card fr-red">
+      <span class="fr-icon">🃏</span>
+      <h4>Card-Not-Present (CNP) Fraud</h4>
+      <p>The most common type in the digital era. Fraudsters use stolen card numbers, expiry dates, and CVVs to make purchases on websites that do not require physical card presence. Data is sourced from phishing, skimming, or dark web marketplaces. Indian regulations now require 2FA (OTP) for online transactions — a significant but not complete defence.</p>
+      <div class="fr-eg">RBI's 2FA mandate has reduced CNP fraud but international transactions without OTP remain vulnerable</div>
+    </div>
+    <div class="fraud-card fr-amber">
+      <span class="fr-icon">🔄</span>
+      <h4>Card-Present Fraud</h4>
+      <p>Using a physically cloned card (created from skimmed magnetic stripe data) at ATMs, POS terminals, or fuel stations. Declining in India due to EMV chip adoption but still occurs where magnetic stripe is accepted or chip readers are bypassed. Particularly prevalent at older ATMs and in countries/regions without chip-and-PIN mandates.</p>
+      <div class="fr-eg">RBI mandated EMV chip adoption for all cards by 2019; magnetic stripe-only transactions blocked at Indian ATMs</div>
+    </div>
+    <div class="fraud-card fr-blue">
+      <span class="fr-icon">📞</span>
+      <h4>Friendly Fraud (Chargeback Fraud)</h4>
+      <p>A cardholder makes a legitimate purchase, receives the goods or services, and then files a false dispute with their bank claiming the transaction was unauthorised — to get a refund while keeping the product. Affects e-commerce merchants who bear the chargeback cost. Also called "first-party fraud" — the actual cardholder is the fraudster.</p>
+      <div class="fr-eg">Indian e-commerce sector loses ₹1,000+ crore annually to friendly fraud; luxury goods and electronics most targeted</div>
+    </div>
+    <div class="fraud-card fr-purple">
+      <span class="fr-icon">💸</span>
+      <h4>Application Fraud</h4>
+      <p>Applying for new credit cards using stolen or fabricated identity documents (PAN, Aadhaar, address proof). The fraudster receives the card, maxes out the credit limit, and disappears. The real identity holder finds a credit card account and dues they never opened. Related to synthetic identity theft when fabricated identities are used to build credit before the bust-out.</p>
+      <div class="fr-eg">NBFCs in India have faced wave of fraudulent credit card applications using forged documents obtained through data breaches</div>
+    </div>
+  </div>
+
+  <!-- 3.3.2 -->
+  <h3 id="t3-3-2">3.3.2 — Insurance Fraud</h3>
+  <p><strong>Insurance fraud</strong> is any act committed to obtain a fraudulent outcome from an insurance process — by policyholders making false claims, intermediaries diverting premiums, or providers billing for services not rendered. India's insurance industry loses an estimated <strong>₹30,000–₹45,000 crore annually</strong> to fraud (IRDAI estimates), representing 7–9% of total premiums.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card tc-red">
+      <span class="tech-icon">🚗</span>
+      <h4>Motor Insurance Fraud</h4>
+      <p>Includes staged accidents (two parties deliberately crash in a secluded location to create false insurance claims), inflated repair bills (garages colluding with claimants to charge more than actual repair cost), ghost vehicles (insuring vehicles that don't exist or are already scrapped), and duplicate vehicle identity plates on different vehicles to claim multiple repairs for one incident.</p>
+      <div class="tech-eg">IRDAI 2023: Motor insurance fraud accounts for 45% of all general insurance frauds in India</div>
+    </div>
+    <div class="tech-card tc-amber">
+      <span class="tech-icon">🏥</span>
+      <h4>Health/Medical Insurance Fraud</h4>
+      <p>Hospitals submit inflated bills for real patients, bills for procedures never performed, or create entirely fictitious hospitalisations for real policyholders who were never admitted. Agent-level fraud involves agents selling policies to fictitious individuals and later filing death or critical illness claims. Cashless claim abuse through empanelled hospital insiders is also rampant.</p>
+      <div class="tech-eg">PMC Medical College, Pune (2022) — 2,000+ fictitious hospitalisation claims filed with multiple insurers using real patient IDs</div>
+    </div>
+    <div class="tech-card tc-blue">
+      <span class="tech-icon">💀</span>
+      <h4>Life Insurance Fraud</h4>
+      <p>Includes concealing pre-existing conditions during policy application to obtain coverage, fabricating the death of the insured person to claim the death benefit (with forged death certificates), "disappearing" — faking one's own death to collect proceeds, or taking out large policies on the lives of others without genuine insurable interest and then arranging their death.</p>
+      <div class="tech-eg">India: Man faked death 3 times across 8 states, collecting ₹2.4 crore in life insurance claims using different identities</div>
+    </div>
+    <div class="tech-card tc-purple">
+      <span class="tech-icon">🔥</span>
+      <h4>Property Insurance Fraud</h4>
+      <p>Deliberately damaging, destroying, or staging theft of insured property (vehicles, jewellery, electronics, business stock) to claim insurance payouts. Arson for insurance — setting fire to businesses, warehouses, or homes — is the most extreme form. Also includes inflating inventory values and claiming destroyed stock in a genuine fire that was much smaller than claimed.</p>
+      <div class="tech-eg">Mumbai: Textile warehouse "accidentally" burned hours after owner doubled fire insurance coverage — forensic investigation revealed accelerants</div>
+    </div>
+  </div>
+
+  <!-- 3.3.3 -->
+  <h3 id="t3-3-3">3.3.3 — Investment and Securities Fraud</h3>
+  <p><strong>Investment fraud</strong> involves deceiving individuals about the nature, returns, or legitimacy of investment opportunities to misappropriate their money. <strong>Securities fraud</strong> specifically involves manipulation of regulated financial markets — stock prices, trading volumes, or material information — for illicit profit. Both are regulated in India by <strong>SEBI</strong> under the SEBI Act 1992 and SCRA 1956.</p>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">🔺</span>
+      <h4>Ponzi and Pyramid Schemes</h4>
+      <p>Fraudulent investment operations that pay "returns" to existing investors using money from new investors — not from legitimate business profits. Collapse is inevitable when new investment stops or withdrawals exceed deposits. Pyramid schemes additionally require participants to recruit others, creating exponential growth that mathematically must fail. Often disguised as multi-level marketing (MLM) businesses.</p>
+      <div class="ctg-eg">Saradha Chit Fund Scam (2013): ₹2,500 crore collected from 1.7 million investors in West Bengal; complete collapse when scheme ran out of new investors</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">📈</span>
+      <h4>Pump and Dump</h4>
+      <p>Fraudsters accumulate large positions in penny stocks (low-value, thinly traded shares), then spread false or misleading positive information about the company through social media, WhatsApp groups, stock tip newsletters, or fake news articles to drive up the price ("pump"). Once the price rises, they sell all their shares at a profit ("dump") — leaving other investors with worthless stock as the price crashes.</p>
+      <div class="ctg-eg">SEBI 2023: Took action against 50+ entities for running coordinated WhatsApp pump-and-dump schemes in SME stocks</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🔮</span>
+      <h4>Fake Investment Platforms</h4>
+      <p>Fraudulent websites, apps, and Telegram/WhatsApp groups posing as legitimate stock brokers, crypto exchanges, mutual fund platforms, or SEBI-registered advisors. Show fake real-time portfolio growth to build confidence, allow small initial withdrawals to establish trust, then either refuse large withdrawals (citing "taxes" or "release fees") or vanish with all deposited funds. Also called "pig butchering" scams when preceded by romance.</p>
+      <div class="ctg-eg">India 2023: ₹900 crore lost to fake investment apps operated by Chinese-origin syndicates targeting educated urban investors</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">👀</span>
+      <h4>Insider Trading</h4>
+      <p>Trading securities based on material, non-public information (MNPI) obtained through a position of trust — corporate insiders (directors, employees), professional advisors (lawyers, bankers, auditors), or those who illegally obtain insider information. Creates an unfair advantage and undermines market integrity. Regulated by SEBI (Prohibition of Insider Trading) Regulations 2015.</p>
+      <div class="ctg-eg">SEBI action against Infosys insiders (2019) — ₹3.5 crore in trading profits from advance knowledge of quarterly results</div>
+    </div>
+    <div class="ctg-card cc-green">
+      <span class="ctg-icon">🌕</span>
+      <h4>Cryptocurrency Fraud</h4>
+      <p>Includes fake Initial Coin Offerings (ICOs) that raise funds for non-existent projects, rug pulls (developers abandon a crypto project and take investor funds after prices rise), fake crypto exchanges that steal deposited funds, and Ponzi schemes offering unsustainable staking returns. India's crypto market is partially regulated under PMLA 2002 since 2023, but enforcement gaps remain.</p>
+      <div class="ctg-eg">GainBitcoin / BitConnect India (2019): ₹2,000+ crore collected from 8,000+ investors; operator Amit Bhardwaj arrested, case ongoing</div>
+    </div>
+    <div class="ctg-card cc-dark">
+      <span class="ctg-icon">📊</span>
+      <h4>Accounting Fraud</h4>
+      <p>Deliberate manipulation of a company's financial statements — inflating revenues, understating expenses, hiding liabilities, or fabricating assets — to present a misleadingly healthy financial picture. Designed to attract investors, obtain bank loans, or maintain stock prices. The most damaging form can destroy companies, cost thousands of jobs, and wipe out investor savings.</p>
+      <div class="ctg-eg">Satyam Computer Services Scam (2009) — India's largest corporate fraud; ₹14,000 crore in fictitious cash balances; chairman B. Ramalinga Raju convicted</div>
+    </div>
+  </div>
+
+  <!-- 3.3.4 -->
+  <h3 id="t3-3-4">3.3.4 — Online Banking Fraud</h3>
+  <p><strong>Online banking fraud</strong> encompasses all fraudulent activities targeting internet banking, mobile banking apps, and digital payment systems. It is the single most reported category of cybercrime in India — over <strong>35% of all cyber complaints</strong> on cybercrime.gov.in relate to UPI, net banking, or mobile banking fraud (MHA Cyber Wing, 2023).</p>
+
+  <div class="tech-grid">
+    <div class="tech-card tc-red">
+      <span class="tech-icon">📲</span>
+      <h4>UPI Fraud</h4>
+      <p>India's UPI ecosystem processes 14+ billion transactions monthly — making it a prime fraud target. Common methods: fraudsters send collect requests (posing as selling something; victim "approves" and money leaves their account); fake QR codes at shops that credit a fraudster's account instead; screen-share scams where victim is tricked into sharing OTPs or UPI PINs over phone calls.</p>
+      <div class="tech-eg">Key confusion: UPI collect requests require you to ENTER PIN — you should NEVER enter PIN to receive money; entering PIN means you are paying</div>
+    </div>
+    <div class="tech-card tc-amber">
+      <span class="tech-icon">🔁</span>
+      <h4>SIM Swap Fraud</h4>
+      <p>Fraudster uses stolen personal information (name, DOB, Aadhaar, last 4 digits of account) to convince a mobile operator's customer service agent to issue a new SIM for the victim's mobile number — claiming the old SIM was lost. Once the new SIM is activated, the victim's phone loses signal. Attacker now receives all OTPs on the new SIM, enabling full access to banking, UPI, email, and any OTP-protected service.</p>
+      <div class="tech-eg">HDFC Bank SIM swap case (2021): ₹1.86 crore drained from victim's account within hours of SIM swap; victim noticed service disruption but too late</div>
+    </div>
+    <div class="tech-card tc-blue">
+      <span class="tech-icon">🏦</span>
+      <h4>Net Banking Credential Theft</h4>
+      <p>Phishing emails, fake SMS, malware, and fake bank websites trick users into entering their net banking login ID and password. Once attacker has credentials, they add their own beneficiary and wait for the 30-minute cooling period (some banks) before transferring funds. Also, attackers exploit "forgot password" flows using personal information obtained from data breaches.</p>
+      <div class="tech-eg">India: ₹50 lakh net banking fraud via phishing email that replicated SBI's login page, hosted on a lookalike domain</div>
+    </div>
+    <div class="tech-card tc-purple">
+      <span class="tech-icon">👷</span>
+      <h4>Fake Customer Care / Tech Support Fraud</h4>
+      <p>Victims search for bank customer care numbers on Google — fraudsters buy Google Ads or optimise fake websites to rank above the real bank's official number. Victim calls the fake number; fraudster poses as a bank executive, requests remote access via AnyDesk/TeamViewer, and drains the account while pretending to "resolve the issue." Also targets PayTM, GPay, Amazon, and utility company customers.</p>
+      <div class="tech-eg">RBI campaign: "Never share OTP, Card PIN, or give remote access to anyone claiming to be bank staff — even the bank will never ask for this"</div>
+    </div>
+  </div>
+
+  <!-- 3.3.5 -->
+  <h3 id="t3-3-5">3.3.5 — Account Takeover (ATO)</h3>
+  <p><strong>Account Takeover (ATO)</strong> is the process by which a fraudster gains unauthorised control of a victim's online account — email, banking, social media, e-commerce, or any digital service — and uses it for financial fraud, identity theft, reputational damage, or as a launchpad for further attacks. ATO is the digital equivalent of physically stealing someone's wallet and every card, key, and ID inside it.</p>
+
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <span class="ph-num">01</span>
+      <span class="ph-title">Credential Acquisition</span>
+      <span class="ph-desc">Obtain username + password via data breach, phishing, credential stuffing, or brute force</span>
+    </div>
+    <div class="phase-block ph-2">
+      <span class="ph-num">02</span>
+      <span class="ph-title">Authentication Bypass</span>
+      <span class="ph-desc">Bypass 2FA via SIM swap, OTP phishing (real-time relay), SS7 exploit, or social engineering of customer support</span>
+    </div>
+    <div class="phase-block ph-3">
+      <span class="ph-num">03</span>
+      <span class="ph-title">Account Control</span>
+      <span class="ph-desc">Change recovery email, phone number, password — locking the real owner out permanently</span>
+    </div>
+    <div class="phase-block ph-4">
+      <span class="ph-num">04</span>
+      <span class="ph-title">Exploitation</span>
+      <span class="ph-desc">Drain funds, make purchases, transfer money, sell account, use as spam relay, extract personal data</span>
+    </div>
+    <div class="phase-block ph-5">
+      <span class="ph-num">05</span>
+      <span class="ph-title">Lateral Movement</span>
+      <span class="ph-desc">Use compromised email to reset passwords on other linked services — banking, DEMAT, mutual funds, UPI</span>
+    </div>
+    <div class="phase-block ph-6">
+      <span class="ph-num">06</span>
+      <span class="ph-title">Cover Tracks</span>
+      <span class="ph-desc">Delete transaction alerts, change notification settings, create forwarding rules to hide bank emails</span>
+    </div>
+  </div>
+
+  <!-- 3.3.6 -->
+  <h3 id="t3-3-6">3.3.6 — False Invoicing and Billing Schemes</h3>
+  <p><strong>False invoicing</strong> is the submission of fraudulent invoices for goods or services that were not provided, were provided at a lower quantity or quality than invoiced, or were provided at inflated prices — to deceive an organisation into making payment. <strong>Billing schemes</strong> is the broader category of frauds in which an employee or external actor manipulates an organisation's accounts payable process for personal gain.</p>
+
+  <div class="crime-type-grid">
+    <div class="ctg-card cc-red">
+      <span class="ctg-icon">📄</span>
+      <h4>Shell Company Billing</h4>
+      <p>An employee creates a fictitious vendor company (shell company) — often with a name similar to a real supplier — and submits invoices for services allegedly rendered. They approve payment themselves (often bypassing authorisation controls) or use accomplices in finance. The shell company's bank account belongs to the employee. This is one of the most common and costly forms of occupational fraud globally.</p>
+      <div class="ctg-eg">ACFE 2022: Billing schemes via shell companies cause a median loss of $100,000 per incident; detected on average after 24 months</div>
+    </div>
+    <div class="ctg-card cc-amber">
+      <span class="ctg-icon">💰</span>
+      <h4>Inflated Invoicing and Kickbacks</h4>
+      <p>A legitimate vendor submits invoices at prices higher than the contracted amount — with the approval of an insider employee who receives a kickback (bribe) from the vendor. Common in government procurement, construction contracts, and large purchase orders. Can be subtle (10% markup) or extreme (300%+ markup for non-competitive contracts). Often involves vendor-employee collusion over years.</p>
+      <div class="ctg-eg">India: PWD contractor kickback scheme — ₹85 crore inflated invoices over 5 years; CBI investigation ongoing</div>
+    </div>
+    <div class="ctg-card cc-blue">
+      <span class="ctg-icon">🔃</span>
+      <h4>Duplicate Payment Fraud</h4>
+      <p>Submitting the same invoice multiple times — with slight variations (different invoice number, different date, slightly different amount) — to trigger multiple payments for a single transaction. Exploits weaknesses in accounts payable systems that do not deduplicate across invoice numbers, amounts, and vendor combinations. Particularly effective when payments are processed by different employees or departments.</p>
+      <div class="ctg-eg">Deloitte study: 1–3% of all B2B invoices globally are duplicates — most are processing errors, but a significant portion are deliberate fraud</div>
+    </div>
+    <div class="ctg-card cc-purple">
+      <span class="ctg-icon">📬</span>
+      <h4>Business Email Compromise (BEC) Invoicing</h4>
+      <p>Attackers compromise or spoof the email account of a CEO, CFO, or senior vendor contact and send modified payment instructions — redirecting legitimate invoice payments to the attacker's bank account. Classic BEC: fake CEO email to accounts payable: "We have changed our banking details — please update and process next payment to [attacker's account]." Simple, devastating, and common in India.</p>
+      <div class="ctg-eg">Pune company (2021): ₹2.2 crore transferred to fraudster's account after BEC email pretended to be their US supplier requesting bank detail change</div>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>RBI — Annual Report on Banking Frauds 2022–23: https://rbi.org.in/Scripts/AnnualReportPublications.aspx</li>
+      <li>SEBI — Annual Report 2022–23: https://www.sebi.gov.in/reports-and-statistics/annual-reports.html</li>
+      <li>IRDAI — Insurance Fraud Monitoring Framework 2020: https://www.irdai.gov.in</li>
+      <li>ACFE — Report to the Nations 2022 (Global Occupational Fraud): https://acfe.com/report-to-the-nations/2022</li>
+      <li>MHA — Annual Report on Cyber Crime 2023: https://cybercrime.gov.in</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 3.4 — IMPACT OF IDENTITY THEFT AND FINANCIAL FRAUD
+══════════════════════════════════════ -->
+<section class="topic-section" id="t3-4">
+  <div class="topic-label">Topic 3.4</div>
+  <h2 class="topic-title">3.3.7 — Impact of Identity Theft and Financial Fraud</h2>
+
+  <div class="concept-box">
+    The impact of identity theft and financial fraud extends far beyond the immediate financial loss. Victims suffer cascading economic, psychological, social, and legal consequences that can persist for years — or permanently — affecting every dimension of their personal, professional, and financial life. At the macro level, fraud erodes trust in digital systems, increases the cost of financial services for all consumers, and diverts regulatory and law enforcement resources.
+  </div>
+
+  <h3>Impact on Individual Victims</h3>
+  <div class="impact-grid">
+    <div class="imp-card imp-a">
+      <span class="imp-icon">💸</span>
+      <h4>Direct Financial Loss</h4>
+      <p>Immediate theft of money from bank accounts, credit card fraud charges, fraudulent loan obligations, and investment losses. India's average financial fraud victim loses ₹50,000–₹5 lakh per incident (RBI 2023). In severe cases — investment fraud, large BEC attacks — losses reach crores. Recovery is uncertain: only 25–30% of cyber fraud victims recover full losses in India (NCRB data).</p>
+    </div>
+    <div class="imp-card imp-b">
+      <span class="imp-icon">📉</span>
+      <h4>Credit Score Destruction</h4>
+      <p>Fraudulent loans, credit cards, and missed payment records created in the victim's name devastate their CIBIL/credit score. A score drop from 750 to 550 can mean loan rejection for years. Correcting credit bureau records requires formal dispute processes, identity theft declarations, police FIRs, and legal affidavits — and takes 6–24 months even under best circumstances.</p>
+    </div>
+    <div class="imp-card imp-c">
+      <span class="imp-icon">🧠</span>
+      <h4>Psychological and Emotional Trauma</h4>
+      <p>Identity theft and financial fraud cause acute and chronic psychological harm — anxiety, depression, PTSD symptoms, shame, rage, and profound loss of security. Victims describe feeling "violated" — their sense of safety in both physical and digital worlds is shattered. Research shows 70% of identity theft victims experience "high levels of emotional distress" (Identity Theft Resource Center, 2023).</p>
+    </div>
+    <div class="imp-card imp-d">
+      <span class="imp-icon">⚖️</span>
+      <h4>Legal and Administrative Burden</h4>
+      <p>Victims must navigate a complex maze: filing FIRs at cyber crime cells, approaching RBI Banking Ombudsman, disputing credit bureau entries, serving legal notices, appearing in court, obtaining court orders to clear their name from criminal records (criminal identity theft), and coordinating with multiple agencies simultaneously — often for years. The process is mentally exhausting and frequently requires hiring lawyers.</p>
+    </div>
+    <div class="imp-card imp-e">
+      <span class="imp-icon">🏠</span>
+      <h4>Disruption of Daily Life</h4>
+      <p>Frozen bank accounts, cancelled credit cards, suspended UPI IDs, and restricted access to digital services disrupt every aspect of modern life — from buying groceries and paying rent to maintaining employment. Victims who depend entirely on digital payments (a majority of urban India post-2016) face immediate practical crisis during the recovery period.</p>
+    </div>
+    <div class="imp-card imp-f">
+      <span class="imp-icon">💼</span>
+      <h4>Professional Consequences</h4>
+      <p>Criminal records from criminal identity theft fail background checks — costing victims job offers, professional licences, and security clearances. Entrepreneurs find business loans denied due to fraudulent credit entries. Professionals in regulated industries (banking, law, medicine, government) face fitness-and-propriety issues. One fraud incident can derail an entire career trajectory.</p>
+    </div>
+  </div>
+
+  <h3>Impact on Organisations</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>Impact Category</th><th>Description</th><th>Estimated Cost</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Direct Financial Loss</strong></td><td>Fraud losses not covered by insurance, chargeback losses, fraudulent wire transfers</td><td>IBM 2023: Average Indian data breach costs ₹17.9 crore ($2.18M) per incident</td></tr>
+      <tr><td><strong>Regulatory Fines</strong></td><td>SEBI, RBI, IRDAI penalties for inadequate fraud controls, data protection violations under DPDPA 2023</td><td>RBI fined 14 banks ₹50 lakh–₹5 crore each for KYC/fraud control failures in 2023</td></tr>
+      <tr><td><strong>Reputational Damage</strong></td><td>Customer trust erosion, stock price decline, media coverage, social media backlash</td><td>30% of breach victims report losing customers; stock price drops average 3–5% on breach disclosure</td></tr>
+      <tr><td><strong>Operational Disruption</strong></td><td>System downtime during investigation, customer service overload, internal investigation diversion</td><td>Average downtime cost: ₹1.5–3 crore per day of critical system unavailability</td></tr>
+      <tr><td><strong>Legal and Compliance Costs</strong></td><td>Legal defence, forensic investigation, regulatory compliance upgrades, court proceedings</td><td>Legal and forensic costs average 25–30% of total breach cost</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Macro-Economic and Societal Impact</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">🌐</span>
+      <h4>Erosion of Digital Trust</h4>
+      <p>As fraud incidents increase and receive media coverage, citizens become reluctant to adopt digital payment systems, e-governance portals, and online banking — undermining India's digital economy goals (Digital India Mission) and increasing financial exclusion for those who retreat to cash-only transactions out of fear.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">💹</span>
+      <h4>Increased Cost of Financial Services</h4>
+      <p>Fraud losses are ultimately borne by all consumers through higher banking fees, insurance premiums, and merchant pricing. Banks invest heavily in fraud detection infrastructure; these costs are passed on. Merchants build expected chargeback losses into product pricing. The honest majority pays for the crimes of a minority.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">🏛️</span>
+      <h4>Resource Diversion from Real Crimes</h4>
+      <p>Cyber crime cells and economic offences wings are overwhelmed — NCRB reports 1.5 million cyber crime complaints in 2022 with grossly inadequate investigator headcount. Resources diverted to financial fraud investigation reduce capacity to address other serious crimes. Courts are clogged with complex financial fraud cases requiring specialised expertise.</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 3.1 — India Financial Cyber Fraud: Complaints and Losses by Category (2023)</div>
+    <div class="chart-container">
+      <canvas id="fraudChart"></canvas>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 3.2 — Identity Theft Impact Severity by Type (Victim Survey Data)</div>
+    <div class="chart-container">
+      <canvas id="impactChart"></canvas>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>NCRB — Crime in India 2022: https://ncrb.gov.in/en/crime-india-2022</li>
+      <li>IBM Security — Cost of a Data Breach Report India 2023: https://www.ibm.com/reports/data-breach</li>
+      <li>Identity Theft Resource Center — Annual Data Breach Report 2023: https://www.idtheftcenter.org</li>
+      <li>RBI — Report on Currency and Finance 2023: https://rbi.org.in</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════
+     TOPIC 3.5 — REAL-WORLD CASE STUDIES
+══════════════════════════════════════ -->
+<section class="topic-section" id="t3-5">
+  <div class="topic-label">Topic 3.5</div>
+  <h2 class="topic-title">Case Studies — Identity Theft &amp; Financial Fraud</h2>
+
+  <div class="concept-box">
+    The following real-world case studies illustrate the techniques, scale, legal response, and lessons from landmark identity theft and financial fraud incidents — with a focus on Indian cases supplemented by globally significant examples. Each case is mapped to the relevant syllabus topic for exam relevance.
+  </div>
+
+  <!-- CASE 1 -->
+  <div class="case-study-block cs-red">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 01 · Identity Theft · India</span>
+      <span class="cs-title-text">Aadhaar Data Breach &amp; SIM Swap Fraud — Jharkhand, 2021</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>A systematic identity theft ring operating from Jamtara (Jharkhand) — a district so notorious for cybercrime it inspired the Netflix series <em>Jamtara: Sabka Number Ayega</em> — was found operating a large-scale SIM swap and UPI fraud operation. The ring used stolen Aadhaar data (obtained from local photocopy shops that illegally retained copies) combined with social engineering of mobile operator customer care to execute SIM swaps.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Method of Operation</span>
+        <p>Operators collected Aadhaar + PAN copies from local photocopy centres, chemists, and petrol pumps (where customers left KYC copies). They then called mobile operator customer care posing as the real subscriber, provided the stolen KYC details, and requested SIM reissue citing "lost SIM." Once the new SIM activated (victim's phone went dead), OTPs for banking and UPI were redirected to the fraudsters. Funds were immediately transferred via multiple mule accounts and withdrawn as cash.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale and Victims</span>
+        <p>Jharkhand cyber police documented <strong>over 3,500 victims</strong> across 14 states with total losses exceeding <strong>₹50 crore</strong> over 18 months. Victims included bank employees, government officers, and business owners — people who believed their financial information was secure. Individual losses ranged from ₹15,000 to ₹22 lakh.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Legal Action and Outcome</span>
+        <p>Multi-state joint operations (CID, Jharkhand police, Delhi cyber cell) resulted in <strong>62 arrests</strong> across two years. Charges included <strong>IT Act Sec 66C</strong> (identity theft), <strong>Sec 66D</strong> (cheating by personation), and <strong>IPC Sec 420</strong> (fraud). TRAI was directed to strengthen SIM swap verification requirements. RBI issued guidelines requiring banks to send alerts on SIM change and delay OTP delivery for 24 hours after a SIM swap is detected.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.1.1 (Personal Identity Theft) · Sec 3.2.1 (Phishing/Social Engineering) · Sec 3.3.4 (Online Banking Fraud) · <strong>Key Lesson:</strong> Physical KYC document handling is as critical as digital security — leaving Aadhaar copies at photocopy shops is a major identity theft risk. Never leave KYC documents unattended; write "for KYC purpose only at [institution] on [date]" across any copy submitted.
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="case-study-block cs-amber">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 02 · Financial Fraud · India</span>
+      <span class="cs-title-text">NSE Co-Location Scam &amp; Algo Trading Fraud — India, 2015–2018</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>The National Stock Exchange of India (NSE) — India's largest stock exchange — became the centre of a massive securities fraud scandal involving preferential access to co-location (colo) servers. Certain brokerage firms were allegedly given unfair advantage in accessing NSE's trading servers, receiving market data milliseconds before other traders — enabling front-running and algorithmic trading profits at the expense of ordinary investors.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Method of Operation</span>
+        <p>High-frequency traders (HFTs) at favoured brokerages were allegedly given: (1) preferential server placement in NSE's colo facility giving sub-millisecond data advantage; (2) advance access to NSE's tick-by-tick data feed; (3) information about the exchange's dark fibre network infrastructure enabling predictive trading. NSE's then-CEO and other officials were accused of colluding with preferred brokerages, potentially communicating through an unknown "yogi" via Yahoo email.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale and Regulatory Action</span>
+        <p>SEBI's investigation revealed the fraud had allowed preferential brokers to make <strong>potentially thousands of crores</strong> in risk-free profits over years. SEBI imposed: (1) ₹1,003 crore disgorgement order on NSE; (2) ₹624 crore penalty on 16 brokerage firms; (3) 3-year ban on NSE from accessing capital markets; (4) personal bans and fines on former CEO Chitra Ramkrishna and other officials.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Legal Outcome and Aftermath</span>
+        <p>Former CEO Chitra Ramkrishna was arrested by CBI in 2022 for sharing confidential NSE documents with an unknown "Himalayan yogi" via email — one of corporate India's most bizarre fraud revelations. NSE was barred from launching new products. SAT (Securities Appellate Tribunal) upheld many SEBI orders. The case exposed fundamental governance failures at one of India's most critical financial institutions.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.3.3 (Investment &amp; Securities Fraud — Insider Trading) · <strong>Key Lesson:</strong> Securities fraud is not always committed by outsiders — insiders at the highest levels of financial infrastructure can compromise market integrity. SEBI's Technology Advisory Committee now mandates equal and simultaneous data access to all exchange members with independent audit.
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 3 -->
+  <div class="case-study-block cs-blue">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 03 · Medical Identity Theft · India</span>
+      <span class="cs-title-text">Ayushman Bharat PMJAY Fraud — Multiple States, 2022–2023</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PMJAY) — the world's largest government health insurance scheme covering 500 million Indians — became a target for large-scale medical identity theft and insurance fraud. Beneficiary data from e-hospitals, Common Service Centres, and health worker devices was systematically stolen and used to generate fraudulent hospitalisations.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Method of Operation</span>
+        <p>Fraudulent networks involving hospital owners, billing staff, and scheme agents: (1) created fake hospitalisations using real beneficiary IDs for expensive procedures (cardiac surgery, dialysis, cancer treatment) that never occurred; (2) admitted healthy beneficiaries briefly and claimed full treatment costs; (3) created ghost beneficiaries by enrolling non-eligible individuals; (4) duplicate-claimed the same treatment multiple times using different hospital codes.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale of Fraud</span>
+        <p>NHA (National Health Authority) investigations revealed: (1) <strong>₹500+ crore</strong> in fraudulent claims processed; (2) 7,000+ hospitals delisted for suspicious claims; (3) 300+ hospitals blacklisted permanently; (4) beneficiaries from UP, Chhattisgarh, Jharkhand, and Gujarat most affected. Real victims had their ABHA health records corrupted with procedures they never underwent.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Legal Action and System Reforms</span>
+        <p>Over <strong>800 FIRs</strong> filed across states; hospital owners, scheme agents, and beneficiary enrolment operators arrested. IT Act Sec 66C/66D and IPC Sec 420 applied. NHA introduced: (1) real-time claim analytics with AI fraud detection; (2) mandatory beneficiary biometric verification at admission; (3) random post-discharge home visits for high-value claims; (4) inter-state data sharing to detect same-beneficiary multi-hospital claims.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.1.2 (Medical Identity Theft) · Sec 3.3.2 (Insurance Fraud) · <strong>Key Lesson:</strong> Government healthcare scheme databases containing biometric and identity data of the poorest citizens require the highest security standards — not the lowest. AI-based anomaly detection in insurance claim processing is now essential infrastructure, not a luxury.
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 4 -->
+  <div class="case-study-block cs-purple">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 04 · Synthetic Identity Theft · USA</span>
+      <span class="cs-title-text">Nationwide Synthetic Identity Fraud Ring — USA, 2021</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>US law enforcement (FBI, FTC, Secret Service) dismantled one of the largest synthetic identity fraud operations ever uncovered — a multi-year scheme that fabricated thousands of identities using real Social Security Numbers (SSNs) of children and non-credit-active individuals, combined with fictitious names, addresses, and dates of birth. The operation targeted banks, credit unions, and retail lenders across 25 states.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Method of Operation (The Bust-Out Cycle)</span>
+        <p>The ring (50+ individuals) created synthetic identities, applied for secured credit cards with $200–$500 deposits, made regular on-time payments for 12–18 months to build credit scores above 700, then simultaneously applied for maximum credit across 20–30 lenders per synthetic identity — personal loans, business credit lines, auto loans. Within 72 hours of approval, all funds were withdrawn, accounts abandoned. Each identity was "busted out" for $50,000–$200,000.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale and Victims</span>
+        <p>Total losses exceeded <strong>$200 million</strong> across 15 financial institutions. The children whose SSNs were used discovered the fraud only when applying for college loans or their first credit card — finding existing loan defaults, collections accounts, and destroyed credit histories under their names. Average victim spent 3–5 years clearing their credit records.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Legal Outcome and Industry Response</span>
+        <p>18 individuals convicted under federal wire fraud, bank fraud, and identity theft statutes. US banking industry developed the <strong>Synthetic Identity Fraud Consortium</strong> — sharing real-time fraud signals across 200+ financial institutions. The case prompted CFPB to mandate SSN validation against Social Security Administration records for all new credit applications. Indian equivalent: CIBIL now cross-validates PAN against ITD and UIDAI before credit profile creation.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.1.4 (Synthetic Identity Theft) · Sec 3.3.1 (Credit Card Fraud — Application Fraud) · <strong>Key Lesson:</strong> Synthetic identity fraud has no immediate "victim" to trigger alerts — making detection purely a data analytics and cross-institutional intelligence challenge. Children and thin-file individuals must be proactively protected through strict identity verification at credit application stage.
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 5 -->
+  <div class="case-study-block cs-green">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 05 · Investment Fraud · India</span>
+      <span class="cs-title-text">GainBitcoin &amp; Amit Bhardwaj Crypto Ponzi Scheme — India, 2017–2023</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>Amit Bhardwaj, who styled himself as "India's first Bitcoin millionaire," launched <strong>GainBitcoin</strong> in 2016 — a multi-level marketing scheme promising 10% monthly returns (120% annually) on Bitcoin investments through supposed mining operations. The scheme was operated through multiple entities including GB21, Ablaze Info Solutions, and other shell companies, with an elaborate multi-level referral structure that created a classic Ponzi pyramid.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Method of Operation</span>
+        <p>Investors received 18-month "mining contracts" promising 10% BTC returns per month. Early investors received returns (funded by new investors) — generating powerful word-of-mouth referrals. A 6-tier referral system paid agents commissions for bringing in new investors. Bhardwaj hosted lavish events, drove luxury cars, and maintained a high-profile social media presence to project legitimacy and attract high-net-worth investors. When withdrawals were frozen, the scheme collapsed.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale and Victims</span>
+        <p>Approximately <strong>8,000+ investors</strong> from India, UAE, USA, and Singapore lost total estimated <strong>₹2,000 crore (approx. $250M)</strong> in Bitcoin and cash. Victims included doctors, engineers, businessmen, and retired government employees. Many investors had borrowed from banks or liquidated retirement savings to invest. Some investor groups filed complaints in Pune, Delhi, and multiple states simultaneously.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Legal Outcome</span>
+        <p>Bhardwaj was arrested in Thailand in 2018 and extradited to India. Charged under <strong>IT Act, IPC Sections 406/420</strong>, PMLA 2002, and Maharashtra Protection of Interest of Depositors (MPID) Act. ED attached assets worth ₹19 crore. Case was in trial proceedings through 2023 — with 8,000+ complainants making it one of India's largest crypto fraud cases. Multiple co-accused including family members arrested.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.3.3 (Investment Fraud — Ponzi Schemes, Cryptocurrency Fraud) · <strong>Key Lesson:</strong> Any investment promising guaranteed monthly returns of 10%+ is mathematically unsustainable and almost certainly fraudulent. SEBI's rule: only SEBI-registered investment advisors can legally offer financial products and returns projections. Cryptocurrency "mining contracts" from unregulated entities are red flags.
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 6 -->
+  <div class="case-study-block cs-red">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 06 · Phishing + Account Takeover · India</span>
+      <span class="cs-title-text">"Digital Arrest" Vishing Fraud — Pan-India, 2023–2024</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>India's most alarming emerging fraud in 2023–24: "Digital Arrest" vishing scams in which victims received video calls from individuals impersonating senior officers of CBI, Narcotics Control Bureau, TRAI, or custom departments. Victims were shown fake "arrest warrants," fabricated Aadhaar-linked drug trafficking records, and official-looking backdrop sets. They were then placed under "digital custody" — told they were under investigation and must not contact anyone or leave their home — while being extorted for lakhs to crores.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Method of Operation</span>
+        <p>(1) Initial call from "TRAI" stating victim's mobile number linked to criminal SIM cards — creating fear; (2) Call transferred to "CBI officer" via video call in uniform; (3) Victim shown fabricated documents linking them to money laundering or drug trafficking; (4) "Digital arrest" imposed — victim must remain on video call continuously; (5) To "settle" the case, victim must transfer lakhs immediately via UPI or bank transfer to "court account." Victims held on call for 12–72 hours — psychologically broken by isolation, fear, and sleep deprivation.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale and Notable Victims</span>
+        <p>MHA reported <strong>₹120 crore</strong> lost to digital arrest scams in just January–March 2024. Individual victims included: AIIMS doctor (₹59 lakh), retired IIT professor (₹1 crore), Noida businessman (₹40 lakh), Bengaluru housewife (₹11 lakh). PM Narendra Modi addressed the scam in his <em>Mann Ki Baat</em> broadcast (October 2024), warning the entire nation — the first time a sitting PM directly warned about a specific cybercrime pattern.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Legal Action and Public Response</span>
+        <p>MHA's I4C (Indian Cyber Crime Coordination Centre) froze 3,000+ mule bank accounts, blocked 5,000+ SIM cards, and arrested 60+ suspects — many linked to Chinese-operated call centres in Southeast Asia (Cambodia, Myanmar). TRAI issued advisory: "TRAI never calls individuals about SIM cards." MHA campaign: <strong>"No government agency conducts 'digital arrests' — this is a crime."</strong> Helpline 1930 and cybercrime.gov.in remain the official reporting channels.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.2.1 (Vishing — Social Engineering) · Sec 3.3.4 (Online Banking Fraud) · Sec 3.3.5 (Account Takeover) · <strong>Key Lesson:</strong> No Indian government agency — CBI, police, TRAI, Customs, Income Tax — will ever arrest you over a video call or demand immediate money transfer to "avoid arrest." Disconnect immediately. Call 1930. The psychological power of this scam comes from impersonating legitimate authority; understanding this is your defence.
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 7 — Global -->
+  <div class="case-study-block cs-purple">
+    <div class="cs-header">
+      <span class="cs-badge">Case Study 07 · Data Breach · Global</span>
+      <span class="cs-title-text">Equifax Data Breach — USA/Global, 2017</span>
+    </div>
+    <div class="cs-body">
+      <div class="cs-col">
+        <span class="cs-col-label">Background</span>
+        <p>Equifax — one of the world's three largest credit reporting bureaus, holding comprehensive financial profiles of hundreds of millions of individuals — suffered one of the most damaging data breaches in history. The breach exploited an unpatched vulnerability in the Apache Struts web framework (CVE-2017-5638) that Equifax had failed to patch for over two months despite a critical security advisory. The attack was attributed to Chinese state-sponsored hackers.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Data Compromised</span>
+        <p>Personal information of <strong>147.9 million Americans</strong> (45% of the US population) was stolen including: full names, Social Security Numbers, dates of birth, current and former addresses, driver's licence numbers, and approximately 209,000 credit card numbers. This represented the most complete financial identity dataset ever stolen in a single incident — a hacker's dream for synthetic identity fraud, credit application fraud, and targeted phishing.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Scale and Consequences</span>
+        <p>Equifax's stock fell 35% within weeks of disclosure. The FTC/CFPB/50 states' attorneys general filed suit. Settlement: <strong>$575–700 million</strong> — the largest data breach settlement in US history at the time. Equifax CEO Richard Smith resigned. The stolen data remains in circulation on dark web markets years later, continuously used for identity fraud. Experts estimate the breach will cost the US economy $4+ billion in fraud losses over 10 years.</p>
+      </div>
+      <div class="cs-col">
+        <span class="cs-col-label">Lessons for India</span>
+        <p>India's CIBIL, Experian India, CRIF High Mark, and Equifax India (yes, Equifax operates in India too) hold similarly comprehensive financial profiles of millions of Indians. The DPDPA 2023 now mandates: (1) data minimisation; (2) breach notification within 72 hours; (3) security safeguards proportionate to risk. India's credit bureaus must maintain vulnerability management programmes, with RBI oversight, to prevent an Equifax-scale incident affecting Indian financial data.</p>
+      </div>
+      <div class="cs-verdict">
+        <strong>Syllabus Link:</strong> Sec 3.2.3 (Data Breaches) · Sec 3.1.4 (Synthetic Identity Theft) · <strong>Key Lesson:</strong> Organisations holding sensitive financial identity data of millions of people have an absolute responsibility to patch critical vulnerabilities immediately. A known vulnerability left unpatched for 2 months at a credit bureau is not negligence — it is recklessness. DPDPA 2023 now creates legal liability in India for such failures.
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 3.3 — Financial Fraud Case Studies: Loss Scale Comparison (₹ Crore Equivalent)</div>
+    <div class="chart-container">
+      <canvas id="caseChart"></canvas>
+    </div>
+  </div>
+
+  <h3>Summary Table — Case Studies Quick Reference</h3>
+  <table class="data-table no-bold">
+    <thead><tr><th>#</th><th>Case</th><th>Fraud Type</th><th>Loss</th><th>Key Technique</th><th>IT Act Section</th></tr></thead>
+    <tbody>
+      <tr><td>01</td><td>Jamtara SIM Swap (India, 2021)</td><td>Identity Theft + Banking Fraud</td><td>₹50 crore</td><td>SIM Swap + KYC theft</td><td>66C, 66D, IPC 420</td></tr>
+      <tr><td>02</td><td>NSE Co-Location Scam (India, 2015–18)</td><td>Securities Fraud + Insider Trading</td><td>₹1,000+ crore</td><td>Preferential data access</td><td>SEBI Act, IPC 409</td></tr>
+      <tr><td>03</td><td>PMJAY Ayushman Bharat Fraud (India, 2022–23)</td><td>Medical Identity Theft + Insurance Fraud</td><td>₹500 crore</td><td>Stolen ABHA IDs + ghost claims</td><td>66C, 66D, IPC 420</td></tr>
+      <tr><td>04</td><td>Synthetic ID Ring (USA, 2021)</td><td>Synthetic Identity + Credit Fraud</td><td>₹1,660 crore ($200M)</td><td>Bust-out credit scheme</td><td>US Wire Fraud Act</td></tr>
+      <tr><td>05</td><td>GainBitcoin Crypto Ponzi (India, 2017–23)</td><td>Investment Fraud (Ponzi)</td><td>₹2,000 crore</td><td>Crypto MLM structure</td><td>IT Act, IPC 406/420, PMLA</td></tr>
+      <tr><td>06</td><td>Digital Arrest Scam (India, 2023–24)</td><td>Vishing + Account Takeover</td><td>₹120 crore (Q1 2024)</td><td>Fake authority + fear</td><td>66C, 66D, IPC 386/420</td></tr>
+      <tr><td>07</td><td>Equifax Breach (USA, 2017)</td><td>Data Breach + Mass ID Theft</td><td>₹4,150 crore ($575M settlement)</td><td>Unpatched Apache Struts</td><td>DPDPA 2023 (India equivalent)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Victim Protection Framework — What to Do If You Are a Victim</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <span class="card-icon">📞</span>
+      <h4>Immediate Steps (0–24 Hours)</h4>
+      <p>Call your bank's fraud helpline immediately (SBI: 1800 11 2211; HDFC: 1800 202 6161). File complaint at <strong>cybercrime.gov.in</strong> or call <strong>1930</strong>. Block affected cards and UPI IDs. Lock your Aadhaar biometrics at <strong>uidai.gov.in</strong>. Change passwords for email and banking from a clean, uncompromised device. Screenshot all fraudulent transactions.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">📋</span>
+      <h4>Short-Term Steps (1–30 Days)</h4>
+      <p>File FIR at the nearest cyber crime police station or use the cybercrime.gov.in online portal. Approach RBI Banking Ombudsman if the bank does not respond. Dispute fraudulent entries with CIBIL, Experian, CRIF, and Equifax India. Freeze your PAN with CBDT if your income tax account is affected. Obtain a reference number for all complaints.</p>
+    </div>
+    <div class="three-card">
+      <span class="card-icon">⚖️</span>
+      <h4>Long-Term Recovery</h4>
+      <p>Pursue civil suit under CRPC Sec 156(3) if police are unresponsive. Engage a consumer court or IT Adjudicating Officer for compensation claims. Monitor credit reports quarterly for two years post-fraud. Enrol in credit monitoring services. Consider identity theft insurance (available from select Indian insurers since 2021). Document all recovery expenses for legal proceedings.</p>
+    </div>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 3 — Final Takeaway</div>
+    <p>Identity theft and financial fraud are not abstract technical concepts — they are lived crises that devastate real families, corrupt medical records, destroy careers, and drain life savings. The case studies in this unit demonstrate that fraud evolves continuously: from physical SIM swap operations in Jharkhand to state-sponsored data breaches to AI-powered voice impersonation in digital arrest scams. The same digital infrastructure that enables financial inclusion, healthcare delivery, and investment access also creates attack surfaces. Our defence lies in understanding how these frauds work, recognising their signatures in real time, reporting promptly through official channels (1930, cybercrime.gov.in), and demanding that institutions — banks, hospitals, exchanges, and government agencies — maintain the data security standards their responsibility demands.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References &amp; Further Reading</div>
+    <ul>
+      <li>MHA — I4C Annual Report 2023: https://i4c.mha.gov.in</li>
+      <li>NCRB — Crime in India 2022: https://ncrb.gov.in</li>
+      <li>RBI — Master Direction on Fraud Risk Management in Commercial Banks: https://rbi.org.in</li>
+      <li>CERT-IN — Phishing and Fraud Advisories: https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVCNOT001</li>
+      <li>UIDAI — Protect Your Aadhaar: https://uidai.gov.in/en/my-aadhaar/protect-your-aadhaar.html</li>
+      <li>SEBI — Investor Education Portal: https://investor.sebi.gov.in</li>
+      <li>FTC — IdentityTheft.gov (Global Best Practice Reference): https://www.identitytheft.gov</li>
+      <li>Identity Theft Resource Center 2023: https://www.idtheftcenter.org/research</li>
+      <li>Netflix — Jamtara: Sabka Number Ayega (Documentary Drama — educational viewing)</li>
+      <li>Cyber Crime Reporting: <strong>cybercrime.gov.in · Helpline: 1930</strong></li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>Introduction to Cyber Security · Unit 03 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="unit02_sem01_ics.html">← Unit 2</a>
+      <a href="ICS_Index.html">🏠 Home</a>
+      <a href="#">Unit 4 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · SPPU · Design &amp; Developed by Sumit Thakare</span>
+  </div>
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+// Nav mobile close
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'))
+);
+// Back to top
+window.addEventListener('scroll', () => {
+  document.querySelector('.back-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// Chart 1 — Fraud by Category (Doughnut)
+const ctx1 = document.getElementById('fraudChart');
+new Chart(ctx1, {
+  type: 'doughnut',
+  data: {
+    labels: ['UPI / Online Banking Fraud', 'Investment / Stock Fraud', 'Credit Card Fraud', 'Insurance Fraud', 'Digital Arrest / Vishing', 'Identity Theft (KYC/Aadhaar)', 'Other Cyber Frauds'],
+    datasets: [{
+      data: [35, 18, 15, 10, 9, 7, 6],
+      backgroundColor: [
+        'rgba(192,57,43,0.85)',
+        'rgba(111,66,193,0.85)',
+        'rgba(12,141,160,0.85)',
+        'rgba(26,122,52,0.85)',
+        'rgba(230,172,0,0.85)',
+        'rgba(58,58,54,0.80)',
+        'rgba(150,150,150,0.65)'
+      ],
+      borderColor: '#fafaf8',
+      borderWidth: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
+    }
+  }
+});
+
+// Chart 2 — Impact by ID Theft Type (Bar)
+const ctx2 = document.getElementById('impactChart');
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ['Financial\nLoss', 'Credit Score\nDamage', 'Psychological\nImpact', 'Legal\nBurden', 'Medical Record\nCorruption', 'Professional\nImpact'],
+    datasets: [
+      {
+        label: 'Financial Identity Theft',
+        data: [9, 9.5, 7, 7.5, 2, 7],
+        backgroundColor: 'rgba(192,57,43,0.75)',
+        borderColor: '#c0392b', borderWidth: 2, borderRadius: 3
+      },
+      {
+        label: 'Medical Identity Theft',
+        data: [5, 4, 8, 8.5, 10, 7.5],
+        backgroundColor: 'rgba(12,141,160,0.75)',
+        borderColor: '#0c8da0', borderWidth: 2, borderRadius: 3
+      },
+      {
+        label: 'Criminal Identity Theft',
+        data: [3, 5, 9, 9.5, 1, 10],
+        backgroundColor: 'rgba(111,66,193,0.75)',
+        borderColor: '#6f42c1', borderWidth: 2, borderRadius: 3
+      },
+      {
+        label: 'Synthetic Identity Theft',
+        data: [7, 8, 3, 6, 1, 5],
+        backgroundColor: 'rgba(26,122,52,0.75)',
+        borderColor: '#1a7a34', borderWidth: 2, borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom' } },
+    scales: {
+      y: {
+        beginAtZero: true, max: 11,
+        title: { display: true, text: 'Severity Score (1–10, based on research)' },
+        grid: { color: '#eee' }
+      },
+      x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+    }
+  }
+});
+
+// Chart 3 — Case Study Loss Comparison (Horizontal Bar)
+const ctx3 = document.getElementById('caseChart');
+new Chart(ctx3, {
+  type: 'bar',
+  data: {
+    labels: [
+      'Equifax Breach (USA, \'17) — Settlement',
+      'GainBitcoin Ponzi (India, \'17–23)',
+      'NSE Co-Location (India, \'15–18)',
+      'Synthetic ID Ring (USA, \'21)',
+      'PMJAY Fraud (India, \'22–23)',
+      'Digital Arrest Scam (India, Q1 \'24)',
+      'Jamtara SIM Swap (India, \'21)'
+    ],
+    datasets: [{
+      label: 'Loss / Settlement (₹ Crore Equivalent)',
+      data: [4150, 2000, 1000, 1660, 500, 120, 50],
+      backgroundColor: [
+        'rgba(111,66,193,0.80)',
+        'rgba(192,57,43,0.80)',
+        'rgba(230,172,0,0.85)',
+        'rgba(111,66,193,0.60)',
+        'rgba(12,141,160,0.80)',
+        'rgba(192,57,43,0.55)',
+        'rgba(26,122,52,0.80)'
+      ],
+      borderColor: ['#6f42c1','#c0392b','#e6ac00','#6f42c1','#0c8da0','#c0392b','#1a7a34'],
+      borderWidth: 2,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: {
+        beginAtZero: true,
+        title: { display: true, text: '₹ Crore (Approximate)' },
+        grid: { color: '#eee' }
+      },
+      y: { grid: { display: false }, ticks: { font: { size: 9.5 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>
