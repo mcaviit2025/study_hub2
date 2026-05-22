@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 05: Decision Theory | StudyHub</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<style>
+  /* Additional styles for Decision Theory */
+  .payoff-matrix {
+    display: inline-block;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: var(--white);
+  }
+  .payoff-matrix td, .payoff-matrix th {
+    border: 1px solid var(--black);
+    padding: 10px 14px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .payoff-matrix th {
+    background: var(--gray-100);
+    font-weight: 700;
+  }
+  .step-box {
+    background: var(--gray-100);
+    padding: 0.8rem 1.2rem;
+    margin: 0.8rem 0;
+    border-left: 3px solid var(--accent);
+  }
+  .calculation {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--white);
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px dashed var(--gray-300);
+  }
+  .regret-table {
+    background: var(--gray-100);
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  .example-number {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin-right: 0.8rem;
+  }
+  .difficulty-simple { border-left: 4px solid #10b981; }
+  .difficulty-medium { border-left: 4px solid #f59e0b; }
+  .difficulty-hard { border-left: 4px solid #ef4444; }
+  .formula-highlight {
+    background: var(--gray-200);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand">📚 Study<span>Hub</span></a>
+  <button class="nav-toggle" id="navToggle">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="mba_index.html">MBA</a></li>
+    <li><a href="mca_index.html">MCA</a></li>
+    <li><a href="optimization.html">Optimization</a></li>
+  </ul>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="unit-badge">Optimization Techniques · Unit 05</div>
+  <h1>Decision Theory</h1>
+  <div class="subject-line">Decision Making Under Uncertainty & Risk</div>
+  <div class="quick-info">
+    <div class="quick-info-item">📋 Criteria: 6 + 3</div>
+    <div class="quick-info-item">📊 Examples: 27</div>
+    <div class="quick-info-item">🎯 Step-by-Step Solutions</div>
+  </div>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#sec1">Part A: Decision Making Under UNCERTAINTY</a></li>
+      <li><a href="#maximax">1. Maximax Criterion (Optimistic)</a></li>
+      <li><a href="#maximin">2. Maximin Criterion (Pessimistic)</a></li>
+      <li><a href="#laplace">3. Laplace Criterion (Equal Probability)</a></li>
+      <li><a href="#hurwicz">4. Hurwicz Criterion (Realism - α=0.6)</a></li>
+      <li><a href="#savage">5. Minimax Regret Criterion (Savage)</a></li>
+      <li><a href="#sec2">Part B: Decision Making Under RISK</a></li>
+      <li><a href="#emv">1. EMV (Expected Monetary Value)</a></li>
+      <li><a href="#evpi">2. EVwPI & EVPI (Perfect Information)</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="content-wrap">
+
+  <!-- ============================================ -->
+  <!-- PART A: DECISION MAKING UNDER UNCERTAINTY     -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="sec1">
+    <div class="topic-label">Part A</div>
+    <h2 class="topic-title">Decision Making Under UNCERTAINTY</h2>
+    
+    <div class="concept-box">
+      Under <strong>uncertainty</strong>, the probabilities of states of nature are NOT known. Decision makers use different criteria based on their attitude toward risk.
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 1. MAXIMAX CRITERION (Optimistic)            -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="maximax">
+    <div class="topic-label">Criterion 1</div>
+    <h2 class="topic-title">Maximax Criterion (Optimistic Approach)</h2>
+    
+    <div class="concept-box">
+      <strong>Maximax</strong> is for the risk-taker / optimistic decision maker. The decision maker chooses the alternative that gives the maximum possible payoff. Formula: <span class="formula-highlight">Maximax = max( max payoff of each row )</span>
+    </div>
+
+    <!-- EXAMPLE 1.1: SIMPLE -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 1.1</span> Simple Level</div>
+      <h4>Real-world context:</h4>
+      <p>A businessman has three alternative investment options (S₁, S₂, S₃) with four possible market conditions (N₁, N₂, N₃, N₄). Profits are in ₹ lakhs.</p>
+      
+      <h4>Payoff Matrix (Profit in ₹ lakhs):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th></tr>
+        <tr><th>S₁</th><td>8</td><td>5</td><td>7</td><td>6</td></tr>
+        <tr><th>S₂</th><td>4</td><td>9</td><td>3</td><td>8</td></tr>
+        <tr><th>S₃</th><td>10</td><td>6</td><td>5</td><td>7</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find the maximum payoff for each alternative (row maximum)</strong><br>
+        For S₁ = max(8, 5, 7, 6) = <strong>8</strong><br>
+        For S₂ = max(4, 9, 3, 8) = <strong>9</strong><br>
+        For S₃ = max(10, 6, 5, 7) = <strong>10</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum among these row maximums</strong><br>
+        Maximax = max(8, 9, 10) = <strong>10</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₃</strong> with payoff <strong>₹10 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 1.2: MEDIUM -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 1.2</span> Medium Level</div>
+      <h4>Real-world context:</h4>
+      <p>A company has four different product launch strategies with five possible market response scenarios. Profits in ₹ crores.</p>
+      
+      <h4>Payoff Matrix (Profit in ₹ crores):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th></tr>
+        <tr><th>S₁</th><td>15</td><td>22</td><td>18</td><td>20</td><td>16</td></tr>
+        <tr><th>S₂</th><td>20</td><td>19</td><td>25</td><td>17</td><td>21</td></tr>
+        <tr><th>S₃</th><td>18</td><td>24</td><td>20</td><td>23</td><td>19</td></tr>
+        <tr><th>S₄</th><td>22</td><td>21</td><td>19</td><td>18</td><td>24</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find the maximum payoff for each alternative</strong><br>
+        S₁ = max(15, 22, 18, 20, 16) = <strong>22</strong><br>
+        S₂ = max(20, 19, 25, 17, 21) = <strong>25</strong><br>
+        S₃ = max(18, 24, 20, 23, 19) = <strong>24</strong><br>
+        S₄ = max(22, 21, 19, 18, 24) = <strong>24</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum among these row maximums</strong><br>
+        Maximax = max(22, 25, 24, 24) = <strong>25</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with payoff <strong>₹25 crores</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 1.3: HARD -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 1.3</span> Hard Level</div>
+      <h4>Real-world context:</h4>
+      <p>An investor has five different portfolio strategies with six possible economic conditions. Returns are in ₹ lakhs.</p>
+      
+      <h4>Payoff Matrix (Return in ₹ lakhs):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th><th>N₆</th></tr>
+        <tr><th>S₁</th><td>28</td><td>35</td><td>42</td><td>31</td><td>38</td><td>33</td></tr>
+        <tr><th>S₂</th><td>32</td><td>30</td><td>38</td><td>45</td><td>36</td><td>40</td></tr>
+        <tr><th>S₃</th><td>35</td><td>40</td><td>33</td><td>37</td><td>42</td><td>39</td></tr>
+        <tr><th>S₄</th><td>38</td><td>33</td><td>36</td><td>40</td><td>35</td><td>44</td></tr>
+        <tr><th>S₅</th><td>40</td><td>38</td><td>35</td><td>34</td><td>39</td><td>37</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find the maximum payoff for each alternative</strong><br>
+        S₁ = max(28,35,42,31,38,33) = 42<br>
+        S₂ = max(32,30,38,45,36,40) = 45<br>
+        S₃ = max(35,40,33,37,42,39) = 42<br>
+        S₄ = max(38,33,36,40,35,44) = 44<br>
+        S₅ = max(40,38,35,34,39,37) = 40
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum among these row maximums</strong><br>
+        Maximax = max(42, 45, 42, 44, 40) = <strong>45</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with payoff <strong>₹45 lakhs</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 2. MAXIMIN CRITERION (Pessimistic)           -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="maximin">
+    <div class="topic-label">Criterion 2</div>
+    <h2 class="topic-title">Maximin Criterion (Pessimistic / Conservative Approach)</h2>
+    
+    <div class="concept-box">
+      <strong>Maximin</strong> is for the risk-averse / pessimistic decision maker. The decision maker chooses the alternative that gives the maximum of the minimum payoffs. Formula: <span class="formula-highlight">Maximin = max( min payoff of each row )</span>
+    </div>
+
+    <!-- EXAMPLE 2.1: SIMPLE -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 2.1</span> Simple Level</div>
+      <h4>Payoff Matrix (Profit in ₹ lakhs):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th></tr>
+        <tr><th>S₁</th><td>12</td><td>8</td><td>10</td><td>6</td></tr>
+        <tr><th>S₂</th><td>9</td><td>11</td><td>7</td><td>13</td></tr>
+        <tr><th>S₃</th><td>14</td><td>5</td><td>9</td><td>8</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find the minimum payoff for each alternative (row minimum)</strong><br>
+        For S₁ = min(12, 8, 10, 6) = <strong>6</strong><br>
+        For S₂ = min(9, 11, 7, 13) = <strong>7</strong><br>
+        For S₃ = min(14, 5, 9, 8) = <strong>5</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum among these row minimums</strong><br>
+        Maximin = max(6, 7, 5) = <strong>7</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with guaranteed minimum payoff <strong>₹7 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2.2: MEDIUM -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 2.2</span> Medium Level</div>
+      <h4>Payoff Matrix (Profit in ₹ crores):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th></tr>
+        <tr><th>S₁</th><td>25</td><td>30</td><td>18</td><td>22</td></tr>
+        <tr><th>S₂</th><td>20</td><td>28</td><td>24</td><td>26</td></tr>
+        <tr><th>S₃</th><td>22</td><td>24</td><td>30</td><td>20</td></tr>
+        <tr><th>S₄</th><td>28</td><td>20</td><td>22</td><td>24</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find the minimum payoff for each alternative</strong><br>
+        S₁ = min(25, 30, 18, 22) = 18<br>
+        S₂ = min(20, 28, 24, 26) = 20<br>
+        S₃ = min(22, 24, 30, 20) = 20<br>
+        S₄ = min(28, 20, 22, 24) = 20
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum among these row minimums</strong><br>
+        Maximin = max(18, 20, 20, 20) = <strong>20</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategies are <strong>S₂, S₃, or S₄</strong> with guaranteed minimum payoff <strong>₹20 crores</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2.3: HARD -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 2.3</span> Hard Level</div>
+      <h4>Payoff Matrix (Profit in ₹ lakhs):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th></tr>
+        <tr><th>S₁</th><td>45</td><td>38</td><td>42</td><td>35</td><td>40</td></tr>
+        <tr><th>S₂</th><td>42</td><td>44</td><td>36</td><td>40</td><td>38</td></tr>
+        <tr><th>S₃</th><td>38</td><td>40</td><td>45</td><td>42</td><td>35</td></tr>
+        <tr><th>S₄</th><td>40</td><td>36</td><td>38</td><td>44</td><td>42</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find the minimum payoff for each alternative</strong><br>
+        S₁ = min(45,38,42,35,40) = 35<br>
+        S₂ = min(42,44,36,40,38) = 36<br>
+        S₃ = min(38,40,45,42,35) = 35<br>
+        S₄ = min(40,36,38,44,42) = 36
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum among these row minimums</strong><br>
+        Maximin = max(35, 36, 35, 36) = <strong>36</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategies are <strong>S₂ or S₄</strong> with guaranteed minimum payoff <strong>₹36 lakhs</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 3. LAPLACE CRITERION (Equal Probability)     -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="laplace">
+    <div class="topic-label">Criterion 3</div>
+    <h2 class="topic-title">Laplace Criterion (Equal Probability Approach)</h2>
+    
+    <div class="concept-box">
+      <strong>Laplace</strong> assumes all states of nature are equally likely. Probability = 1/n for n states. Choose the alternative with the highest average payoff. Formula: <span class="formula-highlight">Average = (Sum of payoffs) / (Number of states)</span>
+    </div>
+
+    <!-- EXAMPLE 3.1: SIMPLE -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 3.1</span> Simple Level</div>
+      <h4>Payoff Matrix (Profit in ₹ lakhs):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th></tr>
+        <tr><th>S₁</th><td>50</td><td>40</td><td>30</td></tr>
+        <tr><th>S₂</th><td>45</td><td>45</td><td>35</td></tr>
+        <tr><th>S₃</th><td>40</td><td>50</td><td>40</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Calculate average payoff for each alternative (3 states, so divide by 3)</strong><br>
+        S₁ = (50 + 40 + 30) / 3 = 120 / 3 = <strong>40</strong><br>
+        S₂ = (45 + 45 + 35) / 3 = 125 / 3 = <strong>41.67</strong><br>
+        S₃ = (40 + 50 + 40) / 3 = 130 / 3 = <strong>43.33</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum average payoff</strong><br>
+        Laplace = max(40, 41.67, 43.33) = <strong>43.33</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₃</strong> with average payoff <strong>₹43.33 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 3.2: MEDIUM -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 3.2</span> Medium Level</div>
+      <h4>Payoff Matrix (Profit in ₹ crores):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th></tr>
+        <tr><th>S₁</th><td>18</td><td>22</td><td>20</td><td>16</td></tr>
+        <tr><th>S₂</th><td>20</td><td>24</td><td>18</td><td>22</td></tr>
+        <tr><th>S₃</th><td>22</td><td>20</td><td>16</td><td>26</td></tr>
+        <tr><th>S₄</th><td>24</td><td>18</td><td>22</td><td>20</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Calculate average payoff (divide by 4)</strong><br>
+        S₁ = (18 + 22 + 20 + 16) / 4 = 76 / 4 = 19<br>
+        S₂ = (20 + 24 + 18 + 22) / 4 = 84 / 4 = 21<br>
+        S₃ = (22 + 20 + 16 + 26) / 4 = 84 / 4 = 21<br>
+        S₄ = (24 + 18 + 22 + 20) / 4 = 84 / 4 = 21
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum average payoff</strong><br>
+        Laplace = max(19, 21, 21, 21) = <strong>21</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategies are <strong>S₂, S₃, or S₄</strong> with average payoff <strong>₹21 crores</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 3.3: HARD -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 3.3</span> Hard Level</div>
+      <h4>Payoff Matrix (Profit in ₹ lakhs with decimals):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th></tr>
+        <tr><th>S₁</th><td>55.5</td><td>48.2</td><td>62.3</td><td>51.7</td><td>45.8</td></tr>
+        <tr><th>S₂</th><td>50.2</td><td>58.5</td><td>47.6</td><td>54.3</td><td>60.1</td></tr>
+        <tr><th>S₃</th><td>52.8</td><td>53.4</td><td>59.2</td><td>46.5</td><td>56.7</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Calculate average payoff (divide by 5)</strong><br>
+        S₁ = (55.5 + 48.2 + 62.3 + 51.7 + 45.8) / 5<br>
+        S₁ = 263.5 / 5 = <strong>52.7</strong><br><br>
+        S₂ = (50.2 + 58.5 + 47.6 + 54.3 + 60.1) / 5<br>
+        S₂ = 270.7 / 5 = <strong>54.14</strong><br><br>
+        S₃ = (52.8 + 53.4 + 59.2 + 46.5 + 56.7) / 5<br>
+        S₃ = 268.6 / 5 = <strong>53.72</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find the maximum average payoff</strong><br>
+        Laplace = max(52.7, 54.14, 53.72) = <strong>54.14</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with average payoff <strong>₹54.14 lakhs</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 4. HURWICZ CRITERION (Realism with α=0.6)    -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="hurwicz">
+    <div class="topic-label">Criterion 4</div>
+    <h2 class="topic-title">Hurwicz Criterion (Realism Approach with α = 0.6)</h2>
+    
+    <div class="concept-box">
+      <strong>Hurwicz</strong> balances optimism and pessimism using coefficient α (0 ≤ α ≤ 1). α = 0.6 means 60% weight to best outcome, 40% weight to worst outcome. Formula: <span class="formula-highlight">Hurwicz Value = α(Max) + (1-α)(Min)</span>
+    </div>
+
+    <!-- EXAMPLE 4.1: SIMPLE -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 4.1</span> Simple Level</div>
+      <h4>Payoff Matrix (Profit in ₹ lakhs):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th></tr>
+        <tr><th>S₁</th><td>30</td><td>20</td><td>15</td></tr>
+        <tr><th>S₂</th><td>25</td><td>25</td><td>20</td></tr>
+        <tr><th>S₃</th><td>35</td><td>18</td><td>12</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: For each strategy, find Max and Min</strong><br>
+        S₁: Max = 30, Min = 15<br>
+        S₂: Max = 25, Min = 20<br>
+        S₃: Max = 35, Min = 12
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Apply formula: α(Max) + (1-α)(Min) with α = 0.6, (1-α) = 0.4</strong><br>
+        S₁ = 0.6 × 30 + 0.4 × 15 = 18 + 6 = <strong>24</strong><br>
+        S₂ = 0.6 × 25 + 0.4 × 20 = 15 + 8 = <strong>23</strong><br>
+        S₃ = 0.6 × 35 + 0.4 × 12 = 21 + 4.8 = <strong>25.8</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Find the maximum value</strong><br>
+        Hurwicz = max(24, 23, 25.8) = <strong>25.8</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₃</strong> with Hurwicz value <strong>₹25.8 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 4.2: MEDIUM -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 4.2</span> Medium Level</div>
+      <h4>Payoff Matrix (Profit in ₹ crores):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th></tr>
+        <tr><th>S₁</th><td>35</td><td>28</td><td>40</td><td>25</td></tr>
+        <tr><th>S₂</th><td>30</td><td>32</td><td>35</td><td>30</td></tr>
+        <tr><th>S₃</th><td>28</td><td>38</td><td>32</td><td>28</td></tr>
+        <tr><th>S₄</th><td>40</td><td>25</td><td>30</td><td>35</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find Max and Min for each strategy</strong><br>
+        S₁: Max = 40, Min = 25<br>
+        S₂: Max = 35, Min = 30<br>
+        S₃: Max = 38, Min = 28<br>
+        S₄: Max = 40, Min = 25
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Apply formula with α=0.6, (1-α)=0.4</strong><br>
+        S₁ = 0.6×40 + 0.4×25 = 24 + 10 = 34<br>
+        S₂ = 0.6×35 + 0.4×30 = 21 + 12 = 33<br>
+        S₃ = 0.6×38 + 0.4×28 = 22.8 + 11.2 = 34<br>
+        S₄ = 0.6×40 + 0.4×25 = 24 + 10 = 34
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Find the maximum</strong><br>
+        Hurwicz = max(34, 33, 34, 34) = <strong>34</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategies are <strong>S₁, S₃, or S₄</strong> with Hurwicz value <strong>₹34 crores</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 4.3: HARD -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 4.3</span> Hard Level</div>
+      <h4>Payoff Matrix (Profit in ₹ lakhs with decimals):</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th></tr>
+        <tr><th>S₁</th><td>48.5</td><td>52.3</td><td>45.2</td><td>55.8</td><td>50.1</td></tr>
+        <tr><th>S₂</th><td>50.2</td><td>47.5</td><td>54.6</td><td>49.3</td><td>53.7</td></tr>
+        <tr><th>S₃</th><td>46.8</td><td>53.9</td><td>51.4</td><td>44.6</td><td>52.2</td></tr>
+        <tr><th>S₄</th><td>55.5</td><td>45.2</td><td>49.8</td><td>50.4</td><td>47.3</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Find Max and Min for each strategy</strong><br>
+        S₁: Max = 55.8, Min = 45.2<br>
+        S₂: Max = 54.6, Min = 47.5<br>
+        S₃: Max = 53.9, Min = 44.6<br>
+        S₄: Max = 55.5, Min = 45.2
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Apply formula with α=0.6, (1-α)=0.4</strong><br>
+        S₁ = 0.6×55.8 + 0.4×45.2 = 33.48 + 18.08 = 51.56<br>
+        S₂ = 0.6×54.6 + 0.4×47.5 = 32.76 + 19.00 = 51.76<br>
+        S₃ = 0.6×53.9 + 0.4×44.6 = 32.34 + 17.84 = 50.18<br>
+        S₄ = 0.6×55.5 + 0.4×45.2 = 33.30 + 18.08 = 51.38
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Find the maximum</strong><br>
+        Hurwicz = max(51.56, 51.76, 50.18, 51.38) = <strong>51.76</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with Hurwicz value <strong>₹51.76 lakhs</strong>
+      </div>
+    </div>
+  </div>
+
+    <!-- ============================================ -->
+  <!-- 5. MINIMAX REGRET CRITERION (Savage)         -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="savage">
+    <div class="topic-label">Criterion 5</div>
+    <h2 class="topic-title">Minimax Regret Criterion (Savage Criterion)</h2>
+    
+    <div class="concept-box">
+      <strong>Savage Criterion (Minimax Regret)</strong> minimizes the maximum opportunity loss (regret). The decision maker wants to avoid the feeling of regret after making a decision.
+    </div>
+
+    <h3>📌 Steps to Solve Savage Criterion (Minimax Regret Criterion)</h3>
+    <div class="step-box">
+      <strong>Step 1:</strong> Write the given payoff/cost matrix.<br>
+      <strong>Step 2:</strong> Identify the best value in each state (column).<br>
+      &nbsp;&nbsp;&nbsp;• For <strong>Profit/Payoff Matrix</strong> → Find <strong>Maximum</strong> value of each column.<br>
+      &nbsp;&nbsp;&nbsp;• For <strong>Cost Matrix</strong> → Find <strong>Minimum</strong> value of each column.<br>
+      <strong>Step 3:</strong> Construct the regret (opportunity loss) table.<br>
+      &nbsp;&nbsp;&nbsp;• For <strong>Profit Matrix</strong>: Regret = Column Maximum − Actual Payoff<br>
+      &nbsp;&nbsp;&nbsp;• For <strong>Cost Matrix</strong>: Regret = Actual Cost − Column Minimum<br>
+      <strong>Step 4:</strong> Find the <strong>maximum regret</strong> for each strategy (row).<br>
+      <strong>Step 5:</strong> Select the strategy having the <strong>minimum of maximum regrets</strong>.
+    </div>
+
+    <div class="formula-box">
+      <strong>Final Rule:</strong> The strategy with <strong>minimum maximum regret</strong> is the <strong>optimal strategy</strong> under Savage Criterion.
+    </div>
+
+    <!-- EXAMPLE 5.1: SIMPLE (Profit Matrix) -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 5.1</span> Simple Level (Profit Matrix)</div>
+      <h4>Real-world context:</h4>
+      <p>A businessman has three alternative investment strategies with three possible market conditions. Profits are in ₹ lakhs.</p>
+      
+      <h4>Step 1: Payoff Matrix (Profit in ₹ lakhs)</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th></tr>
+        <tr><th>S₁</th><td>60</th><td>40</th><td>30</th></tr>
+        <tr><th>S₂</th><td>55</th><td>50</th><td>35</th></tr>
+        <tr><th>S₃</th><td>50</th><td>60</th><td>45</th></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 2: Identify best value in each column (Maximum for Profit Matrix)</strong><br>
+        Column N₁: max(60, 55, 50) = <strong>60</strong><br>
+        Column N₂: max(40, 50, 60) = <strong>60</strong><br>
+        Column N₃: max(30, 35, 45) = <strong>45</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Construct Regret Table (Regret = Column Maximum − Actual Payoff)</strong>
+        <table class="payoff-matrix">
+          <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th></tr>
+          <tr><th>S₁</th><td>60-60=0</th><td>60-40=20</th><td>45-30=15</th></tr>
+          <tr><th>S₂</th><td>60-55=5</th><td>60-50=10</th><td>45-35=10</th></tr>
+          <tr><th>S₃</th><td>60-50=10</th><td>60-60=0</th><td>45-45=0</th></tr>
+        </table>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4: Find maximum regret for each strategy (row)</strong><br>
+        S₁: max(0, 20, 15) = <strong>20</strong><br>
+        S₂: max(5, 10, 10) = <strong>10</strong><br>
+        S₃: max(10, 0, 0) = <strong>10</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 5: Select strategy with minimum of maximum regrets</strong><br>
+        min(20, 10, 10) = <strong>10</strong><br>
+        Strategies S₂ and S₃ have the minimum maximum regret.
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategies are <strong>S₂ or S₃</strong> with maximum regret of <strong>₹10 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 5.2: MEDIUM (Profit Matrix) -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 5.2</span> Medium Level (Profit Matrix)</div>
+      <h4>Step 1: Payoff Matrix (Profit in ₹ crores)</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th></tr>
+        <tr><th>S₁</th><td>25</th><td>30</th><td>20</th><td>28</th></tr>
+        <tr><th>S₂</th><td>28</th><td>32</th><td>24</th><td>26</th></tr>
+        <tr><th>S₃</th><td>30</th><td>28</th><td>22</th><td>30</th></tr>
+        <tr><th>S₄</th><td>26</th><td>35</th><td>18</th><td>24</th></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 2: Identify best value in each column (Maximum for Profit Matrix)</strong><br>
+        N₁: max(25,28,30,26) = <strong>30</strong><br>
+        N₂: max(30,32,28,35) = <strong>35</strong><br>
+        N₃: max(20,24,22,18) = <strong>24</strong><br>
+        N₄: max(28,26,30,24) = <strong>30</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Construct Regret Table (Regret = Column Maximum − Actual Payoff)</strong>
+        <table class="payoff-matrix">
+          <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>Max Regret</th></tr>
+          <tr><th>S₁</th><td>5</th><td>5</th><td>4</th><td>2</th><td><strong>5</strong></th></tr>
+          <tr><th>S₂</th><td>2</th><td>3</th><td>0</th><td>4</th><td><strong>4</strong></th></tr>
+          <tr><th>S₃</th><td>0</th><td>7</th><td>2</th><td>0</th><td><strong>7</strong></th></tr>
+          <tr><th>S₄</th><td>4</th><td>0</th><td>6</th><td>6</th><td><strong>6</strong></th></tr>
+        </table>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4 & 5: Find minimum of maximum regrets</strong><br>
+        Maximum regrets: S₁=5, S₂=4, S₃=7, S₄=6<br>
+        Minimax Regret = min(5, 4, 7, 6) = <strong>4</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with maximum regret of <strong>₹4 crores</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 5.3: HARD (Profit Matrix) -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 5.3</span> Hard Level (Profit Matrix with 5 States)</div>
+      <h4>Step 1: Payoff Matrix (Profit in ₹ lakhs)</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th></tr>
+        <tr><th>S₁</th><td>42</th><td>38</th><td>45</th><td>35</th><td>40</th></tr>
+        <tr><th>S₂</th><td>39</th><td>44</th><td>36</th><td>42</th><td>38</th></tr>
+        <tr><th>S₃</th><td>44</th><td>40</th><td>38</th><td>41</th><td>43</th></tr>
+        <tr><th>S₄</th><td>36</th><td>42</th><td>43</th><td>39</th><td>44</th></tr>
+        <tr><th>S₅</th><td>40</th><td>45</th><td>41</th><td>37</th><td>42</th></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 2: Identify best value in each column (Maximum for Profit Matrix)</strong><br>
+        N₁: max(42,39,44,36,40) = <strong>44</strong><br>
+        N₂: max(38,44,40,42,45) = <strong>45</strong><br>
+        N₃: max(45,36,38,43,41) = <strong>45</strong><br>
+        N₄: max(35,42,41,39,37) = <strong>42</strong><br>
+        N₅: max(40,38,43,44,42) = <strong>44</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Construct Regret Table (Regret = Column Maximum − Actual Payoff)</strong>
+        <table class="payoff-matrix">
+          <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th><th>N₄</th><th>N₅</th><th>Max Regret</th></tr>
+          <tr><th>S₁</th><td>2</th><td>7</th><td>0</th><td>7</th><td>4</th><td><strong>7</strong></th></tr>
+          <tr><th>S₂</th><td>5</th><td>1</th><td>9</th><td>0</th><td>6</th><td><strong>9</strong></th></tr>
+          <tr><th>S₃</th><td>0</th><td>5</th><td>7</th><td>1</th><td>1</th><td><strong>7</strong></th></tr>
+          <tr><th>S₄</th><td>8</th><td>3</th><td>2</th><td>3</th><td>0</th><td><strong>8</strong></th></tr>
+          <tr><th>S₅</th><td>4</th><td>0</th><td>4</th><td>5</th><td>2</th><td><strong>5</strong></th></tr>
+        </table>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4 & 5: Find minimum of maximum regrets</strong><br>
+        Maximum regrets: S₁=7, S₂=9, S₃=7, S₄=8, S₅=5<br>
+        Minimax Regret = min(7, 9, 7, 8, 5) = <strong>5</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₅</strong> with maximum regret of <strong>₹5 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 5.4: COST MATRIX (For understanding) -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 5.4</span> Cost Matrix (Minimization Problem)</div>
+      <h4>Real-world context:</h4>
+      <p>A company wants to minimize cost. Lower costs are better. Cost matrix is given in ₹ lakhs.</p>
+      
+      <h4>Step 1: Cost Matrix (Cost in ₹ lakhs - LOWER is better)</h4>
+      <table class="payoff-matrix">
+        <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th></tr>
+        <tr><th>A</th><td>12</th><td>8</th><td>10</th></tr>
+        <tr><th>B</th><td>10</th><td>9</th><td>7</th></tr>
+        <tr><th>C</th><td>11</th><td>6</th><td>9</th></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 2: Identify best value in each column (Minimum for Cost Matrix)</strong><br>
+        Column N₁: min(12, 10, 11) = <strong>10</strong><br>
+        Column N₂: min(8, 9, 6) = <strong>6</strong><br>
+        Column N₃: min(10, 7, 9) = <strong>7</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Construct Regret Table (For Cost Matrix: Regret = Actual Cost − Column Minimum)</strong>
+        <table class="payoff-matrix">
+          <tr><th></th><th>N₁</th><th>N₂</th><th>N₃</th></tr>
+          <tr><th>A</th><td>12-10=2</th><td>8-6=2</th><td>10-7=3</th></tr>
+          <tr><th>B</th><td>10-10=0</th><td>9-6=3</th><td>7-7=0</th></tr>
+          <tr><th>C</th><td>11-10=1</th><td>6-6=0</th><td>9-7=2</th></tr>
+        </table>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4: Find maximum regret for each strategy (row)</strong><br>
+        A: max(2, 2, 3) = <strong>3</strong><br>
+        B: max(0, 3, 0) = <strong>3</strong><br>
+        C: max(1, 0, 2) = <strong>2</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 5: Select strategy with minimum of maximum regrets</strong><br>
+        min(3, 3, 2) = <strong>2</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>C</strong> with maximum regret of <strong>₹2 lakhs</strong>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📌 Important Note</div>
+      <p>
+        • For <strong>Profit/Payoff Matrix</strong>: Regret = Column Maximum − Actual Payoff<br>
+        • For <strong>Cost Matrix</strong>: Regret = Actual Cost − Column Minimum<br>
+        • Always choose the strategy with the <strong>smallest maximum regret</strong>.
+      </p>
+    </div>
+  </div>
+  <!-- ============================================ -->
+  <!-- PART B: DECISION MAKING UNDER RISK           -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="sec2">
+    <div class="topic-label">Part B</div>
+    <h2 class="topic-title">Decision Making Under RISK</h2>
+    
+    <div class="concept-box">
+      Under <strong>risk</strong>, the probabilities of states of nature are known. We use Expected Monetary Value (EMV), Expected Value with Perfect Information (EVwPI), and Value of Perfect Information (VPI/EVPI).
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 1. EMV (Expected Monetary Value)             -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="emv">
+    <div class="topic-label">Risk Criterion 1</div>
+    <h2 class="topic-title">Expected Monetary Value (EMV)</h2>
+    
+    <div class="concept-box">
+      <strong>EMV</strong> = Σ (Payoff × Probability) for each alternative. Choose the alternative with the highest EMV.
+    </div>
+
+    <!-- EXAMPLE 6.1: SIMPLE (From your image) -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 6.1</span> Simple Level (EMV)</div>
+      <h4>Real-world context:</h4>
+      <p>A businessman has three alternative actions (S₁, S₂, S₃) with three possible events (N₁, N₂, N₃) and known probabilities.</p>
+      
+      <h4>Payoff Table with Probabilities:</h4>
+      <table class="payoff-matrix">
+        <tr><th>States</th><th>N₁ (0.3)</th><th>N₂ (0.6)</th><th>N₃ (0.1)</th></tr>
+        <tr><th>S₁</th><td>20</td><td>18</td><td>-9</td></tr>
+        <tr><th>S₂</th><td>25</td><td>15</td><td>10</td></tr>
+        <tr><th>S₃</th><td>40</td><td>-10</td><td>12</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Calculate EMV for each strategy</strong><br>
+        EMV(S₁) = (20 × 0.3) + (18 × 0.6) + (-9 × 0.1)<br>
+        = 6 + 10.8 + (-0.9) = 6 + 10.8 - 0.9 = <strong>15.9</strong>
+      </div>
+
+      <div class="step-box">
+        EMV(S₂) = (25 × 0.3) + (15 × 0.6) + (10 × 0.1)<br>
+        = 7.5 + 9 + 1 = <strong>17.5</strong>
+      </div>
+
+      <div class="step-box">
+        EMV(S₃) = (40 × 0.3) + (-10 × 0.6) + (12 × 0.1)<br>
+        = 12 + (-6) + 1.2 = 12 - 6 + 1.2 = <strong>7.2</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find maximum EMV</strong><br>
+        Maximum EMV = max(15.9, 17.5, 7.2) = <strong>17.5</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>S₂</strong> with EMV <strong>₹17.5 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 6.2: MEDIUM -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 6.2</span> Medium Level (EMV)</div>
+      <h4>Payoff Table with Probabilities:</h4>
+      <table class="payoff-matrix">
+        <tr><th>States</th><th>N₁ (0.2)</th><th>N₂ (0.5)</th><th>N₃ (0.3)</th></tr>
+        <tr><th>A</th><td>50</td><td>40</td><td>30</td></tr>
+        <tr><th>B</th><td>45</td><td>48</td><td>35</td></tr>
+        <tr><th>C</th><td>55</td><td>35</td><td>32</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Calculate EMV for each alternative</strong><br>
+        EMV(A) = (50×0.2) + (40×0.5) + (30×0.3) = 10 + 20 + 9 = 39<br>
+        EMV(B) = (45×0.2) + (48×0.5) + (35×0.3) = 9 + 24 + 10.5 = 43.5<br>
+        EMV(C) = (55×0.2) + (35×0.5) + (32×0.3) = 11 + 17.5 + 9.6 = 38.1
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find maximum EMV</strong><br>
+        Maximum EMV = max(39, 43.5, 38.1) = <strong>43.5</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> Optimal strategy is <strong>B</strong> with EMV <strong>₹43.5 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 6.3: HARD -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 6.3</span> Hard Level (EMV with 5 States)</div>
+      <h4>Payoff Table with Probabilities:</h4>
+      <table class="payoff-matrix">
+        <tr><th>States</th><th>N₁(0.1)</th><th>N₂(0.25)</th><th>N₃(0.35)</th><th>N₄(0.2)</th><th>N₅(0.1)</th></tr>
+        <tr><th>X</th><td>120</td><td>100</td><td>80</td><td>90</td><td>70</td></tr>
+        <tr><th>Y</th><td>110</td><td>105</td><td>95</td><td>85</td><td>80</td></tr>
+        <tr><th>Z</th><td>100</td><td>115</td><td>90</td><td>95</td><td>85</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>EMV(X) =</strong> (120×0.1)+(100×0.25)+(80×0.35)+(90×0.2)+(70×0.1)<br>
+        = 12 + 25 + 28 + 18 + 7 = <strong>90</strong>
+      </div>
+      <div class="step-box">
+        <strong>EMV(Y) =</strong> (110×0.1)+(105×0.25)+(95×0.35)+(85×0.2)+(80×0.1)<br>
+        = 11 + 26.25 + 33.25 + 17 + 8 = <strong>95.5</strong>
+      </div>
+      <div class="step-box">
+        <strong>EMV(Z) =</strong> (100×0.1)+(115×0.25)+(90×0.35)+(95×0.2)+(85×0.1)<br>
+        = 10 + 28.75 + 31.5 + 19 + 8.5 = <strong>97.75</strong>
+      </div>
+      <div class="step-box">
+        Maximum EMV = max(90, 95.5, 97.75) = <strong>97.75</strong><br>
+        <strong>✅ Answer:</strong> Optimal strategy is <strong>Z</strong> with EMV <strong>₹97.75 lakhs</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 2. EVwPI & EVPI (Perfect Information)        -->
+  <!-- ============================================ -->
+  <div class="topic-section" id="evpi">
+    <div class="topic-label">Risk Criterion 2 & 3</div>
+    <h2 class="topic-title">EVwPI (Expected Value with Perfect Information) & EVPI (Value of Perfect Information)</h2>
+    
+    <div class="concept-box">
+      <strong>EVwPI</strong> = Σ (Best payoff in each column × Probability)<br>
+      <strong>EVPI = EVwPI − Maximum EMV</strong><br>
+      EVPI represents the maximum amount the decision maker would pay for perfect information.
+    </div>
+
+    <!-- EXAMPLE 7.1: SIMPLE (From your image) -->
+    <div class="example-box difficulty-simple">
+      <div class="ex-label"><span class="example-number">EXAMPLE 7.1</span> Simple Level (EVwPI & EVPI)</div>
+      <h4>Same payoff table as Example 6.1:</h4>
+      <table class="payoff-matrix">
+        <tr><th>States</th><th>N₁ (0.3)</th><th>N₂ (0.6)</th><th>N₃ (0.1)</th></tr>
+        <tr><th>S₁</th><td>20</td><td>18</td><td>-9</td></tr>
+        <tr><th>S₂</th><td>25</td><td>15</td><td>10</td></tr>
+        <tr><th>S₃</th><td>40</td><td>-10</td><td>12</td></tr>
+      </tr>
+
+      <div class="step-box">
+        <strong>Step 1: Find the best payoff in each column (state)</strong><br>
+        For N₁: Best = max(20, 25, 40) = <strong>40</strong> (S₃)<br>
+        For N₂: Best = max(18, 15, -10) = <strong>18</strong> (S₁)<br>
+        For N₃: Best = max(-9, 10, 12) = <strong>12</strong> (S₃)
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Calculate EVwPI</strong><br>
+        EVwPI = (40 × 0.3) + (18 × 0.6) + (12 × 0.1)<br>
+        = 12 + 10.8 + 1.2 = <strong>24</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Calculate EVPI</strong><br>
+        From Example 6.1, Maximum EMV = 17.5<br>
+        EVPI = EVwPI − Maximum EMV = 24 − 17.5 = <strong>6.5</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong><br>
+        EVwPI = <strong>₹24 lakhs</strong><br>
+        EVPI = <strong>₹6.5 lakhs</strong> (maximum to pay for perfect information)
+      </div>
+    </div>
+
+    <!-- EXAMPLE 7.2: MEDIUM -->
+    <div class="example-box difficulty-medium">
+      <div class="ex-label"><span class="example-number">EXAMPLE 7.2</span> Medium Level (EVwPI & EVPI)</div>
+      <h4>Payoff Table with Probabilities:</h4>
+      <table class="payoff-matrix">
+        <tr><th>States</th><th>N₁(0.3)</th><th>N₂(0.4)</th><th>N₃(0.3)</th></tr>
+        <tr><th>A</th><td>30</td><td>25</td><td>20</td></tr>
+        <tr><th>B</th><td>28</td><td>30</td><td>22</td></tr>
+        <tr><th>C</th><td>35</td><td>20</td><td>25</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: First calculate EMV for each strategy</strong><br>
+        EMV(A) = (30×0.3)+(25×0.4)+(20×0.3) = 9 + 10 + 6 = 25<br>
+        EMV(B) = (28×0.3)+(30×0.4)+(22×0.3) = 8.4 + 12 + 6.6 = 27<br>
+        EMV(C) = (35×0.3)+(20×0.4)+(25×0.3) = 10.5 + 8 + 7.5 = 26<br>
+        Max EMV = <strong>27</strong> (Strategy B)
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find best payoff in each column</strong><br>
+        N₁ best = max(30,28,35) = 35 (C)<br>
+        N₂ best = max(25,30,20) = 30 (B)<br>
+        N₃ best = max(20,22,25) = 25 (C)
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Calculate EVwPI</strong><br>
+        EVwPI = (35×0.3) + (30×0.4) + (25×0.3)<br>
+        = 10.5 + 12 + 7.5 = <strong>30</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4: Calculate EVPI</strong><br>
+        EVPI = 30 − 27 = <strong>3</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> EVPI = <strong>₹3 lakhs</strong>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 7.3: HARD -->
+    <div class="example-box difficulty-hard">
+      <div class="ex-label"><span class="example-number">EXAMPLE 7.3</span> Hard Level (EVwPI & EVPI with 5 States)</div>
+      <h4>Payoff Table with Probabilities:</h4>
+      <table class="payoff-matrix">
+        <tr><th>States</th><th>N₁(0.15)</th><th>N₂(0.25)</th><th>N₃(0.3)</th><th>N₄(0.2)</th><th>N₅(0.1)</th></tr>
+        <tr><th>P</th><td>100</td><td>80</td><td>70</td><td>90</td><td>60</td></tr>
+        <tr><th>Q</th><td>90</td><td>95</td><td>75</td><td>85</td><td>70</td></tr>
+        <tr><th>R</th><td>85</td><td>70</td><td>95</td><td>80</td><td>75</td></tr>
+        <tr><th>S</th><td>95</td><td>85</td><td>80</td><td>95</td><td>65</td></tr>
+      </table>
+
+      <div class="step-box">
+        <strong>Step 1: Calculate EMV for each strategy</strong><br>
+        EMV(P) = (100×0.15)+(80×0.25)+(70×0.3)+(90×0.2)+(60×0.1)<br>
+        = 15 + 20 + 21 + 18 + 6 = 80<br><br>
+        EMV(Q) = (90×0.15)+(95×0.25)+(75×0.3)+(85×0.2)+(70×0.1)<br>
+        = 13.5 + 23.75 + 22.5 + 17 + 7 = 83.75<br><br>
+        EMV(R) = (85×0.15)+(70×0.25)+(95×0.3)+(80×0.2)+(75×0.1)<br>
+        = 12.75 + 17.5 + 28.5 + 16 + 7.5 = 82.25<br><br>
+        EMV(S) = (95×0.15)+(85×0.25)+(80×0.3)+(95×0.2)+(65×0.1)<br>
+        = 14.25 + 21.25 + 24 + 19 + 6.5 = 85<br>
+        Max EMV = <strong>85</strong> (Strategy S)
+      </div>
+
+      <div class="step-box">
+        <strong>Step 2: Find best payoff in each column</strong><br>
+        N₁ best = max(100,90,85,95) = 100 (P)<br>
+        N₂ best = max(80,95,70,85) = 95 (Q)<br>
+        N₃ best = max(70,75,95,80) = 95 (R)<br>
+        N₄ best = max(90,85,80,95) = 95 (S)<br>
+        N₅ best = max(60,70,75,65) = 75 (R)
+      </div>
+
+      <div class="step-box">
+        <strong>Step 3: Calculate EVwPI</strong><br>
+        EVwPI = (100×0.15)+(95×0.25)+(95×0.3)+(95×0.2)+(75×0.1)<br>
+        = 15 + 23.75 + 28.5 + 19 + 7.5 = <strong>93.75</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>Step 4: Calculate EVPI</strong><br>
+        EVPI = 93.75 − 85 = <strong>8.75</strong>
+      </div>
+
+      <div class="step-box">
+        <strong>✅ Final Answer:</strong> EVPI = <strong>₹8.75 lakhs</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- UNIT SUMMARY                                 -->
+  <!-- ============================================ -->
+  <div class="topic-section">
+    <div class="topic-label">Unit Summary</div>
+    <h2 class="topic-title">Key Takeaways — Decision Theory</h2>
+    
+    <div class="conclusion-box">
+      <div class="con-label">Important Points to Remember</div>
+      <p>
+        <strong>Under UNCERTAINTY (Probabilities NOT known):</strong><br>
+        • <strong>Maximax:</strong> max(max of each row) — for optimistic decision makers<br>
+        • <strong>Maximin:</strong> max(min of each row) — for pessimistic decision makers<br>
+        • <strong>Laplace:</strong> max(average of each row) — assumes equal probability<br>
+        • <strong>Hurwicz:</strong> α(Max) + (1-α)(Min) — balances optimism and pessimism<br>
+        • <strong>Minimax Regret:</strong> min(max regret) — minimizes opportunity loss<br><br>
+        <strong>Under RISK (Probabilities known):</strong><br>
+        • <strong>EMV:</strong> Σ(Payoff × Probability) — choose highest<br>
+        • <strong>EVwPI:</strong> Σ(Best payoff × Probability)<br>
+        • <strong>EVPI:</strong> EVwPI − Maximum EMV (value of perfect information)
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">Exam Tips</div>
+      <ul>
+        <li>Always check if probabilities are given → Risk (EMV) else → Uncertainty</li>
+        <li>For Maximax & Maximin: Only need row operations</li>
+        <li>For Minimax Regret: First create regret table (column max − value)</li>
+        <li>For Hurwicz: α=0.6 means 60% weight to best outcome</li>
+        <li>EVPI is always a positive number representing maximum worth of perfect information</li>
+      </ul>
+    </div>
+  </div>
+
+</div> <!-- closing content-wrap -->
+
+<!-- Back to Top Button -->
+<button class="back-top" id="backTop">↑</button>
+
+<!-- Footer -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>📚 Optimization Techniques — Unit 05: Decision Theory</span>
+    <div class="footer-links">
+      <a href="optimization.html">← Back to Optimization</a>
+      <a href="index.html">StudyHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+
+  const backTop = document.getElementById('backTop');
+  if (backTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backTop.classList.add('visible');
+      } else {
+        backTop.classList.remove('visible');
+      }
+    });
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+
+</body>
+</html>
