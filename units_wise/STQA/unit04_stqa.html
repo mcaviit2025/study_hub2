@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 — Test Management | ECS 563 MCA Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand"><span>ECS 563</span> · Cyber Security Notes</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="stqa_index.html"> Home</a></li>
+    <li><a href="unit01_stqa.html">Unit 1</a></li>
+    <li><a href="unit02_stqa.html">Unit 2</a></li>
+    <li><a href="unit03_stqa.html">Unit 3</a></li>
+    <li><a href="unit04_stqa.html" class="active">Unit 4</a></li>
+    <li><a href="unit05_stqa.html">Unit 3</a></li>
+    <!-- <li><a href="unit05_ECS.html">Unit 5</a></li> -->
+  </ul>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 04 · ECS 563 MJ-EC21-4</div>
+  <h1>Test Management</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>7 Major Topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~15-20 Marks</strong></div>
+    <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Management Level</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t4-1">4.1 — Test Organization: Roles & Skills</a></li>
+      <li><a href="#t4-2">4.2 — Test Planning: IEEE 829 Test Plan Template</a></li>
+      <li><a href="#t4-3">4.3 — Test Process Monitoring & Control</a></li>
+      <li><a href="#t4-4">4.4 — Test Scenario, Test Suite, Test Cases</a></li>
+      <li><a href="#t4-5">4.5 — Configuration Management</a></li>
+      <li><a href="#t4-6">4.6 — Risk and Testing</a></li>
+      <li><a href="#t4-7">4.7 — Incident/Defect Management</a></li>
+      <li><a href="#t4-8">4.8 — Case Studies</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="content-wrap">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.1 — TEST ORGANIZATION: ROLES & SKILLS
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-1">
+  <div class="topic-label">Topic 4.1</div>
+  <h2 class="topic-title">Test Organization: Roles & Skills of Tester, Test Lead, Test Manager</h2>
+
+  <div class="concept-box">
+    <strong>Test Organization</strong> defines the structure, roles, responsibilities, and reporting relationships within the testing team. A well-organized testing team has clearly defined roles with appropriate skills and career progression paths.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the hierarchy: <strong>Test Manager</strong> (strategic, people management, budget) → <strong>Test Lead</strong> (tactical, daily coordination, technical guidance) → <strong>Tester</strong> (execution, test case creation, defect reporting).
+  </div>
+
+  <h3>Testing Team Structure — Hierarchical Organization</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.1 — Testing Team Hierarchy</div>
+    <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Test Manager at top -->
+      <rect x="290" y="20" width="200" height="50" rx="5" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="390" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Test Manager</text>
+      <text x="390" y="58" text-anchor="middle" font-size="8" fill="#aaa">Strategic · Budget · Stakeholder</text>
+      
+      <!-- Line to Test Leads -->
+      <line x1="390" y1="70" x2="390" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="150" y1="100" x2="630" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="390" y1="100" x2="150" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      
+      <!-- Test Leads -->
+      <rect x="50" y="110" width="200" height="50" rx="5" fill="#1a7a34" stroke="#1a7a34" stroke-width="2"/>
+      <text x="150" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Test Lead</text>
+      <text x="150" y="148" text-anchor="middle" font-size="8" fill="#d4edda">Tactical · Coordination</text>
+      
+      <rect x="290" y="110" width="200" height="50" rx="5" fill="#1a7a34" stroke="#1a7a34" stroke-width="2"/>
+      <text x="390" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Test Lead</text>
+      <text x="390" y="148" text-anchor="middle" font-size="8" fill="#d4edda">Tactical · Coordination</text>
+      
+      <rect x="530" y="110" width="200" height="50" rx="5" fill="#1a7a34" stroke="#1a7a34" stroke-width="2"/>
+      <text x="630" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Test Lead</text>
+      <text x="630" y="148" text-anchor="middle" font-size="8" fill="#d4edda">Tactical · Coordination</text>
+      
+      <!-- Lines to Testers -->
+      <line x1="150" y1="160" x2="150" y2="185" stroke="#0a0a0a" stroke-width="1.5"/>
+      <line x1="390" y1="160" x2="390" y2="185" stroke="#0a0a0a" stroke-width="1.5"/>
+      <line x1="630" y1="160" x2="630" y2="185" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- Tester rows -->
+      <rect x="30" y="190" width="100" height="40" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="80" y="208" text-anchor="middle" font-size="7" font-weight="700" fill="#065a68">Tester</text>
+      <text x="80" y="220" text-anchor="middle" font-size="6" fill="#065a68">Manual</text>
+      
+      <rect x="140" y="190" width="100" height="40" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="190" y="208" text-anchor="middle" font-size="7" font-weight="700" fill="#065a68">Tester</text>
+      <text x="190" y="220" text-anchor="middle" font-size="6" fill="#065a68">Automation</text>
+      
+      <rect x="340" y="190" width="100" height="40" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="390" y="208" text-anchor="middle" font-size="7" font-weight="700" fill="#065a68">Tester</text>
+      <text x="390" y="220" text-anchor="middle" font-size="6" fill="#065a68">Performance</text>
+      
+      <rect x="530" y="190" width="100" height="40" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="580" y="208" text-anchor="middle" font-size="7" font-weight="700" fill="#065a68">Tester</text>
+      <text x="580" y="220" text-anchor="middle" font-size="6" fill="#065a68">Security</text>
+      
+      <text x="390" y="265" text-anchor="middle" font-size="9" font-weight="700" fill="#0a0a0a">Larger teams may have multiple testers under each Test Lead</text>
+    </svg>
+  </div>
+
+  <h3>Detailed Role Descriptions</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>👤 Tester (Test Engineer)</h4>
+      <p><strong>Definition:</strong> The individual who executes test cases, reports defects, and verifies fixes. The tester is the hands-on executor of the test plan.</p>
+      <p><strong>Key Responsibilities:</strong></p>
+      <ul>
+        <li>Review and analyze requirements, user stories, and specifications</li>
+        <li>Design, write, and maintain test cases and test data</li>
+        <li>Set up and configure test environments</li>
+        <li>Execute test cases (manual and automated)</li>
+        <li>Log defects with clear, reproducible steps</li>
+        <li>Retest fixed defects (confirmation testing)</li>
+        <li>Perform regression testing after fixes</li>
+        <li>Participate in reviews and walkthroughs</li>
+        <li>Provide test execution status updates</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>👔 Test Lead</h4>
+      <p><strong>Definition:</strong> The individual who coordinates testing activities, guides the test team, and ensures testing follows the plan. Reports to Test Manager.</p>
+      <p><strong>Key Responsibilities:</strong></p>
+      <ul>
+        <li>Lead and mentor a team of testers (typically 3-10 people)</li>
+        <li>Assign test tasks and monitor progress</li>
+        <li>Review test cases and provide technical guidance</li>
+        <li>Coordinate with developers, business analysts, and project managers</li>
+        <li>Track test execution metrics and report to Test Manager</li>
+        <li>Manage test environment and tool access</li>
+        <li>Conduct defect triage meetings</li>
+        <li>Prepare test summary reports</li>
+        <li>Onboard and train new testers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🎯 Test Manager</h4>
+      <p><strong>Definition:</strong> The individual responsible for overall test strategy, planning, resource allocation, budget, and stakeholder communication across one or more projects.</p>
+      <p><strong>Key Responsibilities:</strong></p>
+      <ul>
+        <li>Define test strategy, policies, and standards for organization</li>
+        <li>Create and manage test budgets and resource allocation</li>
+        <li>Hire, train, and evaluate testing staff</li>
+        <li>Develop and maintain test plans for projects</li>
+        <li>Manage relationships with stakeholders (clients, senior management)</li>
+        <li>Establish test metrics and quality dashboards</li>
+        <li>Decide on test automation strategy and tool investments</li>
+        <li>Manage vendor relationships for outsourced testing</li>
+        <li>Ensure compliance with industry standards (ISO, CMMI, etc.)</li>
+        <li>Present test progress and release recommendations to leadership</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>📊 Skills Matrix Comparison</h4>
+      <table class="data-table no-bold" style="margin:0; font-size:0.75rem;">
+        <thead>
+          <tr><th>Skill</th><th>Tester</th><th>Test Lead</th><th>Test Mgr</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Technical Testing</td><td>●●●</td><td>●●○</td><td>●○○</td></tr>
+          <tr><td>Test Case Design</td><td>●●●</td><td>●●●</td><td>●●○</td></tr>
+          <tr><td>Test Planning</td><td>●○○</td><td>●●●</td><td>●●●</td></tr>
+          <tr><td>People Management</td><td>○○○</td><td>●●●</td><td>●●●</td></tr>
+          <tr><td>Budget/Forecast</td><td>○○○</td><td>●○○</td><td>●●●</td></tr>
+          <tr><td>Stakeholder Mgt</td><td>○○○</td><td>●●○</td><td>●●●</td></tr>
+        </tbody>
+       </table>
+    </div>
+  </div>
+
+  <h3>Essential Skills for Each Role</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔧</div>
+      <h4>Tester Skills</h4>
+      <ul style="font-size:0.8rem; text-align:left;">
+        <li>Attention to detail</li>
+        <li>Analytical thinking</li>
+        <li>Communication (defect reporting)</li>
+        <li>Basic SQL and DB knowledge</li>
+        <li>Test case design techniques</li>
+        <li>Defect tracking tools (JIRA, Bugzilla)</li>
+        <li>Basic automation tools</li>
+        <li>Domain knowledge</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📋</div>
+      <h4>Test Lead Skills</h4>
+      <ul style="font-size:0.8rem; text-align:left;">
+        <li>Team leadership & mentoring</li>
+        <li>Test planning & estimation</li>
+        <li>Risk assessment</li>
+        <li>Coordination across teams</li>
+        <li>Test metrics & reporting</li>
+        <li>Defect triage facilitation</li>
+        <li>Advanced testing techniques</li>
+        <li>Conflict resolution</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📈</div>
+      <h4>Test Manager Skills</h4>
+      <ul style="font-size:0.8rem; text-align:left;">
+        <li>Strategic planning</li>
+        <li>Budget management</li>
+        <li>Resource allocation</li>
+        <li>Vendor management</li>
+        <li>Process improvement</li>
+        <li>Stakeholder communication</li>
+        <li>Quality metrics & dashboards</li>
+        <li>Hiring & performance evaluation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level — Test Organization Chapter</li>
+      <li>Black, R. — Managing the Testing Process, 3rd Edition</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.2 — TEST PLANNING: IEEE 829 TEST PLAN TEMPLATE
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-2">
+  <div class="topic-label">Topic 4.2</div>
+  <h2 class="topic-title">Test Planning — Test Plan as per IEEE 829 Standard</h2>
+
+  <div class="concept-box">
+    <strong>Test Planning</strong> is the activity of defining the test strategy, scope, resources, schedule, and approach for testing. The <strong>IEEE 829-2008 Standard for Software Test Documentation</strong> provides a comprehensive template for creating a Master Test Plan (MTP).
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    IEEE 829 Test Plan has 14-17 sections depending on version. Memorize the KEY sections: Test Plan Identifier, Introduction, Test Items, Features to be Tested, Features NOT to be Tested, Approach, Pass/Fail Criteria, Suspension/Resumption Criteria, Test Deliverables, Environment, Schedule, Risks, Staffing.
+  </div>
+
+  <h3>IEEE 829 Master Test Plan Template — Complete Structure</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.2 — IEEE 829 Test Plan Document Structure</div>
+    <svg viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Main document box -->
+      <rect x="30" y="20" width="720" height="460" rx="5" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-dasharray="8 4"/>
+      <text x="390" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">IEEE 829 MASTER TEST PLAN — SECTIONS</text>
+      
+      <!-- Sections - Left column -->
+      <rect x="50" y="55" width="320" height="30" rx="3" fill="#0a0a0a"/>
+      <text x="60" y="74" text-anchor="start" font-size="8" font-weight="700" fill="#fff">1. Test Plan Identifier</text>
+      
+      <rect x="50" y="90" width="320" height="30" rx="3" fill="#1a7a34"/>
+      <text x="60" y="109" text-anchor="start" font-size="8" font-weight="700" fill="#fff">2. Introduction (Scope, Objectives, Background)</text>
+      
+      <rect x="50" y="125" width="320" height="30" rx="3" fill="#0c8da0"/>
+      <text x="60" y="144" text-anchor="start" font-size="8" font-weight="700" fill="#fff">3. Test Items (List of items being tested)</text>
+      
+      <rect x="50" y="160" width="320" height="30" rx="3" fill="#e6ac00"/>
+      <text x="60" y="179" text-anchor="start" font-size="8" font-weight="700" fill="#fff">4. Features to be Tested</text>
+      
+      <rect x="50" y="195" width="320" height="30" rx="3" fill="#c0392b"/>
+      <text x="60" y="214" text-anchor="start" font-size="8" font-weight="700" fill="#fff">5. Features NOT to be Tested</text>
+      
+      <rect x="50" y="230" width="320" height="30" rx="3" fill="#6f42c1"/>
+      <text x="60" y="249" text-anchor="start" font-size="8" font-weight="700" fill="#fff">6. Approach (Testing techniques, tools)</text>
+      
+      <rect x="50" y="265" width="320" height="30" rx="3" fill="#e67e22"/>
+      <text x="60" y="284" text-anchor="start" font-size="8" font-weight="700" fill="#fff">7. Pass/Fail Criteria</text>
+      
+      <!-- Sections - Right column -->
+      <rect x="410" y="55" width="320" height="30" rx="3" fill="#0a0a0a"/>
+      <text x="420" y="74" text-anchor="start" font-size="8" font-weight="700" fill="#fff">8. Suspension/Resumption Criteria</text>
+      
+      <rect x="410" y="90" width="320" height="30" rx="3" fill="#1a7a34"/>
+      <text x="420" y="109" text-anchor="start" font-size="8" font-weight="700" fill="#fff">9. Test Deliverables (Reports, logs, etc.)</text>
+      
+      <rect x="410" y="125" width="320" height="30" rx="3" fill="#0c8da0"/>
+      <text x="420" y="144" text-anchor="start" font-size="8" font-weight="700" fill="#fff">10. Test Environment (Hardware/Software)</text>
+      
+      <rect x="410" y="160" width="320" height="30" rx="3" fill="#e6ac00"/>
+      <text x="420" y="179" text-anchor="start" font-size="8" font-weight="700" fill="#fff">11. Test Schedule (Milestones, timeline)</text>
+      
+      <rect x="410" y="195" width="320" height="30" rx="3" fill="#c0392b"/>
+      <text x="420" y="214" text-anchor="start" font-size="8" font-weight="700" fill="#fff">12. Risks and Contingencies</text>
+      
+      <rect x="410" y="230" width="320" height="30" rx="3" fill="#6f42c1"/>
+      <text x="420" y="249" text-anchor="start" font-size="8" font-weight="700" fill="#fff">13. Staffing and Training Needs</text>
+      
+      <rect x="410" y="265" width="320" height="30" rx="3" fill="#e67e22"/>
+      <text x="420" y="284" text-anchor="start" font-size="8" font-weight="700" fill="#fff">14. Approvals (Sign-off authority)</text>
+      
+      <!-- Additional sections note -->
+      <rect x="50" y="310" width="680" height="30" rx="3" fill="#f8d9b0" stroke="#e6ac00" stroke-width="1"/>
+      <text x="60" y="329" text-anchor="start" font-size="8" fill="#8a6500">Additional optional sections: Glossary, Assumptions & Dependencies, Communication Plan, Metrics Plan</text>
+    </svg>
+  </div>
+
+  <h3>Detailed Description of Each Test Plan Section</h3>
+
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Section</th><th>Description</th><th>Example Content</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">1. Test Plan Identifier</td>
+        <td>Unique identifier for version control and traceability</td>
+        <td>"TP-MCA-ONLINEBANKING-V1.0"</td>
+      </tr>
+      <tr><td style="font-weight:700;">2. Introduction</td>
+        <td>Project background, objectives, scope, and references</td>
+        <td>"Objective: Validate online banking system for SBI before March 2025 release"</td>
+      </tr>
+      <tr><td style="font-weight:700;">3. Test Items</td>
+        <td>List of items being tested (code modules, APIs, databases)</td>
+        <td>"Login module, Fund Transfer API, Transaction History, Balance Inquiry"</td>
+      </tr>
+      <tr><td style="font-weight:700;">4. Features to be Tested</td>
+        <td>Specific functionalities that will be tested</td>
+        <td>"User authentication, fund transfer validation, transaction history retrieval, statement generation"</td>
+      </tr>
+      <tr><td style="font-weight:700;">5. Features NOT to be Tested</td>
+        <td>Explicit exclusions with justification</td>
+        <td>"Biometric login (deferred to Phase 2), Bill payments (third-party API not ready)"</td>
+      </tr>
+      <tr><td style="font-weight:700;">6. Approach</td>
+        <td>Testing techniques, levels, types, and tools</td>
+        <td>"Black-box (EP, BVA) for functional testing. Selenium for automation. JMeter for load testing. Manual exploratory for UI."</td>
+      </tr>
+      <tr><td style="font-weight:700;">7. Pass/Fail Criteria</td>
+        <td>Conditions for test case/pass or overall release</td>
+        <td>"Pass: All critical tests pass. Fail: Any critical defect remains open. Release: ≥98% pass rate, no severity 1 defects."</td>
+      </tr>
+      <tr><td style="font-weight:700;">8. Suspension/Resumption</td>
+        <td>When to pause testing and conditions to restart</td>
+        <td>"Suspend if environment unstable >2 hours. Resumewhen environment restored and smoke test passes."</td>
+      </tr>
+      <tr><td style="font-weight:700;">9. Test Deliverables</td>
+        <td>Documents and artifacts produced during testing</td>
+        <td>"Test Plan, Test Cases, Test Logs, Defect Reports, Test Summary Report, Automation Scripts"</td>
+      </tr>
+      <tr><td style="font-weight:700;">10. Test Environment</td>
+        <td>Hardware, software, network, and tools required</td>
+        <td>"2 Windows servers, 1 DB server, 10 test clients, Chrome/Firefox, JIRA, Selenium Grid"</td>
+      </tr>
+      <tr><td style="font-weight:700;">11. Test Schedule</td>
+        <td>Timeline with milestones and activities</td>
+        <td>"Week 1: Plan → Week 2-3: Case design → Week 4-5: Execution → Week 6: Regression & closure"</td>
+      </tr>
+      <tr><td style="font-weight:700;">12. Risks & Contingencies</td>
+        <td>Potential issues and mitigation plans</td>
+        <td>"Risk: Developer delays → Mitigation: Shift-left testing, early static analysis. Risk: Environment unavailability → Mitigation: Backup environment on cloud."</td>
+      </tr>
+      <tr><td style="font-weight:700;">13. Staffing & Training</td>
+        <td>Team composition and required training</td>
+        <td>"1 Test Lead, 4 Testers. Training needed: Selenium (2 days), Domain (1 day)."</td>
+      </tr>
+      <tr><td style="font-weight:700;">14. Approvals</td>
+        <td>Sign-off authorities and dates</td>
+        <td>"Approved by: Test Manager, Project Manager, QA Director. Date: 15-Jan-2024"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">
+    <div class="ex-label">IEEE 829 Test Plan — Real Example (E-commerce Checkout Testing)</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+Project: FlipKart Style E-commerce Platform
+Version: 2.0 Release
+Date: 15 March 2024
+
+1. TEST PLAN IDENTIFIER: TP-ECOMM-FK-V2.0-20240315
+
+2. INTRODUCTION:
+   Objective: Validate checkout functionality for Release 2.0
+   Scope: Cart management, payment gateway integration, order confirmation
+   Out of scope: Product catalog (tested separately), Returns (deferred)
+
+3. TEST ITEMS:
+   - Cart Service API
+   - Payment Gateway Integration (Razorpay)
+   - Order Management System
+   - Email Notification Service
+
+4. FEATURES TO BE TESTED:
+   - Add/remove items from cart
+   - Apply promo codes and coupons
+   - Validate pricing and discounts
+   - Payment processing (cards, UPI, netbanking)
+   - Order confirmation generation
+   - Email/SMS notifications
+
+5. FEATURES NOT TO BE TESTED:
+   - Wishlist (Phase 3)
+   - Product reviews (separate module)
+
+6. APPROACH:
+   Functional: Black-box (EP, BVA, Decision Table)
+   Non-functional: Load testing (1000 concurrent users)
+   Automation: Selenium for regression (60% coverage)
+   Manual: Exploratory for complex scenarios
+
+7. PASS/FAIL CRITERIA:
+   Build Acceptance: 100% smoke tests must pass
+   Test Case: All assertions must match expected results
+   Release: 0 Severity-1 defects, ≤5 Severity-2 defects
+
+8. SUSPENSION/RESUMPTION:
+   Suspend: Critical defect blocking checkout flow
+   Resume: Defect fixed and confirmation test passes
+
+9. DELIVERABLES:
+   Test Plan, Test Cases, Test Logs, Defect Reports, Summary Report
+
+10. ENVIRONMENT:
+    Staging server (8GB RAM, 4 vCPU), Test payment gateway, Selenium Grid
+
+11. SCHEDULE:
+    20-25 March: Case design | 26 Mar-5 Apr: Execution | 8-10 Apr: Regression
+
+12. RISKS:
+    Payment API changes → Mitigation: Sandbox testing before integration
+
+13. STAFFING:
+    1 Test Lead, 3 Testers (2 functional, 1 automation)
+
+14. APPROVALS:
+    QA Manager: [Signed] Date: 10-03-2024
+    </pre>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 829-2008 — Standard for Software and System Test Documentation</li>
+      <li>ISO/IEC/IEEE 29119-3 — Test Documentation</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.3 — TEST PROCESS MONITORING & CONTROL
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-3">
+  <div class="topic-label">Topic 4.3</div>
+  <h2 class="topic-title">Test Process Monitoring & Control</h2>
+
+  <div class="concept-box">
+    <strong>Test Monitoring</strong> involves tracking and reporting test progress against the plan. <strong>Test Control</strong> involves taking corrective actions when monitoring shows significant deviations from the plan. Both are essential for managing test projects successfully.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Monitoring = Tracking, Measuring, Reporting. Control = Correcting, Replanning, Adjusting. You monitor metrics (logs, defect density), then control by adjusting resources, schedule, or scope.
+  </div>
+
+  <h3>4.3.1 — Test Monitoring through Test Log and Defect Density</h3>
+
+  <h4>IEEE 829 Test Log Template</h4>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.3 — IEEE 829 Test Log Template Structure</div>
+    <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <rect x="30" y="20" width="720" height="260" rx="5" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="390" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">IEEE 829 TEST LOG — SECTIONS</text>
+      
+      <rect x="50" y="55" width="340" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="60" y="72" text-anchor="start" font-size="8" fill="#fff">Test Log Identifier</text>
+      
+      <rect x="410" y="55" width="320" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="420" y="72" text-anchor="start" font-size="8" fill="#fff">Test Log Summary (Pass/Fail counts)</text>
+      
+      <rect x="50" y="85" width="340" height="25" rx="3" fill="#1a7a34"/>
+      <text x="60" y="102" text-anchor="start" font-size="8" fill="#fff">Test Execution Details (Date, Tester, Environment)</text>
+      
+      <rect x="410" y="85" width="320" height="25" rx="3" fill="#1a7a34"/>
+      <text x="420" y="102" text-anchor="start" font-size="8" fill="#fff">Test Item/Test Case Identifier</text>
+      
+      <rect x="50" y="115" width="340" height="25" rx="3" fill="#0c8da0"/>
+      <text x="60" y="132" text-anchor="start" font-size="8" fill="#fff">Test Procedure Results (Actual vs Expected)</text>
+      
+      <rect x="410" y="115" width="320" height="25" rx="3" fill="#0c8da0"/>
+      <text x="420" y="132" text-anchor="start" font-size="8" fill="#fff">Incident Identifiers (Linked defects)</text>
+      
+      <rect x="50" y="145" width="340" height="25" rx="3" fill="#e6ac00"/>
+      <text x="60" y="162" text-anchor="start" font-size="8" fill="#fff">Log Entry Timestamps (Start, End, Duration)</text>
+      
+      <rect x="410" y="145" width="320" height="25" rx="3" fill="#e6ac00"/>
+      <text x="420" y="162" text-anchor="start" font-size="8" fill="#fff">Tester Name and Role</text>
+      
+      <rect x="50" y="175" width="340" height="25" rx="3" fill="#c0392b"/>
+      <text x="60" y="192" text-anchor="start" font-size="8" fill="#fff">Environment Configuration (OS, Browser, Version)</text>
+      
+      <rect x="410" y="175" width="320" height="25" rx="3" fill="#c0392b"/>
+      <text x="420" y="192" text-anchor="start" font-size="8" fill="#fff">Remarks / Observations</text>
+    </svg>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">IEEE 829 Test Log — Real Example</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+TEST LOG IDENTIFIER: TL-LOGIN-20240320-001
+TEST LOG SUMMARY: 8 executed, 7 passed, 1 failed (87.5% pass rate)
+
+EXECUTION DETAILS:
+  Date: 20-March-2024
+  Start Time: 10:00 AM | End Time: 11:30 AM
+  Tester: Priya Sharma
+  Environment: Staging (Windows 11, Chrome 122)
+
+TEST ITEMS EXECUTED:
+  TC-LOGIN-001: Valid credentials login → PASSED
+  TC-LOGIN-002: Invalid password → PASSED
+  TC-LOGIN-003: Empty username → PASSED
+  TC-LOGIN-004: Empty password → PASSED
+  TC-LOGIN-005: SQL injection attempt → PASSED
+  TC-LOGIN-006: XSS attempt → PASSED
+  TC-LOGIN-007: Valid login after lockout → FAILED (See INC-042)
+  TC-LOGIN-008: Remember me functionality → PASSED
+
+INCIDENT IDENTIFIERS:
+  INC-042: Account not unlocking after 5 min lockout period
+
+REMARKS: Environment stable throughout. Retest required for TC-LOGIN-007 after fix.
+    </pre>
+  </div>
+
+  <h4>Defect Density Metric</h4>
+  <p><strong>Defect Density</strong> measures the number of defects per unit of software size (e.g., per KLOC — thousand lines of code, per function point, per module). It is used to assess software quality and predict remaining defects.</p>
+
+  <div class="formula-box">
+    📊 Defect Density = (Number of Defects Confirmed) / (Size of Software Module)
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Defect Density Calculation Example</div>
+    <p><strong>Scenario:</strong> A payment processing module has 15,000 lines of code (15 KLOC). Testers found 45 defects during testing.</p>
+    <p><strong>Defect Density = 45 / 15 = 3 defects per KLOC</strong></p>
+    <p><strong>Industry Benchmarks:</strong></p>
+    <ul>
+      <li>Excellent: &lt; 1 defect/KLOC</li>
+      <li>Good: 1-3 defects/KLOC</li>
+      <li>Average: 3-7 defects/KLOC</li>
+      <li>Poor: 7-15 defects/KLOC</li>
+      <li>Critical: > 15 defects/KLOC</li>
+    </ul>
+    <p><strong>Use Case:</strong> The payment module at 3 defects/KLOC is "Good" quality. Modules with >7 defects/KLOC should be prioritized for refactoring and additional testing.</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.4 — Defect Density by Module (Quality Heat Map)</div>
+    <div class="chart-container">
+      <canvas id="defectDensityChart"></canvas>
+    </div>
+  </div>
+
+  <h3>4.3.2 — Reporting Test Status (IEEE 829 Test Summary Report Template)</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.5 — IEEE 829 Test Summary Report Structure</div>
+    <svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <rect x="30" y="20" width="720" height="280" rx="5" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="390" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">IEEE 829 TEST SUMMARY REPORT — SECTIONS</text>
+      
+      <rect x="50" y="55" width="340" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="60" y="72" text-anchor="start" font-size="8" fill="#fff">Report Identifier (Version, Date)</text>
+      
+      <rect x="410" y="55" width="320" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="420" y="72" text-anchor="start" font-size="8" fill="#fff">Summary of Test Results (Pass/Fail counts)</text>
+      
+      <rect x="50" y="85" width="340" height="25" rx="3" fill="#1a7a34"/>
+      <text x="60" y="102" text-anchor="start" font-size="8" fill="#fff">Variances from Test Plan (Schedule, scope changes)</text>
+      
+      <rect x="410" y="85" width="320" height="25" rx="3" fill="#1a7a34"/>
+      <text x="420" y="102" text-anchor="start" font-size="8" fill="#fff">Defect Summary (By severity, status, module)</text>
+      
+      <rect x="50" y="115" width="340" height="25" rx="3" fill="#0c8da0"/>
+      <text x="60" y="132" text-anchor="start" font-size="8" fill="#fff">Test Environment Summary (Stability, availability)</text>
+      
+      <rect x="410" y="115" width="320" height="25" rx="3" fill="#0c8da0"/>
+      <text x="420" y="132" text-anchor="start" font-size="8" fill="#fff">Recommendations (Release decision, next steps)</text>
+      
+      <rect x="50" y="145" width="340" height="25" rx="3" fill="#e6ac00"/>
+      <text x="60" y="162" text-anchor="start" font-size="8" fill="#fff">Evaluation (Quality assessment, risks remaining)</text>
+      
+      <rect x="410" y="145" width="320" height="25" rx="3" fill="#e6ac00"/>
+      <text x="420" y="162" text-anchor="start" font-size="8" fill="#fff">Lessons Learned (Process improvements)</text>
+      
+      <rect x="50" y="175" width="340" height="25" rx="3" fill="#c0392b"/>
+      <text x="60" y="192" text-anchor="start" font-size="8" fill="#fff">Approvals (Sign-off for release)</text>
+      
+      <rect x="410" y="175" width="320" height="25" rx="3" fill="#c0392b"/>
+      <text x="420" y="192" text-anchor="start" font-size="8" fill="#fff">Attachments (Logs, reports, metrics)</text>
+    </svg>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">IEEE 829 Test Summary Report — Real Example</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+TEST SUMMARY REPORT
+Project: Online Banking System - Phase 2 Release
+Report ID: TSR-OBS-V2.0-20240415
+Date: 15-April-2024
+
+1. SUMMARY OF TEST RESULTS:
+   Total Test Cases: 342
+   Executed: 342 (100%)
+   Passed: 328 (95.9%)
+   Failed: 14 (4.1%)
+   Blocked: 0
+
+2. DEFECT SUMMARY:
+   Total Defects Found: 42
+   By Severity: Critical(0), High(3), Medium(12), Low(27)
+   By Status: Closed(38), Open(2), Deferred(2)
+   Defect Density: 2.8 defects/KLOC (Good)
+
+3. VARIANCES FROM PLAN:
+   Original schedule: 10 days → Actual: 12 days
+   Reason: Payment gateway API delays
+   Scope change: Added mobile testing (2 days)
+
+4. ENVIRONMENT SUMMARY:
+   Environment stable for 90% of test execution
+   2 incidents of environment downtime (resolved within 2 hours)
+
+5. RECOMMENDATIONS:
+   ✓ RELEASE RECOMMENDED
+   Conditions: All high severity defects fixed
+   Remaining open defects can be deferred to next release
+
+6. LESSONS LEARNED:
+   - Payment gateway integration should be tested earlier
+   - Increase automation coverage for regression tests
+   - Add performance testing baseline
+
+7. APPROVALS:
+   Test Manager: [Signed]
+   Project Manager: [Signed]
+    </pre>
+  </div>
+
+  <h3>4.3.3 — Test Control</h3>
+  <div class="concept-box">
+    <strong>Test Control</strong> involves taking corrective actions based on test monitoring data to bring testing activities back in line with the test plan or to adjust the plan when deviations are unavoidable.
+  </div>
+
+  <h4>Test Control Actions — Examples</h4>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Monitoring Finding</th><th>Test Control Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">Test execution is falling behind schedule</td>
+      <td>• Add overtime or additional testers<br>• Reduce test scope for low-risk features<br>• Prioritize critical tests<br>• Automate repetitive tests</td>
+      </tr>
+      <tr><td style="font-weight:700;">Defect density is higher than expected</td>
+      <td>• Request developers to perform additional unit testing<br>• Increase testing in high-defect modules<br>• Conduct root cause analysis<br>• Enhance static analysis and code reviews</td>
+      </tr>
+      <tr><td style="font-weight:700;">Environment is unstable/offline frequently</td>
+      <td>• Escalate to operations team<br>• Request dedicated test environment<br>• Schedule environment maintenance windows<br>• Use backup/cloud environment</td>
+      </tr>
+      <tr><td style="font-weight:700;">Test cases have low defect detection rate</td>
+      <td>• Review and enhance test case design<br>• Add exploratory testing sessions<br>• Use different test design techniques<br>• Involve domain experts</td>
+      </tr>
+      <tr><td style="font-weight:700;">Regression testing time exceeds window</td>
+      <td>• Prioritize regression test suite (critical paths only)<br>• Parallelize execution across multiple machines<br>• Automate additional regression tests</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 829-2008 — Test Documentation (Test Log, Test Summary Report)</li>
+      <li>ISTQB Advanced Level — Test Management</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.4 — TEST SCENARIO, TEST SUITE, TEST CASES
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-4">
+  <div class="topic-label">Topic 4.4</div>
+  <h2 class="topic-title">Test Scenario, Test Suite, Test Cases (Positive & Negative)</h2>
+
+  <div class="concept-box">
+    <strong>Test Scenarios</strong> are high-level descriptions of what to test. <strong>Test Cases</strong> are detailed step-by-step instructions with inputs and expected results. <strong>Test Suites</strong> are collections of test cases grouped by functionality or priority. <strong>Positive test cases</strong> verify expected behavior; <strong>negative test cases</strong> verify error handling.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Hierarchy: <strong>Test Scenario</strong> (What to test? One line) → <strong>Test Case</strong> (How to test? Detailed steps) → <strong>Test Suite</strong> (Collection of test cases). Positive test cases follow happy path; Negative test cases test invalid inputs and error conditions.
+  </div>
+
+  <h3>Hierarchy of Test Artifacts</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.6 — Test Scenario → Test Case → Test Suite Hierarchy</div>
+    <svg viewBox="0 0 780 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Hierarchy pyramid -->
+      <polygon points="390,160 80,30 700,30" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      
+      <!-- Text layers -->
+      <text x="390" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#065a68">TEST SCENARIO</text>
+      <text x="390" y="78" text-anchor="middle" font-size="8" fill="#065a68">(High-level: "Test login functionality")</text>
+      
+      <text x="390" y="105" text-anchor="middle" font-size="11" font-weight="700" fill="#0c8da0">TEST CASE</text>
+      <text x="390" y="120" text-anchor="middle" font-size="7" fill="#0c8da0">(Detailed: Steps, inputs, expected results)</text>
+      
+      <text x="390" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">TEST SUITE</text>
+      <text x="390" y="158" text-anchor="middle" font-size="7" fill="#0a0a0a">(Collection of related test cases)</text>
+    </svg>
+  </div>
+
+  <h3>Test Scenario</h3>
+  <p><strong>Definition:</strong> A test scenario is a high-level description of a functionality or feature to be tested. It answers "What needs to be tested?" without specifying the exact steps.</p>
+  
+  <div class="example-box">
+    <div class="ex-label">Test Scenario Examples (E-commerce Application)</div>
+    <ul>
+      <li>TS-001: Verify user registration functionality</li>
+      <li>TS-002: Verify user login functionality</li>
+      <li>TS-003: Verify product search functionality</li>
+      <li>TS-004: Verify add to cart functionality</li>
+      <li>TS-005: Verify checkout and payment functionality</li>
+      <li>TS-006: Verify order cancellation functionality</li>
+    </ul>
+  </div>
+
+  <h3>IEEE 829 Test Case Specification Template</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.7 — IEEE 829 Test Case Specification Template</div>
+    <svg viewBox="0 0 780 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <rect x="30" y="20" width="720" height="310" rx="5" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="390" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">IEEE 829 TEST CASE SPECIFICATION — SECTIONS</text>
+      
+      <rect x="50" y="55" width="340" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="60" y="72" text-anchor="start" font-size="8" fill="#fff">Test Case Identifier (Unique ID)</text>
+      
+      <rect x="410" y="55" width="320" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="420" y="72" text-anchor="start" font-size="8" fill="#fff">Test Item (Module/Feature being tested)</text>
+      
+      <rect x="50" y="85" width="340" height="25" rx="3" fill="#1a7a34"/>
+      <text x="60" y="102" text-anchor="start" font-size="8" fill="#fff">Test Case Title (Brief description)</text>
+      
+      <rect x="410" y="85" width="320" height="25" rx="3" fill="#1a7a34"/>
+      <text x="420" y="102" text-anchor="start" font-size="8" fill="#fff">Test Objective (Purpose of this test)</text>
+      
+      <rect x="50" y="115" width="340" height="25" rx="3" fill="#0c8da0"/>
+      <text x="60" y="132" text-anchor="start" font-size="8" fill="#fff">Preconditions (What must be true before test)</text>
+      
+      <rect x="410" y="115" width="320" height="25" rx="3" fill="#0c8da0"/>
+      <text x="420" y="132" text-anchor="start" font-size="8" fill="#fff">Test Data (Input values needed)</text>
+      
+      <rect x="50" y="145" width="340" height="25" rx="3" fill="#e6ac00"/>
+      <text x="60" y="162" text-anchor="start" font-size="8" fill="#fff">Test Steps (Step-by-step execution instructions)</text>
+      
+      <rect x="410" y="145" width="320" height="25" rx="3" fill="#e6ac00"/>
+      <text x="420" y="162" text-anchor="start" font-size="8" fill="#fff">Expected Results (What should happen)</text>
+      
+      <rect x="50" y="175" width="340" height="25" rx="3" fill="#c0392b"/>
+      <text x="60" y="192" text-anchor="start" font-size="8" fill="#fff">Actual Results (Filled during execution)</text>
+      
+      <rect x="410" y="175" width="320" height="25" rx="3" fill="#c0392b"/>
+      <text x="420" y="192" text-anchor="start" font-size="8" fill="#fff">Pass/Fail Criteria (How to judge outcome)</text>
+      
+      <rect x="50" y="205" width="340" height="25" rx="3" fill="#6f42c1"/>
+      <text x="60" y="222" text-anchor="start" font-size="8" fill="#fff">Postconditions (State after test execution)</text>
+      
+      <rect x="410" y="205" width="320" height="25" rx="3" fill="#6f42c1"/>
+      <text x="420" y="222" text-anchor="start" font-size="8" fill="#fff">Related Defects/Incidents (If any)</text>
+      
+      <rect x="50" y="235" width="340" height="25" rx="3" fill="#e67e22"/>
+      <text x="60" y="252" text-anchor="start" font-size="8" fill="#fff">Test Environment/Configuration</text>
+      
+      <rect x="410" y="235" width="320" height="25" rx="3" fill="#e67e22"/>
+      <text x="420" y="252" text-anchor="start" font-size="8" fill="#fff">Tester & Execution Date</text>
+    </svg>
+  </div>
+
+  <h3>Positive vs Negative Test Cases</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ POSITIVE TEST CASES</h4>
+      <p><strong>Definition:</strong> Test cases that use valid inputs and expected behavior to verify that the system performs its intended functions correctly.</p>
+      <p><strong>Purpose:</strong> Confirm that the software works as specified in the requirements.</p>
+      <p><strong>Example (Login):</strong></p>
+      <ul>
+        <li>Valid username + valid password → Login successful</li>
+        <li>Registered user with correct credentials → Dashboard displayed</li>
+        <li>Remember me checkbox → Session persists across browser close</li>
+      </ul>
+      <p><strong>Key characteristic:</strong> All inputs are valid, all preconditions met, expected outcome is SUCCESS.</p>
+    </div>
+    <div class="compare-card">
+      <h4>❌ NEGATIVE TEST CASES</h4>
+      <p><strong>Definition:</strong> Test cases that use invalid inputs, unexpected conditions, or error scenarios to verify that the system handles failures gracefully.</p>
+      <p><strong>Purpose:</strong> Validate error handling, validation logic, and system robustness.</p>
+      <p><strong>Example (Login):</strong></p>
+      <ul>
+        <li>Invalid username + valid password → Error message displayed</li>
+        <li>Valid username + invalid password → "Invalid credentials" message</li>
+        <li>Empty username + valid password → Validation error</li>
+        <li>SQL injection in username field → Not executed, proper sanitization</li>
+        <li>XSS script in username → Properly escaped, not executed</li>
+        <li>Account locked after 3 failed attempts → Lockout message displayed</li>
+      </ul>
+      <p><strong>Key characteristic:</strong> At least one input is invalid or precondition is violated, expected outcome is ERROR HANDLING (not crash).</p>
+    </div>
+  </div>
+
+  <h3>Complete Test Case Example — Positive & Negative (IEEE 829 Format)</h3>
+  
+  <div class="example-box">
+    <div class="ex-label">Positive Test Case — TC-LOGIN-001 (Valid Login)</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+TEST CASE ID: TC-LOGIN-001
+TEST ITEM: Login Module (Module ID: AUTH-01)
+TEST CASE TITLE: Verify successful login with valid credentials
+TEST OBJECTIVE: Validate that registered users can log in successfully
+
+PRECONDITIONS:
+  - User "testuser@example.com" is registered in system
+  - Account is active and not locked
+  - User is not already logged in
+
+TEST DATA:
+  - Email: testuser@example.com
+  - Password: ValidPassword@123
+
+TEST STEPS:
+  1. Navigate to application login page (https://app.example.com/login)
+  2. Enter email address "testuser@example.com" in email field
+  3. Enter password "ValidPassword@123" in password field
+  4. Click "Sign In" button
+  5. Wait for dashboard to load
+
+EXPECTED RESULTS:
+  1. Login page loads successfully
+  2-3. Email and password fields accept input
+  4. Click triggers authentication request
+  5. User is redirected to dashboard page (https://app.example.com/dashboard)
+  6. Dashboard shows welcome message "Welcome, Test User!"
+  7. Session token is created in browser storage
+  8. Login timestamp recorded in audit log
+
+POSTCONDITIONS:
+  - User session is active
+  - User can access protected resources
+  - "Sign Out" option is available
+
+TEST TYPE: Positive, Functional
+PRIORITY: High
+    </pre>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Negative Test Case — TC-LOGIN-008 (Invalid Password)</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+TEST CASE ID: TC-LOGIN-008
+TEST ITEM: Login Module (Module ID: AUTH-01)
+TEST CASE TITLE: Verify error message for invalid password
+TEST OBJECTIVE: Validate that system rejects incorrect password and shows appropriate error
+
+PRECONDITIONS:
+  - User "testuser@example.com" is registered in system
+  - Account is active and not locked
+  - User is not already logged in
+  - User has 0 failed attempts recorded
+
+TEST DATA:
+  - Email: testuser@example.com
+  - Password: WrongPassword@123 (intentionally incorrect)
+
+TEST STEPS:
+  1. Navigate to application login page
+  2. Enter correct email "testuser@example.com"
+  3. Enter incorrect password "WrongPassword@123"
+  4. Click "Sign In" button
+  5. Observe system response
+
+EXPECTED RESULTS:
+  1. Login page loads successfully
+  2-3. Fields accept input
+  4. Authentication fails
+  5. User remains on login page (NOT redirected)
+  6. Error message displayed: "Invalid email or password. Please try again."
+  7. Password field is cleared (security best practice)
+  8. Email field retains the entered email (user convenience)
+  9. Failed attempt counter increments to 1
+  10. Account remains active (not locked after single failure)
+
+POSTCONDITIONS:
+  - User is not authenticated
+  - Protected resources remain inaccessible
+  - Failed login attempt is logged in audit trail
+
+TEST TYPE: Negative, Functional, Boundary
+PRIORITY: High
+    </pre>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 829-2008 — Test Case Specification Template</li>
+      <li>ISTQB Foundation Level — Test Design and Execution</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.5 — CONFIGURATION MANAGEMENT
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-5">
+  <div class="topic-label">Topic 4.5</div>
+  <h2 class="topic-title">Configuration Management — Configuration Management Support for Testing</h2>
+
+  <div class="concept-box">
+    <strong>Configuration Management (CM)</strong> is the discipline of identifying, controlling, and tracking changes to software artifacts throughout the development lifecycle. For testing, CM ensures that testers know exactly what version of the software they are testing, what test artifacts are current, and what changes have been made.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    CM answers: WHAT version are we testing? WHAT test cases are current? WHO changed WHAT and WHEN? Without CM, testing is chaotic — you might test old code, use outdated test cases, or miss critical changes.
+  </div>
+
+  <h3>Key Configuration Management Activities for Testing</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📌</div>
+      <h4>Configuration Identification</h4>
+      <p>Unique identification of all test artifacts:</p>
+      <ul style="font-size:0.75rem;">
+        <li>Test Plan versions (v1.0, v1.1, v2.0)</li>
+        <li>Test Case versions (TC-LOGIN-001_v3)</li>
+        <li>Test Data versions</li>
+        <li>Test Script versions (automation)</li>
+        <li>Test Environment configurations</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔒</div>
+      <h4>Configuration Control</h4>
+      <p>Controlled change management:</p>
+      <ul style="font-size:0.75rem;">
+        <li>Check-in/Check-out of test artifacts</li>
+        <li>Change request approval process</li>
+        <li>Version control systems (Git, SVN)</li>
+        <li>Baseline creation for releases</li>
+        <li>Access control and permissions</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Configuration Status Accounting</h4>
+      <p>Tracking and reporting:</p>
+      <ul style="font-size:0.75rem;">
+        <li>What versions are in test?</li>
+        <li>What changes were made?</li>
+        <li>Who made each change?</li>
+        <li>When was each change made?</li>
+        <li>Status of test artifacts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.8 — Configuration Management in Testing Lifecycle</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Left side: Code Repository -->
+      <rect x="30" y="60" width="200" height="80" rx="5" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="130" y="85" text-anchor="middle" font-size="10" font-weight="700" fill="#1a7a34">CODE REPOSITORY</text>
+      <text x="130" y="105" text-anchor="middle" font-size="7" fill="#1a7a34">(Git / SVN)</text>
+      <text x="130" y="120" text-anchor="middle" font-size="7" fill="#1a7a34">Build v2.3.1</text>
+      
+      <!-- Arrow to Test -->
+      <line x1="230" y1="100" x2="280" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="278,95 288,100 278,105" fill="#0a0a0a"/>
+      <text x="255" y="90" text-anchor="middle" font-size="7" fill="#0a0a0a">Deploy</text>
+      
+      <!-- Center: Test Repository -->
+      <rect x="290" y="60" width="200" height="80" rx="5" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="390" y="85" text-anchor="middle" font-size="10" font-weight="700" fill="#8a6500">TEST REPOSITORY</text>
+      <text x="390" y="105" text-anchor="middle" font-size="7" fill="#5a4000">(Test Cases, Scripts, Data)</text>
+      <text x="390" y="120" text-anchor="middle" font-size="7" fill="#5a4000">Version: TC-Suite-v4.2</text>
+      
+      <!-- Arrow to Execution -->
+      <line x1="490" y1="100" x2="540" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="538,95 548,100 538,105" fill="#0a0a0a"/>
+      
+      <!-- Right: Test Execution -->
+      <rect x="550" y="60" width="200" height="80" rx="5" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="650" y="85" text-anchor="middle" font-size="10" font-weight="700" fill="#065a68">TEST EXECUTION</text>
+      <text x="650" y="105" text-anchor="middle" font-size="7" fill="#065a68">Run on Build v2.3.1</text>
+      <text x="650" y="120" text-anchor="middle" font-size="7" fill="#065a68">Using TC-Suite-v4.2</text>
+      
+      <!-- Bottom: Traceability -->
+      <rect x="290" y="155" width="200" height="30" rx="3" fill="#0a0a0a"/>
+      <text x="390" y="174" text-anchor="middle" font-size="8" fill="#fff">Traceability: Which test cases cover which code?</text>
+      
+      <line x1="390" y1="140" x2="390" y2="155" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+  </div>
+
+  <h3>Why Configuration Management is Critical for Testing</h3>
+  <ul>
+    <li><strong>Reproducibility:</strong> If a defect is found, you need to know exactly which version of code and test cases produced it</li>
+    <li><strong>Traceability:</strong> Link test cases to requirements and code changes</li>
+    <li><strong>Regression Testing:</strong> Know which test cases need to be re-run after changes</li>
+    <li><strong>Audit Compliance:</strong> Regulatory requirements (FDA, ISO, banking) demand CM</li>
+    <li><strong>Collaboration:</strong> Multiple testers can work without overwriting each other's work</li>
+    <li><strong>Environment Consistency:</strong> Test environment configuration must match production</li>
+  </ul>
+
+  <h4>Test Configuration Items to Manage</h4>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Configuration Item</th><th>What to Track</th><th>Version Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Test Plan</td><td>Version, date, author, approvals</td><td>TP-ECOMM-V2.0-20240315</td></tr>
+      <tr><td>Test Cases</td><td>Version, linked requirements, last modified</td><td>TC-LOGIN-001_v3.2</td> </tr>
+      <tr><td>Test Data</td><td>Dataset version, creation date, source</td><td>TD-USER-1000_v1.0</td></tr>
+      <tr><td>Automation Scripts</td><td>Script version, framework version, dependencies</td><td>LoginTest.java_v2.1</td></tr>
+      <tr><td>Test Environment</td><td>OS version, browser versions, DB schema, config files</td><td>Env-Staging-2024Q1.conf</td></tr>
+      <tr><td>Test Tools</td><td>Tool name, version, license, configuration\</td><td>Selenium v4.15.0, JIRA v9.2</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 828-2012 — Configuration Management in Systems and Software Engineering</li>
+      <li>ISTQB Advanced Level — Test Management (CM chapter)</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.6 — RISK AND TESTING
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-6">
+  <div class="topic-label">Topic 4.6</div>
+  <h2 class="topic-title">Risk and Testing — Project Risk & Product Risk</h2>
+
+  <div class="concept-box">
+    <strong>Risk-based testing</strong> prioritizes testing activities based on the level of risk associated with different features or components. Risks are potential future problems that could negatively impact project success (project risks) or product quality (product risks).
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Product Risk = Risk to PRODUCT QUALITY (e.g., payment failure, data loss, security breach). Project Risk = Risk to PROJECT SUCCESS (e.g., budget overrun, schedule delay, resource shortage). Both affect testing priorities.
+  </div>
+
+  <h3>Types of Risks in Testing</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>📦 PRODUCT RISK</h4>
+      <p><strong>Definition:</strong> Risk that the software product will fail to meet quality requirements or user expectations.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li>Payment gateway integration fails → Financial loss</li>
+        <li>Security vulnerability (SQL injection) → Data breach</li>
+        <li>Performance degradation under load → Poor user experience</li>
+        <li>Data corruption during backup → Permanent data loss</li>
+        <li>Incorrect calculation in tax module → Legal compliance issue</li>
+        <li>UI usability issues → Low customer adoption</li>
+        <li>Integration failure with third-party API → Broken feature</li>
+      </ul>
+      <p><strong>Testing Focus:</strong> High-risk product areas receive more testing (more test cases, higher coverage, more techniques).</p>
+    </div>
+    <div class="compare-card">
+      <h4>📋 PROJECT RISK</h4>
+      <p><strong>Definition:</strong> Risk that the project will fail to meet schedule, budget, or resource constraints.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li>Schedule slippage → Release delayed</li>
+        <li>Budget overrun → Testing cut short</li>
+        <li>Staff shortage → Insufficient testing coverage</li>
+        <li>Environment unavailability → Testing blocked</li>
+        <li>Tool/technology failure → Automation impacted</li>
+        <li>Poor requirement quality → Ambiguous test objectives</li>
+        <li>Vendor dependency → Third-party delays</li>
+        <li>Communication gaps → Missed requirements</li>
+      </ul>
+      <p><strong>Testing Focus:</strong> Mitigation strategies (contingency plans, early start, scope reduction, outsourcing).</p>
+    </div>
+  </div>
+
+  <h3>Risk Assessment Matrix (Likelihood vs Impact)</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.9 — Risk Assessment Matrix</div>
+    <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Matrix grid -->
+      <line x1="200" y1="30" x2="200" y2="270" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="450" y1="30" x2="450" y2="270" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="650" y1="30" x2="650" y2="270" stroke="#0a0a0a" stroke-width="2"/>
+      
+      <line x1="30" y1="100" x2="720" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="30" y1="190" x2="720" y2="190" stroke="#0a0a0a" stroke-width="2"/>
+      
+      <!-- Labels -->
+      <text x="390" y="295" text-anchor="middle" font-size="9" font-weight="700">IMPACT →</text>
+      <text x="30" y="295" text-anchor="middle" font-size="9" font-weight="700">LIKELIHOOD ↑</text>
+      
+      <!-- Impact labels -->
+      <text x="120" y="20" text-anchor="middle" font-size="8">Low Impact</text>
+      <text x="325" y="20" text-anchor="middle" font-size="8">Medium Impact</text>
+      <text x="550" y="20" text-anchor="middle" font-size="8">High Impact</text>
+      
+      <!-- Likelihood labels -->
+      <text x="15" y="65" text-anchor="middle" font-size="7">Low</text>
+      <text x="15" y="145" text-anchor="middle" font-size="7">Medium</text>
+      <text x="15" y="230" text-anchor="middle" font-size="7">High</text>
+      
+      <!-- Risk cells -->
+      <!-- Low-Low -->
+      <rect x="205" y="105" width="240" height="80" rx="3" fill="#d4edda"/>
+      <text x="325" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#1a7a34">LOW RISK</text>
+      <text x="325" y="162" text-anchor="middle" font-size="7" fill="#1a7a34">Minimal testing</text>
+      
+      <!-- Medium-Low -->
+      <rect x="455" y="105" width="190" height="80" rx="3" fill="#fff3cd"/>
+      <text x="550" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#8a6500">MEDIUM RISK</text>
+      <text x="550" y="162" text-anchor="middle" font-size="7" fill="#5a4000">Standard testing</text>
+      
+      <!-- High-Low (not shown - no high likelihood low impact) -->
+      
+      <!-- Low-Medium -->
+      <rect x="205" y="195" width="240" height="70" rx="3" fill="#fff3cd"/>
+      <text x="325" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#8a6500">MEDIUM RISK</text>
+      
+      <!-- Medium-Medium -->
+      <rect x="455" y="195" width="190" height="70" rx="3" fill="#f8d7da"/>
+      <text x="550" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#c0392b">HIGH RISK</text>
+      
+      <!-- High-High -->
+      <rect x="35" y="105" width="160" height="160" rx="3" fill="#f8d7da"/>
+      <text x="115" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="#c0392b">HIGH RISK</text>
+      <text x="115" y="202" text-anchor="middle" font-size="7" fill="#922b21">Intensive</text>
+      <text x="115" y="215" text-anchor="middle" font-size="7" fill="#922b21">testing</text>
+      
+      <!-- Risk calculation formula -->
+      <text x="390" y="275" text-anchor="middle" font-size="8" font-weight="700">Risk Level = Likelihood × Impact</text>
+    </svg>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Risk Assessment Example — E-commerce Application</div>
+    <table class="data-table no-bold">
+      <thead>
+        <tr><th>Feature/Module</th><th>Likelihood (1-5)</th><th>Impact (1-5)</th><th>Risk Score</th><th>Testing Priority</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-weight:700;">Payment Processing</td><td>2</td><td>5</td><td>10</td><td>CRITICAL → Extensive testing (EP, BVA, security, performance)</td></tr>
+        <tr><td style="font-weight:700;">Login/Authentication</td><td>3</td><td>4</td><td>12</td><td>HIGH → Thorough functional + security testing</td></tr>
+        <tr><td style="font-weight:700;">Product Search</td><td>2</td><td>3</td><td>6</td><td>MEDIUM → Standard functional testing</td></tr>
+        <tr><td style="font-weight:700;">User Profile</td><td>1</td><td>2</td><td>2</td><td>LOW → Basic sanity testing</td></tr>
+        <tr><td style="font-weight:700;">Wishlist</td><td>1</td><td>1</td><td>1</td><td>MINIMAL → Smoke testing only</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Interpretation:</strong> Payment processing (score 10) gets 40% of testing effort. Wishlist (score 1) gets 2% of testing effort. This is risk-based testing.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Advanced Level — Risk-Based Testing</li>
+      <li>ISO 31000 — Risk Management Guidelines</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.7 — INCIDENT/DEFECT MANAGEMENT
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-7">
+  <div class="topic-label">Topic 4.7</div>
+  <h2 class="topic-title">Incident / Defect Management</h2>
+
+  <div class="concept-box">
+    <strong>Incident/Defect Management</strong> is the process of identifying, logging, tracking, analyzing, and resolving defects or incidents found during testing. An effective defect management process ensures that no defect is forgotten and that quality improves over time.
+  </div>
+
+  <h3>4.7.1 — Defect Life Cycle</h3>
+  
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.10 — Defect Life Cycle (Bug Life Cycle)</div>
+    <svg viewBox="0 0 780 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- States -->
+      <rect x="30" y="30" width="130" height="40" rx="5" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="95" y="55" text-anchor="middle" font-size="9" font-weight="700" fill="#922b21">NEW</text>
+      
+      <rect x="30" y="160" width="130" height="40" rx="5" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="95" y="185" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">ASSIGNED</text>
+      
+      <rect x="240" y="30" width="130" height="40" rx="5" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="305" y="55" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">OPEN</text>
+      
+      <rect x="460" y="30" width="130" height="40" rx="5" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="525" y="55" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">FIXED</text>
+      
+      <rect x="650" y="30" width="100" height="40" rx="5" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="700" y="55" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a34">CLOSED</text>
+      
+      <rect x="240" y="280" width="130" height="40" rx="5" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="305" y="305" text-anchor="middle" font-size="9" font-weight="700" fill="#922b21">REJECTED</text>
+      
+      <rect x="460" y="280" width="130" height="40" rx="5" fill="#fde8d8" stroke="#e67e22" stroke-width="2"/>
+      <text x="525" y="305" text-anchor="middle" font-size="9" font-weight="700" fill="#7d3c00">REOPENED</text>
+      
+      <rect x="460" y="170" width="130" height="40" rx="5" fill="#e2d9f3" stroke="#6f42c1" stroke-width="2"/>
+      <text x="525" y="195" text-anchor="middle" font-size="9" font-weight="700" fill="#4a1d96">DUPLICATE</text>
+      
+      <!-- Transitions -->
+      <!-- NEW → ASSIGNED -->
+      <line x1="95" y1="70" x2="95" y2="160" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="92,158 95,168 98,158" fill="#0a0a0a"/>
+      <text x="110" y="115" text-anchor="start" font-size="7">Triage</text>
+      
+      <!-- ASSIGNED → OPEN -->
+      <line x1="160" y1="180" x2="240" y2="180" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="238,177 248,180 238,183" fill="#0a0a0a"/>
+      <text x="200" y="172" text-anchor="middle" font-size="7">Developer</text>
+      <text x="200" y="182" text-anchor="middle" font-size="7">accepts</text>
+      
+      <!-- ASSIGNED → REJECTED -->
+      <line x1="160" y1="180" x2="305" y2="280" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="302,277 308,287 314,277" fill="#c0392b"/>
+      <text x="220" y="230" text-anchor="middle" font-size="7" fill="#c0392b">Not a bug</text>
+      
+      <!-- OPEN → FIXED -->
+      <line x1="370" y1="50" x2="460" y2="50" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="458,47 468,50 458,53" fill="#0a0a0a"/>
+      <text x="415" y="42" text-anchor="middle" font-size="7">Code fix</text>
+      
+      <!-- FIXED → CLOSED -->
+      <line x1="590" y1="50" x2="650" y2="50" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="648,47 658,50 648,53" fill="#0a0a0a"/>
+      <text x="620" y="42" text-anchor="middle" font-size="7">Tester</text>
+      <text x="620" y="52" text-anchor="middle" font-size="7">verifies</text>
+      
+      <!-- FIXED → REOPENED -->
+      <line x1="525" y1="70" x2="525" y2="280" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="522,278 525,288 528,278" fill="#e67e22"/>
+      <text x="540" y="175" text-anchor="start" font-size="7">Fix fails</text>
+      
+      <!-- OPEN → DUPLICATE -->
+      <line x1="370" y1="50" x2="525" y2="170" stroke="#6f42c1" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="523,167 528,177 533,168" fill="#6f42c1"/>
+      <text x="440" y="105" text-anchor="middle" font-size="7">Duplicate</text>
+      
+      <!-- REOPENED → OPEN (cycle back) -->
+      <line x1="525" y1="280" x2="305" y2="280" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="307,277 297,280 307,283" fill="#0a0a0a"/>
+    </svg>
+  </div>
+
+  <h4>Defect Life Cycle States — Detailed Explanation</h4>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>State</th><th>Description</th><th>Responsible</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">NEW</td>
+        <td>Defect is first logged by tester. No action taken yet.</td>
+        <td>Tester</td>
+      </tr>
+      <tr><td style="font-weight:700;">ASSIGNED</td>
+        <td>Defect is reviewed and assigned to a developer for analysis.</td>
+        <td>Test Lead / Manager</td>
+      </tr>
+      <tr><td style="font-weight:700;">OPEN</td>
+        <td>Developer accepts the defect and starts working on fix.</td>
+        <td>Developer</td>
+      </tr>
+      <tr><td style="font-weight:700;">FIXED</td>
+        <td>Developer has made code changes to resolve the defect.</td>
+        <td>Developer</td>
+      </tr>
+      <tr><td style="font-weight:700;">REJECTED</td>
+        <td>Defect is not valid — either user error, cannot reproduce, or intended behavior.</td>
+        <td>Developer / Lead</td>
+      </tr>
+      <tr><td style="font-weight:700;">DUPLICATE</td>
+        <td>Same defect has already been reported by another tester.</td>
+        <td>Triage Team</td>
+      </tr>
+      <tr><td style="font-weight:700;">REOPENED</td>
+        <td>Tester verified fix but issue still exists or fix introduced new problem.</td>
+        <td>Tester</td>
+      </tr>
+      <tr><td style="font-weight:700;">CLOSED</td>
+        <td>Fix is verified working, no further action needed.</td>
+        <td>Tester</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.7.2 — Defect/Incident Report (IEEE 829 Template)</h3>
+  
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.11 — IEEE 829 Test Incident Report Template</div>
+    <svg viewBox="0 0 780 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <rect x="30" y="20" width="720" height="340" rx="5" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="390" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">IEEE 829 TEST INCIDENT REPORT — SECTIONS</text>
+      
+      <rect x="50" y="55" width="340" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="60" y="72" text-anchor="start" font-size="8" fill="#fff">Incident Identifier (Unique ID)</text>
+      
+      <rect x="410" y="55" width="320" height="25" rx="3" fill="#0a0a0a"/>
+      <text x="420" y="72" text-anchor="start" font-size="8" fill="#fff">Summary (Brief description of the incident)</text>
+      
+      <rect x="50" y="85" width="340" height="25" rx="3" fill="#1a7a34"/>
+      <text x="60" y="102" text-anchor="start" font-size="8" fill="#fff">Incident Type (Code, Design, Requirements, etc.)</text>
+      
+      <rect x="410" y="85" width="320" height="25" rx="3" fill="#1a7a34"/>
+      <text x="420" y="102" text-anchor="start" font-size="8" fill="#fff">Severity / Priority (Critical, High, Medium, Low)</text>
+      
+      <rect x="50" y="115" width="340" height="25" rx="3" fill="#0c8da0"/>
+      <text x="60" y="132" text-anchor="start" font-size="8" fill="#fff">Description (Detailed explanation with evidence)</text>
+      
+      <rect x="410" y="115" width="320" height="25" rx="3" fill="#0c8da0"/>
+      <text x="420" y="132" text-anchor="start" font-size="8" fill="#fff">Steps to Reproduce (Exact sequence to trigger)</text>
+      
+      <rect x="50" y="145" width="340" height="25" rx="3" fill="#e6ac00"/>
+      <text x="60" y="162" text-anchor="start" font-size="8" fill="#fff">Actual Result (What actually happened)</text>
+      
+      <rect x="410" y="145" width="320" height="25" rx="3" fill="#e6ac00"/>
+      <text x="420" y="162" text-anchor="start" font-size="8" fill="#fff">Expected Result (What should have happened)</text>
+      
+      <rect x="50" y="175" width="340" height="25" rx="3" fill="#c0392b"/>
+      <text x="60" y="192" text-anchor="start" font-size="8" fill="#fff">Environment Details (OS, browser, version, config)</text>
+      
+      <rect x="410" y="175" width="320" height="25" rx="3" fill="#c0392b"/>
+      <text x="420" y="192" text-anchor="start" font-size="8" fill="#fff">Attachments (Screenshots, logs, videos)</text>
+      
+      <rect x="50" y="205" width="340" height="25" rx="3" fill="#6f42c1"/>
+      <text x="60" y="222" text-anchor="start" font-size="8" fill="#fff">Reported By / Date / Time</text>
+      
+      <rect x="410" y="205" width="320" height="25" rx="3" fill="#6f42c1"/>
+      <text x="420" y="222" text-anchor="start" font-size="8" fill="#fff">Status (New, Assigned, Fixed, Closed, etc.)</text>
+      
+      <rect x="50" y="235" width="340" height="25" rx="3" fill="#e67e22"/>
+      <text x="60" y="252" text-anchor="start" font-size="8" fill="#fff">Root Cause (After analysis)</text>
+      
+      <rect x="410" y="235" width="320" height="25" rx="3" fill="#e67e22"/>
+      <text x="420" y="252" text-anchor="start" font-size="8" fill="#fff">Resolution (How fixed)</text>
+    </svg>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">IEEE 829 Test Incident Report — Real Example</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+TEST INCIDENT REPORT
+INCIDENT ID: INC-2024-042
+PROJECT: Online Banking System v2.0
+REPORT DATE: 20-March-2024
+
+1. SUMMARY:
+   Account lockout fails to unlock after specified 5-minute duration
+
+2. INCIDENT TYPE:
+   Code Defect
+
+3. SEVERITY & PRIORITY:
+   Severity: HIGH (User cannot access account even after lockout period expires)
+   Priority: HIGH (Blocks user access, affects core functionality)
+
+4. DESCRIPTION:
+   When a user enters incorrect password 3 times, account locks for 5 minutes as designed.
+   However, after waiting 5+ minutes, the account remains locked and user cannot log in
+   even with correct credentials.
+
+5. STEPS TO REPRODUCE:
+   1. Navigate to login page (https://bank.example.com/login)
+   2. Enter valid username: testuser@example.com
+   3. Enter invalid password 3 times (wrong credentials)
+   4. Observe account lockout message: "Account locked for 5 minutes"
+   5. Set timer for 5 minutes (300 seconds)
+   6. After 5 minutes, enter correct valid password
+   7. Click "Sign In" button
+
+6. ACTUAL RESULT:
+   After step 7, error message appears: "Account is still locked. Please try again later."
+   User cannot log in. Lock persists indefinitely.
+
+7. EXPECTED RESULT:
+   After step 7, user should be successfully logged in and redirected to dashboard.
+   Lockout should automatically expire after 5 minutes.
+
+8. ENVIRONMENT:
+   OS: Windows 11 Pro
+   Browser: Chrome 122.0
+   Server: Staging (v2.0 Build 20240318)
+   Database: PostgreSQL 14
+
+9. ATTACHMENTS:
+   - Screen recording: INC-042_lockout_failure.mp4
+   - Server logs: server_logs_20240320.txt
+   - Screenshot: lockout_message.png
+
+10. REPORTED BY:
+    Priya Sharma, Senior Tester
+    Date: 20-March-2024, Time: 14:30 IST
+
+11. STATUS:
+    New → Assigned to: Rajesh Kumar (Developer)
+
+12. ROOT CAUSE (After analysis - to be filled):
+    Timer reset function not called after lock period. Database lock flag not cleared.
+
+13. RESOLUTION (After fix - to be filled):
+    Added unlock_job to clear lock flag after 5 minutes. Scheduled task runs every minute.
+    </pre>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 829-2008 — Test Incident Report Template</li>
+      <li>ISTQB Foundation Level — Defect Management</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.8 — CASE STUDIES
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-8">
+  <div class="topic-label">Topic 4.8</div>
+  <h2 class="topic-title">Case Studies — Test Plan & Test Cases</h2>
+
+  <div class="concept-box">
+    The following <strong>case studies</strong> demonstrate real-world application of test management concepts — including test plan creation and test case design for different application features.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    These case studies show how test management is applied in practice. Focus on understanding the APPROACH — how features are prioritized, how test cases are designed (positive/negative), and how risks are identified.
+  </div>
+
+  <h3>Case Study 1: E-commerce Website — Checkout Feature Test Plan</h3>
+  
+  <div class="example-box">
+    <div class="ex-label">Case Study 1: Test Plan for E-commerce Checkout</div>
+    <p><strong>Application:</strong> "ShopFast" — An online retail platform with 50,000+ products</p>
+    <p><strong>Feature under test:</strong> Checkout and Payment Processing</p>
+    
+    <p><strong>TEST PLAN (Abridged):</strong></p>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+PROJECT: ShopFast E-commerce Platform
+RELEASE: v3.0 (Festive Season Release)
+TEST PLAN ID: TP-SHOPFAST-CHECKOUT-V3.0
+
+1. SCOPE:
+   - Cart review and item quantity modification
+   - Address selection (existing and new)
+   - Shipping method selection
+   - Coupon/promo code application
+   - Payment method selection (Credit Card, UPI, NetBanking, COD)
+   - Order confirmation and receipt generation
+   
+   OUT OF SCOPE:
+   - Product search (covered in separate test plan)
+   - Returns/Refunds (Phase 3)
+
+2. RISK ASSESSMENT:
+   High Risk Features (Intensive testing):
+   - Payment gateway integration (financial impact)
+   - Price calculation with coupons (revenue impact)
+   
+   Medium Risk Features:
+   - Address validation (user experience)
+   - Order confirmation (customer communication)
+   
+   Low Risk Features:
+   - UI layout
+   - Confirmation email formatting
+
+3. TEST APPROACH:
+   Functional Testing (Black Box):
+   - Equivalence Partitioning: Cart subtotal ranges (₹0-500, ₹501-2000, ₹2001+)
+   - Boundary Value Analysis: Minimum order (₹100), Free shipping threshold (₹999)
+   - Decision Table: Coupon combinations (10% off vs Free Shipping)
+   
+   Integration Testing:
+   - Payment gateway API integration
+   - Inventory system stock update after order
+   - Email service confirmation delivery
+   
+   Performance Testing:
+   - 500 concurrent users during checkout
+   - 95% transactions completed within 3 seconds
+   
+   Security Testing:
+   - Payment information encryption
+   - No storage of CVV
+   - Session timeout during checkout
+
+4. TEST SCHEDULE (10 days):
+   Days 1-2: Test case design (60 positive, 40 negative cases)
+   Days 3-5: Functional test execution
+   Days 6-7: Integration and security testing
+   Days 8-9: Regression testing
+   Day 10: Defect verification and closure
+
+5. RESOURCES:
+   - 1 Test Lead
+   - 3 Testers (2 functional, 1 automation)
+   - Staging environment with test payment gateway
+   - Selenium for automation (critical paths only)
+    </pre>
+  </div>
+
+  <h3>Case Study 2: Banking Application — Fund Transfer Test Cases</h3>
+  
+  <div class="example-box">
+    <div class="ex-label">Case Study 2: Test Cases for Fund Transfer Feature</div>
+    <p><strong>Application:</strong> "SecureBank" — Mobile and web banking application</p>
+    <p><strong>Feature:</strong> Fund Transfer (IMPS/NEFT/RTGS)</p>
+    
+    <p><strong>REQUIREMENTS SUMMARY:</strong></p>
+    <ul>
+      <li>User can transfer funds to own account, another bank account, or UPI ID</li>
+      <li>Minimum transfer: ₹1 (IMPS), ₹100 (NEFT), ₹200,000 (RTGS)</li>
+      <li>Maximum transfer: ₹200,000 per day (IMPS/NEFT), ₹10,00,000 (RTGS with approval)</li>
+      <li>OTP required for all transfers above ₹10,000</li>
+      <li>Beneficiary must be added at least 30 minutes before first transfer</li>
+      <li>Transaction reference number generated on success</li>
+      <li>Email and SMS notification on successful transfer</li>
+    </ul>
+    
+    <p><strong>POSITIVE TEST CASES (Sample):</strong></p>
+    <table class="data-table no-bold" style="font-size:0.7rem;">
+      <thead><tr><th>TC ID</th><th>Description</th><th>Input</th><th>Expected Result</th></tr></thead>
+      <tbody>
+        <tr><td>TC-FT-001</td><td>Valid IMPS transfer to own account</td><td>₹5,000, valid OTP</td><td>Success, transaction ID generated</td></tr>
+        <tr><td>TC-FT-002</td><td>Valid NEFT transfer to other bank</td><td>₹50,000, valid OTP</td><td>Success, email notification</td></tr>
+        <tr><td>TC-FT-003</td><td>Valid RTGS transfer (high value)</td><td>₹5,00,000, manager approval</td><td>Success, SMS confirmation</td></tr>
+        <tr><td>TC-FT-004</td><td>Transfer to saved UPI ID</td><td>user@bank, ₹1,000</td><td>Success, instant credit</td></tr>
+      </tbody>
+    </table>
+    
+    <p><strong>NEGATIVE TEST CASES (Sample):</strong></p>
+    <table class="data-table no-bold" style="font-size:0.7rem;">
+      <thead><tr><th>TC ID</th><th>Description</th><th>Input</th><th>Expected Result</th></tr></thead>
+      <tbody>
+        <tr><td>TC-FT-101</td><td>Insufficient balance</td><td>₹10,000, balance ₹5,000</td><td>Error: "Insufficient funds"</td></tr>
+        <tr><td>TC-FT-102</td><td>Transfer to unregistered beneficiary</td><td>New account, no 30-min wait</td><td>Error: "Beneficiary not active"</td></tr>
+        <tr><td>TC-FT-103</td><td>Below minimum amount (NEFT)</td><td>₹50</td><td style="color:#c0392b;">Error: "Minimum transfer is ₹100"</td></tr>
+        <tr><td>TC-FT-104</td><td>Exceeds daily limit</td><td>₹2,50,000 (limit ₹2,00,000)</td><td>Error: "Daily limit exceeded"</td></tr>
+        <tr><td>TC-FT-105</td><td>Invalid OTP</td><td>Correct amount, wrong OTP</td><td>Error: "Invalid OTP. Transaction cancelled."</td></tr>
+        <tr><td style="font-weight:700;">TC-FT-106</td><td>Expired OTP</td><td>OTP after 5 minutes</td><td>Error: "OTP expired. Generate new OTP."</td></tr>
+        <tr><td style="font-weight:700;">TC-FT-107</td><td>SQL injection in account field</td><td>`' OR '1'='1` as account number</td><td>Validation error, SQL not executed</td></tr>
+        <tr><td style="font-weight:700;">TC-FT-108</td><td>Transfer to self same account</td><td>Own account number</td><td>Error: "Cannot transfer to same account"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Case Study 3: Healthcare Application — Patient Registration Test Suite</h3>
+  
+  <div class="example-box">
+    <div class="ex-label">Case Study 3: Test Suite for Patient Registration</div>
+    <p><strong>Application:</strong> "HealthCare Plus" — Hospital management system</p>
+    <p><strong>Feature:</strong> New Patient Registration</p>
+    
+    <p><strong>TEST SCENARIOS:</strong></p>
+    <ul>
+      <li>TS-REG-01: Register new patient with all mandatory fields</li>
+      <li>TS-REG-02: Register patient with optional fields omitted</li>
+      <li>TS-REG-03: Validate mandatory field enforcement</li>
+      <li>TS-REG-04: Validate data format constraints (mobile, email, Aadhaar)</li>
+      <li>TS-REG-05: Handle duplicate patient detection</li>
+      <li>TS-REG-06: Generate unique patient ID after registration</li>
+      <li>TS-REG-07: Validate age calculation from birth date</li>
+    </ul>
+    
+    <p><strong>TEST SUITE (Priority-based grouping):</strong></p>
+    <table class="data-table no-bold" style="font-size:0.7rem;">
+      <thead>
+        <tr><th>Priority</th><th>Test Cases</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="color:#1a7a34; font-weight:700;">P0 (Critical)</td>
+        <td>TC-REG-001, TC-REG-002, TC-REG-006</td>
+        <td>Basic registration, ID generation → Must pass for build acceptance</td>
+        </tr>
+        <tr><td style="color:#e67e22; font-weight:700;">P1 (High)</td>
+        <td>TC-REG-003, TC-REG-004, TC-REG-005</td>
+        <td>Validation, duplicate check → Core functionality</td>
+        </tr>
+        <tr><td style="color:#0c8da0; font-weight:700;">P2 (Medium)</td>
+        <td>TC-REG-007, TC-REG-008, TC-REG-009</td>
+        <td>Age calculation, edge cases</td>
+        </tr>
+        <tr><td style="color:#7a7a74; font-weight:700;">P3 (Low)</td>
+        <td>TC-REG-010, TC-REG-011</td>
+        <td>UI formatting, cosmetic issues</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Case Study 4: Mobile App — Login Feature (Positive/Negative Complete)</h3>
+  
+  <div class="example-box">
+    <div class="ex-label">Case Study 4: Complete Test Case Set for Mobile App Login</div>
+    <p><strong>Application:</strong> "TravelEase" — Flight booking mobile app (Android/iOS)</p>
+    <p><strong>Feature:</strong> User Login with Email/Password</p>
+    
+    <p><strong>POSITIVE TEST CASES (Happy Path):</strong></p>
+    <ol>
+      <li><strong>TC-LOGIN-P-01:</strong> Existing user with valid email and correct password → Login successful, dashboard displayed</li>
+      <li><strong>TC-LOGIN-P-02:</strong> Login with "Remember Me" checked → Session persists after app restart</li>
+      <li><strong>TC-LOGIN-P-03:</strong> Login via social login (Google) → Success with OAuth</li>
+      <li><strong>TC-LOGIN-P-04:</strong> Login after password reset (new password) → Success</li>
+    </ol>
+    
+    <p><strong>NEGATIVE TEST CASES (Error Handling):</strong></p>
+    <ol>
+      <li><strong>TC-LOGIN-N-01:</strong> Unregistered email → Error: "Account not found. Sign up?"</li>
+      <li><strong>TC-LOGIN-N-02:</strong> Correct email, wrong password → Error: "Invalid password. 2 attempts remaining"</li>
+      <li><strong>TC-LOGIN-N-03:</strong> Empty email field → Error: "Email is required"</li>
+      <li><strong>TC-LOGIN-N-04:</strong> Empty password field → Error: "Password is required"</li>
+      <li><strong>TC-LOGIN-N-05:</strong> Both fields empty → Both validation errors shown</li>
+      <li><strong>TC-LOGIN-N-06:</strong> Email without "@" → Error: "Enter valid email address"</li>
+      <li><strong>TC-LOGIN-N-07:</strong> Password with leading/trailing spaces → Trim spaces then validate</li>
+      <li><strong>TC-LOGIN-N-08:</strong> 3 failed attempts → Account locked for 15 minutes</li>
+      <li><strong>TC-LOGIN-N-09:</strong> Login during lockout period → Error: "Account locked. Try after 8 minutes"</li>
+      <li><strong>TC-LOGIN-N-10:</strong> SQL injection in email (`' OR '1'='1`) → Sanitized, no unauthorized access</li>
+      <li><strong>TC-LOGIN-N-11:</strong> XSS script in email (`&lt;script&gt;alert(1)&lt;/script&gt;`) → Escaped, not executed</li>
+      <li><strong>TC-LOGIN-N-12:</strong> Very long email (256+ chars) → Validation error or truncation</li>
+      <li><strong>TC-LOGIN-N-13:</strong> Very long password (1000+ chars) → Rejected gracefully, no crash</li>
+      <li><strong>TC-LOGIN-N-14:</strong> Login while offline → Error: "No internet connection"</li>
+      <li><strong>TC-LOGIN-N-15:</strong> Login during server maintenance → Error: "Service unavailable. Try later."</li>
+    </ol>
+    
+    <p><strong>TEST EXECUTION SUMMARY (from Test Log):</strong></p>
+    <ul>
+      <li>Total test cases: 20 (4 positive, 16 negative)</li>
+      <li>Executed: 20</li>
+      <li>Passed: 18</li>
+      <li>Failed: 2 (TC-LOGIN-N-09: Lockout timer off by 30 seconds, TC-LOGIN-N-14: Offline error not user-friendly)</li>
+      <li>Defects logged: 2 (INC-101, INC-102)</li>
+      <li>Pass rate: 90%</li>
+    </ul>
+  </div>
+
+  <h3>Case Study 5: API Testing — Payment Gateway Integration</h3>
+  
+  <div class="example-box">
+    <div class="ex-label">Case Study 5: API Test Cases for Payment Gateway</div>
+    <p><strong>Application:</strong> Subscription billing system with Razorpay integration</p>
+    <p><strong>API Endpoint:</strong> `POST /api/v1/create-payment-order`</p>
+    
+    <p><strong>REQUEST PARAMETERS:</strong></p>
+    <ul>
+      <li>`amount` (integer, in paise/minimum units) — required</li>
+      <li>`currency` (string, INR/USD) — required</li>
+      <li>`customer_id` (string, UUID format) — required</li>
+      <li>`description` (string, optional, max 200 chars)</li>
+    </ul>
+    
+    <p><strong>TEST CASE DESIGN (Boundary Value Analysis):</strong></p>
+    <table class="data-table no-bold" style="font-size:0.7rem;">
+      <thead>
+        <tr><th>TC ID</th><th>Input Amount (₹)</th><th>Expected Response</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-weight:700;">TC-API-001</td><td>100 (₹1.00)</td><td>Success (minimum allowed)</td></tr>
+        <tr><td style="font-weight:700;">TC-API-002</td><td>50 (₹0.50)</td><td>Error: "Amount below minimum (₹1.00)"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-003</td><td>999999999 (₹99,99,999.99)</td><td>Success (maximum allowed)</td></tr>
+        <tr><td style="font-weight:700;">TC-API-004</td><td>1000000000 (₹1,00,00,000+)</td><td>Error: "Amount exceeds maximum"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-005</td><td>500 (₹5.00)</td><td>Success (standard amount)</td></tr>
+      </tbody>
+    </table>
+    
+    <p><strong>TEST CASE DESIGN (Negative/Error Scenarios):</strong></p>
+    <table class="data-table no-bold" style="font-size:0.7rem;">
+      <thead>
+        <tr><th>TC ID</th><th>Invalid Input</th><th>Expected Error Response</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-weight:700;">TC-API-101</td><td>Missing amount field</td><td>400: "amount is required"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-102</td><td>amount = -100</td><td>400: "amount must be positive"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-103</td><td>amount = "abc" (non-numeric)</td><td>400: "amount must be integer"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-104</td><td>currency = "EUR" (unsupported)</td><td>400: "Unsupported currency. Supported: INR, USD"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-105</td><td>customer_id = invalid UUID</td><td>400: "Invalid customer_id format"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-106</td><td>description = 500 chars</td><td>400: "description exceeds 200 chars"</td></tr>
+        <tr><td style="font-weight:700;">TC-API-107</td><td>SQL injection in description</td><td>200: Stripped/sanitized, no SQL execution</td></tr>
+        <tr><td style="font-weight:700;">TC-API-108</td><td>Duplicate request (idempotency)</td><td>200: Same order ID returned (no duplicate charge)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 4 — Key Takeaway</div>
+    <p>Test management is the discipline that transforms testing from an ad-hoc activity into a controlled, measurable, and improvable process. The key pillars are: clear roles and responsibilities (Tester, Test Lead, Test Manager), comprehensive planning (IEEE 829 Test Plan), monitoring through metrics and logs (Defect Density, Test Logs, Test Summary Reports), structured test artifacts (Scenarios, Cases, Suites), configuration management for traceability, risk-based prioritization, and formal defect management with clear life cycle. The case studies demonstrate how these concepts apply to real applications — from e-commerce checkout to banking transfers to API testing.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 829-2008 — Software and System Test Documentation</li>
+      <li>ISTQB Foundation Level v4.0 — Test Management Chapter</li>
+      <li>ISTQB Advanced Level — Test Manager Syllabus</li>
+      <li>Black, R. — Managing the Testing Process, 3rd Edition, Wiley</li>
+      <li>Myers, G. — The Art of Software Testing (Test Management sections)</li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>ECS 563 · Essentials of Cyber Security · Unit 04 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="unit03_ECS.html">← Unit 3</a>
+      <a href="unit05_ECS.html">Unit 5 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · SPPU · Design &amp; Developed by Sumit Thakare</span>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// Nav mobile toggle close on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+
+// Back to top visibility
+window.addEventListener('scroll', () => {
+  const btn = document.querySelector('.back-top');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Defect Density Chart
+const defectCtx = document.getElementById('defectDensityChart');
+if (defectCtx) {
+  new Chart(defectCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Login Module', 'Payment Module', 'Search Module', 'Cart Module', 'User Profile', 'Reports Module'],
+      datasets: [{
+        label: 'Defects per KLOC (Thousand Lines of Code)',
+        data: [2.5, 5.8, 1.2, 3.4, 1.8, 4.2],
+        backgroundColor: [
+          '#d4edda', '#f8d7da', '#d4edda', '#fff3cd', '#d4edda', '#f8d7da'
+        ],
+        borderColor: ['#1a7a34', '#c0392b', '#1a7a34', '#e6ac00', '#1a7a34', '#c0392b'],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' defects/KLOC' } }
+      },
+      scales: {
+        y: { 
+          title: { display: true, text: 'Defect Density (defects per KLOC)' },
+          beginAtZero: true,
+          grid: { color: '#eee' }
+        },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>

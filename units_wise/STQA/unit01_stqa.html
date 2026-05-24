@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Software Testing & Quality Assurance — Unit 01: SQA Fundamentals | StudyHub</title>
+<title>Unit 01: Software Quality Assurance Fundamentals | StudyHub</title>
 <link rel="stylesheet" href="/css/unit_css_master.css">
 <style>
-  /* Additional styles for SQA Unit */
+  /* Additional styles for SQA */
   .mega-project {
     background: var(--gray-100);
     border: 2px solid var(--black);
     padding: 1.2rem 1.5rem;
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0;
     border-radius: 8px;
   }
   .mega-project h4 {
@@ -20,14 +20,35 @@
     margin-bottom: 0.5rem;
     color: var(--black);
   }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  .comparison-table th {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.6rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .comparison-table td {
+    border: var(--border-thin);
+    padding: 0.6rem;
+  }
+  .factor-card {
+    background: var(--white);
+    border: var(--border);
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+  }
   .reliability-formula {
     background: var(--black);
     color: var(--white);
     padding: 0.8rem;
     font-family: 'JetBrains Mono', monospace;
     text-align: center;
-    margin: 0.8rem 0;
-    border-radius: 4px;
+    margin: 0.5rem 0;
   }
 </style>
 </head>
@@ -38,19 +59,23 @@
   <a href="index.html" class="nav-brand">📚 Study<span>Hub</span></a>
   <button class="nav-toggle" id="navToggle">☰</button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="mca_index.html">MCA</a></li>
-    <li><a href="sqta_index.html">SQTA</a></li>
-    <li><a href="index.html">Home</a></li>
+   
+    
+    <li><a href="stqa_index.html">Home</a></li>
+    <li><a href="unit02_stqa.html">Unit 02</a></li>
+    <li><a href="unit03_stqa.html">Unit 03</a></li>
+    <li><a href="unit04_stqa.html">Unit 04</a></li>
+    <li><a href="unit05_stqa.html">Unit 05</a></li>
   </ul>
 </nav>
 
 <!-- Page Header -->
 <div class="page-header">
-  <div class="unit-badge">Software Testing & Quality Assurance · Semester II · Unit 01</div>
+  <div class="unit-badge">Software Testing & Quality Assurance · Unit 01</div>
   <h1>Software Quality Assurance Fundamentals</h1>
   <div class="subject-line">Complete Study Notes with UPI Payment System Mega Project</div>
   <div class="quick-info">
-    <div class="quick-info-item">📋 Topics Covered: 6</div>
+    <div class="quick-info-item">📋 Topics: 6</div>
     <div class="quick-info-item">🏦 Mega Project: UPI System</div>
     <div class="quick-info-item">🎯 Exam Ready</div>
   </div>
@@ -61,7 +86,7 @@
   <div class="toc-box">
     <h3>Table of Contents</h3>
     <ol>
-      <li><a href="#sec1">1.1 Quality, QA, QC, Differences & SQA Challenges</a></li>
+      <li><a href="#sec1">1.1 Quality, QA, QC, Differences & Challenges</a></li>
       <li><a href="#sec2">1.2 SQA Planning & Standards (ISO 9000)</a></li>
       <li><a href="#sec3">1.3 SQA Activities</a></li>
       <li><a href="#sec4">1.4 Building Blocks of SQA</a></li>
@@ -74,7 +99,9 @@
 <!-- Main Content -->
 <div class="content-wrap">
 
-  <!-- MEGA PROJECT INTRODUCTION -->
+  <!-- ============================================ -->
+  <!-- MEGA PROJECT INTRODUCTION                     -->
+  <!-- ============================================ -->
   <div class="topic-section">
     <div class="topic-label">Mega Project</div>
     <h2 class="topic-title">UPI Payment System (Google Pay / PhonePe / Paytm)</h2>
@@ -96,19 +123,24 @@
   <!-- SECTION 1.1: QUALITY, QA, QC, CHALLENGES     -->
   <!-- ============================================ -->
   <div class="topic-section" id="sec1">
-    <div class="topic-label">Topic 1.1</div>
+    <div class="topic-label">Section 1.1</div>
     <h2 class="topic-title">Definition of Quality, QA, QC, Difference & SQA Challenges</h2>
 
     <div class="concept-box">
-      <strong>Quality</strong> in software means the degree to which a software product meets specified requirements and satisfies customer expectations. According to ISO 9000, quality is "the degree to which a set of inherent characteristics fulfills requirements."
+      <strong>Quality</strong> in software means the degree to which a software product meets specified requirements and satisfies customer expectations.
     </div>
 
-    <h3>Quality in Software</h3>
-    <p>Software quality means the product should be reliable, efficient, maintainable, and meet customer needs without defects.</p>
+    <h3>1.1.1 Definition of Quality</h3>
+    <p>According to <strong>ISO 9000</strong>, quality is "the degree to which a set of inherent characteristics fulfills requirements." In software, quality means:</p>
+    <ul>
+      <li>Meeting customer requirements</li>
+      <li>Being reliable, efficient, and maintainable</li>
+      <li>Having minimal defects</li>
+    </ul>
 
     <div class="example-box">
       <div class="ex-label">Example from UPI Payment System</div>
-      <strong>Quality in UPI means:</strong>
+      <p><strong>Quality in UPI means:</strong></p>
       <ul>
         <li>Money transfer completes within 5 seconds</li>
         <li>Transaction is accurate (correct amount debited from sender, credited to receiver)</li>
@@ -117,36 +149,36 @@
       </ul>
     </div>
 
-    <h3>Quality Assurance (QA)</h3>
+    <h3>1.1.2 Quality Assurance (QA)</h3>
     <div class="concept-box">
       <strong>Quality Assurance (QA)</strong> is a <strong>process-oriented</strong> approach focused on preventing defects by improving development processes. QA answers: <em>"Are we building the product correctly?"</em>
     </div>
     <ul>
       <li><strong>Goal:</strong> Prevent defects before they occur</li>
       <li><strong>Focus:</strong> Process improvement, standards, audits, training</li>
-      <li><strong>Approach:</strong> Proactive — done throughout development</li>
+      <li><strong>Proactive:</strong> Done throughout the development lifecycle</li>
     </ul>
 
-    <h3>Quality Control (QC)</h3>
+    <h3>1.1.3 Quality Control (QC)</h3>
     <div class="concept-box">
       <strong>Quality Control (QC)</strong> is a <strong>product-oriented</strong> approach focused on identifying defects in the finished product. QC answers: <em>"Is the product built correctly?"</em>
     </div>
     <ul>
       <li><strong>Goal:</strong> Detect and fix defects after they occur</li>
       <li><strong>Focus:</strong> Testing, inspection, reviews</li>
-      <li><strong>Approach:</strong> Reactive — performed after product is built</li>
+      <li><strong>Reactive:</strong> Performed after product is built</li>
     </ul>
 
     <div class="example-box">
-      <div class="ex-label">UPI Payment System — QA vs QC</div>
-      <strong>QA in UPI (Process-oriented):</strong>
+      <div class="ex-label">Example from UPI Payment System</div>
+      <p><strong>QA in UPI (Process-oriented):</strong></p>
       <ul>
         <li>Following secure coding standards for payment gateway integration</li>
         <li>Conducting code reviews before merging code</li>
         <li>Training developers on NPCI guidelines</li>
         <li>Auditing development processes monthly</li>
       </ul>
-      <strong>QC in UPI (Product-oriented):</strong>
+      <p><strong>QC in UPI (Product-oriented):</strong></p>
       <ul>
         <li>Testing the UPI app before release (functional testing, load testing)</li>
         <li>Checking if ₹100 transaction actually works</li>
@@ -155,84 +187,37 @@
       </ul>
     </div>
 
-    <h3>Difference between QA and QC</h3>
-    <table class="data-table">
+    <h3>1.1.4 Difference between QA and QC</h3>
+    <table class="comparison-table">
       <thead>
         <tr><th>Parameter</th><th>Quality Assurance (QA)</th><th>Quality Control (QC)</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Focus</strong></td><td>Process</th><td>Product</th></tr>
-        <tr>
-        <td><strong>Goal</strong></td>
-        <td>Prevent defects</th>
-        <td>Detect defects</th>
-       </tr>
-       <tr>
-        <td><strong>Approach</strong></th>
-        <td>Proactive</th>
-        <td>Reactive</th>
-       </tr>
-       <tr>
-        <td><strong>When</strong></th>
-        <td>Throughout development</th>
-        <td>After development</th>
-       </tr>
-       <tr>
-        <td><strong>Activity</strong></th>
-        <td>Process definition, audits, training</th>
-        <td>Testing, inspection, reviews</th>
-       </tr>
-       <tr>
-        <td><strong>Responsibility</strong></th>
-        <td>Entire team</th>
-        <td>Testing team</th>
-       </tr>
-       <tr>
-        <td><strong>Example in UPI</strong></th>
-        <td>Following NPCI security standards</th>
-        <td>Testing ₹100 transaction</th>
-       </tr>
+        <tr><td><strong>Focus</strong></td><td>Process</td><td>Product</td></tr>
+        <tr><td><strong>Goal</strong></td><td>Prevent defects</td><td>Detect defects</td></tr>
+        <tr><td><strong>Approach</strong></td><td>Proactive</td><td>Reactive</td></tr>
+        <tr><td><strong>When</strong></td><td>Throughout development</td><td>After development</td></tr>
+        <tr><td><strong>Activity</strong></td><td>Process definition, audits, training</td><td>Testing, inspection, reviews</td></tr>
+        <tr><td><strong>Responsibility</strong></td><td>Entire team</td><td>Testing team</td></tr>
+        <tr><td><strong>Example in UPI</strong></td><td>Following NPCI security standards</td><td>Testing ₹100 transaction</td></tr>
       </tbody>
-     </table>
+    </table>
 
-    <h3>Software Quality Assurance Challenges</h3>
+    <h3>1.1.5 Software Quality Assurance Challenges</h3>
+    
     <table class="data-table">
       <thead>
         <tr><th>Challenge</th><th>Description</th><th>Example in UPI System</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Security</strong></th>
-          <td>Protecting data from unauthorized access</th>
-          <td>UPI PIN security, preventing unauthorized transactions, data encryption</th>
-         </tr>
-         <tr>
-          <td><strong>Performance</strong></th>
-          <td>System must handle high load without slowing down</th>
-          <td>UPI handles 10+ billion monthly transactions; must work during peak hours (festivals)</th>
-         </tr>
-         <tr>
-          <td><strong>Integration Complexity</strong></th>
-          <td>Multiple systems must work together</th>
-          <td>UPI integrates with 500+ banks, NPCI servers, payment gateways, UPI apps</th>
-         </tr>
-         <tr>
-          <td><strong>Regulatory Compliance</strong></th>
-          <td>Meeting legal and industry standards</th>
-          <td>Compliance with RBI guidelines, NPCI rules, data localization laws</th>
-         </tr>
-         <tr>
-          <td><strong>Reliability</strong></th>
-          <td>System must work 24/7 without failure</th>
-          <td>UPI failure means customers cannot pay; financial loss occurs</th>
-         </tr>
-         <tr>
-          <td><strong>User Experience</strong></th>
-          <td>Software must be easy to use</th>
-          <td>UPI app must have simple interface; even non-tech users should use it easily</th>
-         </tr>
+        <tr><td><strong>Security</strong></td><td>Protecting data from unauthorized access</td><td>UPI PIN security, preventing unauthorized transactions, data encryption</td></tr>
+        <tr><td><strong>Performance</strong></td><td>System must handle high load without slowing down</td><td>UPI handles 10+ billion monthly transactions; must work during peak hours (festivals)</td></tr>
+        <tr><td><strong>Integration Complexity</strong></td><td>Multiple systems must work together</td><td>UPI integrates with 500+ banks, NPCI servers, payment gateways, UPI apps</td><tr>
+        <tr><td><strong>Regulatory Compliance</strong></td><td>Meeting legal and industry standards</td><td>Compliance with RBI guidelines, NPCI rules, data localization laws</td></tr>
+        <tr><td><strong>Reliability</strong></td><td>System must work 24/7 without failure</td><td>UPI failure means customers cannot pay; financial loss occurs</td></tr>
+        <tr><td><strong>User Experience</strong></td><td>Software must be easy to use</td><td>UPI app must have simple interface; even non-tech users should use it easily</td></tr>
       </tbody>
-     </table>
+    </table>
 
     <div class="ref-box">
       <div class="ref-label">References</div>
@@ -247,14 +232,14 @@
   <!-- SECTION 1.2: SQA PLANNING & STANDARDS        -->
   <!-- ============================================ -->
   <div class="topic-section" id="sec2">
-    <div class="topic-label">Topic 1.2</div>
+    <div class="topic-label">Section 1.2</div>
     <h2 class="topic-title">SQA Planning & Standards (ISO 9000)</h2>
 
     <div class="concept-box">
       <strong>SQA Planning</strong> is the process of defining quality goals, identifying quality activities, and creating a roadmap to achieve quality objectives. <strong>ISO 9000</strong> is an international standard for quality management systems.
     </div>
 
-    <h3>SQA Planning</h3>
+    <h3>1.2.1 SQA Planning</h3>
     <p><strong>Software Quality Assurance Plan (SQAP)</strong> is a document that outlines:</p>
     <ul>
       <li>Quality goals and objectives</li>
@@ -266,8 +251,8 @@
     </ul>
 
     <div class="example-box">
-      <div class="ex-label">UPI Payment System — SQA Plan</div>
-      <strong>SQA Plan for UPI includes:</strong>
+      <div class="ex-label">UPI Payment System - SQA Plan Example</div>
+      <p><strong>SQA Plan for UPI includes:</strong></p>
       <ul>
         <li><strong>Quality Goal:</strong> 99.99% transaction success rate</li>
         <li><strong>Activities:</strong> Security audits every month, load testing every quarter</li>
@@ -277,7 +262,7 @@
       </ul>
     </div>
 
-    <h3>ISO 9000 Standard</h3>
+    <h3>1.2.2 ISO 9000 Standard</h3>
     <p><strong>ISO 9000</strong> is a family of standards for quality management systems. Key principles include:</p>
     <ul>
       <li><strong>Customer Focus:</strong> Meet customer requirements</li>
@@ -312,7 +297,7 @@
   <!-- SECTION 1.3: SQA ACTIVITIES                  -->
   <!-- ============================================ -->
   <div class="topic-section" id="sec3">
-    <div class="topic-label">Topic 1.3</div>
+    <div class="topic-label">Section 1.3</div>
     <h2 class="topic-title">SQA Activities</h2>
 
     <div class="concept-box">
@@ -324,76 +309,36 @@
         <tr><th>Activity</th><th>Description</th><th>Example in UPI System</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Reviews</strong></th>
-          <td>Examining work products to find defects</th>
-          <td>Code review of payment gateway integration code</th>
-         </tr>
-         <tr>
-          <td><strong>Audits</strong></th>
-          <td>Independent examination of processes</th>
-          <td>Security audit of UPI app by external agency</th>
-         </tr>
-         <tr>
-          <td><strong>Testing</strong></th>
-          <td>Executing software to find defects</th>
-          <td>Testing ₹500 transaction with invalid UPI PIN</th>
-         </tr>
-         <tr>
-          <td><strong>Configuration Management</strong></th>
-          <td>Controlling changes to software</th>
-          <td>Version control for UPI app releases</th>
-         </tr>
-         <tr>
-          <td><strong>Training</strong></th>
-          <td>Improving team skills</th>
-          <td>Training developers on NPCI security standards</th>
-         </tr>
-         <tr>
-          <td><strong>Metrics Collection</strong></th>
-          <td>Measuring quality parameters</th>
-          <td>Tracking transaction success rate, response time</th>
-         </tr>
-         <tr>
-          <td><strong>Risk Management</strong></th>
-          <td>Identifying and mitigating risks</th>
-          <td>Identifying risk of server overload during Diwali</th>
-         </tr>
-         <tr>
-          <td><strong>Documentation Control</strong></th>
-          <td>Managing quality documents</th>
-          <td>Maintaining SQA plan, test cases, audit reports</th>
-         </tr>
+        <tr><td><strong>Reviews</strong></td><td>Examining work products to find defects</td><td>Code review of payment gateway integration code</td></tr>
+        <tr><td><strong>Audits</strong></td><td>Independent examination of processes</td><td>Security audit of UPI app by external agency</td></tr>
+        <tr><td><strong>Testing</strong></td><td>Executing software to find defects</td><td>Testing ₹500 transaction with invalid UPI PIN</td></tr>
+        <tr><td><strong>Configuration Management</strong></td><td>Controlling changes to software</td><td>Version control for UPI app releases</td></tr>
+        <tr><td><strong>Training</strong></td><td>Improving team skills</td><td>Training developers on NPCI security standards</td></tr>
+        <tr><td><strong>Metrics Collection</strong></td><td>Measuring quality parameters</td><td>Tracking transaction success rate, response time</td></tr>
+        <tr><td><strong>Risk Management</strong></td><td>Identifying and mitigating risks</td><td>Identifying risk of server overload during Diwali</td></tr>
+        <tr><td><strong>Documentation Control</strong></td><td>Managing quality documents</td><td>Maintaining SQA plan, test cases, audit reports</td></tr>
       </tbody>
-     </table>
+    </table>
 
     <div class="example-box">
-      <div class="ex-label">UPI Payment System — SQA Activities in Action</div>
-      <strong>Before Release (Preventive Activities):</strong>
+      <div class="ex-label">UPI Payment System - SQA Activities in Action</div>
+      <p><strong>Before Release (Preventive Activities):</strong></p>
       <ul>
         <li>Code review of all payment processing modules</li>
         <li>Security audit to check for vulnerabilities</li>
         <li>Training developers on secure coding</li>
       </ul>
-      <strong>During Release (Detective Activities):</strong>
+      <p><strong>During Release (Detective Activities):</strong></p>
       <ul>
         <li>Functional testing of all transaction types (send money, request money, QR scan)</li>
         <li>Load testing with 10,000 concurrent users</li>
         <li>Security testing (penetration testing)</li>
       </ul>
-      <strong>After Release (Corrective Activities):</strong>
+      <p><strong>After Release (Corrective Activities):</strong></p>
       <ul>
         <li>Monitoring transaction success rate</li>
         <li>Root cause analysis of failed transactions</li>
         <li>Bug fixing and patch releases</li>
-      </ul>
-    </div>
-
-    <div class="ref-box">
-      <div class="ref-label">References</div>
-      <ul>
-        <li>IEEE 730 — Software Quality Assurance Activities</li>
-        <li>Pressman, R. — Software Engineering: A Practitioner's Approach</li>
       </ul>
     </div>
   </div>
@@ -402,81 +347,89 @@
   <!-- SECTION 1.4: BUILDING BLOCKS OF SQA          -->
   <!-- ============================================ -->
   <div class="topic-section" id="sec4">
-    <div class="topic-label">Topic 1.4</div>
+    <div class="topic-label">Section 1.4</div>
     <h2 class="topic-title">Building Blocks of SQA</h2>
 
     <div class="concept-box">
       The <strong>Building Blocks of SQA</strong> are the fundamental components that together create a comprehensive quality assurance system.
     </div>
 
-    <table class="data-table">
-      <thead>
-        <tr><th>Building Block</th><th>Description</th><th>Example in UPI System</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Standards</strong></th>
-          <td>Reference documents defining best practices</th>
-          <td>NPCI standards, ISO 9001, RBI guidelines</th>
-         </tr>
-         <tr>
-          <td><strong>Reviews & Audits</strong></th>
-          <td>Systematic examination of work products</th>
-          <td>Code reviews, security audits, process audits</th>
-         </tr>
-         <tr>
-          <td><strong>Testing</strong></th>
-          <td>Executing software to verify requirements</th>
-          <td>Functional, load, security, regression testing</th>
-         </tr>
-         <tr>
-          <td><strong>Error & Defect Analysis</strong></th>
-          <td>Analyzing defects to find root causes</th>
-          <td>Root cause analysis of transaction failures</th>
-         </tr>
-         <tr>
-          <td><strong>Change Management</strong></th>
-          <td>Controlling changes to software</th>
-          <td>Version control, release management</th>
-         </tr>
-         <tr>
-          <td><strong>Education & Training</strong></th>
-          <td>Developing skills of team members</th>
-          <td>NPCI certification for developers</th>
-         </tr>
-         <tr>
-          <td><strong>Supplier Management</strong></th>
-          <td>Ensuring quality of third-party components</th>
-          <td>Managing API providers, bank integrations</th>
-         </tr>
-      </tbody>
-     </table>
-
-    <div class="example-box">
-      <div class="ex-label">UPI Payment System — Building Blocks in Practice</div>
-      <div class="step-box"><strong>1. Standards:</strong> UPI app follows NPCI technical standards for API design and security.</div>
-      <div class="step-box"><strong>2. Reviews & Audits:</strong> Monthly security audits by external agency; weekly code reviews.</div>
-      <div class="step-box"><strong>3. Testing:</strong> Automated testing runs on every code commit; load testing before festivals.</div>
-      <div class="step-box"><strong>4. Error Analysis:</strong> When a transaction fails, team analyzes logs to find root cause and fix it.</div>
-      <div class="step-box"><strong>5. Change Management:</strong> All changes tracked in JIRA; releases approved by change control board.</div>
-      <div class="step-box"><strong>6. Training:</strong> Developers attend quarterly workshops on security best practices.</div>
-      <div class="step-box"><strong>7. Supplier Management:</strong> Cloud provider SLA monitored; bank integration APIs tested regularly.</div>
+    <div class="three-grid">
+      <div class="three-card">
+        <div class="card-icon">📋</div>
+        <h4>1. Standards</h4>
+        <p>Reference documents that define best practices, processes, and conventions.</p>
+        <p><em>UPI Example:</em> NPCI standards, ISO 9001, RBI guidelines.</p>
+      </div>
+      <div class="three-card">
+        <div class="card-icon">👁️</div>
+        <h4>2. Reviews & Audits</h4>
+        <p>Systematic examination of work products and processes.</p>
+        <p><em>UPI Example:</em> Code reviews, security audits, process audits.</p>
+      </div>
+      <div class="three-card">
+        <div class="card-icon">🧪</div>
+        <h4>3. Testing</h4>
+        <p>Executing software to verify it meets requirements.</p>
+        <p><em>UPI Example:</em> Functional, load, security, regression testing.</p>
+      </div>
+      <div class="three-card">
+        <div class="card-icon">🐞</div>
+        <h4>4. Error & Defect Analysis</h4>
+        <p>Analyzing defects to identify root causes and prevent recurrence.</p>
+        <p><em>UPI Example:</em> Root cause analysis of transaction failures.</p>
+      </div>
+      <div class="three-card">
+        <div class="card-icon">📊</div>
+        <h4>5. Change Management</h4>
+        <p>Controlling changes to software and documentation.</p>
+        <p><em>UPI Example:</em> Version control, release management.</p>
+      </div>
+      <div class="three-card">
+        <div class="card-icon">👥</div>
+        <h4>6. Education & Training</h4>
+        <p>Developing skills and knowledge of team members.</p>
+        <p><em>UPI Example:</em> NPCI certification for developers.</p>
+      </div>
+      <div class="three-card">
+        <div class="card-icon">📈</div>
+        <h4>7. Supplier Management</h4>
+        <p>Ensuring quality of third-party components and vendors.</p>
+        <p><em>UPI Example:</em> Managing API providers, bank integrations.</p>
+      </div>
     </div>
 
-    <div class="ref-box">
-      <div class="ref-label">References</div>
-      <ul>
-        <li>Humphrey, W. — Managing the Software Process</li>
-        <li>ISO/IEC 12207 — Software Life Cycle Processes</li>
-      </ul>
+    <div class="example-box">
+      <div class="ex-label">UPI Payment System - Building Blocks in Practice</div>
+      <div class="step-box">
+        <strong>1. Standards:</strong> UPI app follows NPCI technical standards for API design and security.
+      </div>
+      <div class="step-box">
+        <strong>2. Reviews & Audits:</strong> Monthly security audits by external agency; weekly code reviews.
+      </div>
+      <div class="step-box">
+        <strong>3. Testing:</strong> Automated testing runs on every code commit; load testing before festivals.
+      </div>
+      <div class="step-box">
+        <strong>4. Error Analysis:</strong> When a transaction fails, team analyzes logs to find root cause and fix it.
+      </div>
+      <div class="step-box">
+        <strong>5. Change Management:</strong> All changes tracked in JIRA; releases approved by change control board.
+      </div>
+      <div class="step-box">
+        <strong>6. Training:</strong> Developers attend quarterly workshops on security best practices.
+      </div>
+      <div class="step-box">
+        <strong>7. Supplier Management:</strong> Cloud provider SLA monitored; bank integration APIs tested regularly.
+      </div>
     </div>
   </div>
 
   <!-- ============================================ -->
-  <!-- SECTION 1.5: SOFTWARE QUALITY FACTORS        -->
+  <!-- SECTION 1.5: SOFTWARE QUALITY FACTORS       -->
   <!-- ============================================ -->
   <div class="topic-section" id="sec5">
-    <div class="topic-label">Topic 1.5</div>
+    <div class="topic-label">Section 1.5</div>
     <h2 class="topic-title">Software Quality Factors</h2>
 
     <div class="concept-box">
@@ -484,104 +437,69 @@
     </div>
 
     <h3>Category 1: Product Operation Factors (While Software is Running)</h3>
+    
     <table class="data-table">
       <thead>
         <tr><th>Factor</th><th>Meaning</th><th>Example in UPI System</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Correctness</strong></th>
-          <td>Software meets its specifications</th>
-          <td>UPI transaction of ₹500 correctly deducts ₹500 from sender and adds ₹500 to receiver</th>
-         </tr>
-         <tr>
-          <td><strong>Reliability</strong></th>
-          <td>Software performs without failure</th>
-          <td>UPI works 24/7 without crashing; transaction success rate > 99.9%</th>
-         </tr>
-         <tr>
-          <td><strong>Efficiency</strong></th>
-          <td>Optimal use of resources</th>
-          <td>UPI transaction completes within 5 seconds using minimal bandwidth</th>
-         </tr>
-         <tr>
-          <td><strong>Integrity</strong></th>
-          <td>Security against unauthorized access</th>
-          <td>UPI PIN required for every transaction; no unauthorized access</th>
-         </tr>
-         <tr>
-          <td><strong>Usability</strong></th>
-          <td>Ease of learning and use</th>
-          <td>Even non-tech user can send money using UPI app</th>
-         </tr>
+        <tr><td><strong>Correctness</strong></td><td>Software meets its specifications</td><td>UPI transaction of ₹500 correctly deducts ₹500 from sender and adds ₹500 to receiver</td></tr>
+        <tr><td><strong>Reliability</strong></td><td>Software performs without failure</td><td>UPI works 24/7 without crashing; transaction success rate > 99.9%</td></tr>
+        <tr><td><strong>Efficiency</strong></td><td>Optimal use of resources</td><td>UPI transaction completes within 5 seconds using minimal bandwidth</td></tr>
+        <tr><td><strong>Integrity</strong></td><td>Security against unauthorized access</td><td>UPI PIN required for every transaction; no unauthorized access</td></tr>
+        <tr><td><strong>Usability</strong></td><td>Ease of learning and use</td><td>Even non-tech user can send money using UPI app</td></tr>
       </tbody>
-     </table>
+    </table>
 
     <h3>Category 2: Product Revision Factors (When Software is Modified)</h3>
+    
     <table class="data-table">
       <thead>
         <tr><th>Factor</th><th>Meaning</th><th>Example in UPI System</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Maintainability</strong></th>
-          <td>Ease of fixing and modifying</th>
-          <td>Adding new bank integration should be easy without breaking existing features</th>
-         </tr>
-         <tr>
-          <td><strong>Flexibility</strong></th>
-          <td>Ease of adapting to changes</th>
-          <td>UPI app can easily add new features like bill payments, insurance</th>
-         </tr>
-         <tr>
-          <td><strong>Testability</strong></th>
-          <td>Ease of testing the software</th>
-          <td>Automated test suite can verify all transaction types quickly</th>
-         </tr>
+        <tr><td><strong>Maintainability</strong></td><td>Ease of fixing and modifying</td><td>Adding new bank integration should be easy without breaking existing features</td></tr>
+        <tr><td><strong>Flexibility</strong></td><td>Ease of adapting to changes</td><td>UPI app can easily add new features like bill payments, insurance</td></tr>
+        <tr><td><strong>Testability</strong></td><td>Ease of testing the software</td><td>Automated test suite can verify all transaction types quickly</td></tr>
       </tbody>
-     </table>
+    </table>
 
     <h3>Category 3: Product Transition Factors (When Software Moves to Different Environment)</h3>
+    
     <table class="data-table">
       <thead>
         <tr><th>Factor</th><th>Meaning</th><th>Example in UPI System</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Portability</strong></th>
-          <td>Ease of moving to different platforms</th>
-          <td>UPI app works on Android, iOS, and as a web interface</th>
-         </tr>
-         <tr>
-          <td><strong>Reusability</strong></th>
-          <td>Can components be reused elsewhere</th>
-          <td>QR code scanning module can be reused in other payment apps</th>
-         </tr>
-         <tr>
-          <td><strong>Interoperability</strong></th>
-          <td>Ease of interfacing with other systems</th>
-          <td>Google Pay works with any bank's UPI, not just one bank</th>
-         </tr>
+        <tr><td><strong>Portability</strong></td><td>Ease of moving to different platforms</td><td>UPI app works on Android, iOS, and as a web interface</td></tr>
+        <tr><td><strong>Reusability</strong></td><td>Can components be reused elsewhere</td><td>QR code scanning module can be reused in other payment apps</td></tr>
+        <tr><td><strong>Interoperability</strong></td><td>Ease of interfacing with other systems</td><td>Google Pay works with any bank's UPI, not just one bank</td></tr>
       </tbody>
-     </table>
+    </table>
 
     <div class="example-box">
-      <div class="ex-label">UPI Payment System — Quality Factors Summary</div>
-      <div class="step-box"><strong>Correctness:</strong> "Send ₹100 to Ramesh" → Ramesh receives exactly ₹100</div>
-      <div class="step-box"><strong>Reliability:</strong> UPI works 24×7, 365 days; minimal downtime</div>
-      <div class="step-box"><strong>Efficiency:</strong> Transaction completes in < 5 seconds</div>
-      <div class="step-box"><strong>Integrity:</strong> No unauthorized transaction without UPI PIN</div>
-      <div class="step-box"><strong>Usability:</strong> Simple interface with "Scan & Pay" feature</div>
-      <div class="step-box"><strong>Maintainability:</strong> Adding new feature (e.g., credit card payment) is easy</div>
-      <div class="step-box"><strong>Interoperability:</strong> PhonePe user can send money to Google Pay user</div>
-    </div>
-
-    <div class="ref-box">
-      <div class="ref-label">References</div>
-      <ul>
-        <li>McCall, J. — Factors in Software Quality</li>
-        <li>ISO/IEC 25010 — Software Quality Model</li>
-      </ul>
+      <div class="ex-label">UPI Payment System - Quality Factors Summary</div>
+      <div class="factor-card">
+        <strong>Correctness:</strong> "Send ₹100 to Ramesh" → Ramesh receives exactly ₹100
+      </div>
+      <div class="factor-card">
+        <strong>Reliability:</strong> UPI works 24×7, 365 days; minimal downtime
+      </div>
+      <div class="factor-card">
+        <strong>Efficiency:</strong> Transaction completes in < 5 seconds
+      </div>
+      <div class="factor-card">
+        <strong>Integrity:</strong> No unauthorized transaction without UPI PIN
+      </div>
+      <div class="factor-card">
+        <strong>Usability:</strong> Simple interface with "Scan & Pay" feature
+      </div>
+      <div class="factor-card">
+        <strong>Maintainability:</strong> Adding new feature (e.g., credit card payment) is easy
+      </div>
+      <div class="factor-card">
+        <strong>Interoperability:</strong> PhonePe user can send money to Google Pay user
+      </div>
     </div>
   </div>
 
@@ -589,14 +507,14 @@
   <!-- SECTION 1.6: SOFTWARE RELIABILITY & METRICS  -->
   <!-- ============================================ -->
   <div class="topic-section" id="sec6">
-    <div class="topic-label">Topic 1.6</div>
+    <div class="topic-label">Section 1.6</div>
     <h2 class="topic-title">Software Reliability & Reliability Measurement Factors</h2>
 
     <div class="concept-box">
       <strong>Software Reliability</strong> is the probability that software will operate without failure for a specified time under specified conditions. It is a critical quality factor, especially for systems like UPI where failure has financial consequences.
     </div>
 
-    <h3>Software Reliability (Concept)</h3>
+    <h3>1.6.1 Software Reliability (Concept Explanation)</h3>
     <p>Reliability is about <strong>trust</strong>. A reliable UPI app means:</p>
     <ul>
       <li>You can send money anytime, and it will work</li>
@@ -605,11 +523,11 @@
     </ul>
 
     <div class="example-box">
-      <div class="ex-label">UPI Payment System — Reliability Concept</div>
-      If Google Pay has reliability of 99.99%, it means out of 10,000 transactions, only 1 transaction might fail. For 10 billion monthly transactions, 1 million transactions may fail — which is financially significant.
+      <div class="ex-label">UPI Payment System - Reliability Concept</div>
+      <p>If Google Pay has reliability of 99.99%, it means out of 10,000 transactions, only 1 transaction might fail. For 10 billion monthly transactions, 1 million transactions may fail — which is financially significant.</p>
     </div>
 
-    <h3>Reliability Measurement Factors</h3>
+    <h3>1.6.2 Reliability Measurement Factors</h3>
 
     <h4>1. ROCOF (Rate of Occurrence of Failures)</h4>
     <div class="concept-box">
@@ -691,38 +609,14 @@
         <tr><th>Metric</th><th>Formula</th><th>UPI Target (Example)</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>ROCOF</strong></th>
-          <td>Failures / Total Transactions</th>
-          <td>< 0.0001 (1 failure per 10,000 transactions)</th>
-         </tr>
-         <tr>
-          <td><strong>MTTF</strong></th>
-          <td>Total Time / Failures</th>
-          <td>> 1000 hours between failures</th>
-         </tr>
-         <tr>
-          <td><strong>MTTR</strong></th>
-          <td>Total Repair Time / Repairs</th>
-          <td>< 1 hour per failure</th>
-         </tr>
-         <tr>
-          <td><strong>MTBF</strong></th>
-          <td>MTTF + MTTR</th>
-          <td>> 1001 hours</th>
-         </tr>
-         <tr>
-          <td><strong>POFOD</strong></th>
-          <td>Failed Demands / Total Demands</th>
-          <td>< 0.00001 (1 in 100,000 requests)</th>
-         </tr>
-         <tr>
-          <td><strong>Availability</strong></th>
-          <td>MTTF / (MTTF + MTTR)</th>
-          <td>> 99.99% (Four nines)</th>
-         </tr>
+        <tr><td>ROCOF</td><td>Failures / Total Transactions</td><td>< 0.0001 (1 failure per 10,000 transactions)</td></tr>
+        <tr><td>MTTF</td><td>Total Time / Failures</td><td>> 1000 hours between failures</td></tr>
+        <tr><td>MTTR</td><td>Total Repair Time / Repairs</td><td>< 1 hour per failure</td></tr>
+        <tr><td>MTBF</td><td>MTTF + MTTR</td><td>> 1001 hours</td></tr>
+        <tr><td>POFOD</td><td>Failed Demands / Total Demands</td><td>< 0.00001 (1 in 100,000 requests)</td></tr>
+        <tr><td>Availability</td><td>MTTF / (MTTF + MTTR)</td><td>> 99.99% (Four nines)</td></tr>
       </tbody>
-     </table>
+    </table>
 
     <div class="tip-box">
       <div class="tip-label">Exam Tip</div>
@@ -765,17 +659,6 @@
         <strong>Quality Factors:</strong> Correctness, reliability, efficiency, integrity, usability, maintainability, interoperability.<br>
         <strong>Reliability Metrics:</strong> ROCOF, MTTF, MTTR, MTBF, POFOD, Availability — all measurable for UPI.
       </p>
-    </div>
-
-    <div class="tip-box">
-      <div class="tip-label">Exam Preparation Tips</div>
-      <ul>
-        <li>Always remember: QA = Process (Prevention), QC = Product (Detection)</li>
-        <li>For ISO 9000, remember the 7 quality management principles</li>
-        <li>For reliability metrics, practice the formulas: ROCOF, MTTF, MTTR, MTBF, POFOD, Availability</li>
-        <li>Use UPI examples in your answers — examiners appreciate real-world applications</li>
-        <li>Four nines (99.99%) is the standard for critical systems like UPI</li>
-      </ul>
     </div>
   </div>
 

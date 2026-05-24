@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 — Tool Support for Testing | ECS 563 MCA Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand"><span>ECS 563</span> · Cyber Security Notes</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="stqa_index.html"> Home</a></li>
+    <li><a href="unit01_stqa.html">Unit 1</a></li>
+    <li><a href="unit02_ECS.html" class="active">Unit 2</a></li>
+    <li><a href="unit03_stqa.html">Unit 3</a></li>
+    <li><a href="unit04_ECS.html">Unit 4</a></li>
+    <!-- <li><a href="unit05_ECS.html">Unit 5</a></li> -->
+  </ul>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 05 · ECS 563 MJ-EC21-4</div>
+  <h1>Tool Support for Testing</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>4 Major Topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~10-15 Marks</strong></div>
+    <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Practical Level</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t5-1">5.1 — Types of Test Tools (CAST)</a></li>
+      <li><a href="#t5-2">5.2 — Introduction of a Tool into an Organization</a></li>
+      <li><a href="#t5-3">5.3 — Testing Tools (Selenium, JMeter, Postman, ETL Tool)</a></li>
+      <li><a href="#t5-4">5.4 — JIRA (Project Management)</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="content-wrap">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 5.1 — TYPES OF TEST TOOLS (CAST)
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t5-1">
+  <div class="topic-label">Topic 5.1</div>
+  <h2 class="topic-title">Types of Test Tools – CAST (Computer Aided Software Testing)</h2>
+
+  <div class="concept-box">
+    <strong>CAST (Computer Aided Software Testing)</strong> refers to the use of software tools to assist in the testing process. These tools automate various testing activities, from test management to test execution, defect tracking, and performance analysis.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the MAIN categories of test tools: Test Management, Test Execution (functional/regression), Performance/Load, Static Analysis, Test Data Preparation, and Defect Tracking. Each has specific purpose, benefits, and risks.
+  </div>
+
+  <h3>Major Categories of Test Tools — Complete Overview</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.1 — Classification of Test Tools (CAST Categories)</div>
+    <svg viewBox="0 0 780 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Main circle -->
+      <circle cx="390" cy="200" r="170" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2.5"/>
+      <text x="390" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#065a68">CAST</text>
+      <text x="390" y="215" text-anchor="middle" font-size="9" fill="#065a68">Computer Aided</text>
+      <text x="390" y="230" text-anchor="middle" font-size="9" fill="#065a68">Software Testing</text>
+      
+      <!-- Categories around the circle -->
+      <!-- Test Management -->
+      <rect x="30" y="80" width="140" height="50" rx="5" fill="#0a0a0a"/>
+      <text x="100" y="100" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Test Management</text>
+      <text x="100" y="115" text-anchor="middle" font-size="7" fill="#aaa">JIRA, QC, TestRail</text>
+      <line x1="170" y1="105" x2="220" y2="140" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- Functional/Regression -->
+      <rect x="30" y="270" width="140" height="50" rx="5" fill="#1a7a34"/>
+      <text x="100" y="290" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Functional /</text>
+      <text x="100" y="305" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Regression</text>
+      <text x="100" y="318" text-anchor="middle" font-size="7" fill="#d4edda">Selenium, UFT</text>
+      <line x1="170" y1="295" x2="220" y2="260" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- Performance/Load -->
+      <rect x="610" y="270" width="140" height="50" rx="5" fill="#e67e22"/>
+      <text x="680" y="290" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Performance /</text>
+      <text x="680" y="305" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Load</text>
+      <text x="680" y="318" text-anchor="middle" font-size="7" fill="#fde8d8">JMeter, LoadRunner</text>
+      <line x1="610" y1="295" x2="560" y2="260" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- Static Analysis -->
+      <rect x="610" y="80" width="140" height="50" rx="5" fill="#6f42c1"/>
+      <text x="680" y="100" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Static Analysis</text>
+      <text x="680" y="115" text-anchor="middle" font-size="7" fill="#e2d9f3">SonarQube, ESLint</text>
+      <line x1="610" y1="105" x2="560" y2="140" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- API Testing -->
+      <rect x="280" y="340" width="100" height="50" rx="5" fill="#c0392b"/>
+      <text x="330" y="360" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">API Testing</text>
+      <text x="330" y="375" text-anchor="middle" font-size="7" fill="#f8d7da">Postman, SoapUI</text>
+      <line x1="330" y1="340" x2="350" y2="230" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- Test Data -->
+      <rect x="470" y="340" width="110" height="50" rx="5" fill="#e6ac00"/>
+      <text x="525" y="360" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Test Data</text>
+      <text x="525" y="375" text-anchor="middle" font-size="7" fill="#fff3cd">ETL, DataGen</text>
+      <line x1="525" y1="340" x2="460" y2="230" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <!-- Defect Tracking -->
+      <rect x="280" y="10" width="100" height="50" rx="5" fill="#0c8da0"/>
+      <text x="330" y="30" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Defect</text>
+      <text x="330" y="45" text-anchor="middle" font-size="7" fill="#d1ecf1">JIRA, Bugzilla</text>
+      <line x1="330" y1="60" x2="350" y2="170" stroke="#0a0a0a" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h3>Detailed Tool Categories — Purpose, Benefits & Risks</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>📋 Test Management Tools</h4>
+      <p><strong>Purpose:</strong> Manage test planning, execution tracking, and reporting across projects.</p>
+      <p><strong>Examples:</strong> JIRA, TestRail, HP ALM/QC, Zephyr, Xray</p>
+      <p><strong>Benefits:</strong></p>
+      <ul>
+        <li>Centralized test case repository</li>
+        <li>Traceability between requirements, tests, and defects</li>
+        <li>Real-time test execution status dashboards</li>
+        <li>Metrics and reporting (pass/fail rates, coverage)</li>
+        <li>Team collaboration and audit trails</li>
+      </ul>
+      <p><strong>Risks:</strong></p>
+      <ul>
+        <li>High licensing costs for enterprise tools</li>
+        <li>Learning curve for complex tools</li>
+        <li>Tool maintenance overhead</li>
+        <li>Over-reliance on tool may replace thinking</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>🤖 Functional/Regression Automation Tools</h4>
+      <p><strong>Purpose:</strong> Automate execution of test cases for regression and functional validation.</p>
+      <p><strong>Examples:</strong> Selenium WebDriver, Cypress, Playwright, UFT/QTP, TestComplete</p>
+      <p><strong>Benefits:</strong></p>
+      <ul>
+        <li>Execute hundreds of tests in minutes</li>
+        <li>Repeatable and consistent execution</li>
+        <li>Early bug detection (CI/CD integration)</li>
+        <li>Reduced manual regression effort</li>
+        <li>24/7 test execution capability</li>
+      </ul>
+      <p><strong>Risks:</strong></p>
+      <ul>
+        <li>High initial script development cost</li>
+        <li>Maintenance cost when UI changes</li>
+        <li>False positives/negatives due to flaky tests</li>
+        <li>Not everything can be automated</li>
+        <li>Automation skill requirement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>⚡ Performance/Load Testing Tools</h4>
+      <p><strong>Purpose:</strong> Simulate user load to measure system performance and find bottlenecks.</p>
+      <p><strong>Examples:</strong> Apache JMeter, LoadRunner, Gatling, K6</p>
+      <p><strong>Benefits:</strong></p>
+      <ul>
+        <li>Simulate thousands of concurrent users</li>
+        <li>Identify performance bottlenecks before production</li>
+        <li>Measure response times, throughput, resource usage</li>
+        <li>Capacity planning data</li>
+        <li>SLA compliance verification</li>
+      </ul>
+      <p><strong>Risks:</strong></p>
+      <ul>
+        <li>Requires dedicated load generation infrastructure</li>
+        <li>Complex test script creation</li>
+        <li>May impact production if not isolated</li>
+        <li>Results interpretation requires expertise</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>🔍 Static Analysis Tools</h4>
+      <p><strong>Purpose:</strong> Analyze source code without execution to find potential defects.</p>
+      <p><strong>Examples:</strong> SonarQube, ESLint, Checkstyle, PMD, SpotBugs</p>
+      <p><strong>Benefits:</strong></p>
+      <ul>
+        <li>Find defects before dynamic testing</li>
+        <li>Enforce coding standards consistently</li>
+        <li>Identify security vulnerabilities early</li>
+        <li>Measure code quality metrics</li>
+        <li>Integration with CI/CD pipelines</li>
+      </ul>
+      <p><strong>Risks:</strong></p>
+      <ul>
+        <li>False positives (non-issues reported)</li>
+        <li>False negatives (some issues missed)</li>
+        <li>Configuration overhead for rules</li>
+        <li>Developer resistance to tool findings</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🔌 API Testing Tools</h4>
+      <p><strong>Purpose:</strong> Test web services and APIs for functionality, reliability, and performance.</p>
+      <p><strong>Examples:</strong> Postman, SoapUI, REST Assured, Insomnia</p>
+      <p><strong>Benefits:</strong></p>
+      <ul>
+        <li>Test without UI (faster, more stable)</li>
+        <li>Easy to automate and integrate with CI</li>
+        <li>Validate request/response formats</li>
+        <li>Test edge cases and error conditions</li>
+        <li>Reusable test collections</li>
+      </ul>
+      <p><strong>Risks:</strong></p>
+      <ul>
+        <li>Limited to API layer only</li>
+        <li>Need API documentation availability</li>
+        <li>Authentication/authorization complexity</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>📊 Test Data Preparation Tools</h4>
+      <p><strong>Purpose:</strong> Generate, mask, and manage test data for testing environments.</p>
+      <p><strong>Examples:</strong> ETL Testing Tools, DataFactory, Test Data Manager</p>
+      <p><strong>Benefits:</strong></p>
+      <ul>
+        <li>Generate realistic test data at scale</li>
+        <li>Data masking for privacy compliance (GDPR)</li>
+        <li>Reusable data sets</li>
+        <li>Reduce manual data setup time</li>
+      </ul>
+      <p><strong>Risks:</strong></p>
+      <ul>
+        <li>Generated data may not match real patterns</li>
+        <li>Data masking may not be perfect</li>
+        <li>Storage and management overhead</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Comprehensive Summary Table — Test Tool Categories</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Tool Category</th><th>Purpose</th><th>Examples</th><th>Key Benefits</th><th>Main Risks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">Test Management</td><td>Plan, track, report test progress</td><td>JIRA, TestRail, HP ALM</td><td>Traceability, metrics, collaboration</td><td>Cost, learning curve</td></tr>
+      <tr><td style="font-weight:700;">Functional Automation</td><td>Automate test execution</td><td>Selenium, Cypress, UFT</td><td>Speed, repeatability, CI/CD</td><td>Maintenance, initial cost</td></tr>
+      <tr><td style="font-weight:700;">Performance/Load</td><td>Simulate user load</td><td>JMeter, LoadRunner, Gatling</td><td>Find bottlenecks, capacity planning</td><td>Infrastructure, complexity</td></tr>
+      <tr><td style="font-weight:700;">Static Analysis</td><td>Analyze code without execution</td><td>SonarQube, ESLint, PMD</td><td>Early defect detection, standards</td><td>False positives, overhead</td></tr>
+      <tr><td style="font-weight:700;">API Testing</td><td>Test web services/APIs</td><td>Postman, SoapUI, REST Assured</td><td>Faster, stable, CI integration</td><td>API documentation needed</td></tr>
+      <tr><td style="font-weight:700;">Test Data</td><td>Generate/manage test data</td><td>ETL Tools, DataFactory</td><td>Realistic data, masking</td><td>Pattern mismatch, storage</td></tr>
+      <tr><td style="font-weight:700;">Defect Tracking</td><td>Log, track, manage defects</td><td>JIRA, Bugzilla, Mantis</td><td>Centralized tracking, workflow</td><td>Tool administration</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level — Tool Support for Testing Chapter</li>
+      <li>CAST (Computer Aided Software Testing) classification standards</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 5.2 — INTRODUCTION OF A TOOL INTO AN ORGANIZATION
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t5-2">
+  <div class="topic-label">Topic 5.2</div>
+  <h2 class="topic-title">Introduction of a Tool into an Organization</h2>
+
+  <div class="concept-box">
+    Introducing a new testing tool into an organization is a significant change management process. Success depends not just on the tool's capabilities, but on proper planning, stakeholder buy-in, training, and phased rollout.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Remember the 7-step process for tool introduction: 1. Assess needs, 2. Evaluate tools, 3. Proof of Concept, 4. Pilot project, 5. Rollout plan, 6. Training, 7. Post-implementation review. Also remember the critical success factors and common pitfalls.
+  </div>
+
+  <h3>Tool Introduction Life Cycle — Complete Process</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.2 — Tool Introduction Life Cycle (7 Phases)</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Phase 1 -->
+      <rect x="20" y="70" width="95" height="60" rx="5" fill="#0a0a0a"/>
+      <text x="67" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Phase 1</text>
+      <text x="67" y="110" text-anchor="middle" font-size="7" fill="#aaa">Assess</text>
+      <text x="67" y="122" text-anchor="middle" font-size="7" fill="#aaa">Needs</text>
+      
+      <line x1="115" y1="100" x2="135" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="133,95 143,100 133,105" fill="#0a0a0a"/>
+      
+      <!-- Phase 2 -->
+      <rect x="145" y="70" width="95" height="60" rx="5" fill="#1a7a34"/>
+      <text x="192" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Phase 2</text>
+      <text x="192" y="110" text-anchor="middle" font-size="7" fill="#d4edda">Evaluate</text>
+      <text x="192" y="122" text-anchor="middle" font-size="7" fill="#d4edda">Tools</text>
+      
+      <line x1="240" y1="100" x2="260" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="258,95 268,100 258,105" fill="#0a0a0a"/>
+      
+      <!-- Phase 3 -->
+      <rect x="270" y="70" width="95" height="60" rx="5" fill="#0c8da0"/>
+      <text x="317" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Phase 3</text>
+      <text x="317" y="110" text-anchor="middle" font-size="7" fill="#d1ecf1">Proof of</text>
+      <text x="317" y="122" text-anchor="middle" font-size="7" fill="#d1ecf1">Concept</text>
+      
+      <line x1="365" y1="100" x2="385" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="383,95 393,100 383,105" fill="#0a0a0a"/>
+      
+      <!-- Phase 4 -->
+      <rect x="395" y="70" width="95" height="60" rx="5" fill="#e6ac00"/>
+      <text x="442" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Phase 4</text>
+      <text x="442" y="110" text-anchor="middle" font-size="7" fill="#fff3cd">Pilot</text>
+      <text x="442" y="122" text-anchor="middle" font-size="7" fill="#fff3cd">Project</text>
+      
+      <line x1="490" y1="100" x2="510" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="508,95 518,100 508,105" fill="#0a0a0a"/>
+      
+      <!-- Phase 5 -->
+      <rect x="520" y="70" width="95" height="60" rx="5" fill="#c0392b"/>
+      <text x="567" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Phase 5</text>
+      <text x="567" y="110" text-anchor="middle" font-size="7" fill="#f8d7da">Rollout</text>
+      <text x="567" y="122" text-anchor="middle" font-size="7" fill="#f8d7da">Plan</text>
+      
+      <line x1="615" y1="100" x2="635" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="633,95 643,100 633,105" fill="#0a0a0a"/>
+      
+      <!-- Phase 6 -->
+      <rect x="645" y="70" width="95" height="60" rx="5" fill="#6f42c1"/>
+      <text x="692" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Phase 6</text>
+      <text x="692" y="110" text-anchor="middle" font-size="7" fill="#e2d9f3">Training &</text>
+      <text x="692" y="122" text-anchor="middle" font-size="7" fill="#e2d9f3">Deploy</text>
+      
+      <!-- Feedback loop -->
+      <path d="M 692 130 L 692 160 L 67 160 L 67 130" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="380" y="175" text-anchor="middle" font-size="8" fill="#7a7a74">Phase 7: Post-Implementation Review & Continuous Improvement</text>
+    </svg>
+  </div>
+
+  <h3>Detailed Steps for Tool Introduction</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>1. Assess Organizational Needs</h4>
+      <p><strong>Questions to answer:</strong></p>
+      <ul>
+        <li>What problem are we trying to solve?</li>
+        <li>What processes need automation?</li>
+        <li>What is the current pain point?</li>
+        <li>What ROI do we expect?</li>
+        <li>Who are the stakeholders?</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Requirements document for tool selection</p>
+    </div>
+    <div class="compare-card">
+      <h4>2. Evaluate Available Tools</h4>
+      <p><strong>Evaluation criteria:</strong></p>
+      <ul>
+        <li>Functional fit (does it meet requirements?)</li>
+        <li>Technical compatibility (OS, browsers, CI/CD)</li>
+        <li>Cost (licensing, maintenance, training)</li>
+        <li>Vendor reputation and support</li>
+        <li>Ease of use and learning curve</li>
+        <li>Scalability for future needs</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Shortlisted tools (2-3 options)</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>3. Proof of Concept (PoC)</h4>
+      <p><strong>Activities:</strong></p>
+      <ul>
+        <li>Install and configure the tool in a sandbox</li>
+        <li>Create a small demonstration of key features</li>
+        <li>Test with realistic scenarios</li>
+        <li>Assess performance and integration</li>
+        <li>Gather feedback from potential users</li>
+      </ul>
+      <p><strong>Deliverable:</strong> PoC report with recommendation</p>
+    </div>
+    <div class="compare-card">
+      <h4>4. Pilot Project</h4>
+      <p><strong>Activities:</strong></p>
+      <ul>
+        <li>Select a small, low-risk project</li>
+        <li>Implement tool on this project only</li>
+        <li>Train pilot team members</li>
+        <li>Monitor successes and issues</li>
+        <li>Measure actual vs expected benefits</li>
+      </ul>
+      <p><strong>Deliverable:</strong> Pilot evaluation report</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>5. Rollout Planning</h4>
+      <p><strong>Plan components:</strong></p>
+      <ul>
+        <li>Phased rollout schedule</li>
+        <li>Communication plan to all teams</li>
+        <li>Training curriculum development</li>
+        <li>Support structure (helpdesk, champions)</li>
+        <li>Migration plan for existing assets</li>
+        <li>Success metrics definition</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>6. Training & Deployment</h4>
+      <p><strong>Training types:</strong></p>
+      <ul>
+        <li>Basic user training (how to use)</li>
+        <li>Advanced training (administrators)</li>
+        <li>On-the-job coaching</li>
+        <li>Documentation and tutorials</li>
+        <li>Certification if applicable</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Critical Success Factors for Tool Introduction</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">👥</div>
+      <h4>Executive Sponsorship</h4>
+      <p>Senior management support for budget, time allocation, and organizational change is essential.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🎯</div>
+      <h4>Clear Objectives</h4>
+      <p>Define measurable success criteria before starting the tool selection process.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📚</div>
+      <h4>Adequate Training</h4>
+      <p>Allocate sufficient time and resources for user training — not just one day!</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔄</div>
+      <h4>Phased Rollout</h4>
+      <p>Start with a pilot, then expand gradually. Don't try to do everything at once.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">💬</div>
+      <h4>User Involvement</h4>
+      <p>Involve end-users in tool evaluation and PoC — they will be the daily users.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Metrics & Feedback</h4>
+      <p>Track usage metrics and gather continuous feedback for improvement.</p>
+    </div>
+  </div>
+
+  <h3>Common Pitfalls to Avoid</h3>
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Tool Introduction Failures</div>
+    <ul>
+      <li><strong>Tool-first approach:</strong> Buying a tool before understanding the problem ("solution looking for a problem")</li>
+      <li><strong>Underestimating training needs:</strong> Assuming users will learn on their own</li>
+      <li><strong>Insufficient pilot testing:</strong> Rolling out organization-wide without validating in a small project</li>
+      <li><strong>Ignoring existing processes:</strong> Forcing tool use without adapting to current workflows</li>
+      <li><strong>No clear ownership:</strong> No one responsible for tool success after deployment</li>
+      <li><strong>Over-customization:</strong> Spending too much time customizing instead of using standard features</li>
+      <li><strong>No ROI measurement:</strong> Cannot prove tool value without metrics</li>
+    </ul>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level — Tool Introduction Process</li>
+      <li>IEEE Std 1209-1992 — Evaluation and Selection of CASE Tools</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 5.3 — TESTING TOOLS (Detailed Coverage)
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t5-3">
+  <div class="topic-label">Topic 5.3</div>
+  <h2 class="topic-title">Testing Tools — Selenium, JMeter, Postman, ETL Testing Tool</h2>
+
+  <div class="concept-box">
+    This section covers four major testing tools used in industry: <strong>Selenium</strong> (Web automation), <strong>JMeter</strong> (Performance testing), <strong>Postman</strong> (API testing), and <strong>ETL Testing Tools</strong> (Data validation). Each tool serves a distinct purpose in the testing lifecycle.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    For each tool, remember: What it does (purpose), Key features, How it works, Benefits, Limitations. This is a common exam question pattern.
+  </div>
+
+  <!-- Tool Comparison Overview Chart -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.3 — Testing Tools Comparison at a Glance</div>
+    <div class="chart-container">
+      <canvas id="toolsComparisonChart"></canvas>
+    </div>
+  </div>
+
+  <h3>5.3.1 — Selenium WebDriver and TestNG</h3>
+  
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🌐 Selenium WebDriver</h4>
+      <p><strong>Definition:</strong> Selenium is an open-source framework for automating web browser interactions. WebDriver is its core component that sends commands directly to the browser using browser-native automation APIs.</p>
+      <p><strong>Purpose:</strong> Automate functional and regression testing of web applications across different browsers.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Supports multiple browsers (Chrome, Firefox, Safari, Edge, IE)</li>
+        <li>Supports multiple programming languages (Java, Python, C#, JavaScript, Ruby, Kotlin)</li>
+        <li>Cross-platform (Windows, Mac, Linux)</li>
+        <li>Integrates with TestNG, JUnit, Cucumber, Maven, Jenkins</li>
+        <li>Headless browser execution for CI/CD</li>
+        <li>Selenium Grid for parallel test execution</li>
+      </ul>
+      <p><strong>How WebDriver Works:</strong></p>
+      <ul>
+        <li>Test script sends commands to WebDriver API</li>
+        <li>WebDriver translates commands to browser-specific HTTP requests</li>
+        <li>Browser driver (ChromeDriver, GeckoDriver) executes on the browser</li>
+        <li>Browser performs actions (click, type, navigate)</li>
+        <li>Results returned to test script for validation</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✅ TestNG (Testing Framework)</h4>
+      <p><strong>Definition:</strong> TestNG (Test Next Generation) is a testing framework inspired by JUnit but with more powerful features. It is designed to cover all categories of tests: unit, functional, end-to-end, and integration.</p>
+      <p><strong>Purpose:</strong> Provide annotations, test organization, parallel execution, and reporting for Selenium tests.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Annotations: @Test, @BeforeMethod, @AfterMethod, @BeforeClass, @DataProvider</li>
+        <li>Test prioritization and grouping</li>
+        <li>Parameterization using @Parameters and @DataProvider</li>
+        <li>Parallel test execution (methods, classes, tests)</li>
+        <li>Dependency management (test depends on another)</li>
+        <li>Built-in reporting (HTML, XML, email)</li>
+        <li>Integration with Maven, Gradle, Jenkins, Allure</li>
+      </ul>
+      <p><strong>TestNG Annotations Example:</strong></p>
+      <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.6rem;">
+@Test(priority = 1)
+public void testLogin() { ... }
+
+@Test(priority = 2, dependsOnMethods = "testLogin")
+public void testDashboard() { ... }
+
+@DataProvider(name = "loginData")
+public Object[][] getData() {
+  return new Object[][] {
+    {"user1@test.com", "pass123"},
+    {"user2@test.com", "pass456"}
+  };
+}</pre>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Selenium + TestNG — Complete Test Example</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.6rem;">
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class LoginTest {
+    
+    WebDriver driver;
+    
+    @BeforeMethod
+    public void setUp() {
+        driver = new ChromeDriver();
+        driver.get("https://example.com/login");
+    }
+    
+    @Test(priority = 1, description = "Verify valid login")
+    public void testValidLogin() {
+        driver.findElement(By.id("email")).sendKeys("user@example.com");
+        driver.findElement(By.id("password")).sendKeys("ValidPass123");
+        driver.findElement(By.id("loginBtn")).click();
+        
+        String expectedUrl = "https://example.com/dashboard";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+    }
+    
+    @Test(priority = 2, description = "Verify invalid login error")
+    public void testInvalidLogin() {
+        driver.findElement(By.id("email")).sendKeys("user@example.com");
+        driver.findElement(By.id("password")).sendKeys("WrongPass");
+        driver.findElement(By.id("loginBtn")).click();
+        
+        String errorMsg = driver.findElement(By.id("errorMsg")).getText();
+        Assert.assertTrue(errorMsg.contains("Invalid credentials"));
+    }
+    
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+}</pre>
+  </div>
+
+  <h4>Selenium — Benefits and Limitations</h4>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Benefits</h4>
+      <ul>
+        <li>Free and open-source — no licensing cost</li>
+        <li>Large community support and extensive documentation</li>
+        <li>Cross-browser and cross-platform support</li>
+        <li>Multiple language bindings (Java, Python, C#, etc.)</li>
+        <li>Integrates with CI/CD tools (Jenkins, GitHub Actions)</li>
+        <li>Supports parallel execution via Selenium Grid</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✗ Limitations</h4>
+      <ul>
+        <li>Only for web applications — cannot test desktop or mobile apps</li>
+        <li>No built-in reporting — needs TestNG or ExtentReports</li>
+        <li>Requires programming knowledge</li>
+        <li>Frequent maintenance when UI changes</li>
+        <li>Limited to browser automation (cannot test backend APIs)</li>
+        <li>No built-in test data management</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>5.3.2 — Apache JMeter</h3>
+  <div class="concept-box">
+    <strong>Apache JMeter</strong> is an open-source performance testing tool designed to load test functional behavior and measure performance of web applications, APIs, databases, and other services.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.4 — JMeter Test Plan Structure</div>
+    <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Test Plan -->
+      <rect x="50" y="20" width="680" height="40" rx="5" fill="#0a0a0a"/>
+      <text x="390" y="45" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Test Plan</text>
+      
+      <!-- Thread Group -->
+      <rect x="100" y="80" width="580" height="40" rx="5" fill="#1a7a34"/>
+      <text x="390" y="105" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Thread Group (Users: 100, Ramp-up: 10s, Loop: 5)</text>
+      
+      <!-- Controllers under Thread Group -->
+      <rect x="150" y="140" width="160" height="40" rx="5" fill="#0c8da0"/>
+      <text x="230" y="165" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">HTTP Request</text>
+      
+      <rect x="330" y="140" width="160" height="40" rx="5" fill="#e6ac00"/>
+      <text x="410" y="165" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">HTTP Request</text>
+      
+      <rect x="510" y="140" width="160" height="40" rx="5" fill="#c0392b"/>
+      <text x="590" y="165" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">HTTP Request</text>
+      
+      <!-- Listeners -->
+      <rect x="200" y="205" width="380" height="40" rx="5" fill="#6f42c1"/>
+      <text x="390" y="230" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Listeners (View Results Tree, Aggregate Report, Graph Results)</text>
+      
+      <!-- Connecting lines -->
+      <line x1="390" y1="60" x2="390" y2="80" stroke="#0a0a0a" stroke-width="1.5"/>
+      <line x1="230" y1="120" x2="230" y2="140" stroke="#0a0a0a" stroke-width="1.5"/>
+      <line x1="410" y1="120" x2="410" y2="140" stroke="#0a0a0a" stroke-width="1.5"/>
+      <line x1="590" y1="120" x2="590" y2="140" stroke="#0a0a0a" stroke-width="1.5"/>
+      <line x1="390" y1="180" x2="390" y2="205" stroke="#0a0a0a" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">JMeter Test Configuration Example</div>
+    <p><strong>Scenario:</strong> Load test an e-commerce website with 500 concurrent users</p>
+    <p><strong>Test Plan Elements:</strong></p>
+    <ul>
+      <li><strong>Thread Group:</strong> Number of threads = 500, Ramp-up period = 30 seconds, Loop count = 10</li>
+      <li><strong>HTTP Request Defaults:</strong> Server: shop.example.com, Protocol: https</li>
+      <li><strong>HTTP Header Manager:</strong> User-Agent, Accept-Language, Authorization token</li>
+      <li><strong>HTTP Requests:</strong>
+        <ul>
+          <li>GET / → Homepage</li>
+          <li>POST /login → Authentication</li>
+          <li>GET /products → Product listing</li>
+          <li>POST /cart/add → Add to cart</li>
+          <li>POST /checkout → Checkout</li>
+        </ul>
+      </li>
+      <li><strong>Timers:</strong> Constant Timer (200ms) to simulate user think time</li>
+      <li><strong>Assertions:</strong> Response Assertion (check for "Thank you for your order")</li>
+      <li><strong>Listeners:</strong> Aggregate Report, Summary Report, Graph Results</li>
+    </ul>
+  </div>
+
+  <h4>JMeter — Benefits and Limitations</h4>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Benefits</h4>
+      <ul>
+        <li>Free and open-source</li>
+        <li>Supports multiple protocols (HTTP, HTTPS, FTP, JDBC, JMS, SOAP, REST)</li>
+        <li>Distributed testing capability (master-slave architecture)</li>
+        <li>Command-line execution for CI/CD integration</li>
+        <li>Rich set of listeners and reporting</li>
+        <li>Plugins ecosystem for extended functionality</li>
+        <li>Platform independent (Java-based)</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✗ Limitations</h4>
+      <ul>
+        <li>Resource intensive — needs powerful hardware for large loads</li>
+        <li>Limited JavaScript execution (doesn't render pages like browser)</li>
+        <li>Steep learning curve for complex test scenarios</li>
+        <li>Primarily GUI-based, CLI less user-friendly</li>
+        <li>Not ideal for testing dynamic content with heavy JS</li>
+        <li>Recording can capture unnecessary requests</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>5.3.3 — Postman</h3>
+  <div class="concept-box">
+    <strong>Postman</strong> is a popular collaboration platform for API development and testing. It allows testers to create, share, test, and document APIs with an intuitive graphical interface.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.5 — Postman API Testing Workflow</div>
+    <svg viewBox="0 0 780 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Request Building -->
+      <rect x="30" y="50" width="160" height="60" rx="5" fill="#0a0a0a"/>
+      <text x="110" y="75" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">1. Build Request</text>
+      <text x="110" y="92" text-anchor="middle" font-size="7" fill="#aaa">URL, Method, Headers, Body</text>
+      
+      <line x1="190" y1="80" x2="225" y2="80" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="223,75 233,80 223,85" fill="#0a0a0a"/>
+      
+      <!-- Send Request -->
+      <rect x="235" y="50" width="160" height="60" rx="5" fill="#1a7a34"/>
+      <text x="315" y="75" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">2. Send Request</text>
+      <text x="315" y="92" text-anchor="middle" font-size="7" fill="#d4edda">Click "Send" button</text>
+      
+      <line x1="395" y1="80" x2="430" y2="80" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="428,75 438,80 428,85" fill="#0a0a0a"/>
+      
+      <!-- Receive Response -->
+      <rect x="440" y="50" width="160" height="60" rx="5" fill="#0c8da0"/>
+      <text x="520" y="75" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">3. Receive Response</text>
+      <text x="520" y="92" text-anchor="middle" font-size="7" fill="#d1ecf1">Status, Body, Headers</text>
+      
+      <line x1="600" y1="80" x2="635" y2="80" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="633,75 643,80 633,85" fill="#0a0a0a"/>
+      
+      <!-- Validate -->
+      <rect x="645" y="50" width="120" height="60" rx="5" fill="#e6ac00"/>
+      <text x="705" y="75" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">4. Validate</text>
+      <text x="705" y="92" text-anchor="middle" font-size="7" fill="#fff3cd">Assertions</text>
+    </svg>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Postman Test Script Example</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.6rem;">
+// Pre-request Script (runs before request)
+pm.environment.set("timestamp", Date.now());
+const crypto = require('crypto-js');
+const signature = CryptoJS.HmacSHA256(pm.request.body, "secret_key");
+pm.environment.set("signature", signature);
+
+// Request: POST https://api.example.com/users
+// Body: {"name": "John", "email": "john@example.com"}
+
+// Tests Script (runs after response)
+pm.test("Status code is 201 Created", function() {
+    pm.response.to.have.status(201);
+});
+
+pm.test("Response time is less than 500ms", function() {
+    pm.expect(pm.response.responseTime).to.be.below(500);
+});
+
+pm.test("Response has valid JSON structure", function() {
+    const jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property("id");
+    pm.expect(jsonData).to.have.property("email");
+    pm.expect(jsonData.email).to.include("@");
+});
+
+pm.test("User ID is a positive integer", function() {
+    const jsonData = pm.response.json();
+    pm.expect(jsonData.id).to.be.a('number');
+    pm.expect(jsonData.id).to.be.greaterThan(0);
+});
+
+// Set variable for subsequent requests
+pm.environment.set("userId", pm.response.json().id);</pre>
+  </div>
+
+  <h4>Postman Features</h4>
+  <ul>
+    <li><strong>Collections:</strong> Organize related API requests into folders</li>
+    <li><strong>Environments:</strong> Manage variables for different environments (dev, staging, prod)</li>
+    <li><strong>Pre-request Scripts:</strong> JavaScript code executed before request (auth, data setup)</li>
+    <li><strong>Tests Scripts:</strong> JavaScript assertions to validate responses</li>
+    <li><strong>Collection Runner:</strong> Run entire collection of tests in sequence</li>
+    <li><strong>Newman:</strong> CLI tool for running Postman tests in CI/CD pipelines</li>
+    <li><strong>Mock Servers:</strong> Simulate API responses without backend</li>
+    <li><strong>Documentation:</strong> Auto-generate API documentation from collections</li>
+    <li><strong>Monitors:</strong> Schedule test runs for continuous monitoring</li>
+  </ul>
+
+  <h4>Postman — Benefits and Limitations</h4>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Benefits</h4>
+      <ul>
+        <li>User-friendly GUI — easy to learn and use</li>
+        <li>No coding required for basic tests (optional for advanced)</li>
+        <li>Powerful test scripting with JavaScript</li>
+        <li>Excellent collaboration features (teams, sharing)</li>
+        <li>CI/CD integration via Newman</li>
+        <li>Automated API documentation generation</li>
+        <li>Large community and extensive resources</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✗ Limitations</h4>
+      <ul>
+        <li>Free version has limited team features</li>
+        <li>Not designed for performance/load testing</li>
+        <li>Limited support for non-REST APIs (SOAP, GraphQL is limited)</li>
+        <li>Test reports are basic without third-party integration</li>
+        <li>Can become slow with very large collections</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>5.3.4 — ETL Testing Tools</h3>
+  <div class="concept-box">
+    <strong>ETL (Extract, Transform, Load) Testing Tools</strong> are specialized tools for validating data migration, data warehousing, and business intelligence systems. They verify that data is correctly extracted from source systems, transformed according to business rules, and loaded into target databases.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.6 — ETL Testing Process Overview</div>
+    <svg viewBox="0 0 780 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Source -->
+      <rect x="30" y="60" width="140" height="50" rx="5" fill="#0c8da0"/>
+      <text x="100" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">SOURCE</text>
+      <text x="100" y="100" text-anchor="middle" font-size="7" fill="#d1ecf1">(OLTP, Files, APIs)</text>
+      
+      <line x1="170" y1="85" x2="200" y2="85" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="198,80 208,85 198,90" fill="#0a0a0a"/>
+      
+      <!-- Extract -->
+      <rect x="210" y="60" width="100" height="50" rx="5" fill="#e6ac00"/>
+      <text x="260" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">EXTRACT</text>
+      <text x="260" y="100" text-anchor="middle" font-size="7" fill="#fff3cd">Data Extraction</text>
+      
+      <line x1="310" y1="85" x2="340" y2="85" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="338,80 348,85 338,90" fill="#0a0a0a"/>
+      
+      <!-- Transform -->
+      <rect x="350" y="60" width="100" height="50" rx="5" fill="#e67e22"/>
+      <text x="400" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TRANSFORM</text>
+      <text x="400" y="100" text-anchor="middle" font-size="7" fill="#fde8d8">Cleanse, Map, Aggregate</text>
+      
+      <line x1="450" y1="85" x2="480" y2="85" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="478,80 488,85 478,90" fill="#0a0a0a"/>
+      
+      <!-- Load -->
+      <rect x="490" y="60" width="100" height="50" rx="5" fill="#c0392b"/>
+      <text x="540" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">LOAD</text>
+      <text x="540" y="100" text-anchor="middle" font-size="7" fill="#f8d7da">Data Warehouse</text>
+      
+      <line x1="590" y1="85" x2="620" y2="85" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="618,80 628,85 618,90" fill="#0a0a0a"/>
+      
+      <!-- Target -->
+      <rect x="630" y="60" width="120" height="50" rx="5" fill="#1a7a34"/>
+      <text x="690" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TARGET</text>
+      <text x="690" y="100" text-anchor="middle" font-size="7" fill="#d4edda">(Data Warehouse)</text>
+      
+      <!-- ETL Testing annotations -->
+      <rect x="210" y="130" width="380" height="30" rx="3" fill="#0a0a0a"/>
+      <text x="400" y="149" text-anchor="middle" font-size="8" fill="#fff">ETL Testing: Validate data at each stage (Count, Quality, Transformation, Performance)</text>
+    </svg>
+  </div>
+
+  <h4>Popular ETL Testing Tools</h4>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Tool</th><th>Type</th><th>Key Features</th><th>Best For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">QuerySurge</td>
+      <td>Commercial</td>
+      <td>Automated SQL testing, data validation, version control, CI/CD integration</td>
+      <td>Enterprise data warehouses, big data</td>
+    </tr>
+    <tr><td style="font-weight:700;">Informatica Data Validation</td>
+      <td>Commercial</td>
+      <td>Built on Informatica PowerCenter, data comparison, data quality rules</td>
+      <td>Organizations already using Informatica</td>
+    </tr>
+    <tr><td style="font-weight:700;">ICEDQ</td>
+      <td>Commercial/Free tier</td>
+      <td>No-code ETL testing, data profiling, regression testing</td>
+      <td>Quick setup, less technical teams</td>
+    </tr>
+    <tr><td style="font-weight:700;">Apache NiFi + Custom SQL</td>
+      <td>Open Source</td>
+      <td>Data flow automation, custom validation scripts</td>
+      <td>Teams with programming capabilities</td>
+    </tr>
+    <tr><td style="font-weight:700;">Talend Data Quality</td>
+      <td>Open Source/Commercial</td>
+      <td>Data profiling, cleansing, validation, real-time monitoring</td>
+      <td>Data quality focus, smaller budgets</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">
+    <div class="ex-label">ETL Testing — Key Test Scenarios</div>
+    <p><strong>1. Data Completeness (Count Validation):</strong></p>
+    <ul>
+      <li>Source row count vs Target row count</li>
+      <li>Check for missing records after ETL execution</li>
+      <li>Verify no data loss during transformation</li>
+    </ul>
+    <p><strong>2. Data Quality (Transform Validation):</strong></p>
+    <ul>
+      <li>Data type and format validation (dates, numbers, strings)</li>
+      <li>Business rule validation (e.g., discount calculation rules)</li>
+      <li>Null handling and default value assignment</li>
+      <li>Data cleansing (trim spaces, remove duplicates)</li>
+    </ul>
+    <p><strong>3. Data Integrity (Mapping Validation):</strong></p>
+    <ul>
+      <li>Source-to-target field mapping correctness</li>
+      <li>Surrogate key generation and referential integrity</li>
+      <li>Parent-child relationships maintained</li>
+    </ul>
+    <p><strong>4. Performance & Volume Testing:</strong></p>
+    <ul>
+      <li>ETL execution time within SLA</li>
+      <li>Data volume handling (thousands, millions, billions of records)</li>
+      <li>Resource utilization during batch processing</li>
+    </ul>
+    <p><strong>5. Data Example — SQL Validation Query:</strong></p>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.6rem;">
+-- Compare source and target counts
+SELECT COUNT(*) as source_count FROM source_orders WHERE order_date = '2024-01-01';
+SELECT COUNT(*) as target_count FROM dw_fact_orders WHERE order_date = '2024-01-01';
+
+-- Validate transformation: Total = Quantity × Unit_Price
+SELECT order_id, quantity, unit_price, total_amount, (quantity * unit_price) as calculated_total
+FROM target_fact_orders
+WHERE total_amount != (quantity * unit_price);
+-- If any rows returned, transformation is incorrect!</pre>
+  </div>
+
+  <h4>ETL Testing — Benefits and Limitations</h4>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Benefits</h4>
+      <ul>
+        <li>Automated validation of large data volumes</li>
+        <li>Early detection of data quality issues</li>
+        <li>Regression testing for data warehouse changes</li>
+        <li>Comprehensive data lineage and traceability</li>
+        <li>Reduced manual effort for data comparison</li>
+        <li>Compliance reporting for data audits</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✗ Limitations</h4>
+      <ul>
+        <li>Commercial tools can be expensive</li>
+        <li>Requires SQL and data warehouse knowledge</li>
+        <li>Test data setup can be complex</li>
+        <li>Some tools have limited real-time testing support</li>
+        <li>Performance testing requires significant infrastructure</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>SeleniumHQ Official Documentation: https://www.selenium.dev</li>
+      <li>TestNG Official Documentation: https://testng.org</li>
+      <li>Apache JMeter Documentation: https://jmeter.apache.org</li>
+      <li>Postman Learning Center: https://learning.postman.com</li>
+      <li>ETL Testing Best Practices — IBM/Talend Documentation</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 5.4 — JIRA (Project Management)
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t5-4">
+  <div class="topic-label">Topic 5.4</div>
+  <h2 class="topic-title">JIRA — Project Management Tool</h2>
+
+  <div class="concept-box">
+    <strong>JIRA</strong> (developed by Atlassian) is a project management and issue tracking tool widely used in software development and testing. It supports agile methodologies (Scrum, Kanban), defect tracking, test case management, and team collaboration.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    JIRA is primarily known for DEFECT TRACKING and PROJECT MANAGEMENT. Key concepts: Issues/Defects, Workflows, Boards (Scrum/Kanban), Sprints, Dashboards, and Reports. For testing, JIRA tracks bugs from discovery to closure.
+  </div>
+
+  <h3>JIRA Overview — Key Capabilities</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.7 — JIRA Core Features for Testing & Project Management</div>
+    <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Center -->
+      <circle cx="390" cy="150" r="60" fill="#0a0a0a"/>
+      <text x="390" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">JIRA</text>
+      <text x="390" y="162" text-anchor="middle" font-size="9" fill="#aaa">Atlassian</text>
+      
+      <!-- Features around -->
+      <rect x="560" y="20" width="180" height="55" rx="5" fill="#1a7a34"/>
+      <text x="650" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Issue / Defect</text>
+      <text x="650" y="58" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Tracking</text>
+      <line x1="560" y1="47" x2="450" y2="100" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <rect x="560" y="230" width="180" height="55" rx="5" fill="#0c8da0"/>
+      <text x="650" y="252" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Agile Boards</text>
+      <text x="650" y="268" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">(Scrum/Kanban)</text>
+      <line x1="560" y1="258" x2="450" y2="200" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <rect x="40" y="20" width="180" height="55" rx="5" fill="#e6ac00"/>
+      <text x="130" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Workflow</text>
+      <text x="130" y="58" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Customization</text>
+      <line x1="220" y1="47" x2="330" y2="100" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <rect x="40" y="230" width="180" height="55" rx="5" fill="#c0392b"/>
+      <text x="130" y="252" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Dashboards</text>
+      <text x="130" y="268" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">&amp; Reports</text>
+      <line x1="220" y1="258" x2="330" y2="200" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <rect x="280" y="20" width="220" height="40" rx="5" fill="#6f42c1"/>
+      <text x="390" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Test Case Management (via Xray/Zephyr plugins)</text>
+      <line x1="390" y1="60" x2="390" y2="90" stroke="#0a0a0a" stroke-width="1.5"/>
+      
+      <rect x="280" y="250" width="220" height="40" rx="5" fill="#e67e22"/>
+      <text x="390" y="275" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Reporting & Analytics (Velocity, Burndown)</text>
+    </svg>
+  </div>
+
+  <h3>JIRA Issue Types (Defect Tracking)</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🐛 Bug / Defect</h4>
+      <p>Problem that causes incorrect behavior. The primary issue type for testers.</p>
+      <p><strong>Standard Fields:</strong></p>
+      <ul>
+        <li>Summary — One-line description of the issue</li>
+        <li>Description — Detailed steps to reproduce</li>
+        <li>Priority — How urgently to fix (Blocker, Critical, Major, Minor, Trivial)</li>
+        <li>Severity — Impact on system (Critical, High, Medium, Low)</li>
+        <li>Environment — OS, browser, version where found</li>
+        <li>Fix Version — Target release for resolution</li>
+        <li>Assignee — Who is responsible for fixing</li>
+        <li>Reporter — Who logged the issue (tester)</li>
+        <li>Attachments — Screenshots, logs, videos</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>📋 Other Issue Types</h4>
+      <p><strong>Task:</strong> Work that needs to be done (non-bug)</p>
+      <p><strong>Story:</strong> User-facing functionality (Agile)</p>
+      <p><strong>Epic:</strong> Large body of work broken into stories</p>
+      <p><strong>Sub-task:</strong> Smaller piece of work under parent</p>
+      <p><strong>Test (with plugins):</strong> Test case definition</p>
+      <p><strong>Test Execution (with plugins):</strong> Test run result</p>
+    </div>
+  </div>
+
+  <h3>Typical Defect Workflow in JIRA</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.8 — JIRA Defect Life Cycle Workflow</div>
+    <svg viewBox="0 0 780 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- States -->
+      <rect x="30" y="70" width="110" height="40" rx="5" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="85" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#922b21">OPEN</text>
+      
+      <rect x="180" y="70" width="110" height="40" rx="5" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="235" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#8a6500">IN PROGRESS</text>
+      
+      <rect x="330" y="70" width="110" height="40" rx="5" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="385" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#065a68">IN REVIEW</text>
+      
+      <rect x="480" y="70" width="110" height="40" rx="5" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="535" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a34">DONE</text>
+      
+      <rect x="630" y="70" width="110" height="40" rx="5" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="685" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#922b21">REOPENED</text>
+      
+      <!-- Transitions -->
+      <line x1="140" y1="90" x2="180" y2="90" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="178,87 188,92 178,97" fill="#0a0a0a"/>
+      <text x="160" y="82" text-anchor="middle" font-size="6">Start Progress</text>
+      
+      <line x1="290" y1="90" x2="330" y2="90" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="328,87 338,92 328,97" fill="#0a0a0a"/>
+      <text x="310" y="82" text-anchor="middle" font-size="6">Code Review</text>
+      
+      <line x1="440" y1="90" x2="480" y2="90" stroke="#0a0a0a" stroke-width="1.5"/>
+      <polygon points="478,87 488,92 478,97" fill="#0a0a0a"/>
+      <text x="460" y="82" text-anchor="middle" font-size="6">Approve</text>
+      
+      <line x1="590" y1="90" x2="630" y2="90" stroke="#c0392b" stroke-width="1.5"/>
+      <polygon points="628,87 638,92 628,97" fill="#c0392b"/>
+      <text x="610" y="82" text-anchor="middle" font-size="6" fill="#c0392b">Reject</text>
+      
+      <path d="M 685 110 Q 685 150 85 150 Q 85 110 85 110" fill="none" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="88,113 85,103 82,113" fill="#e67e22"/>
+      <text x="385" y="165" text-anchor="middle" font-size="7" fill="#e67e22">Reopen (if fix fails verification)</text>
+    </svg>
+  </div>
+
+  <h3>JIRA for Testing — Key Features</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🐞</div>
+      <h4>Defect Tracking</h4>
+      <ul style="font-size:0.75rem; text-align:left;">
+        <li>Log defects with rich detail</li>
+        <li>Attach screenshots and logs</li>
+        <li>Set priority and severity</li>
+        <li>Custom workflows</li>
+        <li>Email notifications on changes</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Dashboards & Reports</h4>
+      <ul style="font-size:0.75rem; text-align:left;">
+        <li>Defect trend analysis</li>
+        <li>Open vs closed bugs chart</li>
+        <li>Velocity charts (Agile)</li>
+        <li>Burndown/Burnup charts</li>
+        <li>Custom gadget creation</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔗</div>
+      <h4>Traceability & Integration</h4>
+      <ul style="font-size:0.75rem; text-align:left;">
+        <li>Link defects to requirements</li>
+        <li>Link test cases (via plugins)</li>
+        <li>Link to commits (Git/Bitbucket)</li>
+        <li>Link to builds (Jenkins/Bamboo)</li>
+        <li>Link to deployments</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">JIRA Defect Report Example</div>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.65rem;">
+PROJECT: ECOM-APP (E-commerce Platform)
+ISSUE TYPE: Bug
+ISSUE KEY: ECOM-847
+
+SUMMARY: [Checkout] Cart total not updating when promo code removed
+
+PRIORITY: Critical (Blocker for release)
+SEVERITY: High
+
+STATUS: In Progress
+ASSIGNEE: Rajesh Kumar (Developer)
+REPORTER: Priya Sharma (Tester)
+FIX VERSION: v3.1.0
+
+DESCRIPTION:
+When a user applies a promo code to the cart and then removes it, the cart total
+does not revert to the original amount. The discount persists incorrectly.
+
+STEPS TO REPRODUCE:
+1. Add items totaling ₹2,000 to cart
+2. Apply promo code "SAVE20" (20% off → cart shows ₹1,600)
+3. Click "Remove" on the promo code
+4. Observe the cart total
+
+ACTUAL RESULT:
+Cart still shows ₹1,600 (discounted price)
+
+EXPECTED RESULT:
+Cart should revert to ₹2,000 (original price)
+
+ENVIRONMENT:
+- Chrome 122 on Windows 11
+- Staging environment (v3.1.0-beta)
+
+ATTACHMENTS:
+- recording.mp4
+- ecom-847-screenshot.png
+
+LINKED ISSUES:
+- Relates to ECOM-812 (coupon calculation bug)
+- Blocks ECOM-850 (checkout release)
+
+COMMENTS:
+[2024-03-20, 14:30] Developer: Investigating. Likely caching issue with cart state.
+[2024-03-21, 10:15] Developer: Fix committed in PR #445
+[2024-03-21, 14:00] Tester: Deployed to staging. Testing in progress.
+    </pre>
+  </div>
+
+  <h3>JIRA Reports for Test Management</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>📈 Defect Trend Report</h4>
+      <p>Tracks number of defects opened vs closed over time. Shows testing progress and product stability.</p>
+      <ul>
+        <li>Spike in opened defects → Testing finding issues</li>
+        <li>Closing rate catching up → Defects being fixed</li>
+        <li>Flat line → No testing activity</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>📊 Sprint Report (Agile)</h4>
+      <p>Shows what was completed vs committed in an Agile sprint.</p>
+      <ul>
+        <li>Completed stories/defects</li>
+        <li>Remaining work</li>
+        <li>Velocity trending</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Advantages and Limitations of JIRA</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Advantages</h4>
+      <ul>
+        <li>Highly customizable workflows and fields</li>
+        <li>Powerful query language (JQL) for filtering</li>
+        <li>Extensive marketplace of plugins (Zephyr, Xray for test management)</li>
+        <li>Seamless integration with development tools (Git, Jenkins, Confluence)</li>
+        <li>Scalable from small teams to large enterprises</li>
+        <li>Cloud and self-hosted options</li>
+        <li>Excellent reporting and dashboard capabilities</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✗ Limitations</h4>
+      <ul>
+        <li>Can be complex to configure for new users</li>
+        <li>Licensing cost for large teams (cloud version)</li>
+        <li>Performance may degrade with very large data volumes</li>
+        <li>No native test case management — requires plugins</li>
+        <li>Mobile app has limited functionality</li>
+        <li>Steep learning curve for JQL (query language)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>JIRA vs Other Tools Comparison</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Feature</th><th>JIRA</th><th>Bugzilla</th><th>Redmine</th><th>GitHub Issues</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Agile Support (Scrum/Kanban)</td><td style="color:#1a7a34;">✓✓✓ Excellent</td><td style="color:#7a7a74;">✗ None</td><td style="color:#e67e22;">✓ Basic</td><td style="color:#e67e22;">✓ Basic</td></tr>
+      <tr><td style="font-weight:700;">Custom Workflows</td><td style="color:#1a7a34;">✓✓✓</td><td style="color:#e67e22;">✓ Limited</td><td style="color:#e67e22;">✓ Moderate</td><td style="color:#7a7a74;">✗</td></tr>
+      <tr><td style="font-weight:700;">Plugin Ecosystem</td><td style="color:#1a7a34;">✓✓✓ Huge</td><td style="color:#7a7a74;">✗</td><td style="color:#e67e22;">✓ Some</td><td style="color:#e67e22;">✓ Some</td></tr>
+      <tr><td style="font-weight:700;">Reporting</td><td style="color:#1a7a34;">✓✓✓ Excellent</td><td style="color:#e67e22;">✓ Basic</td><td style="color:#e67e22;">✓ Moderate</td><td style="color:#e67e22;">✓ Basic</td></tr>
+      <tr><td style="font-weight:700;">Cost (for team of 10)</td><td style="color:#e67e22;">$$ Moderate</td><td style="color:#1a7a34;">Free</td><td style="color:#1a7a34;">Free</td><td style="color:#1a7a34;">Free/Included</td></tr>
+    </tbody>
+  </table>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 5 — Key Takeaway</div>
+    <p>Testing tools are force multipliers — they enable testers to do more in less time, with greater accuracy and repeatability. Understanding the categories of CAST tools helps you select the right tool for each testing need. Successful tool introduction requires careful planning, stakeholder buy-in, phased rollout, and continuous training. The industry-standard tools covered — Selenium (web automation), JMeter (performance), Postman (API testing), ETL tools (data validation), and JIRA (defect/project management) — represent the essential toolkit for modern software testing. Remember: Tools support testing; they do not replace tester skill and judgment.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level v4.0 — Tool Support for Testing Chapter</li>
+      <li>Atlassian JIRA Documentation: https://www.atlassian.com/software/jira</li>
+      <li>Selenium WebDriver Official Documentation</li>
+      <li>Apache JMeter User Manual</li>
+      <li>Postman Learning Center</li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>ECS 563 · Essentials of Cyber Security · Unit 05 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="unit04_ECS.html">← Unit 4</a>
+      <a href="ECS_Index.html">Home</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · SPPU · Design &amp; Developed by Sumit Thakare</span>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// Nav mobile toggle close on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+
+// Back to top visibility
+window.addEventListener('scroll', () => {
+  const btn = document.querySelector('.back-top');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Tools Comparison Radar Chart
+const toolsCtx = document.getElementById('toolsComparisonChart');
+if (toolsCtx) {
+  new Chart(toolsCtx, {
+    type: 'radar',
+    data: {
+      labels: ['Ease of Use', 'Automation Capability', 'Reporting', 'Integration', 'Cost (Lower is better)', 'Community Support', 'Learning Curve (Lower is better)'],
+      datasets: [
+        {
+          label: 'Selenium + TestNG',
+          data: [3, 5, 4, 5, 5, 5, 3],
+          borderColor: '#1a7a34',
+          backgroundColor: 'rgba(26,122,52,0.1)',
+          borderWidth: 2,
+          pointBackgroundColor: '#1a7a34'
+        },
+        {
+          label: 'JMeter',
+          data: [3, 5, 4, 4, 5, 4, 3],
+          borderColor: '#e67e22',
+          backgroundColor: 'rgba(230,126,34,0.1)',
+          borderWidth: 2,
+          pointBackgroundColor: '#e67e22'
+        },
+        {
+          label: 'Postman',
+          data: [5, 4, 3, 4, 4, 5, 4],
+          borderColor: '#e6ac00',
+          backgroundColor: 'rgba(230,172,0,0.1)',
+          borderWidth: 2,
+          pointBackgroundColor: '#e6ac00'
+        },
+        {
+          label: 'JIRA',
+          data: [3, 2, 5, 5, 3, 5, 2],
+          borderColor: '#0c8da0',
+          backgroundColor: 'rgba(12,141,160,0.1)',
+          borderWidth: 2,
+          pointBackgroundColor: '#0c8da0'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.r + '/5' } }
+      },
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 5,
+          ticks: { stepSize: 1 },
+          grid: { color: '#ddd' }
+        }
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>

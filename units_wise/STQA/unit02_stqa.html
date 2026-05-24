@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Software Testing Fundamentals | ECS 563 MCA Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand"><span>ECS 563</span> · Cyber Security Notes</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+   <li><a href="stqa_index.html">Home</a></li>
+    <!-- <li><a href="unit02_stqa.html">Unit 02</a></li> -->
+    <li><a href="unit01_stqa.html">Unit 01</a></li>
+    <li><a href="unit03_stqa.html">Unit 03</a></li>
+    <li><a href="unit04_stqa.html">Unit 04</a></li>
+    <li><a href="unit05_stqa.html">Unit 05</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 02 · ECS 563 MJ-EC21-4</div>
+  <h1>Software Testing Fundamentals</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>12 Topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~15 Marks</strong></div>
+    <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Intermediate Level</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t2-1">2.1 — Definition & Objectives of Testing</a></li>
+      <li><a href="#t2-2">2.2 — Role of Testing and its Effect on Quality</a></li>
+      <li><a href="#t2-3">2.3 — Causes of Software Failure: Error, Bug, Fault, Defect, Failure</a></li>
+      <li><a href="#t2-4">2.4 — Economics of Testing</a></li>
+      <li><a href="#t2-5">2.5 — Seven Testing Principles</a></li>
+      <li><a href="#t2-6">2.6 — Software Testing Life Cycle (STLC)</a></li>
+      <li><a href="#t2-7">2.7 — Validation & Verification: V-Model and W-Model</a></li>
+      <li><a href="#t2-8">2.8 — Agile Testing: Test Driven Development (TDD)</a></li>
+      <li><a href="#t2-9">2.9 — Levels of Testing</a></li>
+      <li><a href="#t2-10">2.10 — Test Types</a></li>
+      <li><a href="#t2-11">2.11 — Non-Functional Testing Types</a></li>
+      <li><a href="#t2-12">2.12 — Smoke Testing & Sanity Testing</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="content-wrap">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.1 — DEFINITION & OBJECTIVES OF TESTING
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-1">
+  <div class="topic-label">Topic 2.1</div>
+  <h2 class="topic-title">Definition & Objectives of Testing</h2>
+
+  <div class="concept-box">
+    <strong>Software Testing</strong> is the process of evaluating and verifying that a software product or application does what it is supposed to do. It involves executing a system or application to find any gaps, errors, or missing requirements that contradict the actual requirements.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember testing is NOT about proving software works perfectly — it is about finding defects and building confidence in quality. The goal is to find failures, not prove their absence.
+  </div>
+
+  <h3>Standard Definitions</h3>
+
+  <h4>IEEE Definition</h4>
+  <p><em>"Testing is the process of exercising or evaluating a system or system component by manual or automated means to verify that it satisfies specified requirements or to identify differences between expected and actual results."</em></p>
+
+  <h4>ISTQB Definition</h4>
+  <p><em>"Testing is the process consisting of all life cycle activities, both static and dynamic, concerned with planning, preparation, and evaluation of software products and related work products to determine that they satisfy specified requirements, to demonstrate that they are fit for purpose, and to detect defects."</em></p>
+
+  <h3>Primary Objectives of Software Testing</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🎯</div>
+      <h4>Find Defects</h4>
+      <p>Identify bugs, errors, and issues in the software before it reaches end users. Early detection reduces cost and effort significantly.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">✅</div>
+      <h4>Verify Requirements</h4>
+      <p>Ensure the software meets all specified functional and non-functional requirements as documented.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🚫</div>
+      <h4>Prevent Defects</h4>
+      <p>Through static testing (reviews, inspections) catch defects before they become code-level issues.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Build Confidence</h4>
+      <p>Provide stakeholders evidence that the software quality is acceptable for release.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⚠️</div>
+      <h4>Assess Risks</h4>
+      <p>Identify areas of the software that pose the highest risk to business operations.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📋</div>
+      <h4>Prevent Escapes</h4>
+      <p>Stop defects from escaping into production where they cause real-world damage.</p>
+    </div>
+  </div>
+
+  <h3>Testing vs. Quality Assurance — Key Distinction</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Aspect</th><th>Testing</th><th>Quality Assurance (QA)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Focus</strong></td><td>Product-oriented (finding defects)</td><td>Process-oriented (preventing defects)</td></tr>
+      <tr><td><strong>Activity</strong></td><td>Detective — finds problems after they exist</td><td>Preventive — builds quality into process</td></tr>
+      <tr><td><strong>Timing</strong></td><td>After code is written</td><td>Throughout development life cycle</td></tr>
+      <tr><td><strong>Example</strong></td><td>Running test cases on a built application</td><td>Creating coding standards, conducting design reviews</td></tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">
+    <div class="ex-label">Simple Analogy</div>
+    <strong>Testing is like a doctor diagnosing an illness</strong> — they run tests to find what is wrong. <strong>Quality Assurance is like eating healthy and exercising</strong> — it prevents illnesses from occurring in the first place.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Standard 829-2008 — Software Test Documentation</li>
+      <li>ISTQB Foundation Level Syllabus v4.0</li>
+      <li>Pressman, R. — Software Engineering: A Practitioner's Approach, McGraw-Hill</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.2 — ROLE OF TESTING AND ITS EFFECT ON QUALITY
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-2">
+  <div class="topic-label">Topic 2.2</div>
+  <h2 class="topic-title">Role of Testing and its Effect on Quality</h2>
+
+  <div class="concept-box">
+    Testing plays a <strong>critical role</strong> in software quality by providing objective information about the current state of the software product. It directly impacts quality by identifying defects, measuring quality attributes, and providing feedback for improvement.
+  </div>
+
+  <h3>The Multiple Roles of Testing</h3>
+
+  <h4>1. Information Provider Role</h4>
+  <p>Testing provides stakeholders with factual data about software quality — what works, what doesn't, and what risks remain. This enables informed release decisions.</p>
+
+  <h4>2. Quality Gatekeeper Role</h4>
+  <p>Testing acts as a checkpoint before software moves to the next phase or to production. If critical tests fail, the software cannot progress until issues are resolved.</p>
+
+  <h4>3. Risk Mitigation Role</h4>
+  <p>Testing identifies high-risk areas of the software, allowing teams to prioritize fixes and allocate resources where they matter most.</p>
+
+  <h4>4. Feedback Role</h4>
+  <p>Testing provides immediate feedback to developers about code quality, helping them improve their practices and learn from mistakes.</p>
+
+  <h3>How Testing Affects Software Quality</h3>
+
+  <!-- SVG Quality Impact Diagram -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.1 — How Testing Improves Software Quality</div>
+    <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Inputs (left) -->
+      <rect x="20" y="120" width="160" height="60" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="100" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#065a68">TESTING</text>
+      <text x="100" y="158" text-anchor="middle" font-size="8" fill="#065a68">Process &amp; Activities</text>
+
+      <!-- Arrow -->
+      <line x1="180" y1="150" x2="240" y2="150" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="238,145 248,150 238,155" fill="#0a0a0a"/>
+
+      <!-- Transform box -->
+      <rect x="250" y="100" width="280" height="100" rx="3" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="390" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">TESTING ACTIVITIES</text>
+      <text x="390" y="142" text-anchor="middle" font-size="8" fill="#5a4000">Defect Identification → Reporting → Tracking</text>
+      <text x="390" y="158" text-anchor="middle" font-size="8" fill="#5a4000">Regression Testing → Verification → Validation</text>
+      <text x="390" y="174" text-anchor="middle" font-size="8" fill="#5a4000">Quality Measurement → Risk Assessment</text>
+
+      <!-- Arrow -->
+      <line x1="530" y1="150" x2="590" y2="150" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="588,145 598,150 588,155" fill="#0a0a0a"/>
+
+      <!-- Outputs (right) -->
+      <rect x="600" y="70" width="160" height="50" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="680" y="92" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">HIGHER QUALITY</text>
+      <text x="680" y="108" text-anchor="middle" font-size="8" fill="#1a7a34">Fewer production defects</text>
+
+      <rect x="600" y="140" width="160" height="50" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="680" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">LOWER COSTS</text>
+      <text x="680" y="178" text-anchor="middle" font-size="8" fill="#1a7a34">Early defect detection</text>
+
+      <rect x="600" y="210" width="160" height="50" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="680" y="232" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">CUSTOMER SATISFACTION</text>
+      <text x="680" y="248" text-anchor="middle" font-size="8" fill="#1a7a34">Reliable software</text>
+
+      <!-- Arrows from transform to each output -->
+      <line x1="460" y1="110" x2="600" y2="95" stroke="#1a7a34" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="460" y1="150" x2="600" y2="165" stroke="#1a7a34" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="460" y1="190" x2="600" y2="235" stroke="#1a7a34" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+  </div>
+
+  <h3>The Cost-Quality Relationship</h3>
+  <p>Testing directly impacts quality, but there is an economic balance. The goal is to find the <strong>optimal testing point</strong> where further testing yields diminishing returns.</p>
+
+  <!-- Chart: Cost vs Quality -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.2 — Cost of Testing vs Cost of Failure</div>
+    <div class="chart-container">
+      <canvas id="costQualityChart"></canvas>
+    </div>
+  </div>
+
+  <div class="case-box">
+    <div class="case-label">🌍 Real-World Impact</div>
+    <strong>Therac-25 Radiation Overdose (1985-1987):</strong> Insufficient testing of medical device software led to massive radiation overdoses. At least 5 patients died, and many were severely injured. This tragedy demonstrated that testing is not just about quality — it is about safety and human lives. The root cause was a race condition that testing failed to detect.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Leveson, N. & Turner, C. — An Investigation of the Therac-25 Accidents, IEEE Computer</li>
+      <li>ISTQB Foundation Level Syllabus — Role of Testing Section</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.3 — CAUSES OF SOFTWARE FAILURE: ERROR, BUG, FAULT, DEFECT, FAILURE
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-3">
+  <div class="topic-label">Topic 2.3</div>
+  <h2 class="topic-title">Causes of Software Failure: Error, Bug, Fault, Defect, Failure</h2>
+
+  <div class="concept-box">
+    Understanding the terminology of software failures is essential. These terms describe a <strong>chain of events</strong> from human mistake to system failure. The chain is: <strong>Error → Bug/Fault → Defect → Failure</strong>.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    This is a direct 5-mark question: "Define and differentiate between Error, Bug, Fault, Defect, and Failure with examples." Learn the chain and one example for each.
+  </div>
+
+  <h3>The Complete Chain of Software Failure</h3>
+
+  <!-- SVG Chain Diagram -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.3 — From Human Error to System Failure: The Defect Chain</div>
+    <svg viewBox="0 0 780 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- 5 boxes in sequence -->
+      <rect x="10" y="50" width="135" height="80" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="77" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#922b21">ERROR</text>
+      <text x="77" y="96" text-anchor="middle" font-size="8" fill="#922b21">Human Mistake</text>
+      <text x="77" y="112" text-anchor="middle" font-size="8" fill="#922b21">(Developer)</text>
+
+      <line x1="145" y1="90" x2="170" y2="90" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="168,85 178,90 168,95" fill="#0a0a0a"/>
+
+      <rect x="180" y="50" width="135" height="80" rx="4" fill="#fff3cd" stroke="#e6ac00" stroke-width="2.5"/>
+      <text x="247" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#8a6500">BUG / FAULT</text>
+      <text x="247" y="96" text-anchor="middle" font-size="8" fill="#5a4000">Flaw in Code</text>
+      <text x="247" y="112" text-anchor="middle" font-size="8" fill="#5a4000">(Present but latent)</text>
+
+      <line x1="315" y1="90" x2="340" y2="90" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="338,85 348,90 338,95" fill="#0a0a0a"/>
+
+      <rect x="350" y="50" width="135" height="80" rx="4" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2.5"/>
+      <text x="417" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#065a68">DEFECT</text>
+      <text x="417" y="96" text-anchor="middle" font-size="8" fill="#065a68">Variation from</text>
+      <text x="417" y="112" text-anchor="middle" font-size="8" fill="#065a68">Requirement</text>
+
+      <line x1="485" y1="90" x2="510" y2="90" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="508,85 518,90 508,95" fill="#0a0a0a"/>
+
+      <rect x="520" y="50" width="135" height="80" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="587" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#922b21">FAILURE</text>
+      <text x="587" y="96" text-anchor="middle" font-size="8" fill="#922b21">System Behaves</text>
+      <text x="587" y="112" text-anchor="middle" font-size="8" fill="#922b21">Incorrectly</text>
+
+      <line x1="655" y1="90" x2="680" y2="90" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="678,85 688,90 678,95" fill="#0a0a0a"/>
+
+      <rect x="690" y="50" width="80" height="80" rx="4" fill="#d4edda" stroke="#1a7a34" stroke-width="2.5"/>
+      <text x="730" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#1a7a34">INCIDENT</text>
+      <text x="730" y="100" text-anchor="middle" font-size="8" fill="#1a7a34">User</text>
+      <text x="730" y="114" text-anchor="middle" font-size="8" fill="#1a7a34">Impact</text>
+    </svg>
+  </div>
+
+  <h3>Detailed Definitions with Examples</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>⚠️ ERROR</h4>
+      <p><strong>Definition:</strong> A human action that produces an incorrect result. An error is made by a person — developer, tester, analyst, or user.</p>
+      <p><strong>Example:</strong> A developer writes <code>if (x = 5)</code> instead of <code>if (x == 5)</code> — this is an error (mistake) made by the human.</p>
+      <p><strong>Key Point:</strong> Errors occur in the human mind before any code is written.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🐛 BUG / FAULT</h4>
+      <p><strong>Definition:</strong> The manifestation of an error in the software artifact. A bug is the actual incorrect code, design, or data.</p>
+      <p><strong>Example:</strong> The incorrect code <code>if (x = 5)</code> saved in the source file is the bug/fault.</p>
+      <p><strong>Key Point:</strong> Bugs are present in the software but may not cause visible failures until specific conditions are met.</p>
+    </div>
+    <div class="compare-card">
+      <h4>📝 DEFECT</h4>
+      <p><strong>Definition:</strong> Any variation between actual and expected results. A broader term often used to refer to any problem requiring resolution.</p>
+      <p><strong>Example:</strong> When a tester reports that "the login page accepts any password," this reported issue is a defect.</p>
+      <p><strong>Key Point:</strong> A defect is the formal record of a problem in the defect tracking system.</p>
+    </div>
+    <div class="compare-card">
+      <h4>💥 FAILURE</h4>
+      <p><strong>Definition:</strong> The deviation of the software from its expected behavior during execution.</p>
+      <p><strong>Example:</strong> The login page actually letting a user in with wrong password — this observable incorrect behavior is a failure.</p>
+      <p><strong>Key Point:</strong> Not every fault causes a failure. The fault must be executed under specific conditions to cause a failure.</p>
+    </div>
+  </div>
+
+  <h3>Complete Example: Following the Chain</h3>
+  <div class="example-box">
+    <div class="ex-label">Complete Example — Banking Application</div>
+    <ol style="margin-left: 1.2rem;">
+      <li><strong>ERROR:</strong> Developer incorrectly writes <code>if (balance - amount &lt; minimum_balance)</code> instead of <code>if (balance - amount &lt; 0)</code> — a human mistake.</li>
+      <li><strong>BUG/FAULT:</strong> The incorrect condition exists in the withdrawal function code.</li>
+      <li><strong>DEFECT:</strong> Tester discovers the issue and logs it as "DEFECT-401: Withdrawal allowed below zero when minimum balance feature is off."</li>
+      <li><strong>FAILURE:</strong> When a user with ₹500 tries to withdraw ₹700, the system incorrectly allows the transaction (because the bug condition was executed).</li>
+      <li><strong>INCIDENT:</strong> The customer's account goes negative, causing a bank charge and customer complaint.</li>
+    </ol>
+  </div>
+
+  <h3>Important Relationships to Remember</h3>
+  <ul>
+    <li><strong>Not all faults cause failures</strong> — the fault may be in code that is never executed</li>
+    <li><strong>A single fault can cause multiple failures</strong> — a null pointer check missing can crash many different functions</li>
+    <li><strong>Multiple faults can cause a single failure</strong> — interaction of several bugs leads to one observable problem</li>
+    <li><strong>Errors cause faults, faults may cause failures under certain conditions</strong></li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Confusion</div>
+    Many textbooks use "bug" and "defect" interchangeably. In industry, "defect" is the formal tracked item, while "bug" is the technical flaw. For your exam, understand the distinction but don't overcomplicate — the chain is what matters.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>IEEE Std 610.12-1990 — Standard Glossary of Software Engineering Terminology</li>
+      <li>ISTQB Glossary v4.0 — Definitions of Testing Terms</li>
+      <li>Pressman, R. — Software Engineering, Chapter on Software Testing</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.4 — ECONOMICS OF TESTING
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-4">
+  <div class="topic-label">Topic 2.4</div>
+  <h2 class="topic-title">Economics of Testing</h2>
+
+  <div class="concept-box">
+    The <strong>Economics of Testing</strong> refers to the cost-benefit analysis of testing activities. It recognizes that testing has costs (time, resources, tools) but provides value (defect prevention, quality assurance, risk reduction). The goal is to optimize testing investment to maximize returns.
+  </div>
+
+  <h3>The Cost of Finding Defects Early (The 1-10-100 Rule)</h3>
+  <p>This is the most important economic principle in testing: <strong>the earlier a defect is found, the cheaper it is to fix.</strong></p>
+
+  <div class="formula-box">
+    💰 1-10-100 RULE: $1 to find/fix in requirements | $10 in design | $100 in coding | $1000+ in production
+  </div>
+
+  <!-- Cost escalation diagram -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.4 — Cost to Fix a Defect by Phase Detected</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Bars -->
+      <rect x="40" y="150" width="100" height="40" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="90" y="140" text-anchor="middle" font-size="10" font-weight="700" fill="#1a7a34">$1</text>
+      <text x="90" y="177" text-anchor="middle" font-size="8" fill="#1a7a34">Requirements</text>
+
+      <rect x="170" y="130" width="100" height="60" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="220" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#065a68">$10</text>
+      <text x="220" y="165" text-anchor="middle" font-size="8" fill="#065a68">Design</text>
+
+      <rect x="300" y="90" width="100" height="100" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="350" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#8a6500">$100</text>
+      <text x="350" y="165" text-anchor="middle" font-size="8" fill="#5a4000">Coding</text>
+
+      <rect x="430" y="20" width="100" height="170" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="480" y="12" text-anchor="middle" font-size="10" font-weight="700" fill="#922b21">$1000+</text>
+      <text x="480" y="165" text-anchor="middle" font-size="8" fill="#922b21">Production</text>
+
+      <rect x="560" y="50" width="100" height="140" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="610" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="#922b21">$10,000+</text>
+      <text x="610" y="165" text-anchor="middle" font-size="8" fill="#922b21">Post-Release</text>
+      <text x="610" y="178" text-anchor="middle" font-size="8" fill="#922b21">Critical</text>
+    </svg>
+  </div>
+
+  <h3>Why Does Cost Escalate So Dramatically?</h3>
+  <ul>
+    <li><strong>Rediscovery cost:</strong> Time spent finding the defect again</li>
+    <li><strong>Communication cost:</strong> Explaining the defect across teams</li>
+    <li><strong>Regression cost:</strong> Retesting everything that might be affected</li>
+    <li><strong>Deployment cost:</strong> Creating and distributing patches</li>
+    <li><strong>Customer damage cost:</strong> Lost trust, support calls, SLA penalties</li>
+    <li><strong>Opportunity cost:</strong> Developer time taken from new features</li>
+  </ul>
+
+  <h3>The Law of Diminishing Returns in Testing</h3>
+  <p>There is an optimal point where additional testing yields progressively less value. Beyond this point, testing becomes economically inefficient.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.5 — Diminishing Returns in Testing Investment</div>
+    <div class="chart-container">
+      <canvas id="diminishingReturnsChart"></canvas>
+    </div>
+  </div>
+
+  <h3>Testing Economics Decisions</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>What to Test More?</h4>
+      <ul>
+        <li>High-risk functionality (financial, safety-critical)</li>
+        <li>Frequently used features</li>
+        <li>Complex modules with many dependencies</li>
+        <li>Areas with history of many defects</li>
+        <li>Newly developed or recently changed code</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>What to Test Less?</h4>
+      <ul>
+        <li>Low-risk, low-impact features</li>
+        <li>Stable code with no recent changes</li>
+        <li>Third-party components with good reputation</li>
+        <li>Features being removed in next release</li>
+        <li>Cosmetic/UI elements with low business value</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-box">
+    <div class="case-label">🌍 Real-World Economic Impact</div>
+    <strong>NHS WannaCry Attack (2017):</strong> A known vulnerability (MS17-010) had a patch available for 2 months before the attack. Inadequate testing and deployment procedures meant the patch was never applied. The economic impact: £92 million in direct costs, 19,000 cancelled appointments, and immeasurable reputational damage. The fix cost $0 (patch was free). The failure cost: £92 million+.
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Boehm, B. — Software Engineering Economics, Prentice Hall</li>
+      <li>NIST Report — The Economic Impacts of Inadequate Infrastructure for Software Testing</li>
+      <li>NHS England — WannaCry Cyber Attack Review Report</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.5 — SEVEN TESTING PRINCIPLES
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-5">
+  <div class="topic-label">Topic 2.5</div>
+  <h2 class="topic-title">Seven Testing Principles (ISTQB)</h2>
+
+  <div class="concept-box">
+    The <strong>Seven Testing Principles</strong> are fundamental guidelines that apply to all forms of software testing. They represent decades of collective experience and wisdom from the testing community.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Memorize all 7 principles. For each, know: (1) what it means in simple words, (2) one example. This is a guaranteed question — often 5-7 marks.
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">1️⃣</div>
+      <h4>Testing shows presence of defects</h4>
+      <p><strong>Meaning:</strong> Testing can prove that defects exist, but cannot prove that defects do not exist. Even extensive testing cannot guarantee 100% defect-free software.</p>
+      <p><strong>Example:</strong> You test an e-commerce checkout 100 times and it works perfectly. The 101st transaction with a specific combination of items and discount codes might still fail.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">2️⃣</div>
+      <h4>Exhaustive testing is impossible</h4>
+      <p><strong>Meaning:</strong> Testing everything (all inputs, all scenarios, all configurations) is impossible except for trivial cases. Testing must use risk-based prioritization.</p>
+      <p><strong>Example:</strong> A login screen with username (unlimited combinations) and password (unlimited) — you cannot test every possible input. You test boundary values and common scenarios instead.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">3️⃣</div>
+      <h4>Early testing saves time and money</h4>
+      <p><strong>Meaning:</strong> Testing activities should start as early as possible in the software development life cycle. Find defects when they are cheapest to fix.</p>
+      <p><strong>Example:</strong> Reviewing requirements before coding begins can catch ambiguous or missing requirements that would cost 100x more to fix after development.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">4️⃣</div>
+      <h4>Defects cluster together</h4>
+      <p><strong>Meaning:</strong> The Pareto Principle (80/20 rule) applies to software defects — approximately 80% of defects are found in about 20% of the modules.</p>
+      <p><strong>Example:</strong> In an ERP system, the inventory management module may have 50 defects while the reporting module has only 2. Focus testing on the defect-prone areas.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">5️⃣</div>
+      <h4>Pesticide paradox</h4>
+      <p><strong>Meaning:</strong> If you run the same tests repeatedly, they will eventually stop finding new defects. Tests must be regularly reviewed and updated.</p>
+      <p><strong>Example:</strong> Your regression test suite of 500 tests has passed 20 times without failures. It's time to analyze if these tests are still valuable or need to be enhanced.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">6️⃣</div>
+      <h4>Testing is context dependent</h4>
+      <p><strong>Meaning:</strong> Different contexts require different testing approaches. Testing a medical device is not the same as testing an e-commerce website.</p>
+      <p><strong>Example:</strong> Safety-critical aviation software requires rigorous formal verification and exhaustive testing, while a mobile game might use exploratory testing and rapid feedback.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">7️⃣</div>
+      <h4>Absence-of-errors fallacy</h4>
+      <p><strong>Meaning:</strong> Finding and fixing many defects does not guarantee the software is useful or will satisfy customer needs. The software could be technically correct but still fail to meet business objectives.</p>
+      <p><strong>Example:</strong> A banking app works perfectly (no technical defects) but has a confusing interface that makes customers unable to complete transactions — the software fails despite having no bugs.</p>
+    </div>
+  </div>
+
+  <!-- Summary table -->
+  <h3>Quick Revision Table: The Seven Principles</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>#</th><th>Principle</th><th>One-Sentence Memory Aid</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Testing shows presence of defects</td><td>"Can prove bugs exist, can't prove they don't"</td></tr>
+      <tr><td>2</td><td>Exhaustive testing is impossible</td><td>"Can't test everything — prioritize risks"</td></tr>
+      <tr><td>3</td><td>Early testing saves money</td><td>"Test early, fix cheap"</td></tr>
+      <tr><td>4</td><td>Defects cluster together</td><td>"80% of bugs in 20% of code"</td></tr>
+      <tr><td>5</td><td>Pesticide paradox</td><td>"Same tests stop finding new bugs"</td></tr>
+      <tr><td>6</td><td>Testing is context dependent</td><td>"Medical device ≠ mobile game"</td></tr>
+      <tr><td>7</td><td>Absence-of-errors fallacy</td><td>"Bug-free doesn't mean useful"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level Syllabus v4.0 — Chapter 1: Principles of Testing</li>
+      <li>Beizer, B. — Software Testing Techniques, 2nd Edition</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.6 — SOFTWARE TESTING LIFE CYCLE (STLC)
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-6">
+  <div class="topic-label">Topic 2.6</div>
+  <h2 class="topic-title">Software Testing Life Cycle (STLC)</h2>
+
+  <div class="concept-box">
+    The <strong>Software Testing Life Cycle (STLC)</strong> is a sequence of specific activities conducted during the testing process. It defines the phases, entry criteria, exit criteria, and deliverables for each stage of testing.
+  </div>
+
+  <h3>The 6 Phases of STLC</h3>
+
+  <!-- STLC Flow Diagram -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.6 — Software Testing Life Cycle (STLC) Phases</div>
+    <svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Phase 1 -->
+      <rect x="20" y="20" width="110" height="60" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="75" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">Phase 1</text>
+      <text x="75" y="60" text-anchor="middle" font-size="8" fill="#065a68">Requirement</text>
+      <text x="75" y="72" text-anchor="middle" font-size="8" fill="#065a68">Analysis</text>
+
+      <line x1="130" y1="50" x2="155" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="153,45 163,50 153,55" fill="#0a0a0a"/>
+
+      <!-- Phase 2 -->
+      <rect x="165" y="20" width="110" height="60" rx="3" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="220" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">Phase 2</text>
+      <text x="220" y="60" text-anchor="middle" font-size="8" fill="#5a4000">Test</text>
+      <text x="220" y="72" text-anchor="middle" font-size="8" fill="#5a4000">Planning</text>
+
+      <line x1="275" y1="50" x2="300" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="298,45 308,50 298,55" fill="#0a0a0a"/>
+
+      <!-- Phase 3 -->
+      <rect x="310" y="20" width="110" height="60" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="365" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">Phase 3</text>
+      <text x="365" y="60" text-anchor="middle" font-size="8" fill="#1a7a34">Test Case</text>
+      <text x="365" y="72" text-anchor="middle" font-size="8" fill="#1a7a34">Development</text>
+
+      <line x1="420" y1="50" x2="445" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="443,45 453,50 443,55" fill="#0a0a0a"/>
+
+      <!-- Phase 4 -->
+      <rect x="455" y="20" width="110" height="60" rx="3" fill="#e2d9f3" stroke="#6f42c1" stroke-width="2"/>
+      <text x="510" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#4a1d96">Phase 4</text>
+      <text x="510" y="60" text-anchor="middle" font-size="8" fill="#4a1d96">Test</text>
+      <text x="510" y="72" text-anchor="middle" font-size="8" fill="#4a1d96">Environment</text>
+
+      <line x1="565" y1="50" x2="590" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="588,45 598,50 588,55" fill="#0a0a0a"/>
+
+      <!-- Phase 5 -->
+      <rect x="600" y="20" width="90" height="60" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="645" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#922b21">Phase 5</text>
+      <text x="645" y="60" text-anchor="middle" font-size="8" fill="#922b21">Test</text>
+      <text x="645" y="72" text-anchor="middle" font-size="8" fill="#922b21">Execution</text>
+
+      <line x1="690" y1="50" x2="710" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="708,45 718,50 708,55" fill="#0a0a0a"/>
+
+      <!-- Phase 6 -->
+      <rect x="720" y="20" width="60" height="60" rx="3" fill="#fde8d8" stroke="#e67e22" stroke-width="2"/>
+      <text x="750" y="48" text-anchor="middle" font-size="9" font-weight="700" fill="#7d3c00">Phase 6</text>
+      <text x="750" y="63" text-anchor="middle" font-size="7" fill="#7d3c00">Test</text>
+      <text x="750" y="73" text-anchor="middle" font-size="7" fill="#7d3c00">Closure</text>
+
+      <!-- Backward arrow for iterative nature -->
+      <path d="M 750 80 L 750 110 L 75 110 L 75 80" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="412" y="125" text-anchor="middle" font-size="8" fill="#7a7a74">Iterative — Each defect found may restart from Phase 3 or 5</text>
+    </svg>
+  </div>
+
+  <h3>Detailed STLC Phases</h3>
+
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Phase</th><th>Activities</th><th>Entry Criteria</th><th>Exit Criteria</th><th>Deliverables</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1. Requirement Analysis</strong></td>
+          <td>Understand requirements, identify testable requirements, identify automation feasibility</td>
+          <td>Requirements document available</td>
+          <td>RTM (Requirement Traceability Matrix) created</td>
+          <td>RTM, Automation feasibility report</td>
+      </tr>
+      <tr><td><strong>2. Test Planning</strong></td>
+          <td>Estimate effort, define scope, identify resources, create test strategy</td>
+          <td>RTM from Phase 1</td>
+          <td>Test plan approved</td>
+          <td>Test plan document, effort estimation</td>
+      </tr>
+      <tr><td><strong>3. Test Case Development</strong></td>
+          <td>Write test cases, prepare test data, create test scripts (if automated)</td>
+          <td>Test plan approved</td>
+          <td>Test cases reviewed and approved</td>
+          <td>Test cases, test data, automation scripts</td>
+      </tr>
+      <tr><td><strong>4. Test Environment Setup</strong></td>
+          <td>Set up hardware/software, configure network, deploy build</td>
+          <td>Test cases ready, build available</td>
+          <td>Environment ready and verified</td>
+          <td>Ready test environment, setup checklist</td>
+      </tr>
+      <tr><td><strong>5. Test Execution</strong></td>
+          <td>Execute test cases, log defects, retest fixes, regression testing</td>
+          <td>Environment ready, test cases ready</td>
+          <td>Execution completed as per plan</td>
+          <td>Execution logs, defect reports</td>
+      </tr>
+      <tr><td><strong>6. Test Closure</strong></td>
+          <td>Evaluate cycle completion, prepare test summary report, archive assets</td>
+          <td>Execution phase complete</td>
+          <td>Closure report approved</td>
+          <td>Test closure report, lessons learned</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">
+    <div class="ex-label">Real Project Example — STLC in Action</div>
+    <p><strong>Project:</strong> Adding "Buy Now" button to an e-commerce app</p>
+    <ul>
+      <li><strong>Phase 1:</strong> Analyze requirements — button must be visible only for logged-in users, with stock available</li>
+      <li><strong>Phase 2:</strong> Plan — 2 testers, 3 days effort, regression impact on checkout flow</li>
+      <li><strong>Phase 3:</strong> Write 15 test cases covering login, stock validation, payment integration</li>
+      <li><strong>Phase 4:</strong> Set up staging environment with test payment gateway</li>
+      <li><strong>Phase 5:</strong> Execute tests, find defect: button visible for logged-out users → log and fix</li>
+      <li><strong>Phase 6:</strong> Prepare closure report: 15/15 executed, 1 defect found and fixed</li>
+    </ul>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level Syllabus — Test Process Section</li>
+      <li>IEEE 829-2008 — Standard for Software Test Documentation</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.7 — VALIDATION & VERIFICATION: V-MODEL AND W-MODEL
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-7">
+  <div class="topic-label">Topic 2.7</div>
+  <h2 class="topic-title">Validation & Verification — V-Model and W-Model</h2>
+
+  <div class="concept-box">
+    <strong>Verification</strong> asks "Are we building the product right?" (static checking). <strong>Validation</strong> asks "Are we building the right product?" (dynamic checking). The V-Model and W-Model are process models that integrate testing with development phases.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember: Verification = reviews, inspections, walkthroughs (no execution). Validation = actual testing with execution. "Verification checks documents, Validation tests the working software."
+  </div>
+
+  <h3>Verification vs Validation — The Critical Distinction</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ VERIFICATION</h4>
+      <p><strong>Question:</strong> "Are we building the product correctly?"</p>
+      <p><strong>Activity:</strong> Static testing — reviews, walkthroughs, inspections</p>
+      <p><strong>Object:</strong> Requirements, design, code, documents</p>
+      <p><strong>Timing:</strong> Before coding completes</p>
+      <p><strong>Methods:</strong> Peer reviews, formal inspections, static analysis</p>
+      <p><strong>Example:</strong> Reviewing the login requirement document to ensure it specifies password rules correctly</p>
+    </div>
+    <div class="compare-card">
+      <h4>✗ VALIDATION</h4>
+      <p><strong>Question:</strong> "Are we building the correct product?"</p>
+      <p><strong>Activity:</strong> Dynamic testing — executing the software</p>
+      <p><strong>Object:</strong> Working software/application</p>
+      <p><strong>Timing:</strong> After code is ready to execute</p>
+      <p><strong>Methods:</strong> Functional testing, system testing, UAT</p>
+      <p><strong>Example:</strong> Actually entering wrong passwords 3 times and verifying account locks</p>
+    </div>
+  </div>
+
+  <h3>The V-Model (Verification and Validation Model)</h3>
+  <p>The V-Model demonstrates the relationship between each development phase and its corresponding testing phase. The left side represents verification (static testing), and the right side represents validation (dynamic testing).</p>
+
+  <!-- V-Model SVG -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.7 — The V-Model of Testing</div>
+    <svg viewBox="0 0 780 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Left side (Verification) -->
+      <rect x="30" y="20" width="140" height="40" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="100" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">Requirements</text>
+
+      <rect x="30" y="80" width="140" height="40" rx="3" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="100" y="105" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">System Design</text>
+
+      <rect x="30" y="140" width="140" height="40" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="100" y="165" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">Architecture</text>
+
+      <rect x="30" y="200" width="140" height="40" rx="3" fill="#e2d9f3" stroke="#6f42c1" stroke-width="2"/>
+      <text x="100" y="225" text-anchor="middle" font-size="9" font-weight="700" fill="#4a1d96">Module Design</text>
+
+      <rect x="30" y="260" width="140" height="40" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="100" y="285" text-anchor="middle" font-size="9" font-weight="700" fill="#922b21">Coding</text>
+
+      <!-- V shape lines -->
+      <line x1="170" y1="40" x2="610" y2="360" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="170" y1="100" x2="610" y2="300" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="170" y1="160" x2="610" y2="240" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="170" y1="220" x2="610" y2="180" stroke="#0a0a0a" stroke-width="2"/>
+      <line x1="170" y1="280" x2="610" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+
+      <!-- Right side (Validation) -->
+      <rect x="610" y="340" width="150" height="40" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="685" y="358" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">UAT</text>
+      <text x="685" y="372" text-anchor="middle" font-size="7" fill="#065a68">(User Acceptance)</text>
+
+      <rect x="610" y="280" width="150" height="40" rx="3" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="685" y="298" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">System</text>
+      <text x="685" y="312" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">Testing</text>
+
+      <rect x="610" y="220" width="150" height="40" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="685" y="240" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">Integration</text>
+      <text x="685" y="254" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">Testing</text>
+
+      <rect x="610" y="160" width="150" height="40" rx="3" fill="#e2d9f3" stroke="#6f42c1" stroke-width="2"/>
+      <text x="685" y="180" text-anchor="middle" font-size="9" font-weight="700" fill="#4a1d96">Unit</text>
+      <text x="685" y="194" text-anchor="middle" font-size="9" font-weight="700" fill="#4a1d96">Testing</text>
+
+      <!-- Bottom connecting line -->
+      <line x1="170" y1="280" x2="610" y2="100" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- Labels on left and right -->
+      <text x="100" y="335" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">VERIFICATION</text>
+      <text x="100" y="350" text-anchor="middle" font-size="8" fill="#7a7a74">(Static)</text>
+
+      <text x="685" y="395" text-anchor="middle" font-size="10" font-weight="700" fill="#0a0a0a">VALIDATION</text>
+      <text x="685" y="410" text-anchor="middle" font-size="8" fill="#7a7a74">(Dynamic)</text>
+
+      <!-- Mapping lines -->
+      <line x1="170" y1="40" x2="680" y2="360" stroke="#aaa" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="170" y1="100" x2="680" y2="300" stroke="#aaa" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="170" y1="160" x2="680" y2="240" stroke="#aaa" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="170" y1="220" x2="680" y2="180" stroke="#aaa" stroke-width="1" stroke-dasharray="3 3"/>
+    </svg>
+  </div>
+
+  <h4>V-Model Mappings (Verification → Validation)</h4>
+  <ul>
+    <li><strong>Requirements → UAT:</strong> Does the system meet business needs?</li>
+    <li><strong>System Design → System Testing:</strong> Does the complete system work as designed?</li>
+    <li><strong>Architecture → Integration Testing:</strong> Do modules work together correctly?</li>
+    <li><strong>Module Design → Unit Testing:</strong> Does each component work individually?</li>
+  </ul>
+
+  <h3>The W-Model (Dual V-Model)</h3>
+  <p>The W-Model extends the V-Model by emphasizing that <strong>testing activities should occur in parallel with development activities</strong> — not just after them. It shows testing and development as two parallel tracks.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.8 — The W-Model: Testing in Parallel with Development</div>
+    <svg viewBox="0 0 780 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Development track (top) -->
+      <rect x="30" y="20" width="130" height="45" rx="3" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="95" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Requirements</text>
+      <text x="95" y="56" text-anchor="middle" font-size="7" fill="#aaa">Development</text>
+
+      <polygon points="160,42 180,42 170,55" fill="#0a0a0a"/>
+
+      <rect x="190" y="20" width="130" height="45" rx="3" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="255" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Design</text>
+      <text x="255" y="56" text-anchor="middle" font-size="7" fill="#aaa">Development</text>
+
+      <polygon points="320,42 340,42 330,55" fill="#0a0a0a"/>
+
+      <rect x="350" y="20" width="130" height="45" rx="3" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="415" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Coding</text>
+      <text x="415" y="56" text-anchor="middle" font-size="7" fill="#aaa">Development</text>
+
+      <polygon points="480,42 500,42 490,55" fill="#0a0a0a"/>
+
+      <rect x="510" y="20" width="130" height="45" rx="3" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="575" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Testing</text>
+      <text x="575" y="56" text-anchor="middle" font-size="7" fill="#aaa">Development</text>
+
+      <polygon points="640,42 660,42 650,55" fill="#0a0a0a"/>
+
+      <rect x="670" y="20" width="90" height="45" rx="3" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="715" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Release</text>
+      <text x="715" y="56" text-anchor="middle" font-size="7" fill="#aaa">Development</text>
+
+      <!-- Testing track (bottom) — parallel -->
+      <rect x="30" y="140" width="130" height="45" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2"/>
+      <text x="95" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">Review</text>
+      <text x="95" y="176" text-anchor="middle" font-size="7" fill="#065a68">Requirements</text>
+
+      <rect x="190" y="140" width="130" height="45" rx="3" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="255" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">Review</text>
+      <text x="255" y="176" text-anchor="middle" font-size="7" fill="#8a6500">Design</text>
+
+      <rect x="350" y="140" width="130" height="45" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="415" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a34">Unit &amp;</text>
+      <text x="415" y="176" text-anchor="middle" font-size="7" fill="#1a7a34">Integration Tests</text>
+
+      <rect x="510" y="140" width="130" height="45" rx="3" fill="#e2d9f3" stroke="#6f42c1" stroke-width="2"/>
+      <text x="575" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#4a1d96">System &amp;</text>
+      <text x="575" y="176" text-anchor="middle" font-size="7" fill="#4a1d96">UAT</text>
+
+      <rect x="670" y="140" width="90" height="45" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="715" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#922b21">Closure</text>
+      <text x="715" y="176" text-anchor="middle" font-size="7" fill="#922b21">Testing</text>
+
+      <!-- Vertical arrows connecting development to testing phases -->
+      <line x1="95" y1="65" x2="95" y2="140" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="255" y1="65" x2="255" y2="140" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="415" y1="65" x2="415" y2="140" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="575" y1="65" x2="575" y2="140" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="715" y1="65" x2="715" y2="140" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <text x="390" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#0a0a0a">Testing occurs IN PARALLEL with Development</text>
+    </svg>
+  </div>
+
+  <h3>V-Model vs W-Model Comparison</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Aspect</th><th>V-Model</th><th>W-Model</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Testing Approach</strong></td><td>Testing happens after development phase</td><td>Testing happens in parallel with development</td></tr>
+      <tr><td><strong>Timing of Test Planning</strong></td><td>Test planning starts after requirements are complete</td><td>Test planning begins simultaneously with development planning</td></tr>
+      <tr><td><strong>Static Testing</strong></td><td>Present but less emphasized</td><td>Strongly emphasized through reviews at each phase</td></tr>
+      <tr><td><strong>Defect Detection</strong></td><td>Defects found later in the cycle</td><td>Defects found earlier due to parallel reviews</td></tr      <tr><td><strong>Best For</strong></td><td>Small to medium projects with clear requirements</td>
+          <td>Complex projects requiring early defect detection</td>
+      </tr>
+    </tbody>
+   </table>
+
+  <div class="example-box">
+    <div class="ex-label">Simple Analogy — Building Construction</div>
+    <p><strong>Verification:</strong> Reviewing the building blueprint before construction begins. Checking that all measurements are correct on paper.</p>
+    <p><strong>Validation:</strong> Actually measuring the completed room to ensure it is 10x10 feet as specified.</p>
+    <p><strong>V-Model:</strong> Finish the entire blueprint, then start building, then test at the end.</p>
+    <p><strong>W-Model:</strong> Review each floor's blueprint, build that floor, test that floor, then move to next floor.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Pressman, R. — Software Engineering: A Practitioner's Approach, V-Model Chapter</li>
+      <li>ISTQB Foundation Level — Static Testing Basics</li>
+      <li>Spillner, A. — Software Testing Foundations, 5th Edition</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.8 — AGILE TESTING: TEST DRIVEN DEVELOPMENT (TDD)
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-8">
+  <div class="topic-label">Topic 2.8</div>
+  <h2 class="topic-title">Agile Testing — Test Driven Development (TDD)</h2>
+
+  <div class="concept-box">
+    <strong>Test Driven Development (TDD)</strong> is a software development approach where tests are written <strong>before</strong> the code. The developer follows a short, repetitive cycle: write a failing test, write just enough code to pass the test, then refactor the code to improve its structure.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    TDD is often called "Red-Green-Refactor" — remember the three steps in order. This is a favorite exam question: "Explain TDD with the red-green-refactor cycle."
+  </div>
+
+  <h3>The TDD Cycle — Red-Green-Refactor</h3>
+
+  <!-- TDD Cycle SVG -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.9 — Test Driven Development (TDD) Red-Green-Refactor Cycle</div>
+    <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Red circle -->
+      <circle cx="150" cy="120" r="70" fill="#f8d7da" stroke="#c0392b" stroke-width="3"/>
+      <text x="150" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#922b21">RED</text>
+      <text x="150" y="130" text-anchor="middle" font-size="9" fill="#922b21">Write a test</text>
+      <text x="150" y="145" text-anchor="middle" font-size="9" fill="#922b21">that FAILS</text>
+      <text x="150" y="165" text-anchor="middle" font-size="8" fill="#922b21">(because no code yet)</text>
+
+      <!-- Arrow Red → Green -->
+      <line x1="220" y1="120" x2="280" y2="120" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="278,115 288,120 278,125" fill="#0a0a0a"/>
+
+      <!-- Green circle -->
+      <circle cx="390" cy="120" r="70" fill="#d4edda" stroke="#1a7a34" stroke-width="3"/>
+      <text x="390" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#1a7a34">GREEN</text>
+      <text x="390" y="130" text-anchor="middle" font-size="9" fill="#1a7a34">Write minimum</text>
+      <text x="390" y="145" text-anchor="middle" font-size="9" fill="#1a7a34">code to PASS</text>
+      <text x="390" y="165" text-anchor="middle" font-size="8" fill="#1a7a34">(make test pass)</text>
+
+      <!-- Arrow Green → Refactor -->
+      <line x1="460" y1="120" x2="520" y2="120" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="518,115 528,120 518,125" fill="#0a0a0a"/>
+
+      <!-- Refactor circle -->
+      <circle cx="630" cy="120" r="70" fill="#fff3cd" stroke="#e6ac00" stroke-width="3"/>
+      <text x="630" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#8a6500">REFACTOR</text>
+      <text x="630" y="130" text-anchor="middle" font-size="9" fill="#5a4000">Improve code</text>
+      <text x="630" y="145" text-anchor="middle" font-size="9" fill="#5a4000">(without changing</text>
+      <text x="630" y="160" text-anchor="middle" font-size="9" fill="#5a4000">its behavior)</text>
+
+      <!-- Arrow Refactor back to Red -->
+      <path d="M 630 190 Q 630 240 390 240 Q 150 240 150 190" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="390" y="255" text-anchor="middle" font-size="9" fill="#7a7a74">Repeat cycle for next feature</text>
+    </svg>
+  </div>
+
+  <h3>Detailed Explanation of Each Phase</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🔴 RED — Write a Failing Test</h4>
+      <p><strong>What happens:</strong> Before writing any production code, the developer writes a test for a small piece of functionality that does not yet exist.</p>
+      <p><strong>Result:</strong> The test fails (red) because the code being tested hasn't been written yet.</p>
+      <p><strong>Example:</strong> Writing a test that expects a `calculateDiscount(price, customerType)` function to return 10% off for premium customers — before writing the function itself.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🟢 GREEN — Make the Test Pass</h4>
+      <p><strong>What happens:</strong> Write the simplest possible code that makes the test pass. Do not add extra functionality.</p>
+      <p><strong>Result:</strong> The test passes (green). All tests in the suite should now pass.</p>
+      <p><strong>Example:</strong> Writing `if customerType == "premium": return price * 0.9` — nothing more, nothing less.</p>
+    </div>
+    <div class="compare-card">
+      <h4>♻️ REFACTOR — Improve the Code</h4>
+      <p><strong>What happens:</strong> Clean up the code — remove duplication, improve naming, optimize structure — while keeping all tests passing.</p>
+      <p><strong>Result:</strong> Better code quality with the same correct behavior.</p>
+      <p><strong>Example:</strong> Extracting the discount logic into a separate helper function, adding constants for discount percentages.</p>
+    </div>
+  </div>
+
+  <h3>Traditional Testing vs TDD</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Aspect</th><th>Traditional Development</th><th>Test Driven Development (TDD)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Order</strong></td><td>Write code → Write tests → Debug</td>
+          <td>Write tests → Write code → Refactor</td>
+      </tr>
+      <tr><td><strong>Test Purpose</strong></td>
+          <td>Verify existing code works</td>
+          <td>Drive the design and implementation</td>
+       </tr>
+      <tr><td><strong>Confidence Level</strong></td>
+          <td>Moderate — tests may be incomplete</td>
+          <td>High — every line has a test behind it</td>
+       </tr>
+      <tr><td><strong>Debugging Time</strong></td>
+          <td>High — defects found late</td>
+          <td>Low — defects found immediately when introduced</td>
+       </tr>
+      <tr><td><strong>Documentation</strong></td>
+          <td>Separate documents needed</td>
+          <td>Tests serve as executable specification</td>
+       </tr>
+    </tbody>
+  </table>
+
+  <h3>Example: TDD in Action — Calculating Age from Birthdate</h3>
+  <div class="example-box">
+    <div class="ex-label">Complete TDD Example</div>
+    <p><strong>Requirement:</strong> Function should calculate a person's age in years given their birthdate.</p>
+    <p><strong>🔴 RED:</strong> Write test first</p>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.8rem;">
+def test_calculate_age():
+    birthdate = "1990-05-15"
+    today = "2024-05-15"
+    result = calculate_age(birthdate, today)
+    assert result == 34    # This test will FAIL — function doesn't exist yet</pre>
+    <p><strong>🟢 GREEN:</strong> Write minimum code</p>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.8rem;">
+def calculate_age(birthdate, today):
+    return 34    # Hardcoded — makes the test pass but not real solution</pre>
+    <p><strong>♻️ REFACTOR:</strong> Replace with real calculation</p>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.8rem;">
+def calculate_age(birthdate, today):
+    birth = datetime.strptime(birthdate, "%Y-%m-%d")
+    today_dt = datetime.strptime(today, "%Y-%m-%d")
+    age = today_dt.year - birth.year
+    if today_dt.month < birth.month or (today_dt.month == birth.month and today_dt.day < birth.day):
+        age -= 1
+    return age    # Now add more test cases (birthdays, leap years, etc.)</pre>
+  </div>
+
+  <h3>Benefits of TDD</h3>
+  <ul>
+    <li><strong>Higher test coverage:</strong> Every line of code is written to pass a test</li>
+    <li><strong>Better design:</strong> Testable code tends to be better designed (loose coupling, high cohesion)</li>
+    <li><strong>Immediate feedback:</strong> Developers know within seconds if they broke something</li>
+    <li><strong>Regression safety:</strong> The test suite grows with the codebase, catching regressions instantly</li>
+    <li><strong>Living documentation:</strong> Tests describe how the code should behave</li>
+    <li><strong>Reduced debugging time:</strong> Defects are caught when they are introduced, not weeks later</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common TDD Mistakes</div>
+    <ul>
+      <li>Writing too large a test — tests should be small (one assertion per test)</li>
+      <li>Skipping the refactor step — this is where long-term quality comes from</li>
+      <li>Writing tests after the code — that's not TDD, that's just "adding tests"</li>
+      <li>Writing tests that are too complex — tests should be simple and focused</li>
+    </ul>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Beck, K. — Test Driven Development: By Example, Addison-Wesley</li>
+      <li>Martin, R. C. — Clean Code: A Handbook of Agile Software Craftsmanship</li>
+      <li>Agile Alliance — Test Driven Development (TDD) Definition</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.9 — LEVELS OF TESTING
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-9">
+  <div class="topic-label">Topic 2.9</div>
+  <h2 class="topic-title">Levels of Testing</h2>
+
+  <div class="concept-box">
+    Testing is performed at multiple <strong>levels</strong> throughout the software development life cycle. Each level has a specific focus, scope, and objective. The levels form a hierarchy from testing small components to testing the complete system.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the pyramid: Unit (many small tests) → Integration → System → UAT (few large tests). Each level has distinct objectives and stakeholders.
+  </div>
+
+  <!-- Testing Levels Pyramid -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.10 — The Testing Levels Pyramid</div>
+    <svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;font-family:'Source Serif 4',serif;">
+      <!-- Pyramid layers from top (smallest area) to bottom (largest area) -->
+      <!-- UAT at top -->
+      <polygon points="200,30 300,120 100,120" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="200" y="70" text-anchor="middle" font-size="10" font-weight="700" fill="#922b21">UAT</text>
+      <text x="200" y="85" text-anchor="middle" font-size="8" fill="#922b21">User Acceptance</text>
+      <text x="200" y="98" text-anchor="middle" font-size="7" fill="#922b21">(Few tests, high level)</text>
+
+      <!-- System Testing -->
+      <polygon points="200,125 340,245 60,245" fill="#e2d9f3" stroke="#6f42c1" stroke-width="2"/>
+      <text x="200" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="#4a1d96">System</text>
+      <text x="200" y="195" text-anchor="middle" font-size="8" fill="#4a1d96">Testing</text>
+      <text x="200" y="210" text-anchor="middle" font-size="7" fill="#4a1d96">(End-to-end, functional + non-functional)</text>
+
+      <!-- Integration Testing -->
+      <polygon points="200,250 380,350 20,350" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="200" y="295" text-anchor="middle" font-size="10" font-weight="700" fill="#8a6500">Integration</text>
+      <text x="200" y="310" text-anchor="middle" font-size="8" fill="#5a4000">Testing</text>
+      <text x="200" y="325" text-anchor="middle" font-size="7" fill="#5a4000">(Interfaces between modules)</text>
+
+      <!-- Unit Testing - below the pyramid (largest base) -->
+      <!-- Actually draw as a base rectangle -->
+      <rect x="40" y="355" width="320" height="40" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="200" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#1a7a34">Unit Testing (Most tests, smallest scope)</text>
+    </svg>
+    <p style="text-align:center; font-size:0.75rem; margin-top:0.5rem;">The pyramid principle: Write many fast, small unit tests at the bottom, fewer slower end-to-end tests at the top.</p>
+  </div>
+
+  <h3>Detailed Explanation of Each Level</h3>
+
+  <h4>2.9.1 — Unit (Component) Testing</h4>
+  <p><strong>Definition:</strong> Testing of individual software components or modules in isolation. Typically performed by developers using test frameworks (JUnit, pytest, NUnit).</p>
+  <ul>
+    <li><strong>Scope:</strong> Single function, method, or class</li>
+    <li><strong>Objective:</strong> Verify that each unit performs as designed</li>
+    <li><strong>Who performs:</strong> Developers</li>
+    <li><strong>When:</strong> During coding phase</li>
+    <li><strong>Example:</strong> Testing that a `validateEmail(email)` function correctly identifies valid email formats</li>
+  </ul>
+
+  <h4>2.9.2 — Integration Testing</h4>
+  <p><strong>Definition:</strong> Testing the interactions and interfaces between integrated components to detect interface defects.</p>
+  <ul>
+    <li><strong>Scope:</strong> Two or more units working together</li>
+    <li><strong>Objective:</strong> Verify that components work correctly when combined</li>
+    <li><strong>Who performs:</strong> Developers or testers</li>
+    <li><strong>When:</strong> After unit testing, before system testing</li>
+    <li><strong>Example:</strong> Testing that the `validateEmail` function's output is correctly used by the `registerUser` function</li>
+  </ul>
+
+  <div class="case-box">
+    <div class="case-label">🌍 Integration Testing Failure Example</div>
+    <strong>NASA Mars Climate Orbiter (1999):</strong> The spacecraft was lost because one team used metric units (newton-seconds) and another used imperial units (pound-seconds). Both units worked perfectly in isolation. The integration testing failed to catch the unit mismatch. Cost: $125 million loss.
+  </div>
+
+  <h4>2.9.3 — System Testing</h4>
+  <p><strong>Definition:</strong> Testing the complete, integrated application to evaluate compliance with specified requirements.</p>
+  <ul>
+    <li><strong>Scope:</strong> Entire system as a whole</li>
+    <li><strong>Objective:</strong> Verify end-to-end system behavior against requirements</li>
+    <li><strong>Who performs:</strong> Independent test team</li>
+    <li><strong>When:</strong> After integration testing, before UAT</li>
+    <li><strong>Example:</strong> Testing the complete e-commerce flow: login → search → add to cart → checkout → payment → confirmation</li>
+  </ul>
+
+  <h4>2.9.4 — User Acceptance Testing (UAT)</h4>
+  <p><strong>Definition:</strong> Testing performed by end-users to determine whether the software meets their business needs and is ready for production deployment.</p>
+  <ul>
+    <li><strong>Scope:</strong> Business workflows from user perspective</li>
+    <li><strong>Objective:</strong> Validate that the software solves real business problems</li>
+    <li><strong>Who performs:</strong> End users, business analysts, product owners</li>
+    <li><strong>When:</strong> After system testing, before production release</li>
+    <li><strong>Example:</strong> Hospital nurses testing a new patient admission system using real patient scenarios</li>
+  </ul>
+
+  <h3>Comparison Table: Testing Levels at a Glance</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Level</th><th>Scope</th><th>Who</th><th>What is Tested</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Unit</strong></td><td>Smallest</td><td>Developer</td><td>Single function/class</td><td>Email validation logic</td></tr>
+      <tr><td><strong>Integration</strong></td><td>Medium</td><td>Developer/Tester</td><td>Interfaces between modules</td><td>Login module calls database correctly</td></tr>
+      <tr><td><strong>System</strong></td><td>Large</td><td>Tester</td><td>Complete system</td><td>End-to-end order processing</td></tr>
+      <tr><td><strong>UAT</strong></td><td>Largest</td><td>End User</td><td>Business requirements</td><td>Real user performs real job tasks</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level — Test Levels Chapter</li>
+      <li>Pressman, R. — Software Engineering, Chapter on Testing Strategies</li>
+      <li>NASA — Mars Climate Orbiter Mishap Investigation Board Report</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.10 — TEST TYPES
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-10">
+  <div class="topic-label">Topic 2.10</div>
+  <h2 class="topic-title">Test Types</h2>
+
+  <div class="concept-box">
+    <strong>Test Types</strong> classify tests based on the <strong>objective</strong> of testing — what you are trying to evaluate. While test levels (Unit, Integration, System) define <strong>when</strong> you test, test types define <strong>what aspect</strong> you are testing.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Distinguish between test LEVELS (scope/when) and test TYPES (objective/what). Levels are about size and integration; types are about functionality vs structure vs non-functional properties.
+  </div>
+
+  <h3>The Three Main Test Type Categories</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">⚫</div>
+      <h4>Functional Testing (Black-Box)</h4>
+      <p>Tests WHAT the system does. Focuses on requirements and expected behavior without looking at internal code structure.</p>
+      <p><strong>Example:</strong> Entering username "john" and password "pass123" — does login succeed?</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⬜</div>
+      <h4>Structural Testing (White-Box)</h4>
+      <p>Tests HOW the system works. Examines internal code structure, logic paths, and implementation details.</p>
+      <p><strong>Example:</strong> Testing all branches of an if-else statement, ensuring every line of code executes.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Non-Functional Testing</h4>
+      <p>Tests HOW WELL the system performs under various conditions. Covers performance, usability, security, reliability, etc.</p>
+      <p><strong>Example:</strong> Can 10,000 users login simultaneously without slowing down?</p>
+    </div>
+  </div>
+
+  <h3>2.10.1 — Functional Testing (Black-Box)</h3>
+  <p><strong>Definition:</strong> Testing based on requirements and specifications without knowledge of internal code structure. The tester treats the system as a "black box" — inputs go in, outputs come out, internal workings are not examined.</p>
+
+  <h4>Functional Testing Techniques:</h4>
+  <ul>
+    <li><strong>Equivalence Partitioning:</strong> Divide input data into groups that should behave similarly. Test one value from each group.</li>
+    <li><strong>Boundary Value Analysis:</strong> Test values at the edges of valid ranges (minimum, maximum, just inside, just outside).</li>
+    <li><strong>Decision Table Testing:</strong> Create tables showing combinations of conditions and expected actions.</li>
+    <li><strong>State Transition Testing:</strong> Test how the system behaves when moving between different states.</li>
+    <li><strong>Use Case Testing:</strong> Test end-to-end business scenarios from user perspective.</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Functional Testing Example — ATM Withdrawal</div>
+    <p><strong>Requirement:</strong> ATM allows withdrawal between ₹100 and ₹20,000 in multiples of ₹100.</p>
+    <ul>
+      <li><strong>Equivalence Partitioning:</strong> Valid: ₹500, ₹5,000, ₹15,000 | Invalid: ₹50, ₹25,000, ₹0</li>
+      <li><strong>Boundary Value Analysis:</strong> Test ₹100 (min), ₹99 (min-1), ₹101 (min+1), ₹20,000 (max), ₹19,999 (max-1), ₹20,001 (max+1)</li>
+    </ul>
+  </div>
+
+  <h3>2.10.2 — Non-Functional Testing (Product Characteristics)</h3>
+  <p><strong>Definition:</strong> Testing the quality attributes of the software — how well it performs, how easy it is to use, how secure it is, how reliable it operates under load.</p>
+  <p>(Detailed coverage of Non-Functional Testing types is in Topic 2.11)</p>
+
+  <h3>2.10.3 — Structural Testing (White-Box)</h3>
+  <p><strong>Definition:</strong> Testing based on knowledge of the internal code structure. The tester designs tests to execute specific paths, branches, or conditions within the code.</p>
+
+  <h4>White-Box Testing Coverage Levels:</h4>
+  <ul>
+    <li><strong>Statement Coverage:</strong> Every line of code executed at least once</li>
+    <li><strong>Branch Coverage:</strong> Every branch (if/else, switch case) taken in both true and false directions</li>
+    <li><strong>Path Coverage:</strong> Every possible path through the code executed (often impractical for complex code)</li>
+    <li><strong>Condition Coverage:</strong> Every Boolean sub-expression evaluated both true and false</li>
+  </ul>
+
+  <!-- White Box vs Black Box SVG -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.11 — Black-Box vs White-Box Testing Perspective</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Black Box (left) -->
+      <rect x="30" y="40" width="300" height="120" rx="5" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="180" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">BLACK-BOX</text>
+      <text x="180" y="120" text-anchor="middle" font-size="9" fill="#aaa">Cannot see internal code</text>
+
+      <rect x="50" y="10" width="80" height="30" rx="3" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="90" y="29" text-anchor="middle" font-size="8" fill="#065a68">INPUTS</text>
+
+      <rect x="230" y="10" width="80" height="30" rx="3" fill="#d4edda" stroke="#1a7a34" stroke-width="1.5"/>
+      <text x="270" y="29" text-anchor="middle" font-size="8" fill="#1a7a34">OUTPUTS</text>
+
+      <line x1="130" y1="25" x2="180" y2="40" stroke="#fff" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="230" y1="25" x2="180" y2="40" stroke="#fff" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- Arrow between -->
+      <line x1="330" y1="100" x2="450" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="448,95 458,100 448,105" fill="#0a0a0a"/>
+
+      <!-- White Box (right) -->
+      <rect x="460" y="40" width="300" height="120" rx="5" fill="#f0f0ee" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="610" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#0a0a0a">WHITE-BOX</text>
+      <text x="610" y="90" text-anchor="middle" font-size="9" fill="#3a3a36">Internal code structure visible</text>
+
+      <!-- Sample code lines inside white box -->
+      <line x1="490" y1="105" x2="580" y2="105" stroke="#0a0a0a" stroke-width="1"/>
+      <line x1="490" y1="115" x2="550" y2="115" stroke="#0a0a0a" stroke-width="1"/>
+      <line x1="490" y1="125" x2="600" y2="125" stroke="#0a0a0a" stroke-width="1"/>
+      <line x1="490" y1="135" x2="570" y2="135" stroke="#0a0a0a" stroke-width="1"/>
+
+      <text x="490" y="103" text-anchor="start" font-size="7" font-family="monospace">if (user.exists) {</text>
+      <text x="500" y="113" text-anchor="start" font-size="7" font-family="monospace">grantAccess();</text>
+      <text x="490" y="123" text-anchor="start" font-size="7" font-family="monospace">} else {</text>
+      <text x="500" y="133" text-anchor="start" font-size="7" font-family="monospace">denyAccess();</text>
+      <text x="490" y="143" text-anchor="start" font-size="7" font-family="monospace">}</text>
+    </svg>
+  </div>
+
+  <h3>2.10.4 — Testing Related to Changes: Confirmation and Regression Testing</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Confirmation Testing (Re-testing)</h4>
+      <p><strong>Definition:</strong> Running a test that previously failed after a fix has been made, to confirm the defect is actually resolved.</p>
+      <p><strong>When to perform:</strong> After developer provides a fix for a reported defect</p>
+      <p><strong>Scope:</strong> Only the specific test case(s) that failed originally</p>
+      <p><strong>Example:</strong> Defect: "Login fails with correct credentials". Developer fixes the issue. Tester re-runs the exact login test to confirm it now works.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🔄 Regression Testing</h4>
+      <p><strong>Definition:</strong> Running a set of tests to ensure that new code changes have not broken existing functionality.</p>
+      <p><strong>When to perform:</strong> After any code change — bug fix, new feature, configuration change, refactoring</p>
+      <p><strong>Scope:</strong> A suite of tests covering core functionality that should not be affected</p>
+      <p><strong>Example:</strong> After fixing the login bug, the tester runs all 500 existing tests to ensure nothing else broke.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Confirmation vs Regression — Real Scenario</div>
+    <p><strong>Situation:</strong> E-commerce site has 10,000 tests. Test #487 (checkout with credit card) fails.</p>
+    <p><strong>Step 1:</strong> Developer fixes the checkout code.</p>
+    <p><strong>Step 2 — Confirmation Testing:</strong> Tester re-runs only Test #487. It passes. The specific defect is confirmed fixed.</p>
+    <p><strong>Step 3 — Regression Testing:</strong> Tester runs the entire suite of 10,000 tests to ensure the fix didn't break login, search, cart, or any other functionality. Three other tests fail — regression issues. Those must be fixed now.</p>
+    <p><strong>Conclusion:</strong> Confirmation proves the specific fix worked. Regression proves nothing else was broken by the fix.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level — Test Types and Regression Testing</li>
+      <li>Myers, G. — The Art of Software Testing, 3rd Edition</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.11 — NON-FUNCTIONAL TESTING TYPES
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-11">
+  <div class="topic-label">Topic 2.11</div>
+  <h2 class="topic-title">Non-Functional Testing Types</h2>
+
+  <div class="concept-box">
+    <strong>Non-functional testing</strong> verifies the quality attributes of software — how well it performs, how easy it is to use, how secure it is, and how reliably it operates. Unlike functional testing (which checks WHAT the system does), non-functional testing checks HOW WELL the system does it.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    For exams, remember the main non-functional types: Performance (Load + Stress), Usability, Maintainability, Portability, Security, and Localization/Internationalization. Each answers a specific "how well" question.
+  </div>
+
+  <h3>2.11.1 — Performance Testing (Load & Stress)</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>📈 Load Testing</h4>
+      <p><strong>Definition:</strong> Testing the system under expected normal and peak load conditions. Answers: "Does the system handle the expected number of users?"</p>
+      <p><strong>Example:</strong> Simulating 1,000 concurrent users on an e-commerce site during a sale. Measuring response time stays under 2 seconds for 95% of transactions.</p>
+      <p><strong>Metrics measured:</strong> Response time, throughput (transactions/sec), resource utilization (CPU, memory, network)</p>
+    </div>
+    <div class="compare-card">
+      <h4>💥 Stress Testing</h4>
+      <p><strong>Definition:</strong> Testing the system beyond its expected capacity to find its breaking point and how it recovers. Answers: "What happens when traffic exceeds expectations? Does it crash gracefully?"</p>
+      <p><strong>Example:</strong> Ramping up users from 1,000 to 10,000 to 50,000 to find where response time becomes unacceptable or the server crashes.</p>
+      <p><strong>Metrics measured:</strong> Breaking point, failure behavior (graceful degradation vs crash), recovery time</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.12 — Load vs Stress Testing: Response Time vs User Load</div>
+    <div class="chart-container">
+      <canvas id="performanceChart"></canvas>
+    </div>
+  </div>
+
+  <h3>2.11.2 — Usability Testing</h3>
+  <p><strong>Definition:</strong> Testing how easily end users can learn and use the software. Evaluates the user interface, navigation, and overall user experience (UX).</p>
+  <ul>
+    <li><strong>Objectives:</strong> Is the software intuitive? Can users complete tasks without training? Are error messages helpful?</li>
+    <li><strong>Methods:</strong> User observation, task completion time measurement, satisfaction surveys, A/B testing</li>
+    <li><strong>Example:</strong> Giving 5 new users a task: "Find and purchase a blue T-shirt in size Medium." Measure how long it takes and how many clicks are needed.</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Usability Testing Example — Banking App</div>
+    <p><strong>Task:</strong> Transfer money to a saved payee.</p>
+    <p><strong>Success criteria:</strong> User completes task within 60 seconds without assistance.</p>
+    <p><strong>Typical findings:</strong> "The 'Add Payee' button is hidden in a menu — users couldn't find it. We need to move it to the main screen."</p>
+  </div>
+
+  <h3>2.11.3 — Maintainability Testing</h3>
+  <p><strong>Definition:</strong> Testing how easily the software can be modified to fix defects, add features, or adapt to changing environments.</p>
+  <ul>
+    <li><strong>Factors:</strong> Code readability, documentation quality, modularity, testability, tool support</li>
+    <li><strong>Example:</strong> A new developer is asked to add a 10% discount for premium customers. How many hours does it take? How many existing tests break?</li>
+  </ul>
+
+  <h3>2.11.4 — Portability Testing</h3>
+  <p><strong>Definition:</strong> Testing the ease with which software can be transferred from one environment to another (different operating systems, browsers, devices, hardware configurations).</p>
+  <ul>
+    <li><strong>Example:</strong> Testing a web application on Windows + Chrome, Mac + Safari, Linux + Firefox, Android + Chrome, iOS + Safari, and verifying identical behavior.</li>
+    <li><strong>Metrics:</strong> Percentage of environments where software works correctly, installation time, configuration complexity</li>
+  </ul>
+
+  <h3>2.11.5 — Security Testing</h3>
+  <p><strong>Definition:</strong> Testing the software's ability to protect data and maintain functionality against malicious attacks. (Detailed in Unit 1 and Unit 3)</p>
+  <ul>
+    <li><strong>Types of security testing:</strong> Vulnerability scanning, penetration testing, authentication testing, authorization testing, encryption testing</li>
+    <li><strong>Example:</strong> Attempting SQL injection on login page (`' OR '1'='1` as password) to see if the database is exposed.</li>
+  </ul>
+
+  <h3>2.11.6 — Localization & Internationalization Testing</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🌐 Internationalization (I18N)</h4>
+      <p><strong>Definition:</strong> Designing the software to be adaptable to different languages and regions without engineering changes.</p>
+      <p><strong>What to test:</strong> Does the code support Unicode? Are date/time formats configurable? Can text expand for longer translations?</p>
+      <p><strong>Example:</strong> The string "Submit" in English becomes "Submeter" in Portuguese (same length) but "Enviar" (shorter) — does the button resize correctly?</p>
+    </div>
+    <div class="compare-card">
+      <h4>📍 Localization (L10N)</h4>
+      <p><strong>Definition:</strong> Adapting the software for a specific region or language, including translations, currency, date formats, and cultural conventions.</p>
+      <p><strong>What to test:</strong> Translations are accurate, currency symbols are correct ($ vs € vs ¥), date format matches local preference (DD/MM/YYYY vs MM/DD/YYYY).</p>
+      <p><strong>Example:</strong> In the US, date is 12/25/2024 (Christmas). In India, same date should display as 25/12/2024. Does the software handle this correctly?</p>
+    </div>
+  </div>
+
+  <h3>Comparison of Non-Functional Testing Types</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Test Type</th><th>Questions Answered</th><th>Typical Tools</th><th>Example Metric</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Load Testing</strong></td><td>Handles expected traffic?</td><td>JMeter, LoadRunner</td><td>Response time < 2 seconds at 1000 users</td></tr>
+      <tr><td><strong>Stress Testing</strong></td><td>What is the breaking point?</td><td>JMeter, Gatling</td><td>System crashes at 5000 users</td></tr>
+      <tr><td><strong>Usability</strong></td><td>Is it easy to use?</td><td>User interviews, Hotjar</td><td>Task completion time < 60 seconds</td></tr>
+      <tr><td><strong>Maintainability</strong></td><td>Easy to modify?</td><td>SonarQube, Code reviews</td><td>Cyclomatic complexity score < 10</td></tr>
+      <tr><td><strong>Portability</strong></td><td>Works everywhere?</td><td>BrowserStack, SauceLabs</td><td>95% of target environments pass</td></tr>
+      <tr><td><strong>Security</strong></td><td>Can it withstand attacks?</td><td>Burp Suite, OWASP ZAP</td><td>Zero critical vulnerabilities</td></tr>
+      <tr><td><strong>I18N/L10N</strong></td><td>Works in other regions?</td><td>Manual testing, pseudo-translation</td><td>All supported languages functional</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISO/IEC 25010 — Systems and software quality model</li>
+      <li>ISTQB Advanced Level — Non-Functional Testing</li>
+      <li>OWASP — Security Testing Guide</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 2.12 — SMOKE TESTING AND SANITY TESTING
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2-12">
+  <div class="topic-label">Topic 2.12</div>
+  <h2 class="topic-title">Concept of Smoke Testing and Sanity Testing</h2>
+
+  <div class="concept-box">
+    <strong>Smoke Testing</strong> and <strong>Sanity Testing</strong> are two types of testing performed to quickly determine whether a build is stable enough for more detailed testing. They are often confused but have distinct purposes and scopes.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Remember: Smoke Testing = "Does the build even work?" (shallow and wide). Sanity Testing = "Does the specific fix work?" (deep but narrow). Both are subsets of regression testing.
+  </div>
+
+  <h3>Smoke Testing (Build Verification Testing)</h3>
+  <p><strong>Definition:</strong> A preliminary test conducted on a new software build to determine if it is stable enough to proceed with more rigorous testing. Smoke testing verifies the <strong>critical functionalities</strong> of the system.</p>
+
+  <h4>Characteristics of Smoke Testing:</h4>
+  <ul>
+    <li><strong>Scope:</strong> Broad but shallow — tests major functions without deep validation</li>
+    <li><strong>Objective:</strong> Check if the build is "ready" for formal testing</li>
+    <li><strong>When:</strong> Immediately after receiving a new build from development</li>
+    <li><strong>Who:</strong> Usually performed by testers or automated CI/CD pipeline</li>
+    <li><strong>Duration:</strong> Typically 10-30 minutes</li>
+    <li><strong>Fail condition:</strong> If smoke test fails, the build is rejected and sent back to developers</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Smoke Testing Example — E-commerce Application</div>
+    <p><strong>Smoke Test Suite (10 tests covering core functionality):</strong></p>
+    <ol style="margin-left: 1.2rem;">
+      <li>Can I access the homepage? (Verify site loads)</li>
+      <li>Can I search for a product?</li>
+      <li>Can I add a product to cart?</li>
+      <li>Can I proceed to checkout?</li>
+      <li>Can I enter shipping details?</li>
+      <li>Can I enter payment information?</li>
+      <li>Can I complete the order?</li>
+      <li>Can a user log in?</li>
+      <li>Can a user register?</li>
+      <li>Can the admin access the dashboard?</li>
+    </ol>
+    <p><strong>If any of these 10 tests fail, the build is rejected.</strong> No point testing detailed features like "apply discount code" or "validate tax calculation" if the basic checkout flow is broken.</p>
+  </div>
+
+  <h3>Sanity Testing</h3>
+  <p><strong>Definition:</strong> A focused test performed after receiving a build with minor changes (bug fixes) to verify that the specific fixes work and have not caused major issues in related areas.</p>
+
+  <h4>Characteristics of Sanity Testing:</h4>
+  <ul>
+    <li><strong>Scope:</strong> Narrow but deep — focuses only on the changed functionality and its immediate dependencies</li>
+    <li><strong>Objective:</strong> Verify that a specific fix works and doesn't break nearby functionality</li>
+    <li><strong>When:</strong> After smoke testing passes, before full regression testing</li>
+    <li><strong>Who:</strong> Usually performed by testers</li>
+    <li><strong>Duration:</strong> 10-30 minutes (similar to smoke, but different focus)</li>
+    <li><strong>Fail condition:</strong> If sanity test fails, the fix is rejected</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Sanity Testing Example — After a Specific Bug Fix</div>
+    <p><strong>Bug fixed:</strong> "Discount code 'SAVE10' applies 5% instead of 10% discount."</p>
+    <p><strong>Sanity Test Suite (5-10 tests focused on discount feature):</strong></p>
+    <ol style="margin-left: 1.2rem;">
+      <li>Apply 'SAVE10' — Verify discount is exactly 10%</li>
+      <li>Apply invalid code — Verify error message appears</li>
+      <li>Apply expired code — Verify appropriate message</li>
+      <li>Apply code after removing item — Verify discount recalculates</li>
+      <li>Check that unrelated feature (shipping calculation) still works</li>
+      <li>Check that checkout total is accurate with discount</li>
+    </ol>
+    <p><strong>If all pass, proceed to full regression testing on the whole application.</strong></p>
+  </div>
+
+  <h3>Smoke vs Sanity: Key Differences</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 2.13 — Smoke Testing vs Sanity Testing Comparison</div>
+    <svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Smoke Column -->
+      <rect x="40" y="30" width="320" height="210" rx="5" fill="#d1ecf1" stroke="#0c8da0" stroke-width="2.5"/>
+      <text x="200" y="55" text-anchor="middle" font-size="12" font-weight="700" fill="#065a68">SMOKE TESTING</text>
+      <text x="200" y="75" text-anchor="middle" font-size="9" fill="#065a68">"Build Verification Testing"</text>
+
+      <line x1="60" y1="85" x2="340" y2="85" stroke="#0c8da0" stroke-width="1"/>
+
+      <text x="200" y="105" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">✧ PURPOSE ✧</text>
+      <text x="200" y="122" text-anchor="middle" font-size="8" fill="#065a68">Check if build is stable enough</text>
+      <text x="200" y="135" text-anchor="middle" font-size="8" fill="#065a68">for detailed testing</text>
+
+      <text x="200" y="158" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">✧ SCOPE ✧</text>
+      <text x="200" y="175" text-anchor="middle" font-size="8" fill="#065a68">Broad but shallow</text>
+      <text x="200" y="188" text-anchor="middle" font-size="8" fill="#065a68">(Tests entire system at high level)</text>
+
+      <text x="200" y="211" text-anchor="middle" font-size="9" font-weight="700" fill="#065a68">✧ ANALOGY ✧</text>
+      <text x="200" y="228" text-anchor="middle" font-size="8" fill="#065a68">"Does the car start?"</text>
+
+      <!-- Sanity Column -->
+      <rect x="420" y="30" width="320" height="210" rx="5" fill="#fff3cd" stroke="#e6ac00" stroke-width="2.5"/>
+      <text x="580" y="55" text-anchor="middle" font-size="12" font-weight="700" fill="#8a6500">SANITY TESTING</text>
+      <text x="580" y="75" text-anchor="middle" font-size="9" fill="#8a6500">"Fix Verification Testing"</text>
+
+      <line x1="440" y1="85" x2="720" y2="85" stroke="#e6ac00" stroke-width="1"/>
+
+      <text x="580" y="105" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">✧ PURPOSE ✧</text>
+      <text x="580" y="122" text-anchor="middle" font-size="8" fill="#8a6500">Verify that a specific fix works</text>
+      <text x="580" y="135" text-anchor="middle" font-size="8" fill="#8a6500">without breaking related areas</text>
+
+      <text x="580" y="158" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">✧ SCOPE ✧</text>
+      <text x="580" y="175" text-anchor="middle" font-size="8" fill="#8a6500">Narrow but deep</text>
+      <text x="580" y="188" text-anchor="middle" font-size="8" fill="#8a6500">(Tests only changed functionality)</text>
+
+      <text x="580" y="211" text-anchor="middle" font-size="9" font-weight="700" fill="#8a6500">✧ ANALOGY ✧</text>
+      <text x="580" y="228" text-anchor="middle" font-size="8" fill="#8a6500">"Does the specific repair work?"</text>
+    </svg>
+  </div>
+
+  <h3>Detailed Comparison Table</h3>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Aspect</th><th>Smoke Testing</th><th>Sanity Testing</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Also Known As</strong></td><td>Build Verification Testing (BVT)</td><td>Fix Verification Testing / Surface Testing</td></tr>
+      <tr><td><strong>Primary Goal</strong></td><td>Ensure build is stable for further testing</td><td>Ensure specific fix works correctly</td></tr>
+      <tr><td><strong>When Performed</strong></td><td>After receiving a new build</td><td>After smoke test passes, before full regression</td></tr>
+      <tr><td><strong>Scope</strong></td><td>Entire system — critical paths only</td><td>Only changed functionality + dependencies</td></tr>
+      <tr><td><strong>Depth</strong></td><td>Shallow — verifies existence of features</td><td>Deep — verifies correct behavior of fix</td></tr>
+      <tr><td><strong>Who Performs</strong></td><td>Testers or automated CI/CD</td><td>Testers</td></tr>
+      <tr><td><strong>Documentation</strong></td><td>Typically has a formal smoke test suite</td><td>Often ad-hoc, based on the specific fix</td></tr>
+      <tr><td><strong>Automation</strong></td><td>Highly automatable</td><td>Often manual</td></tr>
+      <tr><td><strong>Scripted vs Exploratory</strong></td><td>Scripted (same tests each build)</td><td>Exploratory (depends on the fix)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Confusion</div>
+    Many practitioners use "smoke testing" and "sanity testing" interchangeably — but they are different. For exam purposes, know the distinction. Smoke = "is the build fundamentally broken?" Sanity = "does this specific fix work?"
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 2 — Key Takeaway</div>
+    <p>Software testing is a vast discipline, but the fundamentals are consistent: understand the difference between verification and validation, master the testing levels (unit through UAT), apply the seven principles, know your test types (functional, non-functional, structural), and use smoke and sanity testing to efficiently manage build quality. Testing is not an afterthought — it is an integral part of software development that saves time, money, and reputations.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>ISTQB Foundation Level Syllabus v4.0 — Full Document</li>
+      <li>Myers, G., Sandler, C., Badgett, T. — The Art of Software Testing, 3rd Edition</li>
+      <li>Pressman, R. — Software Engineering: A Practitioner's Approach</li>
+      <li>IEEE 829-2008 — Standard for Software Test Documentation</li>
+      <li>Beck, K. — Test Driven Development: By Example</li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>ECS 563 · Essentials of Cyber Security · Unit 02 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="unit01_ECS.html">← Unit 1</a>
+      <a href="unit03_ECS.html">Unit 3 →</a>
+      <a href="unit04_ECS.html">Unit 4 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · SPPU · Design &amp; Developed by Sumit Thakare</span>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// Nav mobile toggle close on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+
+// Back to top visibility
+window.addEventListener('scroll', () => {
+  const btn = document.querySelector('.back-top');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// ── CHARTS ──
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// Cost of Testing vs Cost of Failure Chart (Topic 2.2)
+const costQualityCtx = document.getElementById('costQualityChart');
+if (costQualityCtx) {
+  new Chart(costQualityCtx, {
+    type: 'line',
+    data: {
+      labels: ['0%', '20%', '40%', '60%', '80%', '100%'],
+      datasets: [
+        {
+          label: 'Cost of Testing',
+          data: [0, 200, 400, 600, 800, 1000],
+          borderColor: '#0c8da0',
+          backgroundColor: 'rgba(12,141,160,0.05)',
+          borderWidth: 3,
+          pointBackgroundColor: '#0c8da0',
+          tension: 0.3,
+          fill: false
+        },
+        {
+          label: 'Cost of Failure (undetected defects)',
+          data: [1000, 800, 600, 400, 200, 50],
+          borderColor: '#c0392b',
+          backgroundColor: 'rgba(192,57,43,0.05)',
+          borderWidth: 3,
+          pointBackgroundColor: '#c0392b',
+          tension: 0.3,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y } }
+      },
+      scales: {
+        y: { title: { display: true, text: 'Cost ($)' }, beginAtZero: true, grid: { color: '#eee' } },
+        x: { title: { display: true, text: 'Testing Effort / Coverage' }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Diminishing Returns Chart (Topic 2.4)
+const diminishingCtx = document.getElementById('diminishingReturnsChart');
+if (diminishingCtx) {
+  new Chart(diminishingCtx, {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: 'Defects Found per Additional Test Hour',
+        data: [
+          {x: 10, y: 45}, {x: 20, y: 68}, {x: 30, y: 82}, {x: 40, y: 91},
+          {x: 50, y: 96}, {x: 60, y: 98}, {x: 70, y: 99}, {x: 80, y: 99.5},
+          {x: 90, y: 99.7}, {x: 100, y: 99.8}
+        ],
+        borderColor: '#1a7a34',
+        backgroundColor: '#1a7a34',
+        pointRadius: 6,
+        showLine: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `Defects Found: ${ctx.parsed.y}%` } }
+      },
+      scales: {
+        y: { title: { display: true, text: 'Cumulative Defects Found (%)' }, min: 0, max: 100, grid: { color: '#eee' } },
+        x: { title: { display: true, text: 'Testing Effort (%)' }, min: 0, max: 100, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Performance Testing Chart (Topic 2.11)
+const perfCtx = document.getElementById('performanceChart');
+if (perfCtx) {
+  new Chart(perfCtx, {
+    type: 'line',
+    data: {
+      labels: ['0', '500', '1000', '2000', '3000', '5000', '7500', '10000'],
+      datasets: [
+        {
+          label: 'Response Time (seconds)',
+          data: [0.2, 0.3, 0.5, 0.8, 1.5, 3.0, 7.0, 15.0],
+          borderColor: '#e67e22',
+          backgroundColor: 'rgba(230,126,34,0.05)',
+          borderWidth: 3,
+          pointBackgroundColor: '#e67e22',
+          tension: 0.3,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        annotation: {
+          annotations: {
+            thresholdLine: {
+              type: 'line',
+              yMin: 2,
+              yMax: 2,
+              borderColor: '#c0392b',
+              borderWidth: 2,
+              borderDash: [6, 6],
+              label: { content: 'Acceptable Threshold (2 sec)', enabled: true, position: 'end' }
+            }
+          }
+        }
+      },
+      scales: {
+        y: { title: { display: true, text: 'Response Time (seconds)' }, beginAtZero: true, grid: { color: '#eee' } },
+        x: { title: { display: true, text: 'Concurrent Users' }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Add annotation plugin fallback if not available — simple chart without annotation
+// (Chart.js annotation plugin would need separate include; keeping simple)
+</script>
+
+</body>
+</html>
