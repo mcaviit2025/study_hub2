@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 — Data Analysis | Research Methodology Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand"><span>RM</span> · Research Methodology Notes</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="RM_Index.html"> Home</a></li>
+    <li><a href="unit01_RM.html">Unit 1</a></li>
+    <li><a href="unit02_RM.html">Unit 2</a></li>
+    <li><a href="unit03_RM.html">Unit 3</a></li>
+    <li><a href="unit04_RM.html" class="active">Unit 4</a></li>
+    <li><a href="unit05_RM.html">Unit 5</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 04 · Research Methodology</div>
+  <h1>Data Analysis</h1>
+  <div class="subject-line">M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>2 Major Topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~15-20 Marks</strong></div>
+    <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Advanced Level</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t4-1">4.1 — Inferential Statistics: Hypothesis Testing, Confidence Intervals, Chi-square Test, t-test, ANOVA</a></li>
+      <li><a href="#t4-2">4.2 — Qualitative Data Analysis: Coding and Categorizing Data</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="content-wrap">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.1 — INFERENTIAL STATISTICS
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-1">
+  <div class="topic-label">Topic 4.1</div>
+  <h2 class="topic-title">Inferential Statistics: Hypothesis Testing, Confidence Intervals, Chi-square Test, t-test, ANOVA</h2>
+
+  <div class="concept-box">
+    <strong>Inferential Statistics</strong> is the branch of statistics that allows researchers to draw conclusions about a population based on data collected from a sample. It includes hypothesis testing, confidence intervals, and various statistical tests to determine whether observed patterns are likely to reflect true population characteristics.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Descriptive Statistics = describe your data (mean, median, SD). Inferential Statistics = draw conclusions about population from sample. Hypothesis testing asks: "Is this effect real or due to chance?"
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.1 — Descriptive vs Inferential Statistics</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Sample (left) -->
+      <rect x="50" y="40" width="200" height="120" rx="10" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="150" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#1a7a34">SAMPLE DATA</text>
+      <text x="150" y="85" text-anchor="middle" font-size="8" fill="#1a7a34">(Data you collect)</text>
+      <line x1="70" y1="100" x2="230" y2="100" stroke="#1a7a34" stroke-width="1"/>
+      <text x="150" y="118" text-anchor="middle" font-size="9">Mean: ₹50,000</text>
+      <text x="150" y="135" text-anchor="middle" font-size="9">SD: ₹10,000</text>
+      <text x="150" y="152" text-anchor="middle" font-size="9">n = 400</text>
+      
+      <!-- Arrow 1: Descriptive -->
+      <line x1="250" y1="80" x2="300" y2="60" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="298,55 308,58 302,68" fill="#0a0a0a"/>
+      <text x="275" y="50" text-anchor="middle" font-size="8" font-weight="700">DESCRIPTIVE</text>
+      
+      <rect x="310" y="30" width="150" height="50" rx="8" fill="#0c8da0"/>
+      <text x="385" y="50" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">DESCRIBE</text>
+      <text x="385" y="67" text-anchor="middle" font-size="8" fill="#d1ecf1">(Mean, median, SD, etc.)</text>
+      
+      <!-- Arrow 2: Inferential -->
+      <line x1="250" y1="120" x2="300" y2="140" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="298,135 308,142 302,148" fill="#0a0a0a"/>
+      <text x="275" y="155" text-anchor="middle" font-size="8" font-weight="700">INFERENTIAL</text>
+      
+      <rect x="310" y="120" width="150" height="50" rx="8" fill="#c0392b"/>
+      <text x="385" y="140" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">GENERALIZE</text>
+      <text x="385" y="157" text-anchor="middle" font-size="8" fill="#f8d7da">(t-test, ANOVA, etc.)</text>
+      
+      <!-- Population (right) -->
+      <rect x="520" y="40" width="220" height="120" rx="10" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="630" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#8a6500">POPULATION</text>
+      <text x="630" y="85" text-anchor="middle" font-size="8" fill="#8a6500">(What we want to know)</text>
+      <line x1="540" y1="100" x2="720" y2="100" stroke="#e6ac00" stroke-width="1"/>
+      <text x="630" y="118" text-anchor="middle" font-size="9">Mean: ?</text>
+      <text x="630" y="135" text-anchor="middle" font-size="9">(True population value)</text>
+      <text x="630" y="152" text-anchor="middle" font-size="9">N = All IT employees</text>
+    </svg>
+  </div>
+
+  <h3>Hypothesis Testing</h3>
+  <div class="concept-box">
+    <strong>Hypothesis Testing</strong> is a statistical method for making decisions about population parameters based on sample data. It involves formulating competing hypotheses (null and alternative) and using sample evidence to decide which is more plausible.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.2 — Hypothesis Testing Framework</div>
+    <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Step 1 -->
+      <rect x="30" y="20" width="160" height="45" rx="8" fill="#1a7a34"/>
+      <text x="110" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Step 1: Formulate</text>
+      <text x="110" y="58" text-anchor="middle" font-size="8" fill="#d4edda">H₀ and H₁</text>
+      
+      <line x1="190" y1="42" x2="220" y2="42" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="218,37 228,42 218,47" fill="#0a0a0a"/>
+      
+      <!-- Step 2 -->
+      <rect x="230" y="20" width="160" height="45" rx="8" fill="#0c8da0"/>
+      <text x="310" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Step 2: Choose</text>
+      <text x="310" y="58" text-anchor="middle" font-size="8" fill="#d1ecf1">Significance Level (α)</text>
+      
+      <line x1="390" y1="42" x2="420" y2="42" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="418,37 428,42 418,47" fill="#0a0a0a"/>
+      
+      <!-- Step 3 -->
+      <rect x="430" y="20" width="160" height="45" rx="8" fill="#e6ac00"/>
+      <text x="510" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Step 3: Compute</text>
+      <text x="510" y="58" text-anchor="middle" font-size="8" fill="#fff3cd">Test Statistic</text>
+      
+      <line x1="590" y1="42" x2="620" y2="42" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="618,37 628,42 618,47" fill="#0a0a0a"/>
+      
+      <!-- Step 4 -->
+      <rect x="630" y="20" width="120" height="45" rx="8" fill="#c0392b"/>
+      <text x="690" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Step 4: Make</text>
+      <text x="690" y="58" text-anchor="middle" font-size="8" fill="#f8d7da">Decision</text>
+      
+      <!-- Decision outcome -->
+      <line x1="690" y1="65" x2="690" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      
+      <rect x="560" y="105" width="120" height="40" rx="6" fill="#d4edda" stroke="#1a7a34" stroke-width="1.5"/>
+      <text x="620" y="125" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a34">Reject H₀</text>
+      <text x="620" y="138" text-anchor="middle" font-size="7" fill="#1a7a34">(Significant effect)</text>
+      
+      <rect x="700" y="105" width="120" height="40" rx="6" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5"/>
+      <text x="760" y="125" text-anchor="middle" font-size="8" font-weight="700" fill="#922b21">Fail to Reject H₀</text>
+      <text x="760" y="138" text-anchor="middle" font-size="7" fill="#922b21">(No effect detected)</text>
+      
+      <!-- Backward arrow for p-value comparison -->
+      <line x1="560" y1="125" x2="470" y2="125" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="515" y="115" text-anchor="middle" font-size="7">Compare p-value to α</text>
+    </svg>
+  </div>
+
+  <h4>Null and Alternative Hypotheses</h4>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>❌ Null Hypothesis (H₀)</h4>
+      <p><strong>Definition:</strong> A statement of no effect, no difference, or no relationship. It represents the status quo that the researcher aims to test against.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li>H₀: μ = 50 (population mean equals 50)</li>
+        <li>H₀: μ₁ - μ₂ = 0 (no difference between groups)</li>
+        <li>H₀: r = 0 (no correlation between variables)</li>
+        <li>H₀: There is no relationship between code review frequency and defect density</li>
+      </ul>
+      <p><strong>Key point:</strong> We never "accept" H₀ — we either "reject" or "fail to reject" it.</p>
+    </div>
+    <div class="compare-card">
+      <h4>✓ Alternative Hypothesis (H₁ or Hₐ)</h4>
+      <p><strong>Definition:</strong> A statement that contradicts the null hypothesis. It represents what the researcher wants to support.</p>
+      <p><strong>Types of Alternative Hypotheses:</strong></p>
+      <ul>
+        <li><strong>Two-tailed (≠):</strong> H₁: μ ≠ 50 (difference in either direction)</li>
+        <li><strong>One-tailed (greater):</strong> H₁: μ > 50 (difference in positive direction)</li>
+        <li><strong>One-tailed (less):</strong> H₁: μ < 50 (difference in negative direction)</li>
+      </ul>
+      <p><strong>Example:</strong> H₁: There is a significant relationship between code review frequency and defect density.</p>
+    </div>
+  </div>
+
+  <h4>Significance Level (α) and p-value</h4>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">α</div>
+      <h4>Significance Level (α)</h4>
+      <p>Probability of rejecting H₀ when it is actually true (Type I Error).</p>
+      <p><strong>Common values:</strong></p>
+      <ul>
+        <li>α = 0.05 (5% risk) — Most common</li>
+        <li>α = 0.01 (1% risk) — More stringent</li>
+        <li>α = 0.10 (10% risk) — Less stringent</li>
+      </ul>
+      <p><strong>Interpretation:</strong> α = 0.05 means 5% chance of concluding an effect exists when it doesn't.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">p</div>
+      <h4>p-value</h4>
+      <p>Probability of obtaining results as extreme as observed, assuming H₀ is true.</p>
+      <p><strong>Decision Rule:</strong></p>
+      <ul>
+        <li>If p < α → Reject H₀ (statistically significant)</li>
+        <li>If p ≥ α → Fail to reject H₀ (not significant)</li>
+      </ul>
+      <p><strong>Example:</strong> p = 0.03, α = 0.05 → Reject H₀ (significant)</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⚠️</div>
+      <h4>Type I & Type II Errors</h4>
+      <p><strong>Type I Error (α):</strong> Reject H₀ when it is actually true (false positive).</p>
+      <p><strong>Type II Error (β):</strong> Fail to reject H₀ when it is actually false (false negative).</p>
+      <p><strong>Power = 1 - β:</strong> Probability of correctly rejecting false H₀.</p>
+    </div>
+  </div>
+
+  <h3>Confidence Intervals</h3>
+  <div class="concept-box">
+    <strong>Confidence Interval (CI)</strong> is a range of values that is likely to contain the population parameter with a certain level of confidence. It provides an estimate of precision and uncertainty around a sample statistic.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.3 — Confidence Interval Interpretation</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Number line -->
+      <line x1="100" y1="100" x2="680" y2="100" stroke="#0a0a0a" stroke-width="2"/>
+      
+      <!-- Mark true population mean -->
+      <circle cx="390" cy="100" r="6" fill="#1a7a34"/>
+      <text x="390" y="85" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a34">True μ</text>
+      
+      <!-- Multiple confidence intervals from different samples -->
+      <!-- CI 1 (includes true mean) -->
+      <line x1="200" y1="40" x2="450" y2="40" stroke="#1a7a34" stroke-width="3"/>
+      <circle cx="200" cy="40" r="3" fill="#1a7a34"/>
+      <circle cx="450" cy="40" r="3" fill="#1a7a34"/>
+      <text x="180" y="45" text-anchor="end" font-size="7">Sample 1</text>
+      
+      <!-- CI 2 (includes true mean) -->
+      <line x1="250" y1="70" x2="500" y2="70" stroke="#1a7a34" stroke-width="3"/>
+      <circle cx="250" cy="70" r="3" fill="#1a7a34"/>
+      <circle cx="500" cy="70" r="3" fill="#1a7a34"/>
+      <text x="230" y="75" text-anchor="end" font-size="7">Sample 2</text>
+      
+      <!-- CI 3 (includes true mean) -->
+      <line x1="300" y1="130" x2="550" y2="130" stroke="#1a7a34" stroke-width="3"/>
+      <circle cx="300" cy="130" r="3" fill="#1a7a34"/>
+      <circle cx="550" cy="130" r="3" fill="#1a7a34"/>
+      <text x="280" y="135" text-anchor="end" font-size="7">Sample 3</text>
+      
+      <!-- CI 4 (MISSES true mean — this happens 5% of the time for 95% CI) -->
+      <line x1="500" y1="170" x2="650" y2="170" stroke="#c0392b" stroke-width="3"/>
+      <circle cx="500" cy="170" r="3" fill="#c0392b"/>
+      <circle cx="650" cy="170" r="3" fill="#c0392b"/>
+      <text x="480" y="175" text-anchor="end" font-size="7">Sample 4 (Misses)</text>
+      
+      <text x="390" y="195" text-anchor="middle" font-size="8">95% of 95% confidence intervals contain the true population mean</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    📐 Confidence Interval Formula (for means)
+    <br>
+    CI = x̄ ± Z × (σ / √n)   OR   CI = x̄ ± t × (s / √n)
+    <br>
+    Where: x̄ = sample mean, Z = Z-score (1.96 for 95%), t = t-value, s = sample SD, n = sample size
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Confidence Interval Example</div>
+    <p><strong>Research:</strong> Estimating average daily commits in software teams</p>
+    <p><strong>Sample data:</strong> n = 100 teams, mean (x̄) = 12 commits, SD (s) = 5 commits</p>
+    <p><strong>95% Confidence Interval:</strong></p>
+    <ul>
+      <li>Standard Error (SE) = s / √n = 5 / 10 = 0.5</li>
+      <li>Margin of Error (MOE) = 1.96 × 0.5 = 0.98 ≈ 1.0</li>
+      <li><strong>CI = 12 ± 1.0 = (11.0, 13.0)</strong></li>
+    </ul>
+    <p><strong>Interpretation:</strong> We are 95% confident that the true population mean daily commits is between 11.0 and 13.0 commits.</p>
+    <p><strong>Compare to hypothesis test:</strong> If hypothesized value (e.g., 10) is outside CI, reject H₀ at α = 0.05.</p>
+  </div>
+
+  <h3>Chi-square Test (χ²)</h3>
+  <div class="concept-box">
+    <strong>Chi-square Test</strong> is a non-parametric test used to determine whether there is a significant association between two categorical variables. It compares observed frequencies with expected frequencies under the assumption of independence.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.4 — Chi-square Test Contingency Table</div>
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Contingency Table -->
+      <rect x="100" y="30" width="580" height="140" rx="5" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="390" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">2×2 Contingency Table — Agile Methodology vs Company Type</text>
+      
+      <!-- Row labels -->
+      <text x="180" y="60" text-anchor="middle" font-size="9" font-weight="700">Agile</text>
+      <text x="180" y="105" text-anchor="middle" font-size="9" font-weight="700">Non-Agile</text>
+      <text x="180" y="150" text-anchor="middle" font-size="9" font-weight="700">Total</text>
+      
+      <!-- Column labels -->
+      <text x="350" y="55" text-anchor="middle" font-size="9" font-weight="700">Product Co.</text>
+      <text x="520" y="55" text-anchor="middle" font-size="9" font-weight="700">Service Co.</text>
+      <text x="650" y="55" text-anchor="middle" font-size="9" font-weight="700">Total</text>
+      
+      <!-- Cells -->
+      <rect x="260" y="65" width="180" height="30" fill="#d4edda" stroke="#1a7a34" stroke-width="1"/>
+      <text x="350" y="85" text-anchor="middle" font-size="12">120</text>
+      
+      <rect x="440" y="65" width="180" height="30" fill="#d4edda" stroke="#1a7a34" stroke-width="1"/>
+      <text x="530" y="85" text-anchor="middle" font-size="12">80</text>
+      
+      <rect x="620" y="65" width="50" height="30" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+      <text x="645" y="85" text-anchor="middle" font-size="12">200</text>
+      
+      <rect x="260" y="100" width="180" height="30" fill="#fff3cd" stroke="#e6ac00" stroke-width="1"/>
+      <text x="350" y="120" text-anchor="middle" font-size="12">60</text>
+      
+      <rect x="440" y="100" width="180" height="30" fill="#fff3cd" stroke="#e6ac00" stroke-width="1"/>
+      <text x="530" y="120" text-anchor="middle" font-size="12">140</text>
+      
+      <rect x="620" y="100" width="50" height="30" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+      <text x="645" y="120" text-anchor="middle" font-size="12">200</text>
+      
+      <rect x="260" y="135" width="180" height="30" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1"/>
+      <text x="350" y="155" text-anchor="middle" font-size="12">180</text>
+      
+      <rect x="440" y="135" width="180" height="30" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1"/>
+      <text x="530" y="155" text-anchor="middle" font-size="12">220</text>
+      
+      <rect x="620" y="135" width="50" height="30" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+      <text x="645" y="155" text-anchor="middle" font-size="12">400</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    📐 Chi-square Formula
+    <br>
+    χ² = Σ [(O - E)² / E]
+    <br>
+    Where: O = Observed frequency, E = Expected frequency (under null hypothesis)
+    <br>
+    Degrees of freedom (df) = (rows - 1) × (columns - 1)
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Chi-square Test Example — Agile Adoption by Company Type</div>
+    <p><strong>Research Question:</strong> Is there an association between company type (Product vs Service) and adoption of agile methodology?</p>
+    <p><strong>Observed Frequencies (O):</strong></p>
+    <ul>
+      <li>Product Company + Agile: 120</li>
+      <li>Product Company + Non-Agile: 60</li>
+      <li>Service Company + Agile: 80</li>
+      <li>Service Company + Non-Agile: 140</li>
+    </ul>
+    <p><strong>Step 1 — Calculate Expected Frequencies (E) under H₀ (independence):</strong></p>
+    <p>E = (Row Total × Column Total) / Grand Total</p>
+    <ul>
+      <li>E(Product-Agile) = (200 × 180) / 400 = 90</li>
+      <li>E(Product-NonAgile) = (200 × 220) / 400 = 110</li>
+      <li>E(Service-Agile) = (200 × 180) / 400 = 90</li>
+      <li>E(Service-NonAgile) = (200 × 220) / 400 = 110</li>
+    </ul>
+    <p><strong>Step 2 — Calculate χ²:</strong></p>
+    <p>χ² = (120-90)²/90 + (60-110)²/110 + (80-90)²/90 + (140-110)²/110</p>
+    <p>= 900/90 + 2500/110 + 100/90 + 900/110</p>
+    <p>= 10 + 22.73 + 1.11 + 8.18 = <strong>42.02</strong></p>
+    <p><strong>Step 3 — Compare to critical value:</strong> df = 1, critical value at α=0.05 = 3.84</p>
+    <p><strong>Conclusion:</strong> 42.02 > 3.84 → Reject H₀. There is a significant association between company type and agile adoption (p < 0.001). Product companies are more likely to use agile.</p>
+  </div>
+
+  <h3>t-test</h3>
+  <div class="concept-box">
+    <strong>t-test</strong> is a parametric test used to compare means between two groups. It determines whether the difference between group means is statistically significant.
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">1️⃣</div>
+      <h4>One-Sample t-test</h4>
+      <p>Compares sample mean to a known or hypothesized population mean.</p>
+      <p><strong>Formula:</strong> t = (x̄ - μ) / (s/√n)</p>
+      <p><strong>Example:</strong> Is the average defect density of your team (x̄=2.5) different from industry average (μ=3.0)?</p>
+      <p><strong>H₀:</strong> μ = 3.0  |  <strong>H₁:</strong> μ ≠ 3.0</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">2️⃣</div>
+      <h4>Independent t-test</h4>
+      <p>Compares means between two independent groups (different participants).</p>
+      <p><strong>Example:</strong> Compare defect density between teams using agile (n₁=20) vs waterfall (n₂=20).</p>
+      <p><strong>H₀:</strong> μ₁ = μ₂  |  <strong>H₁:</strong> μ₁ ≠ μ₂</p>
+      <p><strong>Assumptions:</strong> Normality, homogeneity of variance, independence</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔄</div>
+      <h4>Paired t-test</h4>
+      <p>Compares means between two related groups (same participants measured twice).</p>
+      <p><strong>Example:</strong> Compare developer productivity before vs after implementing a new tool.</p>
+      <p><strong>H₀:</strong> μ_difference = 0  |  <strong>H₁:</strong> μ_difference ≠ 0</p>
+      <p><strong>Formula:</strong> t = d̄ / (sd/√n) where d̄ = mean of differences</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Independent t-test Example — Code Review Effectiveness</div>
+    <p><strong>Research Question:</strong> Do teams with mandatory code review have lower defect density than teams without?</p>
+    <p><strong>Data:</strong></p>
+    <ul>
+      <li>Review Group (n=15): Mean defects/KLOC = 2.5, SD = 0.8</li>
+      <li>No Review Group (n=15): Mean defects/KLOC = 3.8, SD = 1.0</li>
+    </ul>
+    <p><strong>Step 1 — Calculate t-statistic:</strong></p>
+    <p>t = (x̄₁ - x̄₂) / √(s₁²/n₁ + s₂²/n₂) = (2.5 - 3.8) / √(0.64/15 + 1.0/15) = (-1.3) / √(0.0427 + 0.0667) = -1.3 / √0.1094 = -1.3 / 0.331 = <strong>-3.93</strong></p>
+    <p><strong>Step 2 — Degrees of freedom:</strong> df ≈ 28 (Welch approximation)</p>
+    <p><strong>Step 3 — Critical value:</strong> At α=0.05, two-tailed, critical t = ±2.048</p>
+    <p><strong>Conclusion:</strong> |t| = 3.93 > 2.048 → Reject H₀. Teams with code review have significantly lower defect density (p < 0.01).</p>
+    <p><strong>Direction:</strong> One-tailed test would also be significant (t = -3.93 < -1.701).</p>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Paired t-test Example — Training Effectiveness</div>
+    <p><strong>Research Question:</strong> Does a 2-day agile training program improve team velocity?</p>
+    <p><strong>Data (10 teams, velocity in story points per sprint):</strong></p>
+    <table style="width:100%; font-size:0.7rem;">
+      <thead><tr><th>Team</th><th>Before</th><th>After</th><th>Difference</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>25</td><td>30</td><td>+5</td></tr>
+        <tr><td>2</td><td>32</td><td>35</td><td>+3</td></tr>
+        <tr><td>3</td><td>28</td><td>32</td><td>+4</td></tr>
+        <tr><td>4</td><td>30</td><td>28</td><td>-2</td></tr>
+        <tr style="background:#f8f7f5;"><td><strong>Mean</strong><td><strong>28.8</strong><td><strong>31.3</strong><td><strong>+2.5</strong></tr>
+      </tbody>
+    </table>
+    <p><strong>Calculate:</strong> mean difference (d̄) = 2.5, SD of differences = 2.8, n = 10</p>
+    <p>t = d̄ / (sd/√n) = 2.5 / (2.8/3.16) = 2.5 / 0.886 = <strong>2.82</strong></p>
+    <p>df = 9, critical t (α=0.05, two-tailed) = 2.262</p>
+    <p><strong>Conclusion:</strong> 2.82 > 2.262 → Reject H₀. Training significantly improved team velocity (p < 0.05).</p>
+  </div>
+
+  <h3>Analysis of Variance (ANOVA)</h3>
+  <div class="concept-box">
+    <strong>Analysis of Variance (ANOVA)</strong> is a statistical test used to compare means among three or more groups. It extends the t-test (which compares only two groups) to multiple groups while controlling Type I error.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.5 — One-way ANOVA Concept</div>
+    <svg viewBox="0 0 780 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Group 1 -->
+      <circle cx="150" cy="100" r="30" fill="#d4edda" stroke="#1a7a34" stroke-width="2"/>
+      <text x="150" y="96" text-anchor="middle" font-size="7">Group 1</text>
+      <text x="150" y="108" text-anchor="middle" font-size="7">(Manual)</text>
+      <circle cx="140" cy="85" r="3" fill="#1a7a34"/>
+      <circle cx="160" cy="90" r="3" fill="#1a7a34"/>
+      <circle cx="145" cy="110" r="3" fill="#1a7a34"/>
+      <circle cx="155" cy="95" r="3" fill="#1a7a34"/>
+      <circle cx="150" cy="100" r="3" fill="#1a7a34"/>
+      <text x="150" y="145" text-anchor="middle" font-size="8">Mean = 3.2</text>
+      
+      <!-- Group 2 -->
+      <circle cx="390" cy="100" r="30" fill="#fff3cd" stroke="#e6ac00" stroke-width="2"/>
+      <text x="390" y="96" text-anchor="middle" font-size="7">Group 2</text>
+      <text x="390" y="108" text-anchor="middle" font-size="7">(Automated)</text>
+      <circle cx="380" cy="90" r="3" fill="#e6ac00"/>
+      <circle cx="400" cy="85" r="3" fill="#e6ac00"/>
+      <circle cx="385" cy="105" r="3" fill="#e6ac00"/>
+      <circle cx="395" cy="95" r="3" fill="#e6ac00"/>
+      <circle cx="390" cy="110" r="3" fill="#e6ac00"/>
+      <circle cx="405" cy="100" r="3" fill="#e6ac00"/>
+      <text x="390" y="145" text-anchor="middle" font-size="8">Mean = 4.5</text>
+      
+      <!-- Group 3 -->
+      <circle cx="630" cy="100" r="30" fill="#f8d7da" stroke="#c0392b" stroke-width="2"/>
+      <text x="630" y="96" text-anchor="middle" font-size="7">Group 3</text>
+      <text x="630" y="108" text-anchor="middle" font-size="7">(Hybrid)</text>
+      <circle cx="620" cy="95" r="3" fill="#c0392b"/>
+      <circle cx="640" cy="88" r="3" fill="#c0392b"/>
+      <circle cx="625" cy="108" r="3" fill="#c0392b"/>
+      <circle cx="635" cy="102" r="3" fill="#c0392b"/>
+      <circle cx="630" cy="92" r="3" fill="#c0392b"/>
+      <circle cx="645" cy="110" r="3" fill="#c0392b"/>
+      <text x="630" y="145" text-anchor="middle" font-size="8">Mean = 5.0</text>
+      
+      <text x="390" y="175" text-anchor="middle" font-size="8">ANOVA tests if at least one group mean is significantly different from others</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    📐 ANOVA F-statistic
+    <br>
+    F = Variance Between Groups / Variance Within Groups = MS_between / MS_within
+    <br>
+    If F is large (p < α) → Reject H₀ → at least one group mean differs
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">One-way ANOVA Example — Testing Methodology Effectiveness</div>
+    <p><strong>Research Question:</strong> Does the testing methodology (Manual, Automated, Hybrid) affect defect detection rate?</p>
+    <p><strong>Data (defect detection rate %):</strong></p>
+    <table style="width:100%; font-size:0.7rem;">
+      <thead><tr><th>Group</th><th>n</th><th>Mean</th><th>SD</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700;">Manual</td><td>20</td><td>65.2%</td><td>8.5</td></tr>
+        <tr><td style="font-weight:700;">Automated</td><td>20</td><td>78.4%</td><td>7.2</td></tr>
+        <tr><td style="font-weight:700;">Hybrid</td><td>20</td><td>85.1%</td><td>6.8</td></tr>
+      </tbody>
+    </table>
+    <p><strong>ANOVA Results:</strong></p>
+    <ul>
+      <li>F(2, 57) = 24.36</li>
+      <li>p < 0.001</li>
+    </ul>
+    <p><strong>Conclusion:</strong> Reject H₀. There is a significant difference in defect detection rate among the three testing methodologies.</p>
+    <p><strong>Post-hoc Test (Tukey HSD):</strong> To find which groups differ:</p>
+    <ul>
+      <li>Automated > Manual (p < 0.01)</li>
+      <li>Hybrid > Manual (p < 0.001)</li>
+      <li>Hybrid vs Automated: Not significant (p = 0.12)</li>
+    </ul>
+  </div>
+
+  <h4>Types of ANOVA</h4>
+  <table class="data-table no-bold">
+    <thead>
+      <tr><th>Type</th><th>Number of IVs</th><th>IV Type</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">One-way ANOVA</td><td>1</td><td>Categorical (≥3 levels)</td><td>Compare means across groups</td></tr>
+      <tr><td style="font-weight:700;">Two-way ANOVA</td><td>2</td><td>Categorical</td><td>Test main effects and interaction</td></tr>
+      <tr><td style="font-weight:700;">Repeated Measures ANOVA</td><td>1</td><td>Categorical (within-subjects)</td><td>Same participants measured multiple times</td></tr>
+      <tr><td style="font-weight:700;">MANOVA</td><td>1+</td><td>Categorical</td><td>Multiple dependent variables</td></tr>
+      <tr><td style="font-weight:700;">ANCOVA</td><td>1+</td><td>Categorical + Continuous</td><td>Control for covariate</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Field, A. — Discovering Statistics Using SPSS, Sage Publications</li>
+      <li>Gravetter, F.J. & Wallnau, L.B. — Statistics for the Behavioral Sciences</li>
+      <li>Montgomery, D.C. — Design and Analysis of Experiments, Wiley</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 4.2 — QUALITATIVE DATA ANALYSIS
+═══════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4-2">
+  <div class="topic-label">Topic 4.2</div>
+  <h2 class="topic-title">Qualitative Data Analysis: Coding and Categorizing Data</h2>
+
+  <div class="concept-box">
+    <strong>Qualitative Data Analysis (QDA)</strong> is the process of examining, organizing, and interpreting non-numerical data (text, images, audio, video) to discover patterns, themes, and meanings. <strong>Coding</strong> is the central process in QDA — assigning labels to segments of data to identify and organize patterns.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Qualitative analysis is NOT "less rigorous" than quantitative — it uses different standards. The core process: Raw Data → Coding → Categories → Themes → Interpretation. Trustworthiness comes from systematic, transparent methods.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.6 — Qualitative Data Analysis Process</div>
+    <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Raw Data -->
+      <rect x="30" y="20" width="160" height="60" rx="8" fill="#0a0a0a"/>
+      <text x="110" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Raw Data</text>
+      <text x="110" y="62" text-anchor="middle" font-size="7" fill="#aaa">(Interviews, transcripts)</text>
+      
+      <line x1="190" y1="50" x2="220" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="218,45 228,50 218,55" fill="#0a0a0a"/>
+      
+      <!-- Coding -->
+      <rect x="230" y="20" width="160" height="60" rx="8" fill="#1a7a34"/>
+      <text x="310" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Coding</text>
+      <text x="310" y="62" text-anchor="middle" font-size="7" fill="#d4edda">Label segments of text</text>
+      
+      <line x1="390" y1="50" x2="420" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="418,45 428,50 418,55" fill="#0a0a0a"/>
+      
+      <!-- Categories -->
+      <rect x="430" y="20" width="160" height="60" rx="8" fill="#0c8da0"/>
+      <text x="510" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Categories</text>
+      <text x="510" y="62" text-anchor="middle" font-size="7" fill="#d1ecf1">Group similar codes</text>
+      
+      <line x1="590" y1="50" x2="620" y2="50" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="618,45 628,50 618,55" fill="#0a0a0a"/>
+      
+      <!-- Themes -->
+      <rect x="630" y="20" width="120" height="60" rx="8" fill="#e6ac00"/>
+      <text x="690" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Themes</text>
+      <text x="690" y="62" text-anchor="middle" font-size="7" fill="#fff3cd">Overarching concepts</text>
+      
+      <!-- Backward arrow for iterative process -->
+      <path d="M 690 80 L 690 120 L 110 120 L 110 80" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="400" y="115" text-anchor="middle" font-size="8" fill="#922b21">Iterative Process — Return to data to refine codes</text>
+      
+      <!-- Output -->
+      <rect x="230" y="160" width="320" height="60" rx="10" fill="#6f42c1"/>
+      <text x="390" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Interpretation & Findings</text>
+      <text x="390" y="205" text-anchor="middle" font-size="8" fill="#e2d9f3">Themes, patterns, insights, narrative</text>
+      
+      <line x1="390" y1="140" x2="390" y2="160" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="385,158 395,163 390,168" fill="#0a0a0a"/>
+    </svg>
+  </div>
+
+  <h3>Coding in Qualitative Research</h3>
+  <div class="concept-box">
+    <strong>Coding</strong> is the process of assigning labels (codes) to segments of qualitative data to identify and organize patterns. Codes are the building blocks of qualitative analysis — they represent key ideas, concepts, or themes found in the data.
+  </div>
+
+  <h4>Types of Coding</h4>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔤</div>
+      <h4>Open Coding</h4>
+      <p><strong>Definition:</strong> Initial, exploratory coding where data is examined line-by-line to identify concepts and patterns without preconceived categories.</p>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Read through data carefully</li>
+        <li>Identify meaningful segments</li>
+        <li>Assign descriptive labels</li>
+        <li>Generate many codes initially</li>
+      </ul>
+      <p><strong>Example code:</strong> "work-life balance," "communication challenges," "tool frustration"</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📂</div>
+      <h4>Axial Coding</h4>
+      <p><strong>Definition:</strong> A second-level coding that organizes open codes into categories and explores relationships between categories.</p>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Group similar open codes</li>
+        <li>Identify category properties and dimensions</li>
+        <li>Explore cause-effect relationships</li>
+        <li>Connect categories to subcategories</li>
+      </ul>
+      <p><strong>Example:</strong> Group "tool frustration" + "slow response" + "frequent bugs" under "Technology Challenges"</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⭐</div>
+      <h4>Selective Coding</h4>
+      <p><strong>Definition:</strong> The final coding stage that identifies a core category or central theme that integrates all other categories.</p>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Identify the main theme</li>
+        <li>Relate all categories to the core theme</li>
+        <li>Refine and validate relationships</li>
+        <li>Develop theoretical narrative</li>
+      </ul>
+      <p><strong>Example:</strong> Core theme = "Adaptation to remote work requires systematic support from leadership"</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.7 — From Codes to Themes: A Practical Example</div>
+    <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <!-- Interview Quotes (Raw Data) -->
+      <rect x="30" y="20" width="220" height="80" rx="5" fill="#d4edda" stroke="#1a7a34" stroke-width="1.5"/>
+      <text x="140" y="40" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a34">Raw Data (Interview Quotes)</text>
+      <text x="50" y="58" font-size="7" fill="#1a7a34">"Reviews take too long..."</text>
+      <text x="50" y="73" font-size="7" fill="#1a7a34">"I'm always waiting for feedback"</text>
+      <text x="50" y="88" font-size="7" fill="#1a7a34">"We need faster turnaround"</text>
+      
+      <line x1="250" y1="60" x2="280" y2="60" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="278,55 288,60 278,65" fill="#0a0a0a"/>
+      
+      <!-- Open Codes -->
+      <rect x="290" y="20" width="200" height="80" rx="5" fill="#fff3cd" stroke="#e6ac00" stroke-width="1.5"/>
+      <text x="390" y="40" text-anchor="middle" font-size="8" font-weight="700" fill="#8a6500">Open Codes</text>
+      <text x="310" y="58" font-size="7" fill="#8a6500">• Slow response times</text>
+      <text x="310" y="73" font-size="7" fill="#8a6500">• Waiting for feedback</text>
+      <text x="310" y="88" font-size="7" fill="#8a6500">• Time delays</text>
+      
+      <line x1="490" y1="60" x2="520" y2="60" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="518,55 528,60 518,65" fill="#0a0a0a"/>
+      
+      <!-- Categories -->
+      <rect x="530" y="20" width="220" height="80" rx="5" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="640" y="40" text-anchor="middle" font-size="8" font-weight="700" fill="#065a68">Category: Review Speed</text>
+      <text x="550" y="58" font-size="7" fill="#065a68">• Slow response times</text>
+      <text x="550" y="73" font-size="7" fill="#065a68">• Waiting for feedback</text>
+      <text x="550" y="88" font-size="7" fill="#065a68">• Time delays in process</text>
+      
+      <!-- Additional path for second example -->
+      <rect x="30" y="130" width="220" height="80" rx="5" fill="#d4edda" stroke="#1a7a34" stroke-width="1.5"/>
+      <text x="140" y="150" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a34">Raw Data (Interview Quotes)</text>
+      <text x="50" y="168" font-size="7" fill="#1a7a34">"Reviewers give vague comments"</text>
+      <text x="50" y="183" font-size="7" fill="#1a7a34">"I don't understand what to fix"</text>
+      <text x="50" y="198" font-size="7" fill="#1a7a34">"Just 'needs work' — not helpful"</text>
+      
+      <line x1="250" y1="170" x2="280" y2="170" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="278,165 288,170 278,175" fill="#0a0a0a"/>
+      
+      <rect x="290" y="130" width="200" height="80" rx="5" fill="#fff3cd" stroke="#e6ac00" stroke-width="1.5"/>
+      <text x="390" y="150" text-anchor="middle" font-size="8" font-weight="700" fill="#8a6500">Open Codes</text>
+      <text x="310" y="168" font-size="7" fill="#8a6500">• Vague feedback</text>
+      <text x="310" y="183" font-size="7" fill="#8a6500">• Poor explanations</text>
+      <text x="310" y="198" font-size="7" fill="#8a6500">• Unclear requirements</text>
+      
+      <line x1="490" y1="170" x2="520" y2="170" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="518,165 528,170 518,175" fill="#0a0a0a"/>
+      
+      <rect x="530" y="130" width="220" height="80" rx="5" fill="#d1ecf1" stroke="#0c8da0" stroke-width="1.5"/>
+      <text x="640" y="150" text-anchor="middle" font-size="8" font-weight="700" fill="#065a68">Category: Feedback Quality</text>
+      <text x="550" y="168" font-size="7" fill="#065a68">• Vague comments</text>
+      <text x="550" y="183" font-size="7" fill="#065a68">• Poor explanations</text>
+      <text x="550" y="198" font-size="7" fill="#065a68">• Unclear requirements</text>
+      
+      <!-- Arrow to Theme -->
+      <line x1="390" y1="210" x2="390" y2="245" stroke="#0a0a0a" stroke-width="2"/>
+      <polygon points="385,243 395,248 390,253" fill="#0a0a0a"/>
+      
+      <rect x="230" y="250" width="320" height="40" rx="8" fill="#c0392b"/>
+      <text x="390" y="270" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">THEME: Code Review Process Inefficiencies</text>
+      <text x="390" y="284" text-anchor="middle" font-size="7" fill="#f8d7da">(Integration of both categories)</text>
+    </svg>
+  </div>
+
+  <h3>Coding Approaches: Inductive vs Deductive</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🔍 Inductive Coding (Bottom-up)</h4>
+      <p><strong>Definition:</strong> Codes and themes emerge from the data itself, without predetermined categories. The researcher lets the data "speak" for itself.</p>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Read data with open mind</li>
+        <li>Generate codes based on what appears interesting</li>
+        <li>Group codes into emergent categories</li>
+        <li>Develop themes from categories</li>
+      </ul>
+      <p><strong>When to use:</strong></p>
+      <ul>
+        <li>Exploratory research</li>
+        <li>Little known about the topic</li>
+        <li>Want to discover unexpected patterns</li>
+        <li>Grounded theory methodology</li>
+      </ul>
+      <p><strong>Example:</strong> Analyzing interview transcripts about remote work — discovering "isolation" as an unexpected theme not in original research questions.</p>
+    </div>
+    <div class="compare-card">
+      <h4>📋 Deductive Coding (Top-down)</h4>
+      <p><strong>Definition:</strong> Codes are predetermined based on existing theory, research questions, or conceptual framework. The researcher tests whether these expected patterns appear in the data.</p>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Develop coding framework from literature</li>
+        <li>Apply predetermined codes to data</li>
+        <li>Look for evidence supporting/contradicting expectations</li>
+        <li>Quantify code frequencies</li>
+      </ul>
+      <p><strong>When to use:</strong></p>
+      <ul>
+        <li>Confirmatory research</li>
+        <li>Testing existing theory</li>
+        <li>Content analysis</li>
+        <li>Mixed methods research (to quantify themes)</li>
+      </ul>
+      <p><strong>Example:</strong> Coding job satisfaction interviews using Herzberg's motivation-hygiene theory — looking for predetermined categories like "recognition," "salary," "work conditions."</p>
+    </div>
+  </div>
+
+  <h3>Practical Coding Process — Step by Step</h3>
+  <div class="example-box">
+    <div class="ex-label">Step-by-Step Coding Example — Remote Work Challenges Study</div>
+    <p><strong>Data Source:</strong> Interviews with 15 software developers about remote work challenges</p>
+    
+    <p><strong>Step 1 — Prepare Data:</strong> Transcribe audio interviews, anonymize participant names.</p>
+    
+    <p><strong>Step 2 — Initial (Open) Coding:</strong> Read first 3 transcripts, label meaningful segments:</p>
+    <pre style="background:#f0f0ee; padding:0.5rem; overflow-x:auto; font-family: monospace; font-size: 0.6rem;">
+Transcript Excerpt                                 Code
+"I find it hard to disconnect after work"         work-life boundary
+"We use Slack but sometimes messages get lost"    communication tool issues
+"My internet connection is unstable"              technical infrastructure
+"I miss chatting with colleagues at lunch"        social isolation
+"My manager expects immediate responses at 9pm"   unrealistic expectations
+"Video calls are exhausting back-to-back"         meeting fatigue
+"It takes longer to get answers than in office"   delayed responses
+"I have more focus time without interruptions"    productivity benefit
+    </pre>
+    
+    <p><strong>Step 3 — Develop Categories (Axial Coding):</strong> Group similar codes together:</p>
+    <ul>
+      <li><strong>Work-Life Boundary Challenges:</strong> work-life boundary, unrealistic expectations</li>
+      <li><strong>Communication Barriers:</strong> communication tool issues, delayed responses, meeting fatigue</li>
+      <li><strong>Social/Economic Challenges:</strong> social isolation</li>
+      <li><strong>Technical Infrastructure:</strong> technical infrastructure</li>
+      <li><strong>Benefits of Remote Work:</strong> productivity benefit</li>
+    </ul>
+    
+    <p><strong>Step 4 — Identify Themes (Selective Coding):</strong> Integrate categories into overarching themes:</p>
+    <ul>
+      <li><strong>Theme 1: Coordination Overhead</strong> — Communication barriers + Meeting fatigue + Delayed responses</li>
+      <li><strong>Theme 2: Well-being Impacts</strong> — Work-life boundary + Social isolation + Unrealistic expectations</li>
+      <li><strong>Theme 3: Environmental Factors</strong> — Technical infrastructure</li>
+      <li><strong>Theme 4: Productivity Paradox</strong> — Productivity benefit + Distractions</li>
+    </ul>
+    
+    <p><strong>Step 5 — Interpret and Write:</strong> Develop narrative explaining how these themes answer the research question.</p>
+  </div>
+
+  <h3>Qualitative Data Analysis Software (QDAS)</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🖥️</div>
+      <h4>NVivo</h4>
+      <p>Most widely used commercial QDA software. Supports coding, querying, visualizations, mixed methods.</p>
+      <p><strong>Features:</strong> Auto-coding, sentiment analysis, framework matrices, team collaboration.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🌐</div>
+      <h4>ATLAS.ti</h4>
+      <p>Powerful tool for theory building. Supports visual network views, co-occurrence analysis.</p>
+      <p><strong>Features:</strong> Network editor, semantic networks, large data handling.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📝</div>
+      <h4>MAXQDA</h4>
+      <p>User-friendly with mixed methods integration. Good for team projects.</p>
+      <p><strong>Features:</strong> Literature review integration, focus group analysis, team features.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🐍</div>
+      <h4>Open Source / Programming</h4>
+      <p>Python: NLTK, spaCy, pandas for text analysis. R: tidytext, quanteda. Free but requires programming.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">☁️</div>
+      <h4>Dedoose</h4>
+      <p>Web-based, affordable, good for teams and mixed methods. Cross-platform.</p>
+    </div>
+  </div>
+
+  <h3>Ensuring Trustworthiness in Qualitative Analysis</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✓ Trustworthiness Criteria</h4>
+      <p><strong>Credibility (internal validity):</strong></p>
+      <ul>
+        <li>Prolonged engagement in the field</li>
+        <li>Triangulation (multiple data sources/methods/researchers)</li>
+        <li>Member checking (participants review findings)</li>
+        <li>Peer debriefing</li>
+      </ul>
+      <p><strong>Transferability (external validity):</strong></p>
+      <ul>
+        <li>Thick description (rich context for readers)</li>
+        <li>Purposive sampling for variation</li>
+        <li>Audit trail of decisions</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>✓ Trustworthiness Criteria (cont.)</h4>
+      <p><strong>Dependability (reliability):</strong></p>
+      <ul>
+        <li>Code-recode reliability</li>
+        <li>Intercoder reliability (kappa for multiple coders)</li>
+        <li>Stepwise replication</li>
+        <li>Audit trail documentation</li>
+      </ul>
+      <p><strong>Confirmability (objectivity):</strong></p>
+      <ul>
+        <li>Reflexivity journal (researcher self-awareness)</li>
+        <li>Practice bracketing (setting aside preconceptions)</li>
+        <li>Chain of evidence linking data to conclusions</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Intercoder Reliability — Example</div>
+    <p><strong>Scenario:</strong> Two researchers independently code the same 10 interview transcripts.</p>
+    <p><strong>Agreement calculation:</strong></p>
+    <table class="data-table no-bold" style="font-size:0.7rem;">
+      <thead><tr><th>Segment</th><th>Researcher A Code</th><th>Researcher B Code</th><th>Agreement</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Communication</td><td>Communication</td><td>✓</td></tr>
+        <tr><td>2</td><td>Work-life</td><td>Work-life</td><td>✓</td></tr>
+        <tr><td>3</td><td>Isolation</td><td>Social</td><td>✗</td></tr>
+        <tr><td>4</td><td>Productivity</td><td>Productivity</td><td>✓</td></tr>
+        <tr><td>5</td><td>Tool issues</td><td>Technology</td><td>✗</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Agreement rate:</strong> 3/5 = 60%</p>
+    <p><strong>Action:</strong> Review disagreements, refine code definitions, recode until achieving 80%+ agreement.</p>
+    <p><strong>Cohen's Kappa:</strong> Statistical measure that accounts for chance agreement — target κ > 0.70.</p>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 4 — Key Takeaway</div>
+    <p>Data analysis transforms raw data into meaningful insights. Inferential statistics allows researchers to draw conclusions about populations from samples through hypothesis testing, confidence intervals, and tests like t-test, chi-square, and ANOVA. Qualitative analysis uses coding and categorizing to identify patterns and themes in textual data. Both approaches require systematic rigor — quantitative demands statistical assumptions and power, qualitative demands transparency and trustworthiness. The choice of analysis method must align with research questions, data type, and research design.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Saldaña, J. — The Coding Manual for Qualitative Researchers, Sage Publications</li>
+      <li>Braun, V. & Clarke, V. — Successful Qualitative Research, Sage Publications</li>
+      <li>Field, A. — Discovering Statistics Using SPSS, Sage Publications</li>
+      <li>Glaser, B.G. & Strauss, A.L. — The Discovery of Grounded Theory</li>
+    </ul>
+  </div>
+</section>
+
+</main><!-- end .content-wrap -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>Research Methodology · Unit 04 · 2024 Pattern</span>
+    <div class="footer-links">
+      <a href="unit03_RM.html">← Unit 3</a>
+      <a href="unit05_RM.html">Unit 5 →</a>
+    </div>
+    <span>M.C.A. (Management) · SPPU · Study Material</span>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// Nav mobile toggle close on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+
+// Back to top visibility
+window.addEventListener('scroll', () => {
+  const btn = document.querySelector('.back-top');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+});
+</script>
+
+</body>
+</html>

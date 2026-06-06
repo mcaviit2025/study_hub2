@@ -1,0 +1,1700 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Methodology [6554]-2004 – Complete Answers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf8;
+    --gray-100: #f0f0ee;
+    --gray-200: #ddddd9;
+    --gray-300: #b8b8b2;
+    --gray-500: #7a7a74;
+    --gray-700: #3a3a36;
+    --accent: #1a1a1a;
+    --border: 2px solid #0a0a0a;
+    --border-thin: 1px solid #c0c0bc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+  }
+
+  /* ── HEADER ── */
+  .exam-header {
+    border-top: 4px solid var(--black);
+    border-bottom: 4px solid var(--black);
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .exam-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .exam-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0.3rem 0;
+  }
+  .exam-header .sub {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    letter-spacing: 0.06em;
+    font-style: italic;
+  }
+  .exam-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gray-700);
+    border-top: var(--border-thin);
+    padding-top: 0.75rem;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--gray-100);
+    border: var(--border);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+  }
+  .toc h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.5rem;
+  }
+  .toc ol { padding-left: 1.2rem; }
+  .toc li { margin: 0.35rem 0; }
+  .toc a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── QUESTION BLOCKS ── */
+  .question-block {
+    margin-bottom: 4rem;
+    border-top: 3px solid var(--black);
+    padding-top: 1.5rem;
+  }
+  .q-label {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    padding: 0.2rem 0.7rem;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+  }
+  .q-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .marks-badge {
+    display: inline-block;
+    border: var(--border-thin);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.5rem;
+    color: var(--gray-500);
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── CONCEPT BOX ── */
+  .concept-box {
+    background: var(--gray-100);
+    border-left: 4px solid var(--black);
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    font-style: italic;
+  }
+  .concept-box strong { font-style: normal; }
+
+  /* ── EXAMPLE BOX ── */
+  .example-box {
+    border: var(--border-thin);
+    border-left: 4px solid #444;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    background: #fff;
+  }
+  .example-box .ex-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── HEADINGS INSIDE ANSWERS ── */
+  .ans h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin: 1.6rem 0 0.5rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.3rem;
+  }
+  .ans h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1.2rem 0 0.4rem;
+    color: var(--gray-700);
+  }
+  .ans p { margin: 0.6rem 0; }
+  .ans ul, .ans ol { padding-left: 1.5rem; margin: 0.6rem 0; }
+  .ans li { margin: 0.35rem 0; }
+
+  /* ── TABLES ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+  }
+  .data-table th {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .data-table td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: var(--border-thin);
+  }
+  .data-table tr:nth-child(even) td { background: var(--gray-100); }
+  .data-table tr:last-child td { background: var(--gray-200); font-weight: 600; }
+
+  /* ── DIAGRAM / CHART CONTAINERS ── */
+  .diagram-wrap {
+    margin: 1.5rem 0;
+    border: var(--border);
+    padding: 1.2rem;
+    background: #fff;
+  }
+  .diagram-wrap .diagram-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.4rem;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    max-width: 480px;
+  }
+  .flow-node {
+    flex: 1;
+    padding: 0.65rem 1rem;
+    border: 2px solid var(--black);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.92rem;
+    background: var(--white);
+    position: relative;
+    transition: background 0.15s;
+  }
+  .flow-node .step-num {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: var(--black);
+    color: var(--white);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flow-arrow {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--gray-500);
+    line-height: 1;
+    padding: 2px 0;
+  }
+  .flow-connector { display: flex; flex-direction: column; align-items: center; }
+
+  /* colored flow nodes */
+  .fn-1 { background: #fff3cd; border-color: #e6ac00; }
+  .fn-2 { background: #d1ecf1; border-color: #0c8da0; }
+  .fn-3 { background: #d4edda; border-color: #1a7a34; }
+  .fn-4 { background: #f8d7da; border-color: #c0392b; }
+  .fn-5 { background: #e2d9f3; border-color: #6f42c1; }
+  .fn-6 { background: #fde8d8; border-color: #e67e22; }
+  .fn-7 { background: #cfe2ff; border-color: #1a68d1; }
+  .fn-8 { background: #d4edda; border-color: #28a745; }
+
+  /* canvas */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .chart-container canvas { max-width: 100%; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  /* ── CALCULATION TABLE ── */
+  .calc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    margin: 1rem 0;
+  }
+  .calc-table th {
+    background: var(--gray-700);
+    color: var(--white);
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+  }
+  .calc-table td {
+    padding: 0.5rem 0.7rem;
+    border: var(--border-thin);
+    text-align: center;
+  }
+  .calc-table tr:last-child td { background: #fff3cd; font-weight: 700; }
+
+  /* ── CONCLUSION BOX ── */
+  .conclusion-box {
+    border: 3px solid var(--black);
+    padding: 1rem 1.4rem;
+    margin: 1.5rem 0;
+    background: var(--black);
+    color: var(--white);
+  }
+  .conclusion-box .con-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-bottom: 0.4rem;
+  }
+  .conclusion-box p { font-size: 1rem; font-weight: 600; }
+
+  /* ── COMPARE GRID ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .compare-card {
+    border: var(--border);
+    padding: 1rem;
+  }
+  .compare-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: var(--border-thin);
+  }
+  .compare-card ul { padding-left: 1.2rem; font-size: 0.9rem; }
+  .compare-card li { margin: 0.3rem 0; }
+
+  /* ── STEP NUMBER ── */
+  .step-label {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* ── HYPOTHESIS CARD ── */
+  .hypothesis-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .h-null { border: 2px solid #c0392b; padding: 1rem; background: #fdf2f2; }
+  .h-alt  { border: 2px solid #1a7a34; padding: 1rem; background: #f0faf2; }
+  .h-null h4, .h-alt h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .h-null h4 { color: #c0392b; }
+  .h-alt  h4 { color: #1a7a34; }
+
+  /* ── DIVIDER ── */
+  .or-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gray-500);
+  }
+  .or-divider::before, .or-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background: var(--gray-300);
+  }
+  .or-divider::before { left: 0; }
+  .or-divider::after  { right: 0; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    margin-top: 4rem;
+    border-top: 3px solid var(--black);
+    padding-top: 1rem;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    letter-spacing: 0.08em;
+  }
+
+  @media(max-width:600px){
+    .compare-grid, .hypothesis-card { grid-template-columns: 1fr; }
+    body { font-size: 14px; padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="exam-header">
+  <div class="sub">Pune University · [6554]-2004 · PE-4200</div>
+  <h1>F.Y. M.C.A. (Management)</h1>
+  <h2>Research Methodology</h2>
+  <div class="sub">RMW-554 MJ · 2024 Pattern · Semester II</div>
+  <div class="exam-meta">
+    <span>Time: 2½ Hours</span>
+    <span>Complete Detailed Answer Key</span>
+    <span>Max. Marks: 50</span>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<nav class="toc">
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#q1a">Q1a — Research Methodology: Definition &amp; Significance [5]</a></li>
+    <li><a href="#q1b">Q1b — Qualitative vs Quantitative Research [5]</a></li>
+    <li><a href="#q1c">Q1c — Research Process and Steps with Diagram [5]</a></li>
+    <li><a href="#q1d">Q1d — Research Methods in Computer Applications [5]</a></li>
+    <li><a href="#q2a">Q2a — Types of Research with Examples [5]</a></li>
+    <li><a href="#q2b">Q2b — Data Collection Methods [5]</a></li>
+    <li><a href="#q2c">Q2c — Ethics in Research [5]</a></li>
+    <li><a href="#q2d">Q2d — Research Design with Diagram [5]</a></li>
+    <li><a href="#q3a">Q3a — Sampling: Process &amp; Sample Size Calculation [10]</a></li>
+    <li><a href="#q3b">Q3b — Probability Sampling Techniques [10]</a></li>
+    <li><a href="#q4a">Q4a — Chi-Square Test: Disease Treatment Data [10]</a></li>
+    <li><a href="#q4b">Q4b — Two-Sample t-Test: Drug Effectiveness [10]</a></li>
+    <li><a href="#q5a">Q5a — Structure of a Research Report: Cybersecurity [10]</a></li>
+    <li><a href="#q5b">Q5b — Research Outline: Role of AI in Education [10]</a></li>
+  </ol>
+</nav>
+
+
+<!-- ════════════════════════════════════════
+     Q1a — RESEARCH METHODOLOGY DEFINITION
+════════════════════════════════════════ -->
+<section class="question-block" id="q1a">
+  <div class="q-label">Question 1 · Part A</div>
+  <h2 class="q-title">Define Research Methodology and Explain its Significance in Academic and Professional Contexts</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Research Methodology</strong> is the systematic, theoretical framework that describes the methods used to conduct research. It explains <em>why</em> a researcher chose a particular method, <em>how</em> data is collected and analyzed, and <em>how</em> conclusions are drawn — ensuring the study is valid, reliable, and reproducible.
+    </div>
+
+    <h3>Definition</h3>
+    <p>Research Methodology is the science of studying how research is conducted scientifically. It encompasses the philosophical assumptions, research design, data collection tools, analysis techniques, and procedures applied to answer a research question.</p>
+    <p><strong>C.R. Kothari</strong> defines it as: <em>"The way in which research problems are solved systematically."</em></p>
+
+    <h3>Significance in Academic Context</h3>
+    <h4>1. Ensures Validity and Reliability</h4>
+    <p>Proper methodology ensures that research findings are credible, reproducible, and accepted by the academic community. A poorly designed study can lead to false conclusions.</p>
+
+    <h4>2. Guides the Research Process</h4>
+    <p>It provides a clear step-by-step roadmap — from problem identification to final conclusion — so researchers don't drift from their objectives.</p>
+
+    <h4>3. Helps in Literature Review</h4>
+    <p>Understanding methodology allows researchers to critically evaluate existing studies and build upon prior knowledge without duplicating work.</p>
+
+    <h4>4. Supports Peer Review</h4>
+    <p>Journals and academic institutions require researchers to document their methodology so other scholars can replicate the study, verify findings, and build upon them.</p>
+
+    <h4>5. Contributes to Knowledge</h4>
+    <p>Systematic methodology ensures that academic research genuinely adds new, accurate knowledge to the field rather than producing biased or unreliable results.</p>
+
+    <h3>Significance in Professional Context</h3>
+    <h4>1. Data-Driven Decision Making</h4>
+    <p>Companies use research methodology to collect market data, customer feedback, and operational metrics, enabling evidence-based management decisions.</p>
+
+    <h4>2. Product Development</h4>
+    <p>IT and software companies employ UX research, user testing, and A/B experiments — all requiring sound methodology — to design better products.</p>
+
+    <h4>3. Policy and Strategy Formation</h4>
+    <p>Government bodies and NGOs use structured research to formulate public policies, health programs, and educational strategies backed by evidence.</p>
+
+    <h4>4. Quality Assurance</h4>
+    <p>In industries like healthcare and manufacturing, methodology governs testing protocols, clinical trials, and quality control frameworks.</p>
+
+    <div class="example-box">
+      <div class="ex-label">Real-World Example</div>
+      <strong>Google's Research Team:</strong> Before launching any new feature, Google conducts structured user research (surveys, A/B testing, usability studies) using defined methodology to ensure the feature genuinely improves the user experience — not just on gut feeling.
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     Q1b — QUALITATIVE VS QUANTITATIVE
+════════════════════════════════════════ -->
+<section class="question-block" id="q1b">
+  <div class="q-label">Question 1 · Part B</div>
+  <h2 class="q-title">Compare Qualitative and Quantitative Research with Suitable Examples</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      Research approaches are broadly classified into <strong>Qualitative</strong> (exploring depth, meaning, and experience) and <strong>Quantitative</strong> (measuring, counting, and statistically analyzing data). Both serve different but complementary purposes in research.
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 1.1 — Qualitative vs Quantitative: Attribute Comparison</div>
+      <div class="chart-container"><canvas id="qualQuantChart"></canvas></div>
+    </div>
+
+    <h3>Qualitative Research</h3>
+    <p>Qualitative research explores <strong>non-numerical</strong> data — opinions, feelings, behaviors, experiences. It seeks deep understanding of a phenomenon from the participant's perspective.</p>
+    <ul>
+      <li><strong>Data Type:</strong> Words, images, observations, audio/video</li>
+      <li><strong>Tools:</strong> In-depth interviews, focus groups, case studies, ethnography</li>
+      <li><strong>Sample Size:</strong> Small (10–50 participants)</li>
+      <li><strong>Approach:</strong> Subjective, exploratory, flexible</li>
+      <li><strong>Analysis:</strong> Thematic, narrative, content analysis</li>
+    </ul>
+    <div class="example-box">
+      <div class="ex-label">Qualitative Example</div>
+      A researcher conducts in-depth interviews with 20 MCA students to understand <em>why they chose computer science</em> as their career path. The answers involve personal stories, motivations, and experiences — not numbers.
+    </div>
+
+    <h3>Quantitative Research</h3>
+    <p>Quantitative research collects <strong>numerical data</strong> and applies statistical methods to find patterns, test hypotheses, and generalize findings to larger populations.</p>
+    <ul>
+      <li><strong>Data Type:</strong> Numbers, percentages, ratings, counts</li>
+      <li><strong>Tools:</strong> Surveys with Likert scales, experiments, structured observations</li>
+      <li><strong>Sample Size:</strong> Large (100+ participants)</li>
+      <li><strong>Approach:</strong> Objective, confirmatory, structured</li>
+      <li><strong>Analysis:</strong> Mean, median, regression, chi-square, t-test</li>
+    </ul>
+    <div class="example-box">
+      <div class="ex-label">Quantitative Example</div>
+      A researcher surveys 500 MCA students and finds that <em>72% prefer online learning</em> over classroom sessions. This percentage is a statistical finding that can be generalized.
+    </div>
+
+    <h3>Comparison Table</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Aspect</th><th>Qualitative</th><th>Quantitative</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nature of Data</td><td>Non-numerical (words)</td><td>Numerical (numbers)</td></tr>
+        <tr><td>Research Goal</td><td>Explore &amp; understand</td><td>Measure &amp; generalize</td></tr>
+        <tr><td>Sample Size</td><td>Small</td><td>Large</td></tr>
+        <tr><td>Approach</td><td>Subjective / Inductive</td><td>Objective / Deductive</td></tr>
+        <tr><td>Tools</td><td>Interview, Focus Group</td><td>Survey, Experiment</td></tr>
+        <tr><td>Analysis</td><td>Thematic / Narrative</td><td>Statistical</td></tr>
+        <tr><td>Flexibility</td><td>High</td><td>Low</td></tr>
+        <tr><td>Generalizability</td><td>Low</td><td>High</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- ════════════════════════════════════════
+     Q1c — RESEARCH PROCESS WITH DIAGRAM
+════════════════════════════════════════ -->
+<section class="question-block" id="q1c">
+  <div class="q-label">Question 1 · Part C</div>
+  <h2 class="q-title">Describe Research Process and Steps — Explain with Diagram</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      The <strong>Research Process</strong> is a sequential, cyclic series of steps that a researcher follows from identifying a problem to communicating findings. Each step is logically connected to the next, forming a structured scientific workflow.
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 1.2 — The Research Process: Step-by-Step Flow</div>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-node fn-1"><span class="step-num">1</span>Identify the Research Problem</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-2"><span class="step-num">2</span>Review Literature</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-3"><span class="step-num">3</span>Formulate Hypothesis</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-4"><span class="step-num">4</span>Design Research Methodology</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-5"><span class="step-num">5</span>Collect Data</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-6"><span class="step-num">6</span>Analyze and Interpret Data</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-7"><span class="step-num">7</span>Draw Conclusions / Test Hypothesis</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-8"><span class="step-num">8</span>Publish / Communicate Findings</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Step-by-Step Explanation</h3>
+    <h4>Step 1 — Identify the Research Problem</h4>
+    <p>The starting point of any research. The researcher identifies a gap in knowledge or an unsolved problem. The problem must be specific, researchable, and significant.</p>
+    <div class="example-box"><div class="ex-label">Example</div>"What is the impact of AI tools on the productivity of MCA students?"</div>
+
+    <h4>Step 2 — Review of Literature</h4>
+    <p>The researcher surveys existing studies, books, journals, and papers related to the problem. This avoids duplication and provides a theoretical foundation.</p>
+
+    <h4>Step 3 — Formulate Hypothesis</h4>
+    <p>A testable prediction about the relationship between variables is stated as a Null Hypothesis (H₀) and Alternate Hypothesis (H₁).</p>
+
+    <h4>Step 4 — Design the Research Methodology</h4>
+    <p>The researcher selects the research type (qualitative/quantitative), sampling strategy, data collection instruments, and analysis tools.</p>
+
+    <h4>Step 5 — Collect Data</h4>
+    <p>Primary data is gathered through surveys, interviews, experiments, or observations. Secondary data may come from databases, reports, or published studies.</p>
+
+    <h4>Step 6 — Analyze and Interpret Data</h4>
+    <p>Using statistical tools (mean, chi-square, t-test, regression) or qualitative analysis (coding, thematic analysis), the researcher processes the raw data to extract meaningful patterns.</p>
+
+    <h4>Step 7 — Draw Conclusions / Test Hypothesis</h4>
+    <p>Based on the analysis, the researcher either accepts or rejects the hypothesis and draws inferences that answer the original research problem.</p>
+
+    <h4>Step 8 — Publish / Communicate Findings</h4>
+    <p>The results are compiled into a research report, journal article, or presentation and shared with the academic or professional community.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     Q1d — RESEARCH METHODS IN COMPUTER APPS
+════════════════════════════════════════ -->
+<section class="question-block" id="q1d">
+  <div class="q-label">Question 1 · Part D</div>
+  <h2 class="q-title">Explain Common Research Methods Used in Computer Applications, Providing Relevant Examples</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      Research in computer applications relies on both <strong>scientific and engineering-oriented methods</strong> to develop, test, and evaluate software systems, algorithms, user interfaces, and networks. Different methods serve different purposes within the computing domain.
+    </div>
+
+    <h4>1. Experimental Research Method</h4>
+    <p>A researcher designs controlled experiments to test a hypothesis about system behavior. Variables like input size, hardware config, or algorithm type are manipulated to measure outcomes.</p>
+    <div class="example-box"><div class="ex-label">Computer Science Example</div>Testing whether <strong>Merge Sort</strong> outperforms <strong>Bubble Sort</strong> on datasets of 10,000 records — measuring time complexity under identical hardware conditions.</div>
+
+    <h4>2. Simulation Method</h4>
+    <p>Since real-world computer systems (networks, cloud infrastructure) are too large or costly to test directly, researchers build mathematical or software models to simulate behavior.</p>
+    <div class="example-box"><div class="ex-label">Computer Science Example</div>Simulating network traffic patterns using NS3 simulator to study congestion control algorithms without deploying actual infrastructure.</div>
+
+    <h4>3. Case Study Method</h4>
+    <p>An in-depth analysis of a specific real-world system, software product, or implementation to extract lessons and generalizable insights.</p>
+    <div class="example-box"><div class="ex-label">Computer Science Example</div>A case study of how <strong>Zomato</strong> migrated from a monolithic to a microservices architecture — analyzing benefits, challenges, and outcomes.</div>
+
+    <h4>4. Survey / Questionnaire Method</h4>
+    <p>Used to collect user opinions, usability feedback, and preferences at scale. Especially used in HCI (Human-Computer Interaction) research.</p>
+    <div class="example-box"><div class="ex-label">Computer Science Example</div>Surveying 300 users to evaluate the <strong>usability of a new mobile banking app</strong> using a System Usability Scale (SUS) questionnaire.</div>
+
+    <h4>5. Content Analysis / Data Mining Method</h4>
+    <p>Large datasets (social media posts, transaction logs, web content) are systematically analyzed using algorithms to discover hidden patterns.</p>
+    <div class="example-box"><div class="ex-label">Computer Science Example</div>Mining Twitter data using Python's NLP libraries to <strong>detect sentiment trends</strong> around a new product launch.</div>
+
+    <h4>6. Prototype / Action Research</h4>
+    <p>A working prototype is built, tested, and iteratively improved based on feedback. Common in Agile software development and UX research.</p>
+    <div class="example-box"><div class="ex-label">Computer Science Example</div>Building a <strong>chatbot prototype</strong> using Rasa, deploying it to 50 test users, collecting interaction logs, and refining the NLP model over 3 iterations.</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     Q2a — TYPES OF RESEARCH
+════════════════════════════════════════ -->
+<section class="question-block" id="q2a">
+  <div class="q-label">Question 2 · Part A</div>
+  <h2 class="q-title">Elaborate Types of Research with Examples</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      Research can be classified based on <strong>purpose, method, data type, and time frame</strong>. Understanding the type helps a researcher choose the right approach for their study.
+    </div>
+
+    <h3>Classification 1: Based on Purpose</h3>
+
+    <h4>1. Pure / Basic Research</h4>
+    <p>Conducted to expand knowledge without any immediate practical goal. Adds to existing theory and understanding.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Research on <strong>quantum computing algorithms</strong> — advancing theoretical computing without immediate commercial application.</div>
+
+    <h4>2. Applied Research</h4>
+    <p>Uses findings from basic research to solve specific real-world problems. Has direct practical use.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Developing a <strong>machine learning-based fraud detection system</strong> for banks using AI principles from basic research.</div>
+
+    <h3>Classification 2: Based on Method</h3>
+
+    <h4>3. Descriptive Research</h4>
+    <p>Describes the current state of a situation accurately. Does NOT identify cause-effect. Answers "What?"</p>
+    <div class="example-box"><div class="ex-label">Example</div>Describing the <strong>current usage patterns of cloud storage</strong> among Indian college students.</div>
+
+    <h4>4. Exploratory Research</h4>
+    <p>Explores new, unknown territory where little prior information exists. Very flexible and preliminary in nature.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Exploring <strong>"What challenges do first-generation programmers face in rural India?"</strong> — an unexplored domain.</div>
+
+    <h4>5. Experimental Research</h4>
+    <p>Researcher controls variables and manipulates them to observe cause-and-effect relationships.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Testing whether <strong>gamification in a learning app</strong> improves student retention compared to a non-gamified version.</div>
+
+    <h3>Classification 3: Based on Data Type</h3>
+
+    <h4>6. Qualitative Research</h4>
+    <p>Collects non-numerical data (opinions, experiences). Uses interviews and focus groups.</p>
+
+    <h4>7. Quantitative Research</h4>
+    <p>Collects numerical data and applies statistical analysis to test hypotheses and generalize findings.</p>
+
+    <h3>Classification 4: Based on Time</h3>
+
+    <h4>8. Longitudinal Research</h4>
+    <p>Follows the same subjects over a long period to study changes.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Tracking <strong>career progression of MCA graduates</strong> over 10 years after graduation.</div>
+
+    <h4>9. Cross-Sectional Research</h4>
+    <p>Studies different groups at one point in time for comparison.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Comparing <strong>programming skill levels of FY, SY, and TY MCA students</strong> at the same time point.</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     Q2b — DATA COLLECTION METHODS
+════════════════════════════════════════ -->
+<section class="question-block" id="q2b">
+  <div class="q-label">Question 2 · Part B</div>
+  <h2 class="q-title">Explain Data Collection Methods with Suitable Examples</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Data Collection</strong> is the systematic process of gathering information from relevant sources to answer research questions. Data can be collected as <strong>Primary Data</strong> (collected fresh by the researcher) or <strong>Secondary Data</strong> (already existing data from external sources).
+    </div>
+
+    <h3>A. Primary Data Collection Methods</h3>
+
+    <h4>1. Questionnaire / Survey</h4>
+    <p>A structured set of questions given to respondents in written or digital form. Most popular and cost-effective method for large samples. Can include Likert scales, multiple choice, or open-ended questions.</p>
+    <div class="example-box"><div class="ex-label">Example</div>A Google Form sent to 400 VIIT students asking about their <strong>study habits and use of online resources</strong>.</div>
+
+    <h4>2. Interview</h4>
+    <p>A direct, face-to-face or virtual conversation between researcher and respondent. Can be structured (fixed questions), semi-structured, or unstructured (open dialogue).</p>
+    <div class="example-box"><div class="ex-label">Example</div>Interviewing 10 IT managers about <strong>challenges in adopting cloud-first strategies</strong> in their organizations.</div>
+
+    <h4>3. Observation</h4>
+    <p>The researcher directly watches and records behavior or events without interfering. Can be participant (researcher joins) or non-participant (researcher watches from outside).</p>
+    <div class="example-box"><div class="ex-label">Example</div>Observing how users navigate a new website's interface to identify <strong>UX friction points</strong> without guiding them.</div>
+
+    <h4>4. Experiment</h4>
+    <p>Data collected by deliberately manipulating variables in a controlled environment and measuring outcomes.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Running an A/B test on two versions of a login page to collect <strong>click-through rate data</strong> for conversion optimization.</div>
+
+    <h4>5. Focus Group</h4>
+    <p>A small group of 6–12 people are brought together for a guided discussion on a specific topic. Excellent for gathering qualitative insights quickly.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Conducting a focus group with MCA students to understand their <strong>opinions on AI-based grading systems</strong>.</div>
+
+    <h3>B. Secondary Data Collection Methods</h3>
+
+    <h4>6. Published Records / Databases</h4>
+    <p>Government reports, census data, company annual reports, and published research papers used as existing data sources.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Using <strong>NASSCOM's annual IT sector report</strong> as secondary data for a study on employment trends in India's tech industry.</div>
+
+    <h4>7. Internet / Digital Archives</h4>
+    <p>Websites, online databases (IEEE Xplore, Google Scholar, JSTOR), news portals, and social media data.</p>
+
+    <h3>Comparison: Primary vs Secondary Data</h3>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>Primary Data</h4>
+        <ul>
+          <li>Collected fresh by researcher</li>
+          <li>Specific to research purpose</li>
+          <li>Time-consuming and costly</li>
+          <li>High relevance and accuracy</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <h4>Secondary Data</h4>
+        <ul>
+          <li>Already available</li>
+          <li>May not perfectly match research need</li>
+          <li>Quick and inexpensive</li>
+          <li>May be outdated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- ════════════════════════════════════════
+     Q2c — ETHICS IN RESEARCH
+════════════════════════════════════════ -->
+<section class="question-block" id="q2c">
+  <div class="q-label">Question 2 · Part C</div>
+  <h2 class="q-title">Write a Note on Ethics in Research</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Research Ethics</strong> refers to the moral principles and professional standards that govern how research is conducted. Ethical research protects participants, ensures honest reporting, and maintains public trust in the scientific process.
+    </div>
+
+    <h3>Why Ethics Matter in Research</h3>
+    <p>Without ethical guidelines, research can cause harm to participants, produce misleading findings, or violate privacy. Ethics ensure that the pursuit of knowledge does not come at the cost of human dignity or social well-being.</p>
+
+    <h3>Core Ethical Principles</h3>
+
+    <h4>1. Informed Consent</h4>
+    <p>Participants must be clearly informed about the purpose, procedures, risks, and benefits of the research before agreeing to participate. Participation must be voluntary.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Before a medical trial, every patient signs a consent form explaining potential side effects of the experimental drug.</div>
+
+    <h4>2. Confidentiality and Privacy</h4>
+    <p>Personal information collected from participants must be kept strictly confidential. Data should be anonymized where possible and stored securely.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Survey responses from students about mental health must never be shared with college administration without permission.</div>
+
+    <h4>3. Avoidance of Deception</h4>
+    <p>Researchers must not mislead participants about the nature of the study. If deception is unavoidable (e.g., in psychology experiments), participants must be debriefed fully afterward.</p>
+
+    <h4>4. Non-Maleficence (Do No Harm)</h4>
+    <p>The research should not physically, psychologically, emotionally, or socially harm participants or communities involved in the study.</p>
+
+    <h4>5. Plagiarism and Intellectual Honesty</h4>
+    <p>Researchers must give proper credit to others' work through citations. Fabricating, falsifying, or plagiarizing data or findings is a serious ethical violation.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Copying another researcher's graphs and presenting them as one's own in a published paper constitutes research misconduct.</div>
+
+    <h4>6. Right to Withdraw</h4>
+    <p>Participants must be free to exit the study at any time without penalty, pressure, or negative consequences.</p>
+
+    <h4>7. Objectivity and Transparency</h4>
+    <p>Researchers must report findings honestly — including negative or unexpected results — without manipulating data to support a preferred outcome.</p>
+
+    <h4>8. Ethical Approval</h4>
+    <p>Research involving human or animal subjects typically requires approval from an Institutional Review Board (IRB) or Ethics Committee before commencing.</p>
+
+    <div class="conclusion-box">
+      <div class="con-label">Key Takeaway</div>
+      <p>Ethical research is not an obstacle — it is the foundation of trustworthy science. Violations like data fabrication, privacy breaches, or coercion can destroy careers, invalidate studies, and harm the public's trust in research.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     Q2d — RESEARCH DESIGN WITH DIAGRAM
+════════════════════════════════════════ -->
+<section class="question-block" id="q2d">
+  <div class="q-label">Question 2 · Part D</div>
+  <h2 class="q-title">Define Research Design with Suitable Diagram</h2>
+  <span class="marks-badge">5 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Research Design</strong> is the blueprint or master plan of a research study. It specifies how data will be collected, measured, and analyzed in order to answer the research questions effectively and efficiently.
+    </div>
+
+    <h3>Definition</h3>
+    <p>According to <strong>Kerlinger</strong>: <em>"Research design is the plan, structure, and strategy of investigation conceived so as to obtain answers to research questions and to control variance."</em></p>
+    <p>In simple terms, a research design answers: <strong>Who? What? When? Where? How?</strong> of the research process.</p>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 2.1 — Components of Research Design</div>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-node fn-1"><span class="step-num">1</span>Research Problem &amp; Objectives</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-2"><span class="step-num">2</span>Type of Research &amp; Approach</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-3"><span class="step-num">3</span>Hypothesis Formulation</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-4"><span class="step-num">4</span>Sampling Plan (Who &amp; How Many)</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-5"><span class="step-num">5</span>Data Collection Method &amp; Tools</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-6"><span class="step-num">6</span>Data Analysis Plan</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-node fn-7"><span class="step-num">7</span>Validity, Reliability &amp; Timeline</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Types of Research Design</h3>
+
+    <h4>1. Exploratory Design</h4>
+    <p>Used when the problem is new and not well understood. Highly flexible — uses interviews, case studies, and secondary data. No rigid structure.</p>
+
+    <h4>2. Descriptive Design</h4>
+    <p>Used to describe characteristics of a population or phenomenon accurately. Structured surveys, observations, and census methods are used.</p>
+
+    <h4>3. Experimental Design</h4>
+    <p>Used to establish cause-and-effect relationships. The researcher manipulates an independent variable and measures the effect on the dependent variable under controlled conditions.</p>
+
+    <h4>4. Correlational Design</h4>
+    <p>Examines the relationship (correlation) between two or more variables without manipulation. Does not establish causation.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Studying whether there is a correlation between <strong>hours of coding practice per week</strong> and <strong>placement package received</strong> by MCA graduates.</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     Q3a — SAMPLING PROCESS + SAMPLE SIZE CALC
+════════════════════════════════════════ -->
+<section class="question-block" id="q3a">
+  <div class="q-label">Question 3 · Part A</div>
+  <h2 class="q-title">What is Sampling? Discuss the Process of Sampling. Calculate Sample Size for Population of 1,00,000 (Confidence 95%, Margin of Error 5%)</h2>
+  <span class="marks-badge">10 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Sampling</strong> is the process of selecting a subset (sample) from a larger group (population) in such a way that the selected subset is representative of the entire population. Since studying every member of a large population is impractical, sampling allows researchers to draw valid conclusions from a manageable group.
+    </div>
+
+    <h3>Key Terminology</h3>
+    <ul>
+      <li><strong>Population (N):</strong> The entire group of individuals or objects the researcher is interested in.</li>
+      <li><strong>Sample (n):</strong> The selected subset of the population used for actual study.</li>
+      <li><strong>Sampling Frame:</strong> The complete list from which the sample is drawn (e.g., voter list, student register).</li>
+      <li><strong>Sampling Unit:</strong> Each individual member selected in the sample.</li>
+      <li><strong>Sampling Error:</strong> The difference between results from the sample and the true population value.</li>
+    </ul>
+
+    <h3>Process of Sampling</h3>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 3.1 — The Sampling Process</div>
+      <div class="flow-diagram">
+        <div class="flow-step"><div class="flow-node fn-1"><span class="step-num">1</span>Define the Population</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="flow-node fn-2"><span class="step-num">2</span>Identify the Sampling Frame</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="flow-node fn-3"><span class="step-num">3</span>Choose Sampling Method</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="flow-node fn-4"><span class="step-num">4</span>Determine Sample Size</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="flow-node fn-5"><span class="step-num">5</span>Select the Sample</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="flow-node fn-6"><span class="step-num">6</span>Collect Data from Sample</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="flow-node fn-7"><span class="step-num">7</span>Generalize Findings to Population</div></div>
+      </div>
+    </div>
+
+    <h4>Step 1 — Define the Population</h4>
+    <p>Clearly specify who or what you are studying. Example: "All MCA students enrolled in Pune University in 2025–26."</p>
+
+    <h4>Step 2 — Identify the Sampling Frame</h4>
+    <p>Obtain the actual list or database from which the sample will be chosen. Example: The university's student enrollment register.</p>
+
+    <h4>Step 3 — Choose Sampling Method</h4>
+    <p>Select an appropriate method: Simple Random, Stratified, Cluster, Systematic (probability) or Purposive, Convenience, Snowball (non-probability).</p>
+
+    <h4>Step 4 — Determine Sample Size</h4>
+    <p>Calculate how many participants are needed to ensure valid, reliable results. (See calculation below.)</p>
+
+    <h4>Step 5 — Select the Sample</h4>
+    <p>Apply the chosen method to actually select the individuals or units from the sampling frame.</p>
+
+    <h4>Step 6 — Collect Data</h4>
+    <p>Gather data from the selected sample using the planned instruments (survey, interview, experiment).</p>
+
+    <h4>Step 7 — Generalize to Population</h4>
+    <p>Use statistical inference to extend findings from the sample to the broader population with a calculated confidence level.</p>
+
+    <h3>Sample Size Calculation</h3>
+    <p><strong>Given:</strong></p>
+    <ul>
+      <li>Population (N) = 1,00,000</li>
+      <li>Confidence Level = 95% → Z = 1.96</li>
+      <li>Margin of Error (e) = 5% = 0.05</li>
+      <li>Proportion (p) = 0.5 (maximum variability assumed)</li>
+    </ul>
+
+    <h4>Formula (Cochran's Formula for Large Population):</h4>
+    <div class="formula-box">n₀ = (Z² × p × q) / e²</div>
+    <p>Where: Z = Z-score for confidence level, p = proportion, q = 1 − p, e = margin of error</p>
+
+    <h4>Step 1 — Calculate Initial Sample Size (n₀)</h4>
+    <div class="formula-box">n₀ = (1.96² × 0.5 × 0.5) / (0.05²)<br>= (3.8416 × 0.25) / 0.0025<br>= 0.9604 / 0.0025<br>= <strong>384.16 ≈ 385</strong></div>
+
+    <h4>Step 2 — Apply Finite Population Correction (FPC)</h4>
+    <p>Since our population (1,00,000) is large relative to the initial sample, the FPC adjustment is minimal:</p>
+    <div class="formula-box">n = n₀ / (1 + (n₀ − 1) / N)<br>= 385 / (1 + 384 / 1,00,000)<br>= 385 / (1 + 0.00384)<br>= 385 / 1.00384<br>≈ <strong>383.5 ≈ 384</strong></div>
+
+    <div class="conclusion-box">
+      <div class="con-label">Final Answer</div>
+      <p>Required Sample Size ≈ <strong>384 respondents</strong> from a population of 1,00,000 at 95% confidence level with ±5% margin of error.</p>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">Practical Insight</div>
+      Even though the population is 1,00,000, we only need to study <strong>384 people</strong> — that's less than 0.4% of the population — to get statistically valid results. This is the power of proper sampling!
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- ════════════════════════════════════════
+     Q3b — PROBABILITY SAMPLING TECHNIQUES
+════════════════════════════════════════ -->
+<section class="question-block" id="q3b">
+  <div class="q-label">Question 3 · Part B</div>
+  <h2 class="q-title">Elaborate Probability Sampling Techniques with Advantages and Disadvantages</h2>
+  <span class="marks-badge">10 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Probability Sampling</strong> is a sampling technique in which every member of the population has a <em>known, non-zero chance</em> of being selected. Because selection is based on randomness, these methods produce statistically representative samples that can be generalized to the full population.
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 3.2 — Probability Sampling Methods: Representativeness vs Ease of Use</div>
+      <div class="chart-container"><canvas id="samplingChart"></canvas></div>
+    </div>
+
+    <h3>Types of Probability Sampling</h3>
+
+    <h4>1. Simple Random Sampling (SRS)</h4>
+    <p>Every individual in the population has an equal and independent chance of being selected. Selection is done using a random number table, lottery, or computer-generated random numbers.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Randomly selecting 100 employee IDs from a company database of 5,000 employees using Excel's RAND() function.</div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>Advantages</h4>
+        <ul>
+          <li>Completely unbiased selection</li>
+          <li>Simple to understand and implement</li>
+          <li>Results are statistically generalizable</li>
+          <li>Every member has equal chance</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <h4>Disadvantages</h4>
+        <ul>
+          <li>Requires a complete sampling frame</li>
+          <li>Impractical for large, geographically spread populations</li>
+          <li>May miss minority subgroups</li>
+          <li>Expensive for large populations</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>2. Systematic Sampling</h4>
+    <p>After randomly selecting a starting point, every k<sup>th</sup> element is chosen from the list. The interval k = N/n (population size ÷ sample size).</p>
+    <div class="example-box"><div class="ex-label">Example</div>From a hospital list of 1,000 patients, selecting every 10th patient (k = 1000/100 = 10), starting from patient #7.</div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>Advantages</h4>
+        <ul>
+          <li>Easy and quick to execute</li>
+          <li>Evenly spread across population</li>
+          <li>Less time-consuming than SRS</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <h4>Disadvantages</h4>
+        <ul>
+          <li>Risk of periodicity bias if the list has a pattern</li>
+          <li>Requires an ordered list (sampling frame)</li>
+          <li>Not fully random</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>3. Stratified Sampling</h4>
+    <p>The population is divided into distinct subgroups (strata) based on a characteristic (gender, age, city). Samples are then drawn randomly from each stratum proportionally.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Dividing 1,000 MCA students into strata by year (FY, SY, TY) and randomly selecting 30 from each stratum for a total of 90.</div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>Advantages</h4>
+        <ul>
+          <li>Ensures representation of all subgroups</li>
+          <li>More precise than SRS for heterogeneous populations</li>
+          <li>Allows comparison between strata</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <h4>Disadvantages</h4>
+        <ul>
+          <li>Requires prior knowledge of population characteristics</li>
+          <li>Complex to plan and execute</li>
+          <li>Difficult if strata overlap</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>4. Cluster Sampling</h4>
+    <p>The population is divided into natural clusters (villages, schools, districts). A random selection of clusters is made, and all members within chosen clusters are studied.</p>
+    <div class="example-box"><div class="ex-label">Example</div>Randomly selecting 5 schools from Pune district and surveying all students in those 5 schools — rather than picking individual students from all 200+ schools.</div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>Advantages</h4>
+        <ul>
+          <li>Cost-effective for large, geographically spread populations</li>
+          <li>Does not require a full sampling frame</li>
+          <li>Practical for field research</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <h4>Disadvantages</h4>
+        <ul>
+          <li>Higher sampling error than SRS</li>
+          <li>Clusters may not fully represent the population</li>
+          <li>Intra-cluster similarity reduces diversity</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>5. Multi-Stage Sampling</h4>
+    <p>A combination of multiple sampling methods applied at successive stages. More practical for national-level surveys.</p>
+    <div class="example-box"><div class="ex-label">Example</div>India's National Sample Survey: Stage 1 — randomly select districts. Stage 2 — randomly select villages within districts. Stage 3 — randomly select households within villages.</div>
+
+    <div class="conclusion-box">
+      <div class="con-label">Summary</div>
+      <p>Probability sampling is the gold standard for research that requires generalization. The choice among SRS, Systematic, Stratified, and Cluster sampling depends on population characteristics, available resources, and required accuracy.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     Q4a — CHI-SQUARE TEST
+════════════════════════════════════════ -->
+<section class="question-block" id="q4a">
+  <div class="q-label">Question 4 · Part A</div>
+  <h2 class="q-title">Chi-Square Test — Disease Treatment Data (250 Patients)</h2>
+  <span class="marks-badge">10 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      The <strong>Chi-Square (χ²) Test</strong> is a non-parametric statistical test used to determine whether there is a significant association between two categorical variables. It compares observed frequencies with expected frequencies to test independence.
+    </div>
+
+    <h3>Chi-Square Test: Theory</h3>
+    <p>The Chi-Square test answers: <em>"Are the two variables independent, or is there a significant relationship between them?"</em></p>
+
+    <div class="formula-box">χ² = Σ [ (O − E)² / E ]</div>
+    <p>Where: <strong>O</strong> = Observed frequency, <strong>E</strong> = Expected frequency</p>
+
+    <h3>Given Data</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Treatment</th><th>Favourable</th><th>Non-Favourable</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>New</td><td>140</td><td>30</td><td>170</td></tr>
+        <tr><td>Conventional</td><td>60</td><td>20</td><td>80</td></tr>
+        <tr><td>Total</td><td>200</td><td>50</td><td>250</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 1 — Formulate Hypotheses</h3>
+    <div class="hypothesis-card">
+      <div class="h-null">
+        <h4>H₀ — Null Hypothesis</h4>
+        <p>There is <strong>no significant difference</strong> between the new treatment and conventional treatment. The treatment type and outcome are <strong>independent</strong>.</p>
+      </div>
+      <div class="h-alt">
+        <h4>H₁ — Alternate Hypothesis</h4>
+        <p>There is a <strong>significant difference</strong> between the new and conventional treatment. The new treatment is <strong>superior</strong>.</p>
+      </div>
+    </div>
+
+    <h3>Step 2 — Calculate Expected Frequencies</h3>
+    <p>Formula: <strong>E = (Row Total × Column Total) / Grand Total</strong></p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Cell</th><th>Row Total</th><th>Column Total</th><th>Grand Total</th><th>Expected (E)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>New – Favourable</td><td>170</td><td>200</td><td>250</td><td>(170×200)/250 = <strong>136</strong></td></tr>
+        <tr><td>New – Non-Favourable</td><td>170</td><td>50</td><td>250</td><td>(170×50)/250 = <strong>34</strong></td></tr>
+        <tr><td>Conv – Favourable</td><td>80</td><td>200</td><td>250</td><td>(80×200)/250 = <strong>64</strong></td></tr>
+        <tr><td>Conv – Non-Favourable</td><td>80</td><td>50</td><td>250</td><td>(80×50)/250 = <strong>16</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 3 — Calculate χ² Statistic</h3>
+    <table class="calc-table">
+      <thead>
+        <tr><th>Cell</th><th>O</th><th>E</th><th>O − E</th><th>(O − E)²</th><th>(O − E)² / E</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>New – Favourable</td><td>140</td><td>136</td><td>4</td><td>16</td><td>0.118</td></tr>
+        <tr><td>New – Non-Fav</td><td>30</td><td>34</td><td>−4</td><td>16</td><td>0.471</td></tr>
+        <tr><td>Conv – Favourable</td><td>60</td><td>64</td><td>−4</td><td>16</td><td>0.250</td></tr>
+        <tr><td>Conv – Non-Fav</td><td>20</td><td>16</td><td>4</td><td>16</td><td>1.000</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td></td><td></td><td></td><td><strong>χ² = 1.839</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 4.1 — Observed vs Expected Frequencies</div>
+      <div class="chart-container"><canvas id="chiSquareChart"></canvas></div>
+    </div>
+
+    <h3>Step 4 — Determine Critical Value</h3>
+    <ul>
+      <li>Degrees of Freedom (df) = (rows − 1) × (columns − 1) = (2−1) × (2−1) = <strong>1</strong></li>
+      <li>Significance Level = 0.05</li>
+      <li>Critical Value (given) = <strong>3.84</strong></li>
+    </ul>
+
+    <h3>Step 5 — Compare and Conclude</h3>
+    <table class="data-table">
+      <thead><tr><th>Value</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Calculated χ²</td><td>1.839</td></tr>
+        <tr><td>Critical χ² (df=1, α=0.05)</td><td>3.84</td></tr>
+        <tr><td>Decision</td><td>1.839 &lt; 3.84 → <strong>Accept H₀</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="conclusion-box">
+      <div class="con-label">Conclusion</div>
+      <p>Since χ² calculated (1.839) &lt; χ² critical (3.84), we <strong>FAIL TO REJECT H₀</strong>. There is NO statistically significant difference between the new and conventional treatment at 5% significance level. The data does not provide sufficient evidence to conclude the new treatment is superior.</p>
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- ════════════════════════════════════════
+     Q4b — TWO SAMPLE t-TEST
+════════════════════════════════════════ -->
+<section class="question-block" id="q4b">
+  <div class="q-label">Question 4 · Part B</div>
+  <h2 class="q-title">Two-Sample t-Test — Drug A vs Drug B Effectiveness (Weight Reduction)</h2>
+  <span class="marks-badge">10 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      The <strong>Two-Sample Independent t-Test</strong> compares the means of two independent groups to determine if there is a statistically significant difference between them. It is used when the two samples are separate and unrelated.
+    </div>
+
+    <h3>Given Data</h3>
+    <ul>
+      <li><strong>Drug A (Imported):</strong> 8, 10, 12, 9, 14, 13 &nbsp;→ n₁ = 6</li>
+      <li><strong>Drug B (Local):</strong> 7, 9, 14, 12, 8 &nbsp;→ n₂ = 5</li>
+      <li>Significance level: α = 0.05, Critical t-value = 2.262</li>
+    </ul>
+
+    <h3>Step 1 — Formulate Hypotheses</h3>
+    <div class="hypothesis-card">
+      <div class="h-null">
+        <h4>H₀ — Null Hypothesis</h4>
+        <p>There is <strong>no significant difference</strong> in the effectiveness (mean weight reduction) of Drug A and Drug B.</p>
+        <p>H₀: μ₁ = μ₂</p>
+      </div>
+      <div class="h-alt">
+        <h4>H₁ — Alternate Hypothesis</h4>
+        <p>There is a <strong>significant difference</strong> in the effectiveness of Drug A and Drug B.</p>
+        <p>H₁: μ₁ ≠ μ₂</p>
+      </div>
+    </div>
+
+    <h3>Step 2 — Calculate Means</h3>
+    <div class="formula-box">
+      x̄₁ (Drug A) = (8+10+12+9+14+13) / 6 = 66 / 6 = <strong>11.0</strong><br>
+      x̄₂ (Drug B) = (7+9+14+12+8) / 5 = 50 / 5 = <strong>10.0</strong>
+    </div>
+
+    <h3>Step 3 — Calculate Variance for Each Group</h3>
+
+    <p><strong>Drug A — Deviations from mean (x̄₁ = 11):</strong></p>
+    <table class="calc-table">
+      <thead><tr><th>x₁</th><th>x₁ − x̄₁</th><th>(x₁ − x̄₁)²</th></tr></thead>
+      <tbody>
+        <tr><td>8</td><td>−3</td><td>9</td></tr>
+        <tr><td>10</td><td>−1</td><td>1</td></tr>
+        <tr><td>12</td><td>1</td><td>1</td></tr>
+        <tr><td>9</td><td>−2</td><td>4</td></tr>
+        <tr><td>14</td><td>3</td><td>9</td></tr>
+        <tr><td>13</td><td>2</td><td>4</td></tr>
+        <tr><td><strong>Sum</strong></td><td></td><td><strong>Σ = 28</strong></td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Drug B — Deviations from mean (x̄₂ = 10):</strong></p>
+    <table class="calc-table">
+      <thead><tr><th>x₂</th><th>x₂ − x̄₂</th><th>(x₂ − x̄₂)²</th></tr></thead>
+      <tbody>
+        <tr><td>7</td><td>−3</td><td>9</td></tr>
+        <tr><td>9</td><td>−1</td><td>1</td></tr>
+        <tr><td>14</td><td>4</td><td>16</td></tr>
+        <tr><td>12</td><td>2</td><td>4</td></tr>
+        <tr><td>8</td><td>−2</td><td>4</td></tr>
+        <tr><td><strong>Sum</strong></td><td></td><td><strong>Σ = 34</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 4 — Calculate Pooled Variance (S²p)</h3>
+    <div class="formula-box">
+      S²p = (Σ(x₁−x̄₁)² + Σ(x₂−x̄₂)²) / (n₁ + n₂ − 2)<br>
+      = (28 + 34) / (6 + 5 − 2)<br>
+      = 62 / 9<br>
+      = <strong>6.889</strong>
+    </div>
+
+    <h3>Step 5 — Calculate t-Statistic</h3>
+    <div class="formula-box">
+      t = (x̄₁ − x̄₂) / √[ S²p × (1/n₁ + 1/n₂) ]<br>
+      = (11.0 − 10.0) / √[ 6.889 × (1/6 + 1/5) ]<br>
+      = 1.0 / √[ 6.889 × (0.1667 + 0.2000) ]<br>
+      = 1.0 / √[ 6.889 × 0.3667 ]<br>
+      = 1.0 / √[ 2.526 ]<br>
+      = 1.0 / 1.589<br>
+      = <strong>t = 0.629</strong>
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 4.2 — Calculated t vs Critical t</div>
+      <div class="chart-container"><canvas id="tTestChart"></canvas></div>
+    </div>
+
+    <h3>Step 6 — Compare and Conclude</h3>
+    <ul>
+      <li>Degrees of Freedom = n₁ + n₂ − 2 = 6 + 5 − 2 = <strong>9</strong></li>
+      <li>t calculated = <strong>0.629</strong></li>
+      <li>t critical (df=9, α=0.05, two-tailed) = <strong>2.262</strong> (given)</li>
+    </ul>
+
+    <div class="conclusion-box">
+      <div class="con-label">Conclusion</div>
+      <p>Since t calculated (0.629) &lt; t critical (2.262), we <strong>FAIL TO REJECT H₀</strong>. There is <strong>NO significant difference</strong> in the effectiveness of Drug A (Imported) and Drug B (Local) in reducing weight at 5% significance level. Both drugs are equally effective.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     Q5a — STRUCTURE OF A RESEARCH REPORT: CYBERSECURITY
+════════════════════════════════════════ -->
+<section class="question-block" id="q5a">
+  <div class="q-label">Question 5 · Part A</div>
+  <h2 class="q-title">Suggest an Appropriate Structure for a Research Report on "Cybersecurity Trends and Threats" for an MCA Student</h2>
+  <span class="marks-badge">10 Marks</span>
+
+  <div class="ans">
+    <div class="concept-box">
+      A <strong>Research Report</strong> is a formal document that communicates the findings of a research study in a structured, logical manner. A standard research report follows a universally accepted format that makes it easy to understand, evaluate, and replicate. Below is the recommended structure for the MCA student's report on Cybersecurity Trends and Threats.
+    </div>
+
+    <h3>Standard Structure of a Research Report</h3>
+
+    <h4>1. Title Page</h4>
+    <ul>
+      <li>Full title: <em>"Cybersecurity Trends and Threats: A Contemporary Analysis for Digital Organizations"</em></li>
+      <li>Student's name, enrollment number, institution</li>
+      <li>Course: F.Y. M.C.A. (Management), Semester II</li>
+      <li>Supervisor's name, submission date</li>
+    </ul>
+
+    <h4>2. Certificate / Declaration</h4>
+    <p>A formal declaration by the student that the work is original and not plagiarized, followed by the supervisor's certificate of approval.</p>
+
+    <h4>3. Abstract / Executive Summary</h4>
+    <p>A concise 150–250 word summary covering: the problem, methodology, key findings, and conclusions. Written last but placed first. This is the most-read section — it must be compelling and accurate.</p>
+
+    <h4>4. Table of Contents</h4>
+    <p>A complete list of all chapters, sections, and sub-sections with corresponding page numbers for easy navigation.</p>
+
+    <h4>5. List of Figures and Tables</h4>
+    <p>Separate lists of all diagrams, charts, and data tables used in the report with their captions and page numbers.</p>
+
+    <h4>6. Chapter 1 — Introduction</h4>
+    <ul>
+      <li><strong>Background:</strong> Overview of cybersecurity in the digital era — growth of internet, IoT, cloud computing, and the parallel rise of cyber threats.</li>
+      <li><strong>Problem Statement:</strong> Organizations face increasingly sophisticated cyber attacks but lack awareness of current threat trends.</li>
+      <li><strong>Objectives:</strong> (i) To identify the latest cybersecurity threats; (ii) To analyze trends in attack patterns; (iii) To suggest preventive strategies.</li>
+      <li><strong>Scope and Limitations:</strong> The study focuses on threats from 2020–2025, limited to publicly available incident data.</li>
+    </ul>
+
+    <h4>7. Chapter 2 — Literature Review</h4>
+    <p>A critical review of existing research, reports, and publications on cybersecurity threats. Sources: IEEE papers, CERT-IN reports, NASSCOM cybersecurity reports, IBM X-Force Threat Intelligence Index, academic journals. Identifies gaps that this research addresses.</p>
+
+    <h4>8. Chapter 3 — Research Methodology</h4>
+    <ul>
+      <li><strong>Research Type:</strong> Descriptive and Exploratory</li>
+      <li><strong>Data Collection:</strong> Secondary data (CERT-IN, NIST databases, security vendor reports); Primary data via survey of 100 IT professionals</li>
+      <li><strong>Sampling:</strong> Purposive sampling of cybersecurity practitioners</li>
+      <li><strong>Analysis Tools:</strong> Content analysis, frequency analysis, percentage analysis</li>
+    </ul>
+
+    <h4>9. Chapter 4 — Data Analysis and Findings</h4>
+    <p>Presentation and analysis of collected data with tables, charts, and graphs. Key findings covering:</p>
+    <ul>
+      <li>Top cybersecurity threats: Ransomware, Phishing, DDoS, Insider threats, Zero-day exploits</li>
+      <li>Most targeted sectors: Healthcare, Finance, Government, Education</li>
+      <li>Trends: Rise of AI-powered attacks, supply chain vulnerabilities, cloud security gaps</li>
+      <li>Cost of cybercrime: Global estimates and India-specific data</li>
+    </ul>
+
+    <h4>10. Chapter 5 — Results and Discussion</h4>
+    <p>Interpretation of findings in the context of the research objectives and hypothesis. Comparison with prior literature. Discussion of implications for organizations and policymakers.</p>
+
+    <h4>11. Chapter 6 — Conclusions and Recommendations</h4>
+    <p>Summary of major conclusions. Actionable recommendations for organizations: implementing Zero Trust Architecture, regular security audits, employee awareness training, and incident response planning. Suggestions for future research.</p>
+
+    <h4>12. References / Bibliography</h4>
+    <p>All cited sources listed in a consistent citation style (APA or IEEE). Includes research papers, books, government reports, and website URLs with access dates.</p>
+
+    <h4>13. Appendices</h4>
+    <p>Supplementary material: survey questionnaire copy, raw data tables, glossary of technical terms (malware, phishing, zero-day, ransomware), list of abbreviations.</p>
+
+    <div class="conclusion-box">
+      <div class="con-label">Key Tip for the Student</div>
+      <p>Follow the structure religiously. Each chapter flows logically into the next: Problem → Background → Method → Data → Findings → Conclusion. Avoid jumping to conclusions without data support. Use diagrams and charts liberally to make complex cybersecurity data visually accessible.</p>
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- ════════════════════════════════════════
+     Q5b — RESEARCH OUTLINE: AI IN EDUCATION
+════════════════════════════════════════ -->
+<section class="question-block" id="q5b">
+  <div class="q-label">Question 5 · Part B</div>
+  <h2 class="q-title">Prepare an Outline for Research on "Role of AI in Education" — with Title, Objectives, Hypothesis, Research Gap, Data Collection, Sampling, Result and Discussion, and Conclusion</h2>
+  <span class="marks-badge">10 Marks</span>
+
+  <div class="ans">
+
+    <h3>Title</h3>
+    <div class="concept-box">
+      <strong>"The Role of Artificial Intelligence in Transforming Education: Opportunities, Challenges, and Student Outcomes in Indian Higher Education Institutions"</strong>
+    </div>
+
+    <h3>Introduction</h3>
+    <p>Artificial Intelligence (AI) is no longer confined to research labs — it has entered classrooms through intelligent tutoring systems, adaptive learning platforms, automated grading, virtual assistants, and personalized content delivery. India's National Education Policy (NEP 2020) explicitly endorses technology integration. However, the actual impact of AI on student learning outcomes in Indian colleges remains under-researched.</p>
+
+    <h3>Objectives</h3>
+    <ol>
+      <li>To examine the current state of AI tool adoption in Indian higher education institutions.</li>
+      <li>To assess the impact of AI-based learning platforms on student academic performance and engagement.</li>
+      <li>To identify the key challenges and barriers to AI adoption in Indian classrooms.</li>
+      <li>To explore student and faculty perceptions regarding AI as an educational aid.</li>
+      <li>To recommend a framework for effective AI integration in undergraduate and postgraduate programs.</li>
+    </ol>
+
+    <h3>Hypothesis</h3>
+    <div class="hypothesis-card">
+      <div class="h-null">
+        <h4>H₀ — Null Hypothesis</h4>
+        <p>The use of AI-based educational tools has <strong>no significant positive impact</strong> on the academic performance and engagement levels of students in Indian higher education institutions.</p>
+      </div>
+      <div class="h-alt">
+        <h4>H₁ — Alternate Hypothesis</h4>
+        <p>The use of AI-based educational tools has a <strong>significant positive impact</strong> on the academic performance and engagement levels of students in Indian higher education institutions.</p>
+      </div>
+    </div>
+
+    <h3>Research Gap</h3>
+    <p>While extensive international studies (primarily from the USA, China, and Europe) examine AI's role in education, research specific to <strong>Indian higher education contexts</strong> — particularly for MCA, BCA, and MBA programs in Tier-2 and Tier-3 cities — is remarkably scarce. Existing Indian studies focus on school education (K-12) and neglect the unique challenges of college environments, including resource constraints, diverse student demographics, faculty digital literacy, and infrastructure gaps. This study fills that specific gap.</p>
+
+    <h3>Data Collection</h3>
+    <h4>Primary Data</h4>
+    <ul>
+      <li><strong>Structured Questionnaire:</strong> A 30-item survey (Likert scale 1–5) covering AI tool usage frequency, perceived learning impact, ease of use, and satisfaction levels — distributed to students and faculty.</li>
+      <li><strong>Interviews:</strong> In-depth semi-structured interviews with 10 faculty members who have integrated AI tools in their teaching.</li>
+      <li><strong>Academic Records:</strong> Pre- and post-AI adoption scores from participating institutions (with ethical consent).</li>
+    </ul>
+    <h4>Secondary Data</h4>
+    <ul>
+      <li>UGC and AICTE reports on technology in education</li>
+      <li>Published research from IEEE Xplore, Google Scholar, and JSTOR</li>
+      <li>AI platform usage reports from EdTech companies (BYJU'S, Khan Academy, Coursera)</li>
+      <li>NEP 2020 policy documents</li>
+    </ul>
+
+    <h3>Sampling</h3>
+    <ul>
+      <li><strong>Target Population:</strong> Students and faculty of MCA, BCA, and MBA programs across Pune's engineering and management colleges.</li>
+      <li><strong>Sampling Method:</strong> Stratified Random Sampling — divided by course (MCA/BCA/MBA) and year of study.</li>
+      <li><strong>Sample Size:</strong> 300 students + 50 faculty members = <strong>350 total respondents</strong></li>
+      <li><strong>Sampling Frame:</strong> Enrollment registers of 6 colleges affiliated with Savitribai Phule Pune University (SPPU).</li>
+    </ul>
+
+    <h3>Results &amp; Discussion</h3>
+    <ul>
+      <li>Percentage of students using AI tools (ChatGPT, Grammarly, Wolfram Alpha, Khan Academy) for academics</li>
+      <li>Correlation between AI tool usage frequency and CGPA improvement</li>
+      <li>Most beneficial AI applications: Doubt resolution chatbots, automated feedback, personalized study plans</li>
+      <li>Top barriers: Poor internet access, lack of faculty guidance, fear of academic dishonesty, digital divide</li>
+      <li>Faculty perception: 60% view AI as an opportunity; 40% express concerns about over-reliance</li>
+    </ul>
+
+    <h3>Conclusion</h3>
+    <p>AI has immense potential to democratize quality education and personalize learning pathways for students across diverse backgrounds. The study finds that AI-enabled tools significantly improve student engagement, self-paced learning, and assignment quality when properly guided. However, uncritical adoption without faculty training, ethical guidelines, and infrastructure investment risks widening existing educational inequalities. The study recommends a <strong>structured AI-in-Education Policy</strong> for SPPU-affiliated colleges with clear guidelines on responsible AI usage, faculty development programs, and institutional infrastructure investment.</p>
+
+    <h3>References</h3>
+    <ul>
+      <li>Ministry of Education (2020). <em>National Education Policy 2020.</em> Government of India.</li>
+      <li>Roll, I., &amp; Wylie, R. (2016). Evolution and Revolution in AI in Education. <em>International Journal of AI in Education.</em></li>
+      <li>UNESCO (2023). <em>AI and Education: Guidance for Policy-Makers.</em> Paris: UNESCO.</li>
+      <li>NASSCOM (2023). <em>EdTech in India: Growth and Impact Report.</em> New Delhi.</li>
+    </ul>
+  </div>
+</section>
+
+
+<footer class="page-footer">
+  [6554]-2004 · PE-4200 · RMW-554 MJ – Research Methodology · 2024 Pattern · Complete Answer Key &nbsp;|&nbsp; F.Y. M.C.A. (Management)
+</footer>
+
+
+<!-- ═══════════════════════ CHARTS ═══════════════════════ -->
+<script>
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// 1 — Qual vs Quant Comparison
+new Chart(document.getElementById('qualQuantChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Depth of\nInsight','Sample\nSize','Cost','Speed','Generalizability','Objectivity','Flexibility'],
+    datasets: [
+      {
+        label: 'Qualitative',
+        data: [9, 2, 6, 4, 3, 4, 9],
+        backgroundColor: 'rgba(231,76,60,0.7)',
+        borderColor: '#c0392b',
+        borderWidth: 2
+      },
+      {
+        label: 'Quantitative',
+        data: [4, 9, 5, 7, 9, 9, 3],
+        backgroundColor: 'rgba(52,152,219,0.7)',
+        borderColor: '#2980b9',
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom' } },
+    scales: {
+      y: { beginAtZero: true, max: 10, title: { display: true, text: 'Score (out of 10)' }, grid: { color: '#eee' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 2 — Sampling Methods
+new Chart(document.getElementById('samplingChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Simple\nRandom','Systematic','Stratified','Cluster','Multi-Stage'],
+    datasets: [
+      {
+        label: 'Representativeness',
+        data: [9, 8, 10, 7, 9],
+        backgroundColor: 'rgba(46,204,113,0.75)',
+        borderColor: '#27ae60',
+        borderWidth: 2
+      },
+      {
+        label: 'Ease of Use',
+        data: [6, 8, 5, 9, 5],
+        backgroundColor: 'rgba(241,196,15,0.75)',
+        borderColor: '#f39c12',
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom' } },
+    scales: {
+      y: { beginAtZero: true, max: 10, title: { display: true, text: 'Score (out of 10)' }, grid: { color: '#eee' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 3 — Chi Square Chart
+new Chart(document.getElementById('chiSquareChart'), {
+  type: 'bar',
+  data: {
+    labels: ['New–Favourable','New–Non-Fav','Conv–Favourable','Conv–Non-Fav'],
+    datasets: [
+      {
+        label: 'Observed (O)',
+        data: [140, 30, 60, 20],
+        backgroundColor: 'rgba(231,76,60,0.8)',
+        borderColor: '#c0392b',
+        borderWidth: 2
+      },
+      {
+        label: 'Expected (E)',
+        data: [136, 34, 64, 16],
+        backgroundColor: 'rgba(52,152,219,0.8)',
+        borderColor: '#2980b9',
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom' } },
+    scales: {
+      y: { beginAtZero: true, title: { display: true, text: 'Frequency' }, grid: { color: '#eee' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 4 — t-Test Visualization
+new Chart(document.getElementById('tTestChart'), {
+  type: 'bar',
+  data: {
+    labels: ['t Calculated (Drug A vs B)', 't Critical (α=0.05, df=9)'],
+    datasets: [{
+      label: 'Value',
+      data: [0.629, 2.262],
+      backgroundColor: ['rgba(231,76,60,0.8)', 'rgba(46,204,113,0.8)'],
+      borderColor: ['#c0392b', '#27ae60'],
+      borderWidth: 3
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => 'Value: ' + ctx.parsed.x } }
+    },
+    scales: {
+      x: { beginAtZero: true, max: 3, title: { display: true, text: 't Value' }, grid: { color: '#eee' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

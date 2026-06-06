@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 — Data Collection and Sampling Methods | Research Methodology Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf8;
+    --gray-100: #f0f0ee;
+    --gray-200: #ddddd9;
+    --gray-300: #b8b8b2;
+    --gray-500: #7a7a74;
+    --gray-700: #3a3a36;
+    --border: 2px solid #0a0a0a;
+    --border-thin: 1px solid #c0c0bc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+  }
+
+  /* Headers */
+  .unit-header {
+    border-top: 4px solid var(--black);
+    border-bottom: 4px solid var(--black);
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .unit-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .unit-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 0.3rem 0;
+  }
+  .unit-header .sub {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    letter-spacing: 0.06em;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--gray-100);
+    border: var(--border);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+  }
+  .toc h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.5rem;
+  }
+  .toc ol { padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+  .toc li { margin: 0.35rem 0; break-inside: avoid; }
+  .toc a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+  @media(max-width:600px){ .toc ol { columns: 1; } }
+
+  /* Topic Sections */
+  .topic-section {
+    margin-bottom: 4rem;
+    border-top: 3px solid var(--black);
+    padding-top: 1.5rem;
+  }
+  .topic-label {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    padding: 0.2rem 0.7rem;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+  }
+  .topic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  /* Concept Box */
+  .concept-box {
+    background: var(--gray-100);
+    border-left: 4px solid var(--black);
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    font-style: italic;
+  }
+  .concept-box strong { font-style: normal; }
+
+  /* Example Box */
+  .example-box {
+    border: var(--border-thin);
+    border-left: 4px solid #444;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    background: #fff;
+  }
+  .example-box .ex-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Tip Box (Exam Tip) */
+  .tip-box {
+    background: #edfaf1;
+    border: 1px solid #27ae60;
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .tip-box .tip-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1a7a34;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  /* Formula Box */
+  .formula-box {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  /* Conclusion Box */
+  .conclusion-box {
+    border: 3px solid var(--black);
+    padding: 1rem 1.4rem;
+    margin: 1.5rem 0;
+    background: var(--black);
+    color: var(--white);
+  }
+  .conclusion-box .con-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-bottom: 0.4rem;
+  }
+  .conclusion-box p { font-size: 1rem; font-weight: 600; }
+
+  /* Warning Box */
+  .warn-box {
+    background: #fdf2f2;
+    border: 1px solid #c0392b;
+    border-left: 4px solid #c0392b;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .warn-box .warn-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #c0392b;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  /* Comparison Grid */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .compare-card {
+    border: var(--border);
+    padding: 1rem;
+  }
+  .compare-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: var(--border-thin);
+  }
+  .compare-card ul { padding-left: 1.2rem; font-size: 0.9rem; }
+  .compare-card li { margin: 0.3rem 0; }
+
+  /* Three Grid */
+  .three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .three-card {
+    border: var(--border);
+    padding: 1rem;
+  }
+  .three-card .card-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .three-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .three-card p { font-size: 0.85rem; }
+
+  /* Data Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+  }
+  .data-table th {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .data-table td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: var(--border-thin);
+  }
+  .data-table tr:nth-child(even) td { background: var(--gray-100); }
+
+  /* Calculation Table */
+  .calc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+  }
+  .calc-table th {
+    background: var(--gray-700);
+    color: var(--white);
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+  }
+  .calc-table td {
+    padding: 0.5rem 0.7rem;
+    border: var(--border-thin);
+    text-align: center;
+  }
+  .calc-table tr:last-child td { background: #fff3cd; font-weight: 700; }
+
+  /* Hypothesis Cards */
+  .hypothesis-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .h-null { border: 2px solid #c0392b; padding: 1rem; background: #fdf2f2; }
+  .h-alt  { border: 2px solid #1a7a34; padding: 1rem; background: #f0faf2; }
+  .h-null h4, .h-alt h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .h-null h4 { color: #c0392b; }
+  .h-alt  h4 { color: #1a7a34; }
+
+  /* Flow Diagram */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    max-width: 550px;
+  }
+  .flow-node {
+    flex: 1;
+    padding: 0.65rem 1rem;
+    border: 2px solid var(--black);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: var(--white);
+    position: relative;
+  }
+  .flow-node .step-num {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: var(--black);
+    color: var(--white);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flow-arrow {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--gray-500);
+    line-height: 1;
+    padding: 2px 0;
+  }
+
+  /* Diagram Wrap */
+  .diagram-wrap {
+    margin: 1.5rem 0;
+    border: var(--border);
+    padding: 1.2rem;
+    background: #fff;
+  }
+  .diagram-wrap .diagram-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.4rem;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .chart-container canvas { max-width: 100%; }
+
+  /* Headings inside answers */
+  .ans h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin: 1.6rem 0 0.6rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.3rem;
+  }
+  .ans h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.2rem 0 0.4rem;
+    color: var(--gray-700);
+  }
+  .ans p { margin: 0.6rem 0; }
+  .ans ul, .ans ol { padding-left: 1.5rem; margin: 0.6rem 0; }
+  .ans li { margin: 0.35rem 0; }
+
+  /* Step Label */
+  .step-label {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .page-footer {
+    margin-top: 4rem;
+    border-top: 3px solid var(--black);
+    padding-top: 1rem;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    letter-spacing: 0.08em;
+  }
+
+  @media(max-width:700px){
+    .compare-grid, .three-grid, .hypothesis-card { grid-template-columns: 1fr; }
+    body { font-size: 14px; padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="unit-header">
+  <div class="sub">Research Methodology · Savitribai Phule Pune University</div>
+  <h1>F.Y. M.C.A. (Management) · Semester II · 2024 Pattern</h1>
+  <h2>Unit 3: Data Collection and Sampling Methods</h2>
+  <div class="sub">Complete Study Material · With Examples and Calculations</div>
+</div>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<nav class="toc">
+  <h3>Contents of This Unit</h3>
+  <ol>
+    <li><a href="#t1">3.1 Primary Data Collection Methods</a></li>
+    <li><a href="#t2">3.2 Principles of Sampling (Population vs Sample, Sampling Frame)</a></li>
+    <li><a href="#t3">3.3 Probability Sampling Methods</a></li>
+    <li><a href="#t4">3.4 Non-Probability Sampling Methods</a></li>
+    <li><a href="#t5">3.5 Determining Sample Size</a></li>
+    <li><a href="#t6">3.6 Factors Affecting Sample Size</a></li>
+    <li><a href="#t7">3.7 Sample Size Calculations with Examples</a></li>
+  </ol>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.1 — PRIMARY DATA COLLECTION METHODS
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t1">
+  <div class="topic-label">Topic 3.1</div>
+  <h2 class="topic-title">Primary Data Collection Methods</h2>
+
+  <div class="concept-box">
+    <strong>Primary Data</strong> refers to original data collected directly by the researcher for the specific purpose of their study. It is first-hand information collected from sources such as surveys, interviews, observations, and experiments. Primary data is tailored to the research objectives and provides current, relevant information.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Remember: Primary Data = FIRST-HAND (you collect it). Secondary Data = SECOND-HAND (someone else collected it). Each primary method has specific strengths: Surveys for breadth, Interviews for depth, Observation for actual behavior, Experiments for causation.
+  </div>
+
+  <h3>Definition</h3>
+  <p>According to <strong>Kothari (2019)</strong>: <em>"Primary data are those which are collected afresh and for the first time, and thus happen to be original in character."</em></p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 3.1 — Classification of Primary Data Collection Methods</div>
+    <div class="flow-diagram">
+      <div class="flow-step"><div class="flow-node fn-1"><span class="step-num">1</span>Survey / Questionnaire</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-node fn-2"><span class="step-num">2</span>Interview (Structured / Semi-structured / Unstructured)</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-node fn-3"><span class="step-num">3</span>Observation (Participant / Non-participant)</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-node fn-4"><span class="step-num">4</span>Experiment (Laboratory / Field)</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-node fn-5"><span class="step-num">5</span>Focus Group Discussion</div></div>
+    </div>
+  </div>
+
+  <h3>Detailed Explanation of Each Method</h3>
+
+  <h4>1. Survey / Questionnaire Method</h4>
+  <p>A structured set of written questions (printed or digital) administered to respondents. The researcher does not need to be present during response. Surveys are ideal for collecting standardized data from large, geographically dispersed samples.</p>
+  
+  <div class="example-box">
+    <div class="ex-label">Example</div>
+    A researcher studying "Student satisfaction with online learning platforms" distributes a Google Form link to 500 MCA students across three colleges. The form contains 20 questions using a 5-point Likert scale (Strongly Disagree to Strongly Agree), multiple-choice questions for demographic data, and two open-ended questions for qualitative feedback.
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Can reach large number of respondents quickly</li>
+        <li>Low cost per respondent (especially online)</li>
+        <li>Anonymity encourages honest responses</li>
+        <li>Standardization allows easy statistical analysis</li>
+        <li>No interviewer bias</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Low response rate (typically 30-40% for online surveys)</li>
+        <li>Cannot probe or clarify questions</li>
+        <li>Requires literacy and access to technology</li>
+        <li>Inflexible — cannot adapt to unexpected responses</li>
+        <li>No control over who actually completes the survey</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>2. Interview Method</h4>
+  <p>A direct, face-to-face (or virtual) conversation between the researcher (interviewer) and the respondent (interviewee). The researcher asks questions and records answers. Interviews can be structured (fixed questions, fixed order), semi-structured (guide with flexibility), or unstructured (open conversation).</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Semi-Structured Interview</div>
+    <p><strong>Research Topic:</strong> "Challenges in adopting DevOps practices in small IT companies"</p>
+    <p><strong>Interview Guide:</strong></p>
+    <ol>
+      <li>"What DevOps tools has your company implemented in the last year?" (Closed)</li>
+      <li>"Can you describe the biggest technical challenge you faced during implementation?" (Open)</li>
+      <li>"How did your team overcome resistance to change?" (Probing)</li>
+      <li>"What would you do differently if you started again?" (Reflective)</li>
+    </ol>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>High response rate (typically 80-90%)</li>
+        <li>Allows clarification and probing</li>
+        <li>Captures non-verbal cues (body language, tone)</li>
+        <li>Rich, detailed qualitative data</li>
+        <li>Flexible — can explore unexpected topics</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Time-consuming and expensive</li>
+        <li>Smaller sample sizes (typically 10-50 participants)</li>
+        <li>Interviewer bias possible</li>
+        <li>Requires trained interviewers</li>
+        <li>Data analysis is complex and time-intensive</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>3. Observation Method</h4>
+  <p>The researcher systematically watches and records behavior, events, or phenomena without relying on self-reports. Observation can be participant (researcher joins the group) or non-participant (researcher watches from outside).</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example</div>
+    A researcher studying "Classroom participation patterns" sits at the back of a MCA classroom for five lectures and records:
+    <ul>
+      <li>Number of students raising hands (tally marks every 5 minutes)</li>
+      <li>Duration of student-teacher interactions (stopwatch)</li>
+      <li>Use of mobile phones during lecture (observed behavior)</li>
+      <li>Students' body language (engaged, bored, confused)</li>
+    </ul>
+  </div>
+
+  <h4>4. Experiment Method</h4>
+  <p>The researcher deliberately manipulates one or more independent variables under controlled conditions and measures the effect on dependent variables. Experiments are the gold standard for establishing cause-effect relationships.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Controlled Experiment</div>
+    <p><strong>Research Question:</strong> "Does using an AI-powered code completion tool reduce coding time?"</p>
+    <p><strong>Design:</strong> 40 MCA students randomly assigned to two groups:</p>
+    <ul>
+      <li><strong>Group A (Control):</strong> Solve 5 programming problems using standard IDE</li>
+      <li><strong>Group B (Treatment):</strong> Solve same 5 problems using IDE with AI-powered code completion</li>
+      <li><strong>Measurement:</strong> Time taken to complete each problem (in minutes)</li>
+    </ul>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Kothari, C.R. — Research Methodology: Methods and Techniques, New Age International</li>
+      <li>Saunders, M. — Research Methods for Business Students, Pearson</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.2 — PRINCIPLES OF SAMPLING
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t2">
+  <div class="topic-label">Topic 3.2</div>
+  <h2 class="topic-title">Principles of Sampling — Population vs Sample, Sampling Frame</h2>
+
+  <div class="concept-box">
+    <strong>Sampling</strong> is the process of selecting a subset (sample) from a larger group (population) to estimate characteristics of the whole population. Proper sampling allows researchers to draw valid conclusions without studying every member of the population.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Population = Entire group of interest (e.g., all MCA students in Pune). Sample = Subset studied (e.g., 200 MCA students). Sampling frame = List from which sample is drawn (e.g., enrollment register). Good sampling = representative sample = generalizable results.
+  </div>
+
+  <h3>Key Terminology with Definitions</h3>
+
+  <h4>Population (Universe)</h4>
+  <p>The entire group of individuals, objects, or events that share common characteristics and are of interest to the researcher. The population must be clearly defined before any sampling can begin.</p>
+  <div class="example-box"><div class="ex-label">Example</div>"All registered voters in Maharashtra state" (finite population) or "All possible outcomes of rolling a dice" (infinite population).</div>
+
+  <h4>Sample</h4>
+  <p>A subset of the population selected for actual study. The sample should be representative of the population so that findings can be generalized.</p>
+  <div class="example-box"><div class="ex-label">Example</div>"1,000 voters randomly selected from the Maharashtra voter list" — results from these 1,000 voters are used to predict the voting behavior of all 8 crore voters in Maharashtra.</div>
+
+  <h4>Sampling Frame</h4>
+  <p>The actual list or source from which the sample is drawn. The sampling frame should ideally match the population exactly, but in practice, there is often some difference (sampling frame error).</p>
+  <div class="example-box"><div class="ex-label">Example</div>"The official voter registration list of Maharashtra Election Commission" — this list serves as the sampling frame for a political survey.</div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 3.2 — Relationship between Population, Sampling Frame, and Sample</div>
+    <svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Source Serif 4',serif;">
+      <ellipse cx="390" cy="110" rx="300" ry="80" fill="#d4edda" stroke="#1a7a34" stroke-width="2.5" stroke-dasharray="8 4"/>
+      <text x="390" y="95" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7a34">POPULATION</text>
+      <text x="390" y="115" text-anchor="middle" font-size="9" fill="#1a7a34">(Entire group of interest — all MCA students in Pune)</text>
+      
+      <ellipse cx="390" cy="110" rx="200" ry="55" fill="#fff3cd" stroke="#e6ac00" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <text x="390" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#8a6500">SAMPLING FRAME</text>
+      <text x="390" y="88" text-anchor="middle" font-size="8" fill="#8a6500">(List — enrollment registers of 6 SPPU colleges)</text>
+      
+      <ellipse cx="390" cy="110" rx="100" ry="35" fill="#f8d7da" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="390" y="105" text-anchor="middle" font-size="10" font-weight="700" fill="#922b21">SAMPLE</text>
+      <text x="390" y="122" text-anchor="middle" font-size="8" fill="#922b21">(200 selected students)</text>
+      
+      <text x="100" y="180" text-anchor="middle" font-size="8">Sampling Frame Error = Population ≠ Frame</text>
+      <text x="650" y="180" text-anchor="middle" font-size="8">Sampling Error = Sample ≠ Population</text>
+    </svg>
+  </div>
+
+  <h3>Principles of Sampling — Key Concepts</h3>
+
+  <h4>Principle 1: Representativeness</h4>
+  <p>The sample must accurately reflect the characteristics of the population from which it is drawn. A representative sample has the same distribution of key variables (age, gender, income, education, etc.) as the population.</p>
+  <div class="example-box"><div class="ex-label">Example</div>If the population has 60% male and 40% female, a representative sample should also have approximately 60% male and 40% female respondents.</div>
+
+  <h4>Principle 2: Precision</h4>
+  <p>The closeness of sample estimates to the true population value. Precision increases with larger sample size. It is measured by standard error and margin of error.</p>
+
+  <h4>Principle 3: Absence of Bias (Accuracy)</h4>
+  <p>A sample is unbiased if every member of the population has an equal chance of being selected. Bias systematically over-represents or under-represents certain segments of the population.</p>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Sampling Errors</div>
+    <ul>
+      <li><strong>Selection Bias:</strong> Some population members have no chance of being selected (e.g., telephone survey excludes people without phones).</li>
+      <li><strong>Non-response Bias:</strong> Those who choose to respond are different from those who do not respond.</li>
+      <li><strong>Sampling Frame Error:</strong> The sampling frame does not perfectly match the population.</li>
+    </ul>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Cochran, W.G. — Sampling Techniques, 3rd Edition, John Wiley & Sons</li>
+      <li>Yamane, T. — Statistics: An Introductory Analysis, Harper & Row</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.3 — PROBABILITY SAMPLING METHODS
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t3">
+  <div class="topic-label">Topic 3.3</div>
+  <h2 class="topic-title">Probability Sampling Methods</h2>
+
+  <div class="concept-box">
+    <strong>Probability Sampling</strong> is a sampling technique in which every member of the population has a known, non-zero probability of being selected. Selection is based on random processes, which eliminates selection bias and allows statistical inference from the sample to the population.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    Probability Sampling methods: <strong>S</strong>imple Random, <strong>S</strong>tratified, <strong>S</strong>ystematic, <strong>C</strong>luster, <strong>M</strong>ulti-stage. Remember the 5 S's. These methods allow calculation of sampling error and confidence intervals.
+  </div>
+
+  <h3>Type 1: Simple Random Sampling (SRS)</h3>
+  <p><strong>Definition:</strong> Every member of the population has an equal and independent chance of being selected. Selection is done using random number generators, lottery methods, or random number tables.</p>
+  
+  <div class="example-box">
+    <div class="ex-label">Example — Step by Step</div>
+    <p><strong>Population:</strong> 1,000 students in a college.</p>
+    <p><strong>Desired Sample Size:</strong> 100 students.</p>
+    <p><strong>Procedure:</strong></p>
+    <ol>
+      <li>Assign each student a unique number from 001 to 1000.</li>
+      <li>Use a random number generator (e.g., Random.org) to generate 100 random numbers between 1 and 1000.</li>
+      <li>Select the students whose numbers match the generated random numbers.</li>
+    </ol>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Completely unbiased — every member has equal chance</li>
+        <li>Simple to understand and explain</li>
+        <li>Results are statistically generalizable</li>
+        <li>Simple formulas for sampling error calculation</li>
+        <li>No need for prior information about population</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Requires a complete sampling frame (list of all members)</li>
+        <li>Impractical for large, geographically dispersed populations</li>
+        <li>May miss small subgroups (e.g., left-handed students in a class)</li>
+        <li>Expensive for national-level surveys</li>
+        <li>Random selection may still produce non-representative sample by chance</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Type 2: Systematic Sampling</h3>
+  <p><strong>Definition:</strong> After randomly selecting a starting point, every k<sup>th</sup> element is chosen from the sampling frame. The sampling interval k = Population size ÷ Sample size (N ÷ n).</p>
+
+  <div class="formula-box">Sampling Interval (k) = Population Size (N) / Sample Size (n)</div>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Step by Step</div>
+    <p><strong>Population:</strong> 1,000 customer records in a database.</p>
+    <p><strong>Desired Sample Size:</strong> 100 customers.</p>
+    <p><strong>Procedure:</strong></p>
+    <ol>
+      <li>Calculate k = 1000 ÷ 100 = 10 (select every 10th customer).</li>
+      <li>Randomly select a starting point between 1 and 10 (e.g., starting point = 7).</li>
+      <li>Select customers at positions: 7, 17, 27, 37, ... up to 997.</li>
+    </ol>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Caution — Periodicity Bias</div>
+    <p>If the sampling frame has a hidden periodic pattern that matches the sampling interval, systematic sampling can produce a biased sample. For example, selecting every 10th house on a street where every 10th house is a corner house (different characteristics) would produce bias.</p>
+  </div>
+
+  <h3>Type 3: Stratified Sampling</h3>
+  <p><strong>Definition:</strong> The population is divided into distinct subgroups (strata) based on a characteristic relevant to the research (gender, age, income, department). A random sample is then drawn from each stratum, usually proportionally to its size in the population.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Step by Step</div>
+    <p><strong>Population:</strong> 1,000 employees in a company organized by department.</p>
+    <table class="data-table" style="font-size:0.8rem;">
+      <thead><tr><th>Department</th><th>Population Size</th><th>Proportion</th><th>Sample Needed (n=100)</th></tr></thead>
+      <tbody>
+        <tr><td>Engineering</td><td style="text-align:center;">400</td><td style="text-align:center;">40%</td><td style="text-align:center;">40</td></tr>
+        <tr><td>Sales</td><td style="text-align:center;">300</td><td style="text-align:center;">30%</td><td style="text-align:center;">30</td></tr>
+        <tr><td>HR</td><td style="text-align:center;">150</td><td style="text-align:center;">15%</td><td style="text-align:center;">15</td></tr>
+        <tr><td>Finance</td><td style="text-align:center;">150</td><td style="text-align:center;">15%</td><td style="text-align:center;">15</td></tr>
+        <tr><td style="font-weight:700;">Total</td><td style="text-align:center;font-weight:700;">1,000</td><td style="text-align:center;font-weight:700;">100%</td><td style="text-align:center;font-weight:700;">100</td></tr>
+      </tbody>
+    </table>
+    <p>Within each department, use simple random sampling to select the required number of employees.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Ensures representation of all subgroups</li>
+        <li>More precise than SRS for heterogeneous populations</li>
+        <li>Allows separate analysis of each stratum</li>
+        <li>Smaller sampling error for same sample size</li>
+        <li>Facilitates comparison between groups</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Requires prior knowledge of population characteristics</li>
+        <li>Complex to plan and execute</li>
+        <li>Stratification variables must be known for all population members</li>
+        <li>Difficult if strata boundaries are unclear</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Type 4: Cluster Sampling</h3>
+  <p><strong>Definition:</strong> The population is divided into natural clusters (geographic areas, schools, hospitals). A random sample of clusters is selected, and all members (or a random sample of members) within the selected clusters are studied.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Step by Step</div>
+    <p><strong>Population:</strong> All students in Pune district (500 schools, 100,000 students).</p>
+    <p><strong>Procedure:</strong></p>
+    <ol>
+      <li>Divide the population into clusters: individual schools (500 clusters).</li>
+      <li>Randomly select 20 schools from the list of 500.</li>
+      <li>Survey ALL students in those 20 selected schools (or take a random sample within each selected school).</li>
+    </ol>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Cost-effective for geographically dispersed populations</li>
+        <li>Does not require complete sampling frame</li>
+        <li>Practical for large-scale surveys (census, health surveys)</li>
+        <li>Reduces travel and administration costs</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Higher sampling error than SRS (for same sample size)</li>
+        <li>Clusters may not be representative of population</li>
+        <li>Intra-cluster similarity reduces diversity (design effect)</li>
+        <li>Risk of cluster selection bias</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Comparison of Probability Sampling Methods</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Method</th><th>When to Use</th><th>Sample Required</th><th>Cost</th><th>Precision</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">Simple Random</td><td>Complete list available, small population</td><td>Random numbers</td><td>Medium</td><td>High</td></tr>
+      <tr><td style="font-weight:700;">Systematic</td><td>Ordered list, large population</td><td>Every kth element</td><td>Low</td><td>Medium</td></tr>
+      <tr><td style="font-weight:700;">Stratified</td><td>Heterogeneous population, subgroups known</td><td>From each stratum</td><td>Medium-High</td><td>Very High</td></tr>
+      <tr><td style="font-weight:700;">Cluster</td><td>Widely dispersed population, natural groups</td><td>Entire clusters</td><td>Low</td><td>Medium-Low</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Kish, L. — Survey Sampling, John Wiley & Sons</li>
+      <li>Kalton, G. — Introduction to Survey Sampling, Sage Publications</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.4 — NON-PROBABILITY SAMPLING METHODS
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t4">
+  <div class="topic-label">Topic 3.4</div>
+  <h2 class="topic-title">Non-Probability Sampling Methods</h2>
+
+  <div class="concept-box">
+    <strong>Non-Probability Sampling</strong> is a sampling technique in which the selection of participants is based on non-random criteria. Not every member of the population has a chance of being selected. These methods are used when probability sampling is not feasible or for exploratory research where generalization is not the primary goal.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Non-Probability Sampling methods: <strong>C</strong>onvenience, <strong>P</strong>urposive, <strong>S</strong>nowball, <strong>Q</strong>uota. These are cheaper and faster but produce results that cannot be statistically generalized. Use them for pilot studies, exploratory research, or hard-to-reach populations.
+  </div>
+
+  <h3>Type 1: Convenience Sampling (Accidental Sampling)</h3>
+  <p><strong>Definition:</strong> The researcher selects participants who are readily available and willing to participate. This is the most commonly used non-probability method because of its low cost and ease of implementation.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example</div>
+    <p>A researcher studying "Study habits of MCA students" stands outside the college library and asks the first 50 students who walk out to fill out a questionnaire. The sample consists of students who happened to be in the library at that time — not necessarily representative of all MCA students.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Very low cost and time</li>
+        <li>Easy to implement</li>
+        <li>Good for pilot studies and pretesting instruments</li>
+        <li>Useful when population is homogeneous</li>
+        <li>Accessible for student researchers</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>High selection bias</li>
+        <li>Results cannot be generalized</li>
+        <li>Unknown representativeness</li>
+        <li>Cannot calculate sampling error</li>
+        <li>May miss important subgroups</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Type 2: Purposive (Judgmental) Sampling</h3>
+  <p><strong>Definition:</strong> The researcher deliberately selects participants based on specific characteristics or knowledge relevant to the research question. The selection is based on the researcher's judgment of who can provide the best information.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example</div>
+    <p>A researcher studying "Leadership challenges in IT companies" deliberately selects only CTOs and IT Directors from the top 10 IT companies in Pune. The researcher judges that only these senior leaders possess the required expertise and perspective.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Targets specific expertise</li>
+        <li>Useful for qualitative research</li>
+        <li>Ensures inclusion of key informants</li>
+        <li>Can reach specific hard-to-find populations</li>
+        <li>Allows deep, focused insights</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Highly subjective — depends on researcher's judgment</li>
+        <li>High risk of researcher bias</li>
+        <li>Cannot generalize findings</li>
+        <li>No statistical basis for sample size</li>
+        <li>Selection criteria may be arbitrary</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Type 3: Snowball Sampling (Chain Referral Sampling)</h3>
+  <p><strong>Definition:</strong> Existing participants recruit future participants from their networks. The sample grows like a snowball rolling downhill. This method is particularly useful for reaching hidden or hard-to-reach populations.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Step by Step</div>
+    <p><strong>Population:</strong> Freelance software developers who work exclusively from rural areas.</p>
+    <ol>
+      <li>Researcher contacts 5 known freelance developers through LinkedIn (seed participants).</li>
+      <li>Each of these 5 developers is asked to refer 3 other freelance developers they know.</li>
+      <li>Those 15 developers are contacted and asked to refer more.</li>
+      <li>The sample grows to 5 + 15 + 45 + ... until saturation is reached.</li>
+    </ol>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Excellent for reaching hidden populations</li>
+        <li>Builds trust through referral</li>
+        <li>Cost-effective for rare populations</li>
+        <li>Can access populations without sampling frames</li>
+        <li>Good for sensitive topics</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Selection bias (network-dependent)</li>
+        <li>Over-representation of well-connected individuals</li>
+        <li>Cannot calculate sampling error</li>
+        <li>Results not generalizable</li>
+        <li>Risk of homogeneity (friends refer similar friends)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Type 4: Quota Sampling</h3>
+  <p><strong>Definition:</strong> The researcher sets quotas for subgroups (based on known population characteristics) and then conveniently selects participants until each quota is filled. It is like stratified sampling without random selection.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Step by Step</div>
+    <p><strong>Population:</strong> Students at a college (60% male, 40% female, 50% from urban areas).</p>
+    <p><strong>Sample Size Desired:</strong> 200 students.</p>
+    <ol>
+      <li>Set quotas: 120 male (60% of 200), 80 female (40% of 200).</li>
+      <li>Set additional quota: 100 urban, 100 rural.</li>
+      <li>Researcher stands in the cafeteria and asks students to participate until each quota is filled.</li>
+      <li>Once 120 males have responded, stop including males.</li>
+    </ol>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Advantages</h4>
+      <ul>
+        <li>Ensures representation of subgroups</li>
+        <li>Less expensive than stratified random sampling</li>
+        <li>Quicker to implement</li>
+        <li>Useful for market research</li>
+        <li>Can control for known biases</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Within-quota selection is non-random (convenience)</li>
+        <li>Potential selection bias within quotas</li>
+        <li>Not statistically generalizable</li>
+        <li>Researcher bias in filling quotas</li>
+        <li>Cannot calculate sampling error</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Comparison: Probability vs Non-Probability Sampling</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Aspect</th><th>Probability Sampling</th><th>Non-Probability Sampling</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:700;">Random Selection</td><td style="color:#1a7a34;">Yes</td><td style="color:#c0392b;">No</td></tr>
+      <tr><td style="font-weight:700;">Selection Bias</td><td style="color:#1a7a34;">Low</td><td style="color:#c0392b;">High</td></tr>
+      <tr><td style="font-weight:700;">Generalizability</td><td style="color:#1a7a34;">High</td><td style="color:#c0392b;">Low (or none)</td></tr>
+      <tr><td style="font-weight:700;">Sampling Error Calculation</td><td style="color:#1a7a34;">Possible</td><td style="color:#c0392b;">Not Possible</td></tr>
+      <tr><td style="font-weight:700;">Cost</td><td style="color:#c0392b;">High</td><td style="color:#1a7a34;">Low</td></tr>
+      <tr><td style="font-weight:700;">Time Required</td><td style="color:#c0392b;">Long</td><td style="color:#1a7a34;">Short</td></tr>
+      <tr><td style="font-weight:700;">Typical Use</td><td>Statistical inference, surveys</td><td>Pilot studies, qualitative research</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Important Note for Students</div>
+    <p>For MCA research projects (dissertations, final year projects), examiners expect probability sampling whenever possible. Non-probability sampling must be justified with clear reasons (e.g., hidden population, exploratory research). Simply saying "convenience sampling was used because it was easy" is not an acceptable justification for a master's level dissertation.</p>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Babbie, E. — The Practice of Social Research, Cengage Learning</li>
+      <li>Neuman, W.L. — Social Research Methods: Qualitative and Quantitative Approaches</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.5 — DETERMINING SAMPLE SIZE
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t5">
+  <div class="topic-label">Topic 3.5</div>
+  <h2 class="topic-title">Determining Sample Size</h2>
+
+  <div class="concept-box">
+    <strong>Sample Size Determination</strong> is the process of deciding how many observations or participants are needed for a study. The right sample size ensures adequate statistical power while minimizing unnecessary costs. A sample that is too small may miss real effects (Type II error), while a sample that is too large wastes resources.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    For exam purposes, memorize the standard formula: n = (Z² × p × q) / e² for proportions. Remember: Z=1.96 for 95% confidence, p=0.5 when unknown, e=0.05 for 5% margin of error → n ≈ 385 for large populations.
+  </div>
+
+  <h3>Key Inputs for Sample Size Calculation</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔢</div>
+      <h4>Confidence Level (Z-score)</h4>
+      <p>The probability that the population parameter falls within the confidence interval.</p>
+      <p><strong>Common values:</strong></p>
+      <ul>
+        <li>90% confidence → Z = 1.645</li>
+        <li>95% confidence → Z = 1.96</li>
+        <li>99% confidence → Z = 2.576</li>
+      </ul>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📏</div>
+      <h4>Margin of Error (e)</h4>
+      <p>The maximum acceptable difference between sample estimate and true population value. Expressed as a decimal.</p>
+      <p><strong>Common values:</strong> ±3% (e=0.03), ±5% (e=0.05), ±10% (e=0.10)</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Population Proportion (p)</h4>
+      <p>The expected proportion of the population having a characteristic. When unknown, use p = 0.5 (maximum variability).</p>
+      <p>q = 1 − p</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 3.3 — Sample Size vs Margin of Error (95% Confidence, p=0.5)</div>
+    <div class="chart-container">
+      <canvas id="sampleSizeErrorChart"></canvas>
+    </div>
+  </div>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Cochran, W.G. — Sampling Techniques, 3rd Edition, John Wiley & Sons</li>
+      <li>Yamane, T. — Statistics: An Introductory Analysis, Harper & Row</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.6 — FACTORS AFFECTING SAMPLE SIZE
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t6">
+  <div class="topic-label">Topic 3.6</div>
+  <h2 class="topic-title">Factors Affecting Sample Size</h2>
+
+  <div class="concept-box">
+    Several factors influence the required sample size for a research study. Understanding these factors helps researchers make informed decisions about sample size that balance precision, cost, and time constraints.
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>1. Population Homogeneity (Variability)</h4>
+      <p>More homogeneous population → smaller sample needed. More diverse (heterogeneous) population → larger sample needed.</p>
+      <div class="example-box" style="margin-top:0.5rem;"><div class="ex-label">Example</div>Studying "preferred programming language" among Python developers (homogeneous) requires smaller sample than studying same among all IT professionals (heterogeneous).</div>
+    </div>
+    <div class="compare-card">
+      <h4>2. Desired Precision (Margin of Error)</h4>
+      <p>Smaller margin of error → larger sample needed. Halving the margin of error requires quadrupling the sample size.</p>
+      <div class="example-box" style="margin-top:0.5rem;"><div class="ex-label">Example</div>±5% margin requires n=385; ±2.5% margin requires n=1,537 (4 times larger).</div>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>3. Confidence Level</h4>
+      <p>Higher confidence level → larger sample needed. 99% confidence requires larger sample than 95% confidence.</p>
+      <div class="example-box" style="margin-top:0.5rem;"><div class="ex-label">Example</div>95% confidence → Z=1.96, 99% confidence → Z=2.576 (about 1.7 times larger sample).</div>
+    </div>
+    <div class="compare-card">
+      <h4>4. Population Size (N)</h4>
+      <p>For small populations (N &lt; 10,000), population size matters. For large populations (N > 100,000), sample size plateaus.</p>
+      <div class="example-box" style="margin-top:0.5rem;"><div class="ex-label">Example</div>N=500 → n=217; N=100,000 → n=384 (same for larger populations).</div>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>5. Number of Subgroups (Strata)</h4>
+      <p>More subgroups for analysis → larger sample needed. Each subgroup must have sufficient cases (typically n ≥ 30 per subgroup).</p>
+      <div class="example-box" style="margin-top:0.5rem;"><div class="ex-label">Example</div>Comparing 5 regions → need at least 30 per region → minimum 150 total.</div>
+    </div>
+    <div class="compare-card">
+      <h4>6. Expected Effect Size</h4>
+      <p>Smaller expected effect → larger sample needed. Larger effect → smaller sample possible.</p>
+      <div class="example-box" style="margin-top:0.5rem;"><div class="ex-label">Example</div>Detecting 1% difference requires larger sample than detecting 10% difference.</div>
+    </div>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Quick Reference</div>
+    <p>For most MCA research projects (surveys): 95% confidence, ±5% margin of error, p=0.5 → target sample size = 384 respondents. For populations under 10,000, apply finite population correction.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3.7 — SAMPLE SIZE CALCULATIONS WITH EXAMPLES
+════════════════════════════════════════════════════════════════════ -->
+<section class="topic-section" id="t7">
+  <div class="topic-label">Topic 3.7</div>
+  <h2 class="topic-title">Sample Size Calculations with Examples</h2>
+
+  <div class="concept-box">
+    This section demonstrates step-by-step sample size calculations using standard formulas. Each example shows the complete calculation process with clear explanations.
+  </div>
+
+  <h3>Formula 1: Sample Size for Proportions (Infinite Population)</h3>
+  <div class="formula-box">
+    n₀ = (Z² × p × q) / e²
+    <br>
+    Where: Z = Z-score, p = estimated proportion, q = 1-p, e = margin of error
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Example 1: Survey on Online Learning Adoption</div>
+    <p><strong>Scenario:</strong> A researcher wants to estimate the proportion of MCA students who use online learning platforms. No prior data is available.</p>
+    <p><strong>Inputs:</strong></p>
+    <ul>
+      <li>Confidence Level = 95% → Z = 1.96</li>
+      <li>Margin of Error (e) = ±5% = 0.05</li>
+      <li>Estimated proportion (p) = 0.5 (most conservative, maximizes sample size)</li>
+      <li>q = 1 − 0.5 = 0.5</li>
+    </ul>
+    <p><strong>Calculation:</strong></p>
+    <div class="formula-box" style="background:#f0f0ee; color:#0a0a0a; border:1px solid #ccc;">
+      n₀ = (1.96² × 0.5 × 0.5) / (0.05²)<br>
+      = (3.8416 × 0.25) / 0.0025<br>
+      = 0.9604 / 0.0025<br>
+      = <strong>384.16 ≈ 385</strong>
+    </div>
+    <p><strong>Result:</strong> The researcher needs to survey 385 students.</p>
+    <p><strong>Interpretation:</strong> With 385 randomly selected students, the researcher can estimate the true proportion of online learning adoption within ±5% with 95% confidence.</p>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Example 2: Finite Population Correction (N=800 students)</div>
+    <p><strong>Scenario:</strong> Same as Example 1, but the total population of MCA students is known to be 800.</p>
+    <p><strong>Inputs:</strong></p>
+    <ul>
+      <li>n₀ = 385 (from Example 1)</li>
+      <li>N = 800</li>
+    </ul>
+    <div class="formula-box">n = n₀ × N / (n₀ + N − 1)</div>
+    <p><strong>Calculation:</strong></p>
+    <div class="formula-box" style="background:#f0f0ee; color:#0a0a0a; border:1px solid #ccc;">
+      n = (385 × 800) / (385 + 799)<br>
+      = 308,000 / 1,184<br>
+      = <strong>260.1 ≈ 260</strong>
+    </div>
+    <p><strong>Result:</strong> For a population of 800, only 260 students need to be surveyed (not 385).</p>
+  </div>
+
+  <h3>Formula 2: Sample Size for Means (Continuous Variables)</h3>
+  <div class="formula-box">
+    n = (Z² × σ²) / e²
+    <br>
+    Where: Z = Z-score, σ = estimated standard deviation, e = margin of error
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Example 3: Estimating Average Daily Coding Hours</div>
+    <p><strong>Scenario:</strong> A researcher wants to estimate the average number of hours MCA students spend coding per day.</p>
+    <p><strong>Inputs:</strong></p>
+    <ul>
+      <li>Confidence Level = 95% → Z = 1.96</li>
+      <li>Margin of Error (e) = ±0.5 hours</li>
+      <li>Estimated Standard Deviation (σ) = 2 hours (from pilot study)</li>
+    </ul>
+    <p><strong>Calculation:</strong></p>
+    <div class="formula-box" style="background:#f0f0ee; color:#0a0a0a; border:1px solid #ccc;">
+      n = (1.96² × 2²) / 0.5²<br>
+      = (3.8416 × 4) / 0.25<br>
+      = 15.3664 / 0.25<br>
+      = <strong>61.47 ≈ 62</strong>
+    </div>
+    <p><strong>Result:</strong> The researcher needs 62 students.</p>
+  </div>
+
+  <h3>Yamane's Simplified Formula</h3>
+  <div class="formula-box">
+    n = N / (1 + N × e²)
+    <br>
+    Where: N = Population size, e = margin of error
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Example 4: Using Yamane's Formula</div>
+    <p><strong>Scenario:</strong> Population N = 2,500 employees, margin of error e = 0.05 (5%)</p>
+    <div class="formula-box" style="background:#f0f0ee; color:#0a0a0a; border:1px solid #ccc;">
+      n = 2,500 / (1 + 2,500 × 0.05²)<br>
+      = 2,500 / (1 + 2,500 × 0.0025)<br>
+      = 2,500 / (1 + 6.25)<br>
+      = 2,500 / 7.25<br>
+      = <strong>344.8 ≈ 345</strong>
+    </div>
+    <p><strong>Result:</strong> Survey 345 employees.</p>
+    <p><strong>Note:</strong> Yamane's formula assumes 95% confidence and p=0.5. It is widely used for its simplicity.</p>
+  </div>
+
+  <h3>Sample Size Table for Quick Reference</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Population Size (N)</th><th>Sample Size (n) for e=±5%, 95% Confidence</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:center;">100</td><td style="text-align:center;">80</td></tr>
+      <tr><td style="text-align:center;">200</td><td style="text-align:center;">132</td></tr>
+      <tr><td style="text-align:center;">500</td><td style="text-align:center;">217</td></tr>
+      <tr><td style="text-align:center;">1,000</td><td style="text-align:center;">278</td></tr>
+      <tr><td style="text-align:center;">2,000</td><td style="text-align:center;">322</td></tr>
+      <tr><td style="text-align:center;">5,000</td><td style="text-align:center;">357</td></tr>
+      <tr><td style="text-align:center;">10,000</td><td style="text-align:center;">370</td></tr>
+      <tr><td style="text-align:center;">50,000</td><td style="text-align:center;">381</td></tr>
+      <tr><td style="text-align:center;">100,000+</td><td style="text-align:center;">384</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ref-box">
+    <div class="ref-label">References</div>
+    <ul>
+      <li>Yamane, T. — Statistics: An Introductory Analysis, Harper & Row</li>
+      <li>Krejcie, R.V. & Morgan, D.W. — Determining Sample Size for Research Activities, Educational and Psychological Measurement, 1970</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  Research Methodology · Unit 3: Data Collection and Sampling Methods · 2024 Pattern · F.Y. M.C.A. (Management) · SPPU
+</footer>
+
+<!-- ═══════════════ CHARTS ═══════════════ -->
+<script>
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// Sample Size vs Margin of Error Chart
+const sampleCtx = document.getElementById('sampleSizeErrorChart');
+if (sampleCtx) {
+  new Chart(sampleCtx, {
+    type: 'line',
+    data: {
+      labels: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1500', '2000'],
+      datasets: [{
+        label: 'Margin of Error (%) at 95% Confidence Level',
+        data: [13.9, 9.8, 6.9, 5.7, 4.9, 4.4, 4.0, 3.7, 3.5, 3.3, 3.1, 2.5, 2.2],
+        borderColor: '#c0392b',
+        backgroundColor: 'rgba(192,57,43,0.05)',
+        borderWidth: 3,
+        pointBackgroundColor: '#c0392b',
+        pointRadius: 4,
+        tension: 0.3,
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: { label: ctx => 'Margin of Error: ±' + ctx.parsed.y + '%' } }
+      },
+      scales: {
+        y: { 
+          title: { display: true, text: 'Margin of Error (±%)' },
+          beginAtZero: true,
+          grid: { color: '#eee' }
+        },
+        x: { 
+          title: { display: true, text: 'Sample Size (n)' },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>
