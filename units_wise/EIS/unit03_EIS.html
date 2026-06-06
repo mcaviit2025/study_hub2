@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3 — Development of Secure Information System | Essentials of Information Security Notes</title>
+    <link rel="stylesheet" href="/css/unit_css_master.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════ NAVIGATION ═══════════════ -->
+    <nav class="top-nav">
+        <a href="#" class="nav-brand"><span>EIS</span> · Essentials of Information Security Notes</a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+        <ul class="nav-links">
+            <li><a href="eis_index.html"> Home</a></li>
+            <li><a href="unit01_EIS.html">Unit 1</a></li>
+            <li><a href="unit02_EIS.html">Unit 2</a></li>
+            <li><a href="unit03_EIS.html" class="active">Unit 3</a></li>
+            <li><a href="unit04_EIS.html">Unit 4</a></li>
+            <li><a href="unit05_EIS.html">Unit 5</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+    <header class="page-header">
+        <div class="unit-badge">Unit 03 · Essentials of Information Security</div>
+        <h1>Development of Secure Information System</h1>
+        <div class="subject-line">F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune
+            University</div>
+        <div class="quick-info">
+            <div class="quick-info-item">Topics Covered<strong>8 Topics + 5 Case Studies</strong></div>
+            <div class="quick-info-item">Exam Weightage<strong>~20 Marks</strong></div>
+            <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+            <div class="quick-info-item">Difficulty<strong>Advanced Level</strong></div>
+        </div>
+    </header>
+
+    <!-- ═══════════════ TOC ═══════════════ -->
+    <div class="toc-wrap">
+        <div class="toc-box">
+            <h3>Topics in This Unit</h3>
+            <ol>
+                <li><a href="#t3-1">3.1 — Introduction to Development of Secure Information Systems</a></li>
+                <li><a href="#t3-2">3.2 — Developing Secure Information Systems</a></li>
+                <li><a href="#t3-3">3.3 — Key Elements of an Information Security Policy</a></li>
+                <li><a href="#t3-4">3.4 — Information System Development Life Cycle (Secure SDLC)</a></li>
+                <li><a href="#t3-5">3.5 — Application Security</a></li>
+                <li><a href="#t3-6">3.6 — Information Security Governance</a></li>
+                <li><a href="#t3-7">3.7 — Security Architecture and Design</a></li>
+                <li><a href="#t3-8">3.8 — Case Studies on Secure Information System Design (5 Case Studies)</a></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ═══════════════ CONTENT ═══════════════ -->
+    <main class="content-wrap">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.1 — INTRODUCTION
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-1">
+            <div class="topic-label">Topic 3.1</div>
+            <h2 class="topic-title">Introduction to Development of Secure Information Systems</h2>
+
+            <div class="concept-box">
+                <strong>Development of Secure Information Systems</strong> is the process of designing, building, and
+                deploying information systems that are protected from threats and vulnerabilities from the very
+                beginning. Instead of adding security as an afterthought, security is integrated into every phase of
+                system development.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the key principle: Security should be built in, not bolted on. Adding security after a system
+                is built is much more expensive and less effective than designing it securely from the start. This is
+                called "Security by Design."
+            </div>
+
+            <h3>What is a Secure Information System?</h3>
+            <p>A secure information system is a system that protects the confidentiality, integrity, and availability of
+                the information it processes, stores, and transmits. A secure system has the following characteristics.
+            </p>
+            <ul>
+                <li>It is resistant to attacks from both outsiders and insiders.</li>
+                <li>It recovers quickly from security incidents.</li>
+                <li>It protects user privacy and sensitive data.</li>
+                <li>It complies with relevant laws and regulations.</li>
+                <li>It meets the security expectations of its users.</li>
+            </ul>
+
+            <div class="example-box">
+                <div class="ex-label">Real World Example — Secure vs Insecure System</div>
+                <p><strong>Insecure System Example:</strong> A hospital stores patient records in a database with no
+                    encryption. Any employee can access any patient record. The system has no audit logs. This system is
+                    insecure. A single disgruntled employee could leak thousands of patient records.</p>
+                <p><strong>Secure System Example:</strong> The same hospital implements role based access control.
+                    Doctors see full records. Nurses see only relevant medical information. Receptionists see only
+                    contact details. All access is logged and audited. Patient data is encrypted. This system is secure.
+                </p>
+            </div>
+
+            <h3>Why is Developing Secure Information Systems Important?</h3>
+            <p>There are several compelling reasons why organizations must focus on developing secure information
+                systems.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">💰</div>
+                    <h4>Cost Savings</h4>
+                    <p>Fixing security flaws during the design phase costs very little. Fixing the same flaws after the
+                        system is deployed costs hundreds of times more. A study by the National Institute of Standards
+                        and Technology found that fixing a defect during design costs about one hundred rupees. Fixing
+                        the same defect after deployment costs about fifteen thousand rupees.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">⚖️</div>
+                    <h4>Legal Compliance</h4>
+                    <p>Laws like the Digital Personal Data Protection Act 2023 require organizations to protect personal
+                        data. Failure to comply can result in heavy fines of up to two hundred fifty crore rupees.
+                        Building secure systems from the start helps organizations comply with these laws.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">😊</div>
+                    <h4>Customer Trust</h4>
+                    <p>Customers trust organizations that protect their data. A single data breach can destroy years of
+                        customer trust. Building secure systems demonstrates that an organization values its customers
+                        and their privacy.</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">🏆</div>
+                    <h4>Competitive Advantage</h4>
+                    <p>In many industries, security is a competitive differentiator. Customers choose banks, e-commerce
+                        sites, and cloud providers that have stronger security. A reputation for security can be a
+                        valuable business asset.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">📈</div>
+                    <h4>Business Continuity</h4>
+                    <p>A security incident can shut down business operations for days or weeks. Secure systems are more
+                        resilient and recover faster from incidents. This ensures that the business can continue
+                        operating even when attacks occur.</p>
+                </div>
+            </div>
+
+            <h3>Traditional Development vs Secure Development</h3>
+            <table class="data-table no-bold">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Traditional Development</th>
+                        <th>Secure Development</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Security Approach</td>
+                        <td>Security is added at the end (bolted on)</td>
+                        <td>Security is integrated throughout (built in)</td>
+                    </tr>
+                    <tr>
+                        <td>Testing</td>
+                        <td>Security testing happens just before release</td>
+                        <td>Security testing happens in every phase</td>
+                    </tr>
+                    <tr>
+                        <td>Cost of Fixing</td>
+                        <td>Very high because flaws are found late</td>
+                        <td>Very low because flaws are found early</td>
+                    </tr>
+                    <tr>
+                        <td>Developer Training</td>
+                        <td>Developers may not know secure coding</td>
+                        <td>Developers are trained in secure coding</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>Security requirements may be missing</td>
+                        <td>Security requirements are documented and tracked</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.1</div>
+                <p>Developing secure information systems means building security into every phase of system development,
+                    not adding it at the end. This approach saves money, ensures legal compliance, builds customer
+                    trust, and provides competitive advantage. The principle is simple: security by design, not security
+                    as an afterthought.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.2 — DEVELOPING SECURE INFORMATION SYSTEMS
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-2">
+            <div class="topic-label">Topic 3.2</div>
+            <h2 class="topic-title">Developing Secure Information Systems</h2>
+
+            <div class="concept-box">
+                <strong>Developing Secure Information Systems</strong> involves a structured approach that integrates
+                security considerations into every stage of system development. This includes requirements gathering,
+                design, implementation, testing, deployment, and maintenance.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the Secure Development Lifecycle phases: Requirements (define security needs), Design (create
+                secure architecture), Implementation (write secure code), Testing (verify security controls), Deployment
+                (secure configuration), Maintenance (patch and monitor). Security is present in every phase.
+            </div>
+
+            <h3>The Secure Development Lifecycle</h3>
+            <p>The Secure Development Lifecycle, often called SDL, is a software development process that helps
+                developers build more secure software. Microsoft first introduced the SDL in 2004 after several high
+                profile security incidents. Today, many organizations use similar approaches.</p>
+
+            <div class="diagram-wrap">
+                <div class="diagram-title">Fig 3.1 — The Secure Development Lifecycle (SDL)</div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 0; padding: 1rem;">
+                    <div
+                        style="background: #1a7a34; padding: 0.5rem 1rem; border-radius: 5px; width: 100%; max-width: 400px; text-align: center; color: white; font-weight: bold;">
+                        Phase 1: Requirements</div>
+                    <div style="font-size: 1.5rem;">↓</div>
+                    <div
+                        style="background: #0c8da0; padding: 0.5rem 1rem; border-radius: 5px; width: 100%; max-width: 400px; text-align: center; color: white; font-weight: bold;">
+                        Phase 2: Design</div>
+                    <div style="font-size: 1.5rem;">↓</div>
+                    <div
+                        style="background: #e6ac00; padding: 0.5rem 1rem; border-radius: 5px; width: 100%; max-width: 400px; text-align: center; color: white; font-weight: bold;">
+                        Phase 3: Implementation</div>
+                    <div style="font-size: 1.5rem;">↓</div>
+                    <div
+                        style="background: #c0392b; padding: 0.5rem 1rem; border-radius: 5px; width: 100%; max-width: 400px; text-align: center; color: white; font-weight: bold;">
+                        Phase 4: Testing</div>
+                    <div style="font-size: 1.5rem;">↓</div>
+                    <div
+                        style="background: #6f42c1; padding: 0.5rem 1rem; border-radius: 5px; width: 100%; max-width: 400px; text-align: center; color: white; font-weight: bold;">
+                        Phase 5: Deployment</div>
+                    <div style="font-size: 1.5rem;">↓</div>
+                    <div
+                        style="background: #e67e22; padding: 0.5rem 1rem; border-radius: 5px; width: 100%; max-width: 400px; text-align: center; color: white; font-weight: bold;">
+                        Phase 6: Maintenance</div>
+                </div>
+            </div>
+
+            <h4>Phase 1 — Security Requirements</h4>
+            <p>In this phase, the organization defines what security means for the system being built. This includes
+                identifying security objectives, compliance requirements, and threat scenarios.</p>
+
+            <div class="example-box">
+                <div class="ex-label">Example — Security Requirements for a Banking App</div>
+                <ul>
+                    <li>All customer data must be encrypted using AES 256 encryption.</li>
+                    <li>The application must lock after three failed login attempts.</li>
+                    <li>All transactions above ten thousand rupees require multi factor authentication.</li>
+                    <li>The application must log all user actions for audit purposes.</li>
+                    <li>The system must comply with Payment Card Industry Data Security Standard requirements.</li>
+                </ul>
+            </div>
+
+            <h4>Phase 2 — Secure Design</h4>
+            <p>In this phase, the system architecture is designed with security in mind. Designers consider how to
+                implement the security requirements identified in Phase 1.</p>
+            <ul>
+                <li>Threat modeling is performed to identify potential attack vectors.</li>
+                <li>Security patterns and best practices are applied.</li>
+                <li>The principle of least privilege is incorporated into the design.</li>
+                <li>Defense in depth is implemented using multiple layers of security controls.</li>
+                <li>The design is reviewed by security experts before implementation begins.</li>
+            </ul>
+
+            <h4>Phase 3 — Secure Implementation</h4>
+            <p>In this phase, developers write code that follows secure coding standards. The goal is to avoid
+                introducing common vulnerabilities.</p>
+            <ul>
+                <li>Developers use secure coding guidelines such as the OWASP Secure Coding Practices.</li>
+                <li>Static code analysis tools are used to automatically find security flaws in the code.</li>
+                <li>Code reviews are conducted with a focus on security.</li>
+                <li>All third party libraries and components are checked for known vulnerabilities.</li>
+                <li>Secrets such as passwords and API keys are never hardcoded in the source code.</li>
+            </ul>
+
+            <div class="warn-box">
+                <div class="warn-label">⚠️ Common Secure Coding Mistakes to Avoid</div>
+                <ul>
+                    <li>Storing passwords in plain text in a database.</li>
+                    <li>Hardcoding API keys or database passwords in the source code.</li>
+                    <li>Not validating user input before using it in database queries (this leads to SQL injection).
+                    </li>
+                    <li>Not sanitizing output that will be displayed in a web browser (this leads to cross site
+                        scripting).</li>
+                    <li>Using weak or outdated encryption algorithms.</li>
+                </ul>
+            </div>
+
+            <h4>Phase 4 — Security Testing</h4>
+            <p>In this phase, the system is tested to verify that security controls work as intended and that no new
+                vulnerabilities have been introduced.</p>
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">🔍</div>
+                    <h4>Static Testing</h4>
+                    <p>Also called white box testing. The source code is examined for security flaws without running the
+                        program. Tools like SonarQube and Checkmarx are used.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🎯</div>
+                    <h4>Dynamic Testing</h4>
+                    <p>The running application is tested for vulnerabilities. Tools like OWASP ZAP and Burp Suite are
+                        used. This includes both automated scans and manual penetration testing.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔬</div>
+                    <h4>Interactive Testing</h4>
+                    <p>Combines static and dynamic testing. Tools like Contrast Security are used. This approach
+                        provides more accurate results by combining both analysis methods.</p>
+                </div>
+            </div>
+
+            <h4>Phase 5 — Secure Deployment</h4>
+            <p>In this phase, the system is deployed to production with a secure configuration.</p>
+            <ul>
+                <li>Default passwords are changed.</li>
+                <li>Unnecessary services and ports are disabled.</li>
+                <li>The system is placed behind a properly configured firewall.</li>
+                <li>HTTPS is enabled with strong encryption protocols.</li>
+                <li>Security headers are configured in the web server.</li>
+                <li>A deployment checklist is used to ensure no security steps are missed.</li>
+            </ul>
+
+            <h4>Phase 6 — Secure Maintenance</h4>
+            <p>In this phase, the system is monitored and maintained to remain secure over time.</p>
+            <ul>
+                <li>Security patches are applied regularly, preferably through an automated patch management system.
+                </li>
+                <li>Security logs are monitored for signs of attacks.</li>
+                <li>Vulnerability scans are run on a regular schedule (for example, weekly or monthly).</li>
+                <li>Penetration tests are conducted at least once per year.</li>
+                <li>An incident response plan is in place and tested regularly.</li>
+            </ul>
+
+            <div class="example-box">
+                <div class="ex-label">Real World Example — A Secure Development Success Story</div>
+                <p><strong>Company Example: Google</strong> Google has one of the most mature secure development
+                    programs in the world. Google requires all developers to complete security training. All code is
+                    reviewed by security experts. All applications are automatically scanned for vulnerabilities. Google
+                    also runs a bug bounty program that pays security researchers who find vulnerabilities in Google
+                    products. As a result, Google products have significantly fewer security vulnerabilities than
+                    industry averages.</p>
+            </div>
+
+            <h3>Common Challenges in Developing Secure Systems</h3>
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Technical Challenges</h4>
+                    <ul>
+                        <li>Legacy systems that were not designed with security in mind.</li>
+                        <li>Complex dependencies on third party libraries and components.</li>
+                        <li>Integration with insecure external systems.</li>
+                        <li>Lack of automated security testing tools.</li>
+                        <li>Performance impact of security controls.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Organizational Challenges</h4>
+                    <ul>
+                        <li>Lack of management support for security initiatives.</li>
+                        <li>Insufficient security training for developers.</li>
+                        <li>Schedule pressure that forces shortcuts on security.</li>
+                        <li>Budget constraints that limit security investments.</li>
+                        <li>Poor communication between security teams and development teams.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.2</div>
+                <p>Developing secure information systems requires a structured approach called the Secure Development
+                    Lifecycle. This includes six phases: Requirements, Design, Implementation, Testing, Deployment, and
+                    Maintenance. Security is integrated into every phase, not just added at the end. Organizations face
+                    both technical and organizational challenges in implementing secure development, but the benefits
+                    far outweigh the costs.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.3 — KEY ELEMENTS OF AN INFORMATION SECURITY POLICY
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-3">
+            <div class="topic-label">Topic 3.3</div>
+            <h2 class="topic-title">Key Elements of an Information Security Policy</h2>
+
+            <div class="concept-box">
+                <strong>An Information Security Policy</strong> is a formal document that defines how an organization
+                protects its information assets. It sets the rules for employee behavior, defines security
+                responsibilities, and establishes consequences for violations. Every organization that values its
+                information needs a written security policy.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the three levels of security policies: Program Level (overall security direction), Issue
+                Specific Level (covers specific topics like email or internet use), and System Specific Level (technical
+                configuration rules for specific systems).
+            </div>
+
+            <h3>Why Do Organizations Need a Security Policy?</h3>
+            <ul>
+                <li><strong>Provides Direction:</strong> The policy tells everyone what is expected of them regarding
+                    security.</li>
+                <li><strong>Defines Responsibilities:</strong> The policy clearly states who is responsible for what
+                    security tasks.</li>
+                <li><strong>Supports Compliance:</strong> Many laws and regulations require organizations to have
+                    written security policies.</li>
+                <li><strong>Reduces Liability:</strong> If a security incident occurs, having a policy shows that the
+                    organization took reasonable steps to prevent it.</li>
+                <li><strong>Creates Accountability:</strong> Employees know the rules and the consequences of breaking
+                    them.</li>
+            </ul>
+
+            <h3>Three Levels of Security Policies</h3>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Level 1 — Program Level Policy (EISP)</h4>
+                    <p>Enterprise Information Security Policy is the highest level policy. It sets the overall security
+                        direction for the entire organization. It is approved by senior management and applies to
+                        everyone.</p>
+                    <p><strong>Example Content:</strong></p>
+                    <ul>
+                        <li>The organization's security vision and goals.</li>
+                        <li>The Chief Information Security Officer's role and authority.</li>
+                        <li>Security responsibilities for all employees.</li>
+                        <li>Consequences of policy violations.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Level 2 — Issue Specific Policy (ISSP)</h4>
+                    <p>Issue Specific Security Policy covers a particular topic or area of security. These policies
+                        provide detailed rules for specific situations.</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Email usage policy (what can and cannot be sent via email).</li>
+                        <li>Internet usage policy (what websites can be visited).</li>
+                        <li>Password policy (how passwords must be created and changed).</li>
+                        <li>Remote access policy (how employees can connect from home).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Level 3 — System Specific Policy (SysSP)</h4>
+                    <p>System Specific Security Policy provides technical configuration rules for specific systems.
+                        These policies are often implemented through technical controls.</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Firewall configuration rules (what traffic is allowed or blocked).</li>
+                        <li>Database access control lists (who can access which tables).</li>
+                        <li>Operating system hardening settings (what services are disabled).</li>
+                        <li>Patch management schedules (when updates must be applied).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Key Elements of a Good Security Policy</h3>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">📜</div>
+                    <h4>Purpose and Scope</h4>
+                    <p>Every policy should clearly state why the policy exists and who it applies to. The scope defines
+                        which systems, departments, or individuals are covered by the policy.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">👤</div>
+                    <h4>Roles and Responsibilities</h4>
+                    <p>The policy must specify who is responsible for implementing and enforcing the policy. This
+                        includes the security team, managers, and individual employees.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">✅</div>
+                    <h4>Specific Rules</h4>
+                    <p>The policy must contain clear, actionable rules. For example, "Passwords must be at least twelve
+                        characters long" is a clear rule. "Use strong passwords" is not clear enough.</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">⚖️</div>
+                    <h4>Consequences</h4>
+                    <p>The policy must state what happens if someone violates the rules. Consequences may include verbal
+                        warnings, written warnings, suspension, termination, or legal action.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔄</div>
+                    <h4>Review and Update</h4>
+                    <p>The policy must specify how often it will be reviewed and updated. Security threats change over
+                        time, so policies must evolve too. Most organizations review their policies annually.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">✍️</div>
+                    <h4>Acknowledgment</h4>
+                    <p>Employees must sign a form acknowledging that they have read and understood the policy. This
+                        signature creates accountability.</p>
+                </div>
+            </div>
+
+            <h3>Sample Security Policy — Password Policy</h3>
+            <div class="example-box">
+                <div class="ex-label">Example — Password Policy for an Organization</div>
+                <p><strong>Policy Number:</strong> ISSP-PWD-001</p>
+                <p><strong>Effective Date:</strong> January 1, 2024</p>
+                <p><strong>Purpose:</strong> This policy establishes password requirements to protect organizational
+                    information systems from unauthorized access.</p>
+                <p><strong>Scope:</strong> This policy applies to all employees, contractors, and vendors who access any
+                    organizational information system.</p>
+                <p><strong>Policy Rules:</strong></p>
+                <ul>
+                    <li>All passwords must be at least twelve characters in length.</li>
+                    <li>All passwords must contain at least one uppercase letter, one lowercase letter, one number, and
+                        one special character.</li>
+                    <li>Passwords must be changed every ninety days.</li>
+                    <li>Users cannot reuse their previous five passwords.</li>
+                    <li>Passwords cannot contain dictionary words or personal information such as names or dates of
+                        birth.</li>
+                    <li>Multi factor authentication is required for all remote access.</li>
+                </ul>
+                <p><strong>Consequences of Violation:</strong> First violation will result in a verbal warning. Second
+                    violation will result in a written warning. Third violation may result in termination of employment.
+                </p>
+                <p><strong>Review Date:</strong> This policy will be reviewed annually by the Information Security Team.
+                </p>
+            </div>
+
+            <div class="warn-box">
+                <div class="warn-label">⚠️ Common Policy Mistakes to Avoid</div>
+                <ul>
+                    <li>Writing policies that are too long and difficult to read.</li>
+                    <li>Using technical jargon that employees do not understand.</li>
+                    <li>Creating policies that cannot be enforced.</li>
+                    <li>Writing policies that are never reviewed or updated.</li>
+                    <li>Having policies that employees never read or acknowledge.</li>
+                    <li>Creating policies that do not have management support.</li>
+                </ul>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.3</div>
+                <p>An Information Security Policy is a formal document that defines how an organization protects its
+                    information assets. Policies exist at three levels: program level (overall direction), issue
+                    specific level (topic specific rules), and system specific level (technical configuration). A good
+                    policy has a clear purpose, defined responsibilities, specific rules, stated consequences, and
+                    regular reviews. Without written policies, employees do not know what is expected of them and the
+                    organization cannot enforce security rules.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.4 — INFORMATION SYSTEM DEVELOPMENT LIFE CYCLE
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-4">
+            <div class="topic-label">Topic 3.4</div>
+            <h2 class="topic-title">Information System Development Life Cycle (SDLC)</h2>
+
+            <div class="concept-box">
+                <strong>The System Development Life Cycle, often called SDLC,</strong> is a structured process for
+                planning, creating, testing, and deploying an information system. The traditional SDLC does not focus on
+                security. However, the Secure SDLC integrates security activities into every phase of development.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the five phases of traditional SDLC: Planning, Analysis, Design, Implementation, and
+                Maintenance. For the exam, also know how security is added to each phase in the Secure SDLC.
+            </div>
+
+            <h3>Traditional SDLC Phases</h3>
+
+            <div class="diagram-wrap">
+                <div class="diagram-title">Fig 3.2 — Traditional System Development Life Cycle (SDLC)</div>
+                <div style="display: flex; justify-content: center; gap: 0; flex-wrap: wrap; margin: 1rem 0;">
+                    <div
+                        style="background: #1a7a34; color: white; padding: 0.7rem; text-align: center; flex: 1; min-width: 100px;">
+                        Planning</div>
+                    <div
+                        style="background: #0c8da0; color: white; padding: 0.7rem; text-align: center; flex: 1; min-width: 100px;">
+                        Analysis</div>
+                    <div
+                        style="background: #e6ac00; color: white; padding: 0.7rem; text-align: center; flex: 1; min-width: 100px;">
+                        Design</div>
+                    <div
+                        style="background: #c0392b; color: white; padding: 0.7rem; text-align: center; flex: 1; min-width: 100px;">
+                        Implementation</div>
+                    <div
+                        style="background: #6f42c1; color: white; padding: 0.7rem; text-align: center; flex: 1; min-width: 100px;">
+                        Maintenance</div>
+                </div>
+            </div>
+
+            <h4>Phase 1 — Planning</h4>
+            <p>In this phase, the organization defines what the system will do. This includes project goals, budget,
+                timeline, and resources needed. A feasibility study is conducted to determine whether the project is
+                worthwhile.</p>
+
+            <h4>Phase 2 — Analysis</h4>
+            <p>In this phase, the organization gathers detailed requirements for the system. Analysts interview
+                stakeholders, study existing processes, and document what the new system must do.</p>
+
+            <h4>Phase 3 — Design</h4>
+            <p>In this phase, the organization creates the technical design of the system. This includes database
+                design, user interface design, network architecture, and software components.</p>
+
+            <h4>Phase 4 — Implementation</h4>
+            <p>In this phase, the system is actually built. Developers write code, configure hardware, and integrate
+                components. Testing is conducted to verify that the system works as designed.</p>
+
+            <h4>Phase 5 — Maintenance</h4>
+            <p>In this phase, the system is operated and maintained. Bugs are fixed, updates are applied, and
+                enhancements are added as business needs change.</p>
+
+            <h3>Security in SDLC — The Secure SDLC</h3>
+            <p>The traditional SDLC does not include security activities. The Secure SDLC adds security tasks to each
+                phase.</p>
+
+            <table class="data-table no-bold">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Traditional Activity</th>
+                        <th>Added Security Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Planning</td>
+                        <td>Define project goals and budget</td>
+                        <td>Define security goals and security budget</td>
+                    </tr>
+                    <tr>
+                        <td>Analysis</td>
+                        <td>Gather functional requirements</td>
+                        <td>Gather security requirements (encryption, authentication, access control)</td>
+                    </tr>
+                    <tr>
+                        <td>Design</td>
+                        <td>Create system architecture</td>
+                        <td>Conduct threat modeling, design security controls</td>
+                    </tr>
+                    <tr>
+                        <td>Implementation</td>
+                        <td>Write code and test functionality</td>
+                        <td>Write secure code, run static analysis, conduct security testing</td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance</td>
+                        <td>Fix bugs and add features</td>
+                        <td>Apply security patches, monitor logs, conduct regular vulnerability scans</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Secure SDLC Models</h3>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">🔒</div>
+                    <h4>Microsoft SDL</h4>
+                    <p>Microsoft developed the Security Development Lifecycle in 2004 after several high profile
+                        security incidents. The Microsoft SDL has seven phases and includes mandatory security training
+                        for all developers.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">⚡</div>
+                    <h4>BSIMM (Building Security In Maturity Model)</h4>
+                    <p>BSIMM is not a single model but a framework that describes what real organizations are doing to
+                        build secure software. It is based on observing the security practices of dozens of major
+                        companies.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔄</div>
+                    <h4>Agile Security</h4>
+                    <p>In Agile development, security activities must be integrated into sprints. Security requirements
+                        become user stories. Security testing is automated and run with every build. This is called
+                        DevSecOps.</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="ex-label">Real World Example — Secure SDLC in Action at a Bank</div>
+                <p><strong>Example: A Large Indian Bank</strong> The bank decided to build a new mobile banking
+                    application. They used a Secure SDLC approach.</p>
+                <ul>
+                    <li><strong>Planning Phase:</strong> The security team was included from day one. The budget
+                        included money for security testing and tools.</li>
+                    <li><strong>Analysis Phase:</strong> Security requirements were documented alongside functional
+                        requirements. For example, "All customer data must be encrypted" was a security requirement.
+                    </li>
+                    <li><strong>Design Phase:</strong> The design included a threat model. The team identified potential
+                        attacks and designed controls to prevent them.</li>
+                    <li><strong>Implementation Phase:</strong> Developers used secure coding standards. Static analysis
+                        tools scanned every code commit. A third party conducted a penetration test before release.</li>
+                    <li><strong>Maintenance Phase:</strong> The bank set up a bug bounty program to find vulnerabilities
+                        in the live application. They also run monthly vulnerability scans.</li>
+                </ul>
+                <p>The result was a mobile banking application that passed the bank's security audit with no critical
+                    findings.</p>
+            </div>
+
+            <div class="warn-box">
+                <div class="warn-label">⚠️ What Happens When Security is Ignored in SDLC</div>
+                <p>The Equifax data breach of 2017 is a famous example. Equifax had a known vulnerability in an open
+                    source library used in their web application. They had a patch available for months. But their SDLC
+                    did not include a process for applying security patches to libraries. As a result, hackers exploited
+                    the vulnerability and stole the personal data of one hundred forty seven million people. The cost of
+                    the breach was over one point four billion dollars. All because security was not integrated into
+                    their development and maintenance processes.</p>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.4</div>
+                <p>The System Development Life Cycle (SDLC) is a structured process for building information systems.
+                    The traditional SDLC includes Planning, Analysis, Design, Implementation, and Maintenance. The
+                    Secure SDLC adds security activities to each phase. Organizations that ignore security in their SDLC
+                    face significant risks, including data breaches, regulatory fines, and reputational damage. Security
+                    must be built into every phase, not added at the end.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.5 — APPLICATION SECURITY
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-5">
+            <div class="topic-label">Topic 3.5</div>
+            <h2 class="topic-title">Application Security</h2>
+
+            <div class="concept-box">
+                <strong>Application Security, often called AppSec,</strong> is the practice of protecting software
+                applications from security threats throughout their entire lifecycle. This includes designing secure
+                applications, writing secure code, testing for vulnerabilities, and monitoring applications in
+                production.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the OWASP Top 10 — it is the most important list of web application vulnerabilities. For the
+                exam, know at least five of them: Injection (SQL Injection), Broken Authentication, Sensitive Data
+                Exposure, Cross Site Scripting (XSS), and Security Misconfiguration.
+            </div>
+
+            <h3>What is Application Security?</h3>
+            <p>Application security is a broad field that covers all measures taken to protect software applications.
+                This includes web applications, mobile applications, desktop applications, and application programming
+                interfaces (APIs).</p>
+
+            <p>The main goals of application security are:</p>
+            <ul>
+                <li>Prevent attackers from exploiting vulnerabilities in the application.</li>
+                <li>Protect the data that the application processes, stores, or transmits.</li>
+                <li>Ensure that only authorized users can access the application and its features.</li>
+                <li>Maintain the availability of the application for legitimate users.</li>
+            </ul>
+
+            <h3>Why is Application Security Important?</h3>
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Statistics on Application Vulnerabilities</h4>
+                    <ul>
+                        <li>According to Verizon, about forty three percent of data breaches involve web applications.
+                        </li>
+                        <li>The average cost of a data breach is about four point five million dollars.</li>
+                        <li>Most web applications have at least one serious vulnerability.</li>
+                        <li>Attackers scan for vulnerable applications continuously.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Common Attack Targets</h4>
+                    <ul>
+                        <li>E-commerce checkout pages (to steal credit cards).</li>
+                        <li>Login pages (to steal usernames and passwords).</li>
+                        <li>Search boxes (to inject malicious code).</li>
+                        <li>File upload features (to upload malware).</li>
+                        <li>APIs (to extract data or bypass controls).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>The OWASP Top 10 — Most Critical Web Application Security Risks</h3>
+            <p>OWASP stands for Open Web Application Security Project. It is a non profit organization that works to
+                improve software security. Every few years, OWASP publishes the OWASP Top 10, which lists the ten most
+                critical web application security risks.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">💉</div>
+                    <h4>1. Injection (SQL Injection)</h4>
+                    <p>Injection flaws occur when untrusted data is sent to an interpreter as part of a command or
+                        query. SQL injection is the most common type. An attacker can enter malicious SQL code into a
+                        form field, which tricks the database into revealing or deleting data.</p>
+                    <p><strong>Example:</strong> A login form that asks for a username. The attacker enters `' OR
+                        '1'='1` as the username. The application uses this directly in a SQL query. The query returns
+                        all users, and the attacker is logged in without a password.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔑</div>
+                    <h4>2. Broken Authentication</h4>
+                    <p>Broken authentication happens when an application does not properly verify the identity of users.
+                        Attackers can then impersonate legitimate users.</p>
+                    <p><strong>Example:</strong> An application allows users to change their password without asking for
+                        the current password. An attacker who finds an unattended computer can change that user's
+                        password and lock them out.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔓</div>
+                    <h4>3. Sensitive Data Exposure</h4>
+                    <p>This happens when an application does not properly protect sensitive information such as
+                        passwords, credit card numbers, or personal data.</p>
+                    <p><strong>Example:</strong> A website uses HTTP instead of HTTPS. An attacker on the same Wi-Fi
+                        network can see all data sent between the user and the website, including login credentials.</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">📝</div>
+                    <h4>4. XML External Entities (XXE)</h4>
+                    <p>This vulnerability occurs when an application parses XML input that contains a reference to an
+                        external entity. Attackers can read files on the server or launch denial of service attacks.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">⚙️</div>
+                    <h4>5. Broken Access Control</h4>
+                    <p>Users should only be able to access the data and functions that they are authorized to use.
+                        Broken access control allows users to do things they should not be allowed to do.</p>
+                    <p><strong>Example:</strong> An attacker changes the user ID in the URL from "user=123" to
+                        "user=124" and sees another user's account information.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔧</div>
+                    <h4>6. Security Misconfiguration</h4>
+                    <p>This is the most common vulnerability. It happens when security settings are not properly
+                        configured. This includes default passwords, verbose error messages, and unnecessary features
+                        left enabled.</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">💾</div>
+                    <h4>7. Cross Site Scripting (XSS)</h4>
+                    <p>XSS allows attackers to inject malicious scripts into web pages viewed by other users. The script
+                        runs in the victim's browser and can steal cookies, session tokens, or other sensitive
+                        information.</p>
+                    <p><strong>Example:</strong> A comment section on a blog. The attacker posts `
+                        <!-- <script>alert("Hacked")</script>` as a comment. Every visitor to that page sees the alert -->
+                        message.
+                    </p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">📁</div>
+                    <h4>8. Insecure Deserialization</h4>
+                    <p>This happens when an application deserializes untrusted data. Attackers can modify serialized
+                        objects to change application behavior or execute malicious code.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">📦</div>
+                    <h4>9. Using Components with Known Vulnerabilities</h4>
+                    <p>Most modern applications use open source libraries and components. If these components have known
+                        vulnerabilities, the application inherits those vulnerabilities.</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">📊</div>
+                    <h4>10. Insufficient Logging and Monitoring</h4>
+                    <p>Without proper logging and monitoring, organizations cannot detect attacks in progress. Most
+                        breaches take months to discover because organizations do not have good logging and monitoring
+                        in place.</p>
+                </div>
+            </div>
+
+            <h3>Application Security Controls</h3>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Input Validation</h4>
+                    <ul>
+                        <li>Validate all data received from users.</li>
+                        <li>Use whitelists, not blacklists. Allow only known good values.</li>
+                        <li>Validate data type, length, format, and range.</li>
+                        <li>Never trust client side validation alone. Always validate on the server.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Output Encoding</h4>
+                    <ul>
+                        <li>Encode all data before displaying it in a web page.</li>
+                        <li>Use context specific encoding (HTML encode, JavaScript encode, URL encode).</li>
+                        <li>This prevents cross site scripting attacks.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Authentication Controls</h4>
+                    <ul>
+                        <li>Require strong passwords (at least twelve characters, mixed case, numbers, symbols).</li>
+                        <li>Implement multi factor authentication for sensitive applications.</li>
+                        <li>Lock accounts after multiple failed login attempts.</li>
+                        <li>Use secure session management. Session IDs must be random and expire after a reasonable
+                            time.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Authorization Controls</h4>
+                    <ul>
+                        <li>Implement role based access control.</li>
+                        <li>Enforce the principle of least privilege. Users get only the permissions they need.</li>
+                        <li>Never rely on client side authorization. All authorization checks must be performed on the
+                            server.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="ex-label">Real World Example — Application Security Failure</div>
+                <p><strong>Example: The Heartland Payment Systems Breach (2008)</strong> Heartland Payment Systems
+                    processed credit card payments for many businesses. Attackers used an SQL injection vulnerability in
+                    their web application to gain access to their network. Once inside, they installed malware that
+                    captured credit card data as it moved through the system. Over one hundred million credit cards were
+                    compromised. The company paid over one hundred forty million dollars in fines and settlements. The
+                    vulnerability was a simple SQL injection flaw that could have been prevented with proper input
+                    validation.</p>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.5</div>
+                <p>Application security is the practice of protecting software applications from threats. The OWASP Top
+                    10 lists the most critical web application vulnerabilities, including SQL injection, broken
+                    authentication, and cross site scripting. Organizations must implement application security controls
+                    such as input validation, output encoding, strong authentication, and proper authorization. Without
+                    application security, even the most secure network can be breached through a vulnerable application.
+                </p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.6 — INFORMATION SECURITY GOVERNANCE
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-6">
+            <div class="topic-label">Topic 3.6</div>
+            <h2 class="topic-title">Information Security Governance</h2>
+
+            <div class="concept-box">
+                <strong>Information Security Governance</strong> is the system by which an organization directs and
+                controls its security activities. It answers the questions: Who makes security decisions? How are those
+                decisions made? How do we know if security is working? Good governance ensures that security is aligned
+                with business goals and that resources are used effectively.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the six outcomes of effective security governance: Strategic alignment, Risk management,
+                Resource management, Performance measurement, Value delivery, and Compliance. These are the reasons why
+                governance matters.
+            </div>
+
+            <h3>What is Information Security Governance?</h3>
+            <p>Information Security Governance is different from security management. Security management is about the
+                day to day tasks of running security controls. Security governance is about setting the direction,
+                making policies, and ensuring accountability.</p>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Security Governance</h4>
+                    <ul>
+                        <li>Sets the strategy and direction.</li>
+                        <li>Makes high level policies.</li>
+                        <li>Allocates budget and resources.</li>
+                        <li>Ensures compliance with laws and regulations.</li>
+                        <li>Held by the Board of Directors and senior management.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Security Management</h4>
+                    <ul>
+                        <li>Implements the strategy.</li>
+                        <li>Executes day to day security tasks.</li>
+                        <li>Manages security tools and teams.</li>
+                        <li>Responds to security incidents.</li>
+                        <li>Held by the CISO and security team.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>The Six Outcomes of Effective Security Governance</h3>
+            <p>The Information Systems Audit and Control Association (ISACA) defines six outcomes that effective
+                security governance should achieve.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">🎯</div>
+                    <h4>1. Strategic Alignment</h4>
+                    <p>Security activities must support business goals. If security hinders the business, something is
+                        wrong. Security should enable the business to achieve its objectives safely.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">⚠️</div>
+                    <h4>2. Risk Management</h4>
+                    <p>The organization must have a process for identifying, assessing, and managing security risks.
+                        Risk decisions must be made at the appropriate level of management.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">💰</div>
+                    <h4>3. Resource Management</h4>
+                    <p>Security resources including people, budget, and technology must be allocated effectively.
+                        Resources should be directed to the highest priority risks.</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">📊</div>
+                    <h4>4. Performance Measurement</h4>
+                    <p>The organization must measure whether security is working. Metrics such as number of incidents,
+                        time to detect, and time to respond should be tracked and reported to management.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">📦</div>
+                    <h4>5. Value Delivery</h4>
+                    <p>Security investments must deliver value. Every rupee spent on security should reduce risk by more
+                        than it costs. The organization should track return on security investment.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">⚖️</div>
+                    <h4>6. Compliance</h4>
+                    <p>The organization must comply with all applicable laws, regulations, and contractual obligations.
+                        This includes data protection laws, industry standards, and customer contracts.</p>
+                </div>
+            </div>
+
+            <h3>Key Roles in Security Governance</h3>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Board of Directors</h4>
+                    <ul>
+                        <li>Ultimate responsibility for security governance.</li>
+                        <li>Approves security strategy and major investments.</li>
+                        <li>Oversees management's handling of security.</li>
+                        <li>Must be informed of significant security risks and incidents.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Chief Information Security Officer (CISO)</h4>
+                    <ul>
+                        <li>Responsible for the security program.</li>
+                        <li>Reports to the Board or to senior management.</li>
+                        <li>Develops security strategy and policies.</li>
+                        <li>Manages the security team and budget.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Security Steering Committee</h4>
+                    <ul>
+                        <li>A group of senior managers from different departments.</li>
+                        <li>Reviews and approves security policies.</li>
+                        <li>Makes decisions on security investments.</li>
+                        <li>Resolves conflicts between security and business objectives.</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Chief Executive Officer (CEO)</h4>
+                    <ul>
+                        <li>Sets the tone for security from the top.</li>
+                        <li>Must demonstrate commitment to security.</li>
+                        <li>Ensures that security has adequate resources.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="ex-label">Real World Example — Security Governance Structure at a Large Bank</div>
+                <p><strong>Example: A Leading Indian Bank</strong> The bank has the following security governance
+                    structure.</p>
+                <ul>
+                    <li><strong>Board of Directors:</strong> The Board has a Risk Management Committee that oversees
+                        security. The CISO reports to this committee quarterly.</li>
+                    <li><strong>Chief Information Security Officer (CISO):</strong> The CISO is a senior vice president
+                        who reports directly to the CEO. The CISO has a team of two hundred security professionals.</li>
+                    <li><strong>Security Steering Committee:</strong> This committee meets monthly and includes the
+                        heads of IT, Operations, Legal, Compliance, and Human Resources.</li>
+                    <li><strong>Security Policies:</strong> All policies are approved by the Steering Committee and
+                        reviewed annually.</li>
+                    <li><strong>Metrics:</strong> The bank tracks metrics such as number of detected incidents, time to
+                        contain incidents, and percentage of systems with up to date patches. These metrics are reviewed
+                        at every Steering Committee meeting.</li>
+                </ul>
+            </div>
+
+            <h3>Security Governance Frameworks</h3>
+            <p>Organizations use established frameworks to guide their security governance efforts.</p>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">📋</div>
+                    <h4>COBIT</h4>
+                    <p>Control Objectives for Information and Related Technology is a framework for IT governance and
+                        management. It provides detailed guidance on how to organize, implement, and measure IT controls
+                        including security.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔒</div>
+                    <h4>ISO 27001</h4>
+                    <p>ISO 27001 is a standard for Information Security Management Systems (ISMS). It requires
+                        organizations to implement a governance structure that includes management commitment, policy,
+                        risk assessment, and continuous improvement.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🛡️</div>
+                    <h4>NIST Cybersecurity Framework</h4>
+                    <p>The NIST CSF provides guidance on how to manage cybersecurity risk. It is organized into five
+                        functions: Identify, Protect, Detect, Respond, and Recover. Each function includes governance
+                        related activities.</p>
+                </div>
+            </div>
+
+            <div class="warn-box">
+                <div class="warn-label">⚠️ Signs of Poor Security Governance</div>
+                <ul>
+                    <li>The CISO does not report to senior management.</li>
+                    <li>The security budget is constantly cut.</li>
+                    <li>Security policies exist but are not enforced.</li>
+                    <li>No one knows who is responsible for security decisions.</li>
+                    <li>Security metrics are not tracked or reported.</li>
+                    <li>The Board never discusses security.</li>
+                </ul>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.6</div>
+                <p>Information Security Governance is the system by which organizations direct and control security
+                    activities. It ensures that security is aligned with business goals, that risks are managed
+                    properly, and that resources are used effectively. Key roles include the Board of Directors, the
+                    CISO, and the Security Steering Committee. Without proper governance, security efforts are
+                    uncoordinated, underfunded, and ineffective.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.7 — SECURITY ARCHITECTURE AND DESIGN
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-7">
+            <div class="topic-label">Topic 3.7</div>
+            <h2 class="topic-title">Security Architecture and Design</h2>
+
+            <div class="concept-box">
+                <strong>Security Architecture and Design</strong> refers to the high level structure of security
+                controls within an information system. It is the blueprint that describes how security components such
+                as firewalls, intrusion detection systems, encryption, and access controls work together to protect the
+                system.
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">📌 Last Night Tip</div>
+                Remember the key security design principles: Defense in Depth (multiple layers of security), Least
+                Privilege (give only necessary access), Fail Secure (when something fails, it fails to a secure state),
+                Separation of Duties (no single person has too much power), and Economy of Mechanism (keep security
+                simple).
+            </div>
+
+            <h3>What is Security Architecture?</h3>
+            <p>Security architecture is the design of security controls within an information system. It includes the
+                hardware, software, policies, and procedures that work together to protect information assets. A good
+                security architecture is planned, documented, and reviewed regularly.</p>
+
+            <p>The main components of security architecture include:</p>
+            <ul>
+                <li>Network security controls (firewalls, intrusion detection systems).</li>
+                <li>Identity and access management (authentication, authorization).</li>
+                <li>Data protection (encryption, data loss prevention).</li>
+                <li>Application security (secure coding, web application firewalls).</li>
+                <li>Monitoring and detection (security information and event management).</li>
+                <li>Incident response (processes and tools for responding to attacks).</li>
+            </ul>
+
+            <h3>Key Security Design Principles</h3>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">🧅</div>
+                    <h4>Defense in Depth</h4>
+                    <p>Defense in depth means using multiple layers of security controls. If one layer fails, another
+                        layer stops the attack. Think of it like an onion with many layers. Each layer must be
+                        penetrated separately.</p>
+                    <p><strong>Example:</strong> To protect customer data, a bank uses firewalls at the network
+                        perimeter, intrusion detection inside the network, encryption of the data, access controls on
+                        the database, and employee training to prevent social engineering.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔑</div>
+                    <h4>Least Privilege</h4>
+                    <p>Every user, process, and system should have only the minimum privileges necessary to perform its
+                        function. No one should have extra permissions.</p>
+                    <p><strong>Example:</strong> A customer service representative needs to view customer records but
+                        should not be able to change account balances or access other departments' data.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔒</div>
+                    <h4>Fail Secure</h4>
+                    <p>When a system fails, it should fail to a secure state. This means that if something goes wrong,
+                        the system becomes more restrictive, not less restrictive.</p>
+                    <p><strong>Example:</strong> If a firewall crashes, it should block all traffic rather than allowing
+                        all traffic through. This is called "fail closed" rather than "fail open."</p>
+                </div>
+            </div>
+
+            <div class="three-grid">
+                <div class="three-card">
+                    <div class="card-icon">👥</div>
+                    <h4>Separation of Duties</h4>
+                    <p>No single person should have complete control over a sensitive process. Critical tasks should be
+                        divided among multiple people. This prevents fraud and errors.</p>
+                    <p><strong>Example:</strong> In a bank, one employee initiates a funds transfer, and a different
+                        employee approves it. No single employee can transfer funds alone.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">🔧</div>
+                    <h4>Economy of Mechanism</h4>
+                    <p>Security mechanisms should be as simple as possible. Complex systems are harder to understand,
+                        harder to secure, and more likely to have hidden vulnerabilities.</p>
+                    <p><strong>Example:</strong> A simple firewall rule that blocks all traffic except what is
+                        explicitly allowed is easier to secure than a complex rule set with many exceptions.</p>
+                </div>
+                <div class="three-card">
+                    <div class="card-icon">📝</div>
+                    <h4>Complete Mediation</h4>
+                    <p>Every access to every resource must be checked for authorization. No access should be allowed
+                        without a permission check.</p>
+                    <p><strong>Example:</strong> Every time a user tries to open a file, the system checks whether that
+                        user has permission. It does not assume that because the user opened the file before, they still
+                        have permission.</p>
+                </div>
+            </div>
+
+            <h3>Security Architecture Models</h3>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Layered Architecture (Defense in Depth)</h4>
+                    <p>Security controls are arranged in layers. An attacker must penetrate each layer to reach the
+                        target. Each layer has different types of controls.</p>
+                    <p><strong>Layers from outside to inside:</strong></p>
+                    <ul>
+                        <li>Layer 1: Perimeter security (firewalls, intrusion prevention)</li>
+                        <li>Layer 2: Network security (network segmentation, monitoring)</li>
+                        <li>Layer 3: Host security (endpoint protection, patch management)</li>
+                        <li>Layer 4: Application security (secure coding, input validation)</li>
+                        <li>Layer 5: Data security (encryption, access controls)</li>
+                    </ul>
+                </div>
+                <div class="compare-card">
+                    <h4>Zero Trust Architecture</h4>
+                    <p>Zero Trust is a modern security model based on the principle "never trust, always verify."
+                        Traditional security assumed that everything inside the network was trustworthy. Zero Trust
+                        assumes that no user or device is trustworthy, even inside the network.</p>
+                    <p><strong>Zero Trust Principles:</strong></p>
+                    <ul>
+                        <li>Verify every access request explicitly.</li>
+                        <li>Use least privilege access (give only what is needed).</li>
+                        <li>Assume breach (design as if attackers are already inside).</li>
+                        <li>Micro segmentation (divide the network into small segments).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <h4>Reference Monitor and Security Kernel</h4>
+                    <p>The reference monitor is an abstract concept that describes a system that mediates all access to
+                        resources. The security kernel is the actual implementation of the reference monitor in hardware
+                        and software.</p>
+                    <p><strong>Three properties of a reference monitor:</strong></p>
+                    <ul>
+                        <li>It must be tamper proof (cannot be bypassed).</li>
+                        <li>It must always be invoked (every access goes through it).</li>
+                        <li>It must be small enough to be verified (simple design).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="ex-label">Real World Example — Security Architecture of an E-commerce Website</div>
+                <p><strong>Example: An E-commerce Platform like Flipkart or Amazon</strong> The security architecture
+                    includes multiple layers.</p>
+                <ul>
+                    <li><strong>Web Application Firewall (WAF):</strong> Blocks common web attacks such as SQL injection
+                        and cross site scripting before they reach the application.</li>
+                    <li><strong>Load Balancers with SSL Termination:</strong> Handle HTTPS encryption and distribute
+                        traffic across multiple servers.</li>
+                    <li><strong>Application Servers:</strong> Run the e-commerce application with input validation and
+                        output encoding to prevent injection attacks.</li>
+                    <li><strong>Database Servers:</strong> Store customer data with encryption and strict access
+                        controls. The database is on a separate network segment.</li>
+                    <li><strong>Payment Processing:</strong> Credit card information is never stored. It is passed
+                        directly to a payment processor that is Payment Card Industry Data Security Standard (PCI DSS)
+                        certified.</li>
+                    <li><strong>Monitoring:</strong> Intrusion detection systems and security information and event
+                        management (SIEM) tools monitor for attacks in real time.</li>
+                </ul>
+            </div>
+
+            <div class="diagram-wrap">
+                <div class="diagram-title">Fig 3.3 — Defense in Depth Architecture</div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin: 1rem 0;">
+                    <div
+                        style="background: #c0392b; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 500px; border-radius: 5px;">
+                        Layer 5: Data Encryption and Access Controls (Innermost)</div>
+                    <div
+                        style="background: #e6ac00; color: white; padding: 0.5rem; text-align: center; width: 90%; max-width: 450px; border-radius: 5px;">
+                        Layer 4: Application Security (Input Validation, WAF)</div>
+                    <div
+                        style="background: #0c8da0; color: white; padding: 0.5rem; text-align: center; width: 80%; max-width: 400px; border-radius: 5px;">
+                        Layer 3: Host Security (Antivirus, Patching)</div>
+                    <div
+                        style="background: #1a7a34; color: white; padding: 0.5rem; text-align: center; width: 70%; max-width: 350px; border-radius: 5px;">
+                        Layer 2: Network Security (Firewalls, IDS/IPS)</div>
+                    <div
+                        style="background: #6f42c1; color: white; padding: 0.5rem; text-align: center; width: 60%; max-width: 300px; border-radius: 5px;">
+                        Layer 1: Physical Security (Perimeter)</div>
+                </div>
+                <p style="text-align: center; font-size: 0.8rem;">Each layer provides protection. An attacker must
+                    penetrate all layers.</p>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="con-label">Key Takeaways for Topic 3.7</div>
+                <p>Security architecture is the blueprint of security controls within an information system. Key design
+                    principles include defense in depth (multiple layers of security), least privilege (minimum
+                    necessary access), fail secure (fail to a secure state), separation of duties (divide critical
+                    tasks), and economy of mechanism (keep security simple). Modern architectures such as Zero Trust
+                    assume that no user or device is trustworthy, even inside the network. A well designed security
+                    architecture provides protection even when individual controls fail.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+     TOPIC 3.8 — CASE STUDIES (5 CASE STUDIES)
+═══════════════════════════════════════════════════════════════════ -->
+        <section class="topic-section" id="t3-8">
+            <div class="topic-label">Topic 3.8</div>
+            <h2 class="topic-title">Case Studies on Secure Information System Design</h2>
+
+            <div class="concept-box"> This section presents five real world case studies on secure information system
+                design. Each case study includes a scenario, questions, and complete answers. Study these case studies
+                carefully as similar questions appear in the examination. </div>
+            <div class="tip-box">
+                <div class="tip-label">📌 Exam Tip</div> In the exam, case study questions test your ability to apply
+                security concepts to real situations. Read the scenario carefully. Identify the key problems. Then
+                recommend specific security controls, policies, and governance mechanisms. Always explain why you
+                recommend each control.
+            </div>
+
+            <div class="example-box">
+                <div class="ex-label">Case Study 1 — E-Commerce Platform "My Shop"</div>
+                <p><strong>Scenario:</strong> A growing E-Commerce platform called "My Shop" aims to redesign its
+                    information system to handle an increasing customer base, improve operational efficiency, and
+                    provide a personalized shopping experience. The company has been facing several security issues
+                    including customer account takeovers, payment fraud, and slow website performance during peak hours.
+                </p>
+                <p><strong>Question (i): What kind of challenges are they facing?</strong></p>
+                <p><strong>Answer:</strong> The E-Commerce platform "My Shop" is facing the following challenges.</p>
+                <ul>
+                    <li><strong>Challenge One — Account Takeovers (Credential Stuffing):</strong> Attackers are using
+                        stolen username and password pairs from other data breaches to log into customer accounts on "My
+                        Shop." Once inside, attackers can make fraudulent purchases using saved payment methods, change
+                        shipping addresses, and steal personal information.</li>
+                    <li><strong>Challenge Two — Payment Fraud:</strong> The platform is experiencing fraudulent
+                        transactions where stolen credit cards are used to purchase products. When the legitimate
+                        cardholder disputes the charge, "My Shop" loses both the product and the money. This is called
+                        chargeback fraud.</li>
+                    <li><strong>Challenge Three — Distributed Denial of Service Attacks (DDoS):</strong> During peak
+                        shopping seasons like Diwali and New Year, the website becomes very slow or completely
+                        unavailable. This may be caused by DDoS attacks where attackers flood the website with fake
+                        traffic, overwhelming the servers and blocking real customers.</li>
+                    <li><strong>Challenge Four — Data Privacy Compliance:</strong> With the implementation of the
+                        Digital Personal Data Protection Act 2023, "My Shop" must protect customer data. The company
+                        collects names, addresses, phone numbers, email addresses, and payment information. Non
+                        compliance can result in heavy fines.</li>
+                    <li><strong>Challenge Five — Insider Threats:</strong> Employees have access to customer data and
+                        order information. A disgruntled employee could steal customer data or manipulate orders.
+                        The company has no monitoring system to detect unusual employee behavior.</li>
+                    <li><strong>Challenge Six — Scalability vs Security:</strong> As the customer base grows, the system
+                        must handle more traffic. Adding more servers and features creates new security vulnerabilities.
+                        The company struggles to balance performance and security.</li>
+                </ul>
+                <p><strong>Question (ii): What kind of security governance should be put in place to ensure secure
+                        information system for this E-Commerce platform?</strong></p>
+                <p><strong>Answer:</strong> The following security governance mechanisms should be put in place for "My
+                    Shop".</p>
+                <ul>
+                    <li><strong>Governance Mechanism One — Appoint a Chief Information Security Officer (CISO):</strong>
+                        The company should hire a CISO who reports directly to the Chief Executive Officer. The CISO
+                        will be responsible for all security decisions and will have the authority to enforce security
+                        policies.</li>
+                    <li><strong>Governance Mechanism Two — Establish a Security Steering Committee:</strong> This
+                        committee should include senior managers from IT, Operations, Legal, Finance, and Human
+                        Resources. The committee will meet monthly to review security status, approve security budgets,
+                        and make decisions on security investments.</li>
+                    <li><strong>Governance Mechanism Three — Develop and Enforce Security Policies:</strong> The company
+                        must create written security policies covering password management, data protection, incident
+                        response, acceptable use, and vendor security. All employees must read and sign these policies
+                        annually.</li>
+                    <li><strong>Governance Mechanism Four — Implement a Risk Management Framework:</strong> The company
+                        should conduct regular risk assessments to identify, evaluate, and prioritize security risks.
+                        Risks with high impact and high likelihood must be addressed immediately.</li>
+                    <li><strong>Governance Mechanism Five — Ensure Compliance with Legal Requirements:</strong> The
+                        company must comply with the Digital Personal Data Protection Act 2023, Payment Card Industry
+                        Data Security Standard (PCI DSS), and consumer protection laws. Regular compliance audits should
+                        be conducted.</li>
+                    <li><strong>Governance Mechanism Six — Establish an Incident Response Team:</strong> A dedicated
+                        team must be ready to respond to security incidents twenty four hours a day, seven days a week.
+                        The team should have clear procedures for detecting, containing, eradicating, and recovering
+                        from attacks.</li>
+                    <li><strong>Governance Mechanism Seven — Implement Third Party Vendor Governance:</strong> "My Shop"
+                        works with payment processors, cloud providers, and logistics partners. The company must assess
+                        the security of all vendors, include security requirements in contracts, and monitor vendor
+                        compliance regularly.</li>
+                    <li><strong>Governance Mechanism Eight — Regular Security Audits and Penetration Testing:</strong>
+                        External auditors should conduct security audits at least once per year. Penetration testing
+                        should be done before major releases and after significant changes to the system.</li>
+                    <li><strong>Governance Mechanism Nine — Security Metrics and Reporting:</strong> The CISO must
+                        report security metrics to the Board of Directors every quarter. Metrics should include number
+                        of incidents, time to detect incidents, time to recover, and percentage of systems with up to
+                        date patches.</li>
+                    <li><strong>Governance Mechanism Ten — Employee Security Training and Awareness:</strong> All
+                        employees must complete security awareness training when they join and every year after that.
+                        Training should cover phishing detection, password security, data handling, and incident
+                        reporting.</li>
+
+                </ul>
+            </div>
+
+<div class="example-box"> <div class="ex-label">Case Study 2 — Hospital Network</div> <p><strong>Scenario:</strong> A big hospital network stores electronic records of one lakh patients. Due to a poor information security policy, unauthorized employees have been accessing confidential patient data. The hospital is now required to comply with various policies and governance and establish a strong security governance framework.</p> <p><strong>Question (i): Which application security measures should the hospital implement to protect patient records?</strong></p> <p><strong>Answer:</strong> The hospital should implement the following application security measures to protect patient records.</p> <ul> <li><strong>Security Measure One — Role Based Access Control (RBAC):</strong> Different employees need different levels of access to patient records. Doctors should see full medical history. Nurses should see only relevant medical information. Receptionists should see only contact details and appointment schedules. Billing staff should see only insurance and payment information. No employee should see information they do not need for their job.</li> <li><strong>Security Measure Two — Mandatory Access Control (MAC):</strong> Patient records should be classified into sensitivity levels. For example, HIV status, mental health records, and genetic information are highly sensitive. Only specific authorized doctors can access these records. The system must enforce these rules automatically.</li> <li><strong>Security Measure Three — Encryption of Data at Rest and in Transit:</strong> All patient records stored in databases must be encrypted using strong encryption like AES 256. All data transmitted between hospital systems must use TLS encryption. Even if an attacker steals the database, they cannot read the encrypted data without the decryption key.</li> <li><strong>Security Measure Four — Audit Logging of All Access:</strong> Every time any employee accesses a patient record, the system must log who accessed it, when they accessed it, which record they accessed, and what action they performed (view, edit, delete, print). These logs must be reviewed regularly for suspicious activity.</li> <li><strong>Security Measure Five — Multi Factor Authentication (MFA):</strong> All employees must use multi factor authentication to access patient records. This means they need something they know (password) and something they have (a one time password on their mobile phone or a security token). This prevents unauthorized access even if a password is stolen.</li> <li><strong>Security Measure Six — Database Security:</strong> The database containing patient records must be secured with strong passwords, disabled default accounts, and limited network access. Only the application servers should be able to connect to the database. Direct database access by employees must be prohibited.</li> <li><strong>Security Measure Seven — Input Validation and SQL Injection Prevention:</strong> Any form or search box that accepts user input must validate that input. Special characters that could be used for SQL injection attacks must be rejected or properly escaped. This prevents attackers from manipulating database queries.</li> <li><strong>Security Measure Eight — Regular Security Testing:</strong> The hospital's applications must be tested for vulnerabilities regularly. This includes automated vulnerability scans every week and manual penetration tests at least twice per year. Any discovered vulnerabilities must be fixed promptly.</li> <li><strong>Security Measure Nine — Data Masking for Non Production Environments:</strong> When developers test new features, they should not use real patient data. Test environments should use masked or fake data that looks like real data but cannot be traced to actual patients. This protects patient privacy during development and testing.</li> <li><strong>Security Measure Ten — Session Management and Timeouts:</strong> Employee sessions should automatically time out after fifteen minutes of inactivity. This prevents unauthorized access if an employee forgets to log out. Session tokens must be random, secure, and invalidated after logout.</li> </ul> <p><strong>Question (ii): What governance mechanisms should be put in place to ensure a secure information system for this hospital?</strong></p> <p><strong>Answer:</strong> The hospital should implement the following governance mechanisms.</p> <ul> <li><strong>Governance Mechanism One — Establish a Hospital Security Governance Framework:</strong> The hospital must create a formal security governance structure. This includes a Board level committee responsible for security oversight. The committee should include the hospital director, chief medical officer, chief information officer, legal counsel, and patient representative.</li> <li><strong>Governance Mechanism Two — Appoint a Chief Information Security Officer (CISO):</strong> The hospital must hire a qualified CISO who reports directly to the hospital director. The CISO will have authority to enforce security policies across all departments, including medical departments.</li> <li><strong>Governance Mechanism Three — Create and Enforce a Comprehensive Security Policy:</strong> The hospital needs a written Information Security Policy that covers all aspects of patient data protection. This policy must be approved by the Board and signed by every employee. The policy should specifically address patient confidentiality, data access rules, and consequences of violations.</li> <li><strong>Governance Mechanism Four — Data Classification Policy:</strong> The hospital must classify all patient data into sensitivity levels. Level one is public information. Level two is internal use only. Level three is confidential patient information. Level four is highly sensitive information like mental health or HIV status. Each level has different access and protection requirements.</li> <li><strong>Governance Mechanism Five — Access Control Policy:</strong> A detailed policy must define who can access what patient data. Access must be granted based on job role and need to know. All access requests must be approved by a supervisor. Access must be reviewed and recertified every three months.</li> <li><strong>Governance Mechanism Six — Incident Management Policy:</strong> The hospital must have a written policy for responding to security incidents. This policy must define what constitutes an incident, who must be notified, how to contain the incident, and how to report breaches to regulatory authorities. The hospital must also have an incident response team on call twenty four hours a day.</li> <li><strong>Governance Mechanism Seven — Regular Security Audits and Compliance Checks:</strong> The hospital must conduct internal security audits every quarter. External auditors must conduct an annual audit. The audit must verify that security controls are working, policies are being followed, and the hospital complies with laws like the Digital Personal Data Protection Act 2023 and clinical establishment regulations.</li> <li><strong>Governance Mechanism Eight — Employee Security Training and Accountability:</strong> Every hospital employee, including doctors, nurses, administrative staff, and contract workers, must complete security awareness training. Training must cover patient privacy, consequences of unauthorized access, how to report incidents, and phishing awareness. Employees who violate security policies must face disciplinary action, including termination and legal action if warranted.</li> <li><strong>Governance Mechanism Nine — Audit Log Review Process:</strong> A dedicated team must review access logs daily for suspicious activity. Unusual patterns such as an employee accessing many patient records not related to their work must be investigated immediately. Monthly summary reports must be presented to the Security Committee.</li> <li><strong>Governance Mechanism Ten — Breach Notification Procedure:</strong> The hospital must have a clear procedure for notifying patients if their data is accessed without authorization. The notification must be made within seventy two hours of discovery as required by law. The procedure must also include notifying regulatory authorities and offering support services to affected patients.</li> <li><strong>Governance Mechanism Eleven — Vendor Security Management:</strong> The hospital works with many vendors including electronic medical record providers, billing companies, cloud storage providers, and software developers. All vendors must sign agreements requiring them to protect patient data. Vendors must provide proof of their security certifications and submit to regular security assessments.</li> <li><strong>Governance Mechanism Twelve — Continuous Improvement Process:</strong> The hospital must have a process for continuously improving security. This includes reviewing security metrics, learning from incidents, updating policies based on new threats, and investing in better security technology. Security is not a one time project. It is an ongoing process.</li> </ul> </div>
+
+<div class="example-box"> <div class="ex-label">Case Study 3 — Banking Application</div> <p><strong>Scenario:</strong> A regional bank in India is launching a new mobile banking application. The bank has two lakh customers. The application will allow customers to check balances, transfer funds, pay bills, and apply for loans. The bank's management is concerned about security because of increasing cyber attacks on the banking sector. The Reserve Bank of India has strict security guidelines for mobile banking applications.</p> <p><strong>Question (i): What security challenges does the mobile banking application face?</strong></p> <p><strong>Answer:</strong> The mobile banking application faces the following security challenges.</p> <ul> <li><strong>Challenge One — Phishing Attacks:</strong> Attackers may send fake text messages or emails pretending to be from the bank, asking customers to click on malicious links and enter their login credentials. This is called phishing. Customers may be tricked into giving away their usernames and passwords.</li> <li><strong>Challenge Two — Man in the Middle Attacks:</strong> If the application does not use proper encryption, attackers on the same Wi-Fi network could intercept communication between the mobile phone and the bank's servers. They could steal login credentials or modify transaction details.</li> <li><strong>Challenge Three — Device Theft:</strong> If a customer loses their mobile phone and the application does not have proper security, the person who finds the phone could access the bank account. The application must protect against unauthorized access even if the device is stolen.</li> <li><strong>Challenge Four — Insecure Data Storage:</strong> The mobile application might store sensitive information on the phone. This could include login credentials, transaction history, or personal information. If another application on the phone has access to this stored data, customer information could be leaked.</li> <li><strong>Challenge Five — Reverse Engineering:</strong> Attackers can download the banking application, decompile it, and study the code to find vulnerabilities. They could then create fake versions of the application to steal customer data.</li> <li><strong>Challenge Six — Compliance with RBI Guidelines:</strong> The Reserve Bank of India has detailed guidelines for mobile banking security. The bank must comply with these guidelines. Non compliance can result in fines, restrictions on operations, or even cancellation of the license to offer mobile banking.</li> </ul> <p><strong>Question (ii): What security controls should the bank implement to protect the mobile banking application?</strong></p> <p><strong>Answer:</strong> The bank should implement the following security controls.</p> <ul> <li><strong>Control One — Multi Factor Authentication (MFA):</strong> In addition to a username and password, the application must require a second factor. This could be a one time password sent by SMS, a push notification to a registered device, or a biometric factor such as fingerprint or face recognition. Multi factor authentication significantly reduces the risk of account takeovers.</li> <li><strong>Control Two — Strong Encryption for Data in Transit and at Rest:</strong> All communication between the mobile app and the bank's servers must be encrypted using TLS 1.2 or higher. All data stored on the mobile device must be encrypted using strong encryption. The encryption keys must be stored securely in the device's secure hardware area.</li> <li><strong>Control Three — Certificate Pinning:</strong> The application should implement certificate pinning. This means the app only accepts SSL certificates from the bank's trusted certificate authority. This prevents attackers from using fake certificates to perform man in the middle attacks.</li> <li><strong>Control Four — Session Management and Timeout:</strong> User sessions must timeout after five minutes of inactivity. For sensitive transactions like funds transfer, the user must re authenticate. Session tokens must be random, secure, and invalidated after logout or timeout.</li> <li><strong>Control Five — Transaction Signing:</strong> For high value transactions above a certain limit, the application must require the user to enter a second factor or use biometric verification. The transaction details must be displayed clearly before confirmation. The user must confirm the exact amount and recipient.</li> <li><strong>Control Six — Device Binding and Registration:</strong> When a user first installs the application, the device must be registered. The bank should record the device identifier. If the same account tries to log in from a different device, additional verification should be required. The user should be notified of new device registrations.</li> <li><strong>Control Seven — Jailbreak and Root Detection:</strong> The application must detect if the mobile device has been jailbroken or rooted. Jailbroken devices bypass many security controls of the operating system. If jailbreak or root is detected, the application should restrict functionality or refuse to run.</li> <li><strong>Control Eight — Code Obfuscation:</strong> The application code should be obfuscated. Obfuscation makes it difficult for attackers to reverse engineer the code and understand its logic. This does not prevent reverse engineering but makes it much more time consuming and expensive.</li> <li><strong>Control Nine — Real Time Fraud Detection:</strong> The bank's backend systems must monitor transactions in real time for suspicious patterns. For example, multiple small transactions in a short time, transactions from unusual locations, or transactions to new recipients. Suspicious transactions should be blocked or flagged for manual review.</li> <li><strong>Control Ten — Regular Security Testing and Certification:</strong> The mobile application must be tested for vulnerabilities before every release. This includes static analysis, dynamic analysis, and penetration testing. The bank should also obtain third party security certification for the application.</li> </ul> </div>
+
+<div class="example-box"> <div class="ex-label">Case Study 4 — Educational Institution</div> <p><strong>Scenario:</strong> A large university with forty thousand students and five thousand faculty members is moving all its academic operations online. The university will use a learning management system to deliver lectures, collect assignments, conduct online examinations, and publish grades. The university also stores student personal information, fee records, and faculty research data. The management is concerned about data breaches and unauthorized access.</p> <p><strong>Question (i): What are the main security risks for the university's online learning system?</strong></p> <p><strong>Answer:</strong> The university's online learning system faces the following security risks.</p> <ul> <li><strong>Risk One — Unauthorized Access to Student Records:</strong> Students might try to access other students' grades or personal information. Faculty might try to access restricted administrative data. External attackers might try to steal student data for identity theft.</li> <li><strong>Risk Two — Cheating During Online Examinations:</strong> Students might use unfair means during online exams. They could use other devices, collaborate with other students, or have someone else take the exam for them. The examination system must prevent or detect cheating.</li> <li><strong>Risk Three — Data Leakage of Examination Papers:</strong> Examination papers must be kept confidential until the exam starts. If question papers leak before the exam, the integrity of the examination is compromised. The system must protect examination papers from unauthorized access.</li> <li><strong>Risk Four — Distributed Denial of Service Attacks:</strong> During examination periods, the learning management system experiences very high traffic. Attackers could launch DDoS attacks to make the system unavailable, preventing students from taking exams or accessing study materials.</li> <li><strong>Risk Five — Phishing Attacks on Students and Faculty:</strong> Attackers might send fake emails pretending to be from the university's IT department, asking students to click on links and enter their login credentials. Many unsuspecting students and faculty could fall for such attacks.</li> <li><strong>Risk Six — Compliance with Data Protection Laws:</strong> The university collects sensitive personal information of students including addresses, phone numbers, Aadhaar numbers, and financial information. The university must comply with the Digital Personal Data Protection Act 2023 and other applicable laws.</li> <li><strong>Risk Seven — Insider Threats from Staff:</strong> University staff have access to student records and examination data. A disgruntled employee could leak student data, change grades, or disrupt operations. The university must monitor and control staff access.</li> </ul> <p><strong>Question (ii): What security measures should the university implement to protect its online learning system?</strong></p> <p><strong>Answer:</strong> The university should implement the following security measures.</p> <ul> <li><strong>Security Measure One — Role Based Access Control (RBAC):</strong> Different users need different levels of access. Students should see only their own records and course materials. Faculty should see their own courses and student submissions. Department heads should see faculty and student data for their department. Administrators should have broader access but still only what is needed for their job.</li> <li><strong>Security Measure Two — Strong Authentication with Multi Factor Authentication (MFA):</strong> All faculty and staff must use multi factor authentication to access the system. Students should use multi factor authentication for sensitive actions such as viewing grades or changing personal information. Password policies must require strong passwords and regular password changes.</li> <li><strong>Security Measure Three — Secure Online Examination System:</strong> The examination system must have the following features: randomized question order, randomized answer options, time limits, full screen mode requirement, browser lockdown to prevent opening other tabs, webcam monitoring during the exam, and cheating detection algorithms.</li> <li><strong>Security Measure Four — Encryption of All Sensitive Data:</strong> Student personal information, grades, examination papers, and faculty research data must be encrypted when stored (at rest) and when transmitted (in transit). The university must manage encryption keys securely.</li> <li><strong>Security Measure Five — Regular Vulnerability Scanning and Penetration Testing:</strong> The learning management system must be scanned for vulnerabilities weekly. External security experts must conduct penetration testing at least twice per year. Any discovered vulnerabilities must be fixed promptly.</li> <li><strong>Security Measure Six — Data Backup and Disaster Recovery:</strong> The university must maintain regular backups of all student data, faculty data, grades, and examination records. Backups must be stored in a separate location. The university must test recovery from backups periodically.</li> <li><strong>Security Measure Seven — DDoS Protection:</strong> The university should use a DDoS protection service such as Cloudflare or Akamai. This service will absorb attack traffic and only allow legitimate traffic to reach the university's servers.</li> <li><strong>Security Measure Eight — Security Awareness Training for Students and Faculty:</strong> All students and faculty must complete security awareness training at the beginning of each academic year. Training must cover how to recognize phishing emails, how to create strong passwords, how to report security incidents, and the consequences of policy violations.</li> <li><strong>Security Measure Nine — Audit Logging and Monitoring:</strong> The system must log all access to student records, grades, and examination papers. Logs must be reviewed regularly for suspicious activity. For example, a faculty member accessing grades for courses they do not teach should trigger an alert.</li> <li><strong>Security Measure Ten — Incident Response Plan:</strong> The university must have a written incident response plan. The plan must specify who is responsible for what, how to detect incidents, how to contain them, and how to recover. The plan must be tested at least once per year.</li> </ul> </div>
+<div class="example-box"> <div class="ex-label">Case Study 5 — Government Portal</div> <p><strong>Scenario:</strong> A state government in India is launching a citizen services portal. Citizens will be able to apply for various government services online including birth certificates, marriage certificates, driver's licenses, and ration cards. The portal will store sensitive personal information of millions of citizens including Aadhaar numbers, addresses, and biometric data. The government is concerned about security because state sponsored attackers from other countries may target the portal.</p> <p><strong>Question (i): What are the unique security challenges for a government citizen services portal?</strong></p> <p><strong>Answer:</strong> The government portal faces the following unique security challenges.</p> <ul> <li><strong>Challenge One — Nation State Attacks:</strong> Government portals are prime targets for state sponsored attackers from other countries. These attackers have significant resources, advanced skills, and high motivation. They may attempt to steal citizen data, disrupt government services, or conduct espionage.</li> <li><strong>Challenge Two — Protection of Aadhaar and Biometric Data:</strong> The portal will collect and store Aadhaar numbers and potentially biometric data such as fingerprints. The Aadhaar Act has strict requirements for protecting this data. A breach of Aadhaar data could cause identity theft for millions of citizens and result in severe penalties.</li> <li><strong>Challenge Three — High Volume of Users and Transactions:</strong> Millions of citizens will use the portal. The system must handle very high traffic while maintaining security. Performance cannot be sacrificed for security, and security cannot be compromised for performance.</li> <li><strong>Challenge Four — Integration with Multiple Government Databases:</strong> The portal must integrate with multiple backend government systems. Each system may have different security levels. The weakest link in the chain determines the overall security.</li> <li><strong>Challenge Five — Insider Threats from Government Employees:</strong> Government employees who manage the portal or have access to backend databases could misuse their access to view or steal citizen data. The government must protect against insider threats.</li> <li><strong>Challenge Six — Public Trust and Reputation:</strong> A security breach of the government portal would severely damage public trust in the government's ability to protect citizen data. This could have political consequences and discourage citizens from using digital government services.</li> <li><strong>Challenge Seven — Compliance with Multiple Laws and Standards:</strong> The portal must comply with the Digital Personal Data Protection Act 2023, the Aadhaar Act, the Information Technology Act 2000, and various government security standards and guidelines.</li> </ul> <p><strong>Question (ii): What security architecture and governance should the government implement for this portal?</strong></p> <p><strong>Answer:</strong> The government should implement the following security architecture and governance measures.</p> <ul> <li><strong>Security Architecture Measure One — Defense in Depth:</strong> The portal must have multiple layers of security. The outermost layer is a web application firewall to block common attacks. The next layer is network segmentation to isolate sensitive systems. The next layer is strong authentication and access controls. The innermost layer is encryption of data at rest.</li> <li><strong>Security Architecture Measure Two — Zero Trust Architecture:</strong> No user or device should be trusted by default, even inside the government network. Every access request must be verified, authenticated, and authorized. Micro segmentation should be used to limit the spread of any breach.</li> <li><strong>Security Architecture Measure Three — Dedicated Security Operations Center (SOC):</strong> The government must establish a Security Operations Center to monitor the portal twenty four hours a day, seven days a week. The SOC will detect and respond to attacks in real time. The SOC must have skilled security analysts and advanced monitoring tools.</li> <li><strong>Security Architecture Measure Four — Separation of Sensitive Data:</strong> Aadhaar numbers and biometric data should be stored in a separate, highly secured database with additional encryption and access controls. This database should have no direct connection to the internet and only limited connections from the portal application.</li> <li><strong>Security Architecture Measure Five — Redundancy and High Availability:</strong> The portal must be deployed across multiple data centers in different locations. If one data center is attacked or fails, traffic can be redirected to another data center. This ensures availability even during attacks.</li> <li><strong>Governance Measure One — High Level Security Committee:</strong> A committee at the Chief Secretary level must oversee the security of the portal. The committee should include the Home Secretary, IT Secretary, Law Secretary, and the head of the state cyber security agency.</li> <li><strong>Governance Measure Two — Appointment of a Chief Information Security Officer (CISO):</strong> A qualified CISO must be appointed for the portal. The CISO must have direct access to the Chief Secretary and must have authority to enforce security measures across all departments involved with the portal.</li> <li><strong>Governance Measure Three — Regular Security Audits by CERT-In Empanelled Auditors:</strong> The portal must be audited by security auditors empanelled by the Indian Computer Emergency Response Team (CERT-In). Audits must be conducted at least twice per year. All findings must be addressed within thirty days.</li> <li><strong>Governance Measure Four — Mandatory Security Clearances for Personnel:</strong> All personnel working on the portal, including government employees and vendor staff, must undergo thorough background checks and security clearances before being granted access.</li> <li><strong>Governance Measure Five — Continuous Security Training:</strong> All personnel involved with the portal must complete security training every six months. Training must cover the latest threats, secure coding practices, incident reporting, and handling of sensitive data.</li> <li><strong>Governance Measure Six — Bug Bounty Program:</strong> The government should establish a bug bounty program that rewards ethical hackers who find and report vulnerabilities in the portal. This encourages security researchers to help improve the portal's security.</li> <li><strong>Governance Measure Seven — Data Breach Response Plan:</strong> The government must have a detailed plan for responding to a data breach. The plan must specify how to detect a breach, how to contain it, how to notify affected citizens, and how to work with law enforcement. The plan must be tested through simulation exercises regularly.</li> </ul> </div>
+<div class="conclusion-box"> <div class="con-label">Unit 3 — Key Takeaway</div> <p>Developing secure information systems requires integrating security into every phase of the system development life cycle. Organizations must establish security governance with clear roles, responsibilities, and accountability. Security policies must be written, enforced, and reviewed regularly. Application security controls such as input validation, encryption, access control, and logging are essential. Security architecture principles like defense in depth, least privilege, and zero trust provide the foundation for secure design. The five case studies in this unit demonstrate how these concepts apply to real world scenarios including e-commerce platforms, hospitals, banking applications, educational institutions, and government portals. Study these case studies carefully to prepare for examination questions.</p> </div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>EIS · Essentials of Information Security · Unit 03 · Development of Secure Information System</span>
+    <div class="footer-links">
+      <a href="unit02_EIS.html">← Unit 2</a>
+      <a href="unit04_EIS.html">Unit 4 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · SPPU</span>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // Mobile navigation toggle - close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Back to top button visibility
+  window.addEventListener('scroll', function() {
+    var backButton = document.querySelector('.back-top');
+    if (backButton) {
+      if (window.scrollY > 400) {
+        backButton.classList.add('visible');
+      } else {
+        backButton.classList.remove('visible');
+      }
+    }
+  });
+</script>
+
+</html>

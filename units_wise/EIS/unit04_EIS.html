@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 — Security Threats and Policies | Essentials of Information Security Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand"><span>EIS</span> · Essentials of Information Security Notes</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="unit01_EIS.html">Unit 1</a></li>
+    <li><a href="unit02_EIS.html">Unit 2</a></li>
+    <li><a href="unit03_EIS.html">Unit 3</a></li>
+    <li><a href="unit04_EIS.html" class="active">Unit 4</a></li>
+    <li><a href="unit05_EIS.html">Unit 5</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 04 · Essentials of Information Security</div>
+  <h1>Security Threats and Policies</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>9 Topics + 2 Case Studies</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~20 Marks</strong></div>
+    <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Intermediate Level</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t4-1">4.1 — Introduction to Security Threats</a></li>
+      <li><a href="#t4-2">4.2 — Network and Denial of Service Attacks</a></li>
+      <li><a href="#t4-3">4.3 — Security Threats to E-Commerce</a></li>
+      <li><a href="#t4-4">4.4 — Introduction to Security Policies</a></li>
+      <li><a href="#t4-5">4.5 — Why Do We Need a Security Policy?</a></li>
+      <li><a href="#t4-6">4.6 — Security Policy Development</a></li>
+      <li><a href="#t4-7">4.7 — Email Security Policies</a></li>
+      <li><a href="#t4-8">4.8 — Advanced Persistent Threat (APT)</a></li>
+      <li><a href="#t4-9">4.9 — Case Studies on Security Threats and Policies (2 Case Studies)</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="content-wrap">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.1 — INTRODUCTION TO SECURITY THREATS -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-1">
+  <div class="topic-label">Topic 4.1</div>
+  <h2 class="topic-title">Introduction to Security Threats</h2>
+
+  <div class="concept-box">
+    <strong>A security threat</strong> is any potential danger that could harm an organization's information assets, computer systems, networks, or operations. A threat becomes real when there is a vulnerability that can be exploited by an attacker. Understanding threats is the first step in protecting against them.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the difference between a threat, a vulnerability, and a risk. A threat is the potential danger. A vulnerability is a weakness that can be exploited. Risk is the likelihood that a threat will exploit a vulnerability and cause harm. The formula is: Risk = Threat x Vulnerability x Impact.
+  </div>
+
+  <h3>What is a Security Threat?</h3>
+  <p>A security threat is any event, action, or person that has the potential to cause harm to an organization's information systems or data. Threats can be intentional or accidental. They can come from outside the organization or from inside the organization.</p>
+
+  <p>The relationship between threats, vulnerabilities, and risk is often expressed as a simple formula.</p>
+  <div class="formula-box">
+    Risk = Threat x Vulnerability x Impact
+  </div>
+  <p>If there is no threat, there is no risk. If there is no vulnerability, there is no risk. If the impact is zero, there is no risk. Understanding this relationship helps organizations prioritize their security efforts.</p>
+
+  <h3>Classification of Security Threats</h3>
+  <p>Security threats can be classified into several categories based on their source and nature.</p>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🌐</div>
+      <h4>Natural Threats</h4>
+      <p>These are threats caused by natural events or disasters. They are not caused by humans. Examples include floods, earthquakes, fires, lightning strikes, hurricanes, and pandemics. Natural threats can destroy physical infrastructure such as servers, data centers, and network equipment.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">👤</div>
+      <h4>Human Threats</h4>
+      <p>These are threats caused by human actions. Human threats can be intentional (deliberate attacks) or unintentional (accidents and mistakes). Examples include hackers, disgruntled employees, terrorists, spies, and careless employees who click on phishing links or lose laptops.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">💻</div>
+      <h4>Technical Threats</h4>
+      <p>These are threats caused by technical failures or weaknesses in technology. Examples include software bugs, hardware failures, network outages, power failures, and design flaws in software or hardware.</p>
+    </div>
+  </div>
+
+  <h3>Types of Security Threats by Source</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>External Threats</h4>
+      <ul>
+        <li>Hackers and cyber criminals</li>
+        <li>Nation state actors and spies</li>
+        <li>Terrorist groups</li>
+        <li>Competitors engaging in industrial espionage</li>
+        <li>Script kiddies (inexperienced hackers using automated tools)</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Internal Threats</h4>
+      <ul>
+        <li>Malicious insiders (disgruntled employees)</li>
+        <li>Negligent insiders (careless employees)</li>
+        <li>Compromised insiders (employee accounts taken over by attackers)</li>
+        <li>Contractors and temporary workers</li>
+        <li>Cleaning staff and security guards</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — A Real Security Threat</div>
+    <p><strong>Example: The 2021 Colonial Pipeline Ransomware Attack</strong> Colonial Pipeline operates a pipeline that carries nearly half of the fuel supply to the United States East Coast. In May 2021, a ransomware group called DarkSide gained access to Colonial Pipeline's network through a compromised password. The attackers encrypted the company's systems and demanded a ransom payment of four point four million dollars. Colonial Pipeline shut down its entire pipeline operations to prevent the attack from spreading. This caused fuel shortages, panic buying, and price increases across the East Coast. The attack demonstrated how a single security threat can have widespread real world consequences.</p>
+  </div>
+
+  <h3>The Threat Landscape — How Threats are Evolving</h3>
+  <p>The threat landscape is constantly changing. New threats emerge as technology evolves. Here are some important trends in the threat landscape.</p>
+
+  <ul>
+    <li><strong>Increasing Sophistication:</strong> Attackers are using more advanced techniques such as artificial intelligence, machine learning, and automation to launch attacks faster and more effectively.</li>
+    <li><strong>Ransomware Explosion:</strong> Ransomware attacks have increased dramatically. Attackers not only encrypt data but also steal it and threaten to release it publicly if the ransom is not paid.</li>
+    <li><strong>Supply Chain Attacks:</strong> Attackers are targeting software vendors and service providers to gain access to their customers. A single compromise of a vendor can lead to hundreds of customer organizations being breached.</li>
+    <li><strong>Cloud and Mobile Threats:</strong> As organizations move to the cloud and employees work from mobile devices, attackers are shifting their focus to these new attack surfaces.</li>
+    <li><strong>Internet of Things (IoT) Vulnerabilities:</strong> Billions of connected devices such as cameras, thermostats, and smart appliances often have weak security and can be used as entry points into networks.</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Misconceptions About Security Threats</div>
+    <ul>
+      <li>Many people believe that only large organizations are targeted. In reality, small and medium businesses are also frequently attacked, often because they have weaker security.</li>
+      <li>Many people believe that hackers are the only threat. In reality, accidental threats from employees cause more data breaches than external hackers in many industries.</li>
+      <li>Many people believe that antivirus software protects against all threats. In reality, antivirus software cannot protect against zero day attacks, targeted phishing, or insider threats.</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.1</div>
+    <p>A security threat is any potential danger that could harm an organization's information assets. Threats can be natural, human, or technical in origin. They can come from external sources such as hackers or from internal sources such as employees. The threat landscape is constantly evolving, with attackers becoming more sophisticated and using new techniques. Understanding the threats an organization faces is the first step in developing effective security policies and controls.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.2 — NETWORK AND DENIAL OF SERVICE ATTACKS -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-2">
+  <div class="topic-label">Topic 4.2</div>
+  <h2 class="topic-title">Network and Denial of Service Attacks</h2>
+
+  <div class="concept-box">
+    <strong>Network attacks</strong> are attacks that target computer networks, network infrastructure, or the devices connected to the network. <strong>Denial of Service (DoS) attacks</strong> are a specific type of network attack that aims to make a service unavailable to legitimate users by overwhelming it with traffic or exploiting vulnerabilities.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the difference between DoS and DDoS. DoS (Denial of Service) comes from a single source. DDoS (Distributed Denial of Service) comes from many sources simultaneously, making it much harder to stop. DDoS attacks often use botnets — networks of infected computers controlled by the attacker.
+  </div>
+
+  <h3>What is a Denial of Service Attack?</h3>
+  <p>A Denial of Service attack, often called a DoS attack, is an attempt to make a computer system or network resource unavailable to its intended users. The attacker floods the target with so many requests or data that the system becomes overwhelmed and cannot respond to legitimate requests.</p>
+
+  <p>There are two main types of Denial of Service attacks.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Denial of Service (DoS) Attack</h4>
+      <p>A DoS attack comes from a single source. The attacker uses one computer or one network connection to flood the target. DoS attacks are easier to stop because the traffic comes from a single source. Network administrators can block the source Internet Protocol address.</p>
+      <p><strong>Example:</strong> An attacker uses a single computer to send millions of requests to a website, overwhelming the server.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Distributed Denial of Service (DDoS) Attack</h4>
+      <p>A DDoS attack comes from many sources simultaneously. The attacker controls a network of infected computers called a botnet. Each computer in the botnet sends traffic to the target. Because the traffic comes from many different sources, it is much harder to stop.</p>
+      <p><strong>Example:</strong> An attacker uses a botnet of fifty thousand infected computers to flood a website with traffic from all over the world.</p>
+    </div>
+  </div>
+
+  <h3>How Do DDoS Attacks Work?</h3>
+  <p>Most DDoS attacks follow a similar pattern.</p>
+
+  <ul>
+    <li><strong>Step One — Build a Botnet:</strong> The attacker infects many computers with malware that allows remote control. These infected computers are called bots or zombies. The collection of bots is called a botnet. Attackers often build botnets by infecting Internet of Things devices such as cameras and routers that have weak default passwords.</li>
+    
+    <li><strong>Step Two — Command the Botnet:</strong> The attacker sends a command to all the bots in the botnet, telling them to start sending traffic to the target.</li>
+    
+    <li><strong>Step Three — Overwhelm the Target:</strong> The bots send massive amounts of traffic to the target. The target's servers, network bandwidth, or application resources become exhausted. Legitimate users cannot access the service.</li>
+    
+    <li><strong>Step Four — Extortion or Distraction:</strong> Attackers may demand a ransom to stop the attack. Alternatively, the DDoS attack may be used as a distraction while the attacker performs other malicious activities such as stealing data.</li>
+  </ul>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.1 — How a DDoS Attack Works</div>
+    <div style="background: #f0f0ee; padding: 1rem; text-align: center; font-family: monospace;">
+      [Botnet of infected computers] → [Internet] → [Target Website]<br>
+      (Thousands of requests)      (Flooded)      (Unavailable)
+    </div>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; text-align: center;">The attacker controls many infected computers that all send traffic to the target simultaneously.</p>
+  </div>
+
+  <h3>Types of DDoS Attacks</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📡</div>
+      <h4>Volume Based Attacks</h4>
+      <p>These attacks aim to consume the target's network bandwidth. The attacker sends massive amounts of data to the target, filling up the available bandwidth so that legitimate traffic cannot get through.</p>
+      <p><strong>Examples:</strong> UDP floods, ICMP floods, amplification attacks.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">💻</div>
+      <h4>Protocol Attacks</h4>
+      <p>These attacks exploit weaknesses in network protocols. They consume server resources rather than bandwidth. The target's servers become overwhelmed trying to handle malicious connection requests.</p>
+      <p><strong>Examples:</strong> SYN floods, Ping of Death, Smurf attacks.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⚙️</div>
+      <h4>Application Layer Attacks</h4>
+      <p>These attacks target specific applications or web pages. They send requests that appear legitimate but are designed to consume application resources such as database connections or central processing unit power.</p>
+      <p><strong>Examples:</strong> HTTP floods, Slowloris attacks, WordPress pingback attacks.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — The Mirai Botnet DDoS Attack (2016)</div>
+    <p><strong>Example: The Mirai Botnet</strong> In October 2016, a massive DDoS attack was launched using a botnet called Mirai. The Mirai botnet consisted of hundreds of thousands of infected Internet of Things devices such as security cameras, digital video recorders, and routers. These devices had default usernames and passwords that the owners never changed. The attack targeted Dyn, a company that provides Domain Name System (DNS) services to many major websites. When Dyn's DNS servers were overwhelmed, many popular websites became inaccessible including Twitter, Netflix, Reddit, GitHub, Amazon, and PayPal. Millions of users could not access these services for several hours. This attack demonstrated the vulnerability of Internet of Things devices and the widespread impact a DDoS attack can have.</p>
+  </div>
+
+  <h3>Other Types of Network Attacks</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Man in the Middle Attack</h4>
+      <p>In a man in the middle attack, the attacker secretly intercepts and possibly alters the communication between two parties. The parties believe they are communicating directly with each other, but the attacker is relaying the messages.</p>
+      <p><strong>Example:</strong> A user connects to a fake Wi-Fi network at a coffee shop. The attacker intercepts all traffic between the user's device and the internet, capturing login credentials and other sensitive information.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Packet Sniffing</h4>
+      <p>Packet sniffing is the practice of capturing network traffic to analyze it. Attackers use packet sniffers to capture unencrypted data such as passwords, emails, and files as they travel across the network.</p>
+      <p><strong>Example:</strong> An attacker on the same Wi-Fi network uses a tool like Wireshark to capture all network traffic, looking for unencrypted passwords.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>IP Spoofing</h4>
+      <p>IP spoofing is when an attacker creates Internet Protocol packets with a fake source address. This is used to hide the attacker's identity or to impersonate a trusted system.</p>
+      <p><strong>Example:</strong> An attacker sends packets that appear to come from an internal server to bypass firewall rules that trust internal traffic.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Session Hijacking</h4>
+      <p>Session hijacking is when an attacker takes over a user's active session after the user has already authenticated. The attacker steals the session cookie or token and uses it to impersonate the user.</p>
+      <p><strong>Example:</strong> After a user logs into a banking website, the attacker steals the session cookie from the user's browser and uses it to access the user's account without needing the password.</p>
+    </div>
+  </div>
+
+  <h3>How to Protect Against Network and DDoS Attacks</h3>
+  <ul>
+    <li><strong>Use DDoS Protection Services:</strong> Services like Cloudflare, Akamai, and AWS Shield can absorb attack traffic and only forward legitimate traffic to your servers.</li>
+    <li><strong>Implement Rate Limiting:</strong> Configure your servers to limit the number of requests from a single Internet Protocol address within a specific time period.</li>
+    <li><strong>Use a Web Application Firewall (WAF):</strong> A WAF can filter out malicious traffic before it reaches your application servers.</li>
+    <li><strong>Increase Network Bandwidth:</strong> Having more bandwidth makes it harder for attackers to overwhelm your connection, but cannot stop very large attacks.</li>
+    <li><strong>Use Load Balancers:</strong> Distribute traffic across multiple servers so that no single server becomes overloaded.</li>
+    <li><strong>Secure Internet of Things Devices:</strong> Change default passwords on all devices. Keep devices updated. Segment Internet of Things devices onto separate networks.</li>
+    <li><strong>Implement an Incident Response Plan:</strong> Have a plan for how to respond when a DDoS attack occurs. Know who to call and what steps to take.</li>
+  </ul>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.2</div>
+    <p>Network attacks target computer networks and the devices connected to them. Denial of Service attacks, especially Distributed Denial of Service attacks, aim to make services unavailable by overwhelming them with traffic. DDoS attacks often use botnets of infected Internet of Things devices. Other network attacks include man in the middle attacks, packet sniffing, IP spoofing, and session hijacking. Organizations can protect themselves by using DDoS protection services, implementing rate limiting, using web application firewalls, and having an incident response plan.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.3 — SECURITY THREATS TO E-COMMERCE -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-3">
+  <div class="topic-label">Topic 4.3</div>
+  <h2 class="topic-title">Security Threats to E-Commerce</h2>
+
+  <div class="concept-box">
+    <strong>E-commerce security threats</strong> are specific threats that target online shopping websites, payment systems, and customer data. E-commerce sites are attractive targets for attackers because they handle valuable customer information including credit card numbers, addresses, phone numbers, and purchase history.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    E-commerce sites face unique threats because they handle money, personal data, and have high traffic volumes. Remember the most common threats: payment fraud, carding attacks, account takeovers, and data breaches. Also remember the compliance requirement: Payment Card Industry Data Security Standard (PCI DSS).
+  </div>
+
+  <h3>Why Are E-Commerce Sites Targeted?</h3>
+  <p>E-commerce sites are prime targets for attackers for several reasons.</p>
+  <ul>
+    <li>They process financial transactions, so attackers can steal money directly.</li>
+    <li>They store valuable customer data including credit card numbers, addresses, and phone numbers.</li>
+    <li>They have high traffic volumes, so attacks can be launched at scale.</li>
+    <li>They have many third party integrations (payment gateways, shipping providers, marketing tools), each of which is a potential entry point.</li>
+    <li>They are often under pressure to add new features quickly, which can lead to security shortcuts.</li>
+  </ul>
+
+  <h3>Major Security Threats to E-Commerce</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Payment Card Fraud</h4>
+      <p>Payment card fraud occurs when stolen credit or debit card information is used to make purchases. Attackers obtain card information through data breaches, phishing, or by purchasing stolen card data on the dark web.</p>
+      <p><strong>How it works:</strong> An attacker buys a list of stolen credit card numbers. They use automated tools to test each card on the e-commerce site by making small purchases. Cards that work are then used for larger purchases or sold to other criminals.</p>
+      <p><strong>Impact on E-Commerce:</strong> The business loses both the product and the money when the legitimate cardholder disputes the charge. This is called chargeback fraud.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Carding Attacks</h4>
+      <p>Carding is a specific type of payment fraud where attackers use automated software to test stolen credit card numbers on e-commerce websites. The goal is to identify which cards are still valid.</p>
+      <p><strong>How it works:</strong> The attacker submits many small transactions (often for very low amounts like one rupee) using different credit card numbers. When a transaction succeeds, the attacker knows that card is valid. The valid cards are then used for larger fraudulent purchases.</p>
+      <p><strong>Detection:</strong> E-commerce sites can detect carding attacks by looking for patterns such as many failed transactions, many transactions from the same Internet Protocol address, or transactions for unusual amounts.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Account Takeover (ATO)</h4>
+      <p>Account takeover occurs when an attacker gains access to a legitimate customer's account. The attacker can then make purchases using saved payment methods, change shipping addresses, and steal personal information.</p>
+      <p><strong>How it works:</strong> Attackers obtain username and password pairs from data breaches at other websites. They try these credentials on the e-commerce site (credential stuffing). When a match is found, the account is compromised.</p>
+      <p><strong>Impact:</strong> Customers lose trust in the business. The business faces chargebacks and fraud losses.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Data Breaches</h4>
+      <p>Data breaches occur when attackers gain unauthorized access to the e-commerce site's database and steal customer information. This can include names, addresses, email addresses, phone numbers, and payment card information.</p>
+      <p><strong>How it works:</strong> Attackers exploit vulnerabilities in the website, its plugins, or its hosting environment to gain access to the database. They then extract the data and sell it on the dark web.</p>
+      <p><strong>Impact:</strong> Financial penalties, legal liability, loss of customer trust, and reputational damage.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>SQL Injection</h4>
+      <p>SQL injection is a code injection technique that attackers use to manipulate the database queries executed by the website. It is one of the most common vulnerabilities in web applications.</p>
+      <p><strong>How it works:</strong> The attacker enters malicious code into a form field or URL parameter. If the website does not properly validate the input, the malicious code is executed by the database. The attacker can then read, modify, or delete data.</p>
+      <p><strong>Example:</strong> In a login form, the attacker enters `' OR '1'='1` as the username. The database returns all users, and the attacker is logged in without a password.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Cross Site Scripting (XSS)</h4>
+      <p>Cross site scripting allows attackers to inject malicious scripts into web pages viewed by other users. The script runs in the victim's browser and can steal session cookies, redirect users to fake websites, or deface the website.</p>
+      <p><strong>How it works:</strong> The attacker posts a comment containing `<script>stealCookies()</script>`. When another user views the comment, the script runs in their browser and sends their session cookie to the attacker.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>DDoS Attacks on E-Commerce</h4>
+      <p>E-commerce websites are frequent targets of DDoS attacks. Attackers may demand ransom payments to stop the attack, or competitors may launch attacks to disrupt business during peak shopping seasons.</p>
+      <p><strong>Impact:</strong> During a DDoS attack, legitimate customers cannot access the website. The business loses sales, customer trust, and may face reputational damage.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Man in the Browser Attacks</h4>
+      <p>Man in the browser attacks occur when malware infects the customer's web browser. The malware can modify web pages in real time, change transaction details, and steal information entered by the customer.</p>
+      <p><strong>How it works:</strong> The customer's computer is infected with malware that targets their browser. When the customer visits the e-commerce site and enters payment information, the malware modifies the transaction to send money to the attacker instead.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — The British Airways Data Breach (2018)</div>
+    <p><strong>Example: British Airways Data Breach</strong> In 2018, British Airways suffered a major data breach that affected approximately five hundred thousand customers. Attackers injected a malicious script into the British Airways website that captured customer payment information as it was entered. The script sent the stolen data to the attackers' servers. Stolen information included names, addresses, email addresses, credit card numbers, and card verification value (CVV) codes. British Airways was fined one hundred eighty three million pounds (approximately one thousand eight hundred crore rupees) under the General Data Protection Regulation (GDPR). This breach demonstrates how a single vulnerability in an e-commerce website can lead to massive financial penalties and reputational damage.</p>
+  </div>
+
+  <h3>E-Commerce Security Standards — PCI DSS</h3>
+  <p>The Payment Card Industry Data Security Standard, often called PCI DSS, is a set of security requirements for organizations that process, store, or transmit credit card information. Any e-commerce site that accepts credit cards must comply with PCI DSS.</p>
+
+  <p>The six goals and twelve requirements of PCI DSS are:</p>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔒</div>
+      <h4>Build Secure Networks</h4>
+      <p>Requirement 1: Install and maintain firewalls.<br>
+      Requirement 2: Do not use vendor default passwords and settings.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">💳</div>
+      <h4>Protect Cardholder Data</h4>
+      <p>Requirement 3: Protect stored cardholder data.<br>
+      Requirement 4: Encrypt transmission of cardholder data.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🛡️</div>
+      <h4>Maintain Vulnerability Management</h4>
+      <p>Requirement 5: Use and update antivirus software.<br>
+      Requirement 6: Develop and maintain secure systems.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔑</div>
+      <h4>Implement Access Controls</h4>
+      <p>Requirement 7: Restrict access to cardholder data.<br>
+      Requirement 8: Assign unique IDs and use strong authentication.<br>
+      Requirement 9: Restrict physical access.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Monitor and Test Networks</h4>
+      <p>Requirement 10: Track and monitor all access.<br>
+      Requirement 11: Test security systems regularly.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📋</div>
+      <h4>Maintain Security Policies</h4>
+      <p>Requirement 12: Maintain a security policy for all personnel.</p>
+    </div>
+  </div>
+
+  <h3>How E-Commerce Sites Can Protect Themselves</h3>
+  <ul>
+    <li><strong>Use a Payment Gateway:</strong> Do not store credit card information on your own servers. Use a payment gateway such as Razorpay, PayU, or Stripe to handle payment processing. This reduces your compliance burden and risk.</li>
+    <li><strong>Implement Multi Factor Authentication (MFA):</strong> Require multi factor authentication for customer accounts, especially before making changes to shipping addresses or adding new payment methods.</li>
+    <li><strong>Use Fraud Detection Systems:</strong> Implement automated systems that flag suspicious transactions based on patterns such as unusual shipping addresses, high value orders, or multiple failed payment attempts.</li>
+    <li><strong>Regularly Scan for Vulnerabilities:</strong> Use automated tools to scan your website for vulnerabilities such as SQL injection and cross site scripting.</li>
+    <li><strong>Conduct Penetration Testing:</strong> Hire security experts to attempt to break into your website and report vulnerabilities before attackers find them.</li>
+    <li><strong>Implement Web Application Firewall (WAF):</strong> A web application firewall can block common attack patterns before they reach your application.</li>
+    <li><strong>Train Employees:</strong> Educate all employees about security threats, especially phishing attacks that could give attackers access to your systems.</li>
+    <li><strong>Comply with PCI DSS:</strong> Follow the Payment Card Industry Data Security Standard requirements. If you cannot meet all requirements, use a payment gateway that handles compliance for you.</li>
+  </ul>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.3</div>
+    <p>E-commerce sites face unique security threats including payment card fraud, carding attacks, account takeover, data breaches, SQL injection, cross site scripting, DDoS attacks, and man in the browser attacks. These threats can result in financial losses, legal penalties, and reputational damage. E-commerce sites must comply with the Payment Card Industry Data Security Standard (PCI DSS). Protection measures include using payment gateways, implementing multi factor authentication, using fraud detection systems, regular vulnerability scanning, and employee training.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.4 — INTRODUCTION TO SECURITY POLICIES -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-4">
+  <div class="topic-label">Topic 4.4</div>
+  <h2 class="topic-title">Introduction to Security Policies</h2>
+
+  <div class="concept-box">
+    <strong>A security policy</strong> is a formal document that defines how an organization protects its information assets. It sets the rules for employee behavior, defines security responsibilities, and establishes consequences for violations. Every organization that values its information needs written security policies.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the three levels of security policies: Program Level (overall security direction), Issue Specific Level (covers specific topics like email or internet use), and System Specific Level (technical configuration rules for specific systems). Most exam questions focus on Issue Specific Policies.
+  </div>
+
+  <h3>What is a Security Policy?</h3>
+  <p>A security policy is a written document that communicates management's commitment to security and establishes the rules that everyone in the organization must follow. It answers questions such as:</p>
+  <ul>
+    <li>What is the organization's approach to security?</li>
+    <li>Who is responsible for security?</li>
+    <li>What behaviors are allowed and what behaviors are prohibited?</li>
+    <li>What happens if someone violates the rules?</li>
+  </ul>
+
+  <p>According to the National Institute of Standards and Technology (NIST), security policies are "the foundation of a successful security program." Without clear policies, employees do not know what is expected of them, and the organization cannot enforce security rules.</p>
+
+  <h3>The Three Levels of Security Policies</h3>
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.2 — Three Levels of Security Policies</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin: 1rem 0;">
+      <div style="background: #1a7a34; color: white; padding: 0.7rem; text-align: center; width: 80%; border-radius: 5px;">Level 1: Program Level Policy (EISP)<br>Enterprise Information Security Policy</div>
+      <div style="font-size: 1.5rem;">↓</div>
+      <div style="background: #0c8da0; color: white; padding: 0.7rem; text-align: center; width: 90%; border-radius: 5px;">Level 2: Issue Specific Policy (ISSP)<br>Email Policy, Internet Policy, Password Policy, Remote Access Policy</div>
+      <div style="font-size: 1.5rem;">↓</div>
+      <div style="background: #e6ac00; color: white; padding: 0.7rem; text-align: center; width: 70%; border-radius: 5px;">Level 3: System Specific Policy (SysSP)<br>Firewall Rules, Access Control Lists, Configuration Standards</div>
+    </div>
+  </div>
+
+  <h4>Level 1 — Program Level Policy (Enterprise Information Security Policy)</h4>
+  <p>The Enterprise Information Security Policy, often called EISP, is the highest level policy. It sets the overall security direction for the entire organization. It is approved by senior management and applies to everyone. The EISP typically includes:</p>
+  <ul>
+    <li>The organization's security vision, mission, and goals</li>
+    <li>The roles and responsibilities of the Chief Information Security Officer and security team</li>
+    <li>Security responsibilities for all employees</li>
+    <li>Consequences of policy violations</li>
+    <li>References to more detailed policies</li>
+  </ul>
+
+  <h4>Level 2 — Issue Specific Policy (Issue Specific Security Policy)</h4>
+  <p>Issue Specific Security Policies, often called ISSPs, cover specific topics or areas of security. These policies provide detailed rules for specific situations. Examples of Issue Specific Policies include:</p>
+  <ul>
+    <li>Email usage policy</li>
+    <li>Internet and web browsing policy</li>
+    <li>Password policy</li>
+    <li>Remote access policy</li>
+    <li>Mobile device policy</li>
+    <li>Acceptable use policy</li>
+    <li>Data classification policy</li>
+    <li>Incident response policy</li>
+  </ul>
+
+  <h4>Level 3 — System Specific Policy (System Specific Security Policy)</h4>
+  <p>System Specific Security Policies, often called SysSPs, provide technical configuration rules for specific systems. These policies are often implemented through technical controls. Examples include:</p>
+  <ul>
+    <li>Firewall rule sets (what traffic is allowed and blocked)</li>
+    <li>Access control lists (who can access which files and databases)</li>
+    <li>Operating system hardening standards</li>
+    <li>Patch management schedules</li>
+    <li>Backup and recovery procedures</li>
+  </ul>
+
+  <h3>Characteristics of a Good Security Policy</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📜</div>
+      <h4>Clear and Understandable</h4>
+      <p>The policy should be written in plain language that all employees can understand. Avoid technical jargon and legal language when possible.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">✅</div>
+      <h4>Specific and Actionable</h4>
+      <p>The policy should tell employees exactly what to do and what not to do. For example, "Passwords must be at least twelve characters long" is specific. "Use strong passwords" is not specific enough.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔧</div>
+      <h4>Enforceable</h4>
+      <p>The policy should be practical to enforce. If a policy cannot be enforced, it should not be written. Unenforced policies undermine all policies.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">⚖️</div>
+      <h4>Compliant with Laws</h4>
+      <p>The policy must comply with all applicable laws and regulations. For example, the password policy must not require storing passwords in a way that violates data protection laws.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔄</div>
+      <h4>Reviewed and Updated Regularly</h4>
+      <p>Security threats change over time, so policies must evolve too. Most organizations review their policies annually.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">✍️</div>
+      <h4>Acknowledged by Employees</h4>
+      <p>Employees must sign a form acknowledging that they have read and understood the policy. This creates accountability.</p>
+    </div>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.4</div>
+    <p>A security policy is a formal document that defines how an organization protects its information assets. Policies exist at three levels: program level (overall direction), issue specific level (topic specific rules), and system specific level (technical configuration). Good policies are clear, specific, enforceable, compliant with laws, reviewed regularly, and acknowledged by employees. Without written policies, employees do not know what is expected of them and the organization cannot enforce security rules.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.5 — WHY DO WE NEED A SECURITY POLICY? -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-5">
+  <div class="topic-label">Topic 4.5</div>
+  <h2 class="topic-title">Why Do We Need a Security Policy?</h2>
+
+  <div class="concept-box">
+    Organizations need security policies for many important reasons. A security policy is not just a document that sits on a shelf. It is an essential tool for managing security and protecting the organization's information assets.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    For exam questions about why organizations need security policies, remember these key reasons: Provide direction, define responsibilities, support compliance, reduce liability, create accountability, and demonstrate due care.
+  </div>
+
+  <h3>Reason One — Provide Direction and Consistency</h3>
+  <p>A security policy gives everyone in the organization clear guidance on what is expected of them. Without a policy, different employees might make different decisions in similar situations. This inconsistency creates confusion and security gaps. A policy ensures that everyone follows the same rules, creating a consistent security posture across the organization.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Without a Policy</div>
+    <p>One manager allows employees to use any password they want. Another manager requires employees to change passwords every month. Another manager does not care about passwords at all. This inconsistency means that some parts of the organization are secure while others are vulnerable. A password policy that applies to everyone ensures consistent security.</p>
+  </div>
+
+  <h3>Reason Two — Define Responsibilities</h3>
+  <p>Security is everyone's responsibility, but specific tasks must be assigned to specific people. A security policy clearly defines who is responsible for what. This prevents tasks from falling through the cracks and ensures accountability.</p>
+  
+  <p>For example, a policy might state:</p>
+  <ul>
+    <li>The Chief Information Security Officer is responsible for developing security policies.</li>
+    <li>Department managers are responsible for ensuring their employees follow security policies.</li>
+    <li>All employees are responsible for protecting their passwords and reporting security incidents.</li>
+    <li>The IT department is responsible for applying security patches within seven days.</li>
+  </ul>
+
+  <h3>Reason Three — Support Compliance with Laws and Regulations</h3>
+  <p>Many laws and regulations require organizations to have written security policies. For example:</p>
+  <ul>
+    <li>The Digital Personal Data Protection Act 2023 requires organizations to implement security safeguards, which includes having security policies.</li>
+    <li>The Payment Card Industry Data Security Standard (PCI DSS) requires written security policies.</li>
+    <li>The Information Technology Act 2000 requires organizations to have reasonable security practices, which includes policies.</li>
+    <li>Industry standards such as ISO 27001 require documented security policies.</li>
+  </ul>
+  <p>Without written policies, organizations cannot demonstrate compliance with these requirements and may face fines or legal consequences.</p>
+
+  <h3>Reason Four — Reduce Liability</h3>
+  <p>If a security incident occurs, having a written security policy shows that the organization took reasonable steps to prevent it. Courts and regulators view organizations more favorably when they have documented policies that were followed. Without a policy, the organization may be found negligent.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Example — How a Policy Reduces Liability</div>
+    <p>An employee falls for a phishing email and gives away their password. A hacker uses the password to access customer data. If the organization has a policy requiring security training for all employees, and the employee completed that training, the organization can show they took reasonable precautions. If there is no training policy, the organization may be found negligent.</p>
+  </div>
+
+  <h3>Reason Five — Create Accountability and Consequences</h3>
+  <p>When policies are written and acknowledged, employees know the rules and the consequences of breaking them. This creates accountability. If an employee violates a policy, the organization can take disciplinary action because the employee knew the rule. Without a written policy, the employee can claim they did not know the rule was important.</p>
+
+  <h3>Reason Six — Demonstrate Due Care and Due Diligence</h3>
+  <p>Due care means taking reasonable steps to protect the organization's assets. Due diligence means investigating and addressing potential problems. Security policies are a key part of demonstrating due care and due diligence. When a board of directors or court asks "What did the organization do to prevent this incident?" the answer should include "We had a comprehensive security policy that all employees followed."</p>
+
+  <h3>Reason Seven — Support Business Operations</h3>
+  <p>A good security policy does not just restrict behavior. It also enables business operations by providing clear guidelines. For example, a remote access policy tells employees how they can safely work from home. A data classification policy tells employees how to handle different types of information. A third party access policy tells vendors how they can connect to the organization's systems.</p>
+
+  <h3>Reason Eight — Reduce Security Incidents</h3>
+  <p>Studies show that organizations with formal security policies have fewer security incidents. Policies prevent many common problems such as weak passwords, unpatched systems, and unauthorized access. By setting clear expectations and enforcing them, policies reduce the number of security incidents an organization experiences.</p>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Mistakes Organizations Make with Security Policies</div>
+    <ul>
+      <li>Writing policies that are too long and nobody reads.</li>
+      <li>Writing policies that are impossible to follow.</li>
+      <li>Writing policies that are never enforced.</li>
+      <li>Writing policies that are never updated.</li>
+      <li>Writing policies that employees never see or acknowledge.</li>
+      <li>Having policies for some topics but not for important ones.</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.5</div>
+    <p>Organizations need security policies for many reasons: to provide direction and consistency, define responsibilities, support legal compliance, reduce liability, create accountability, demonstrate due care, support business operations, and reduce security incidents. Without policies, employees do not know what is expected, the organization cannot enforce rules, and liability is increased. A good security policy is not just a document. It is an essential tool for managing security risk.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.6 — SECURITY POLICY DEVELOPMENT -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-6">
+  <div class="topic-label">Topic 4.6</div>
+  <h2 class="topic-title">Security Policy Development</h2>
+
+  <div class="concept-box">
+    <strong>Security policy development</strong> is the process of creating, implementing, and maintaining security policies. A well developed policy is not written by one person in isolation. It requires input from stakeholders, approval from management, and a process for review and updates.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the seven steps of security policy development: 1. Initiation, 2. Research, 3. Drafting, 4. Review, 5. Approval, 6. Communication and Training, 7. Implementation and Enforcement, 8. Review and Update. This is a common exam question.
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.3 — Security Policy Development Lifecycle</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0; margin: 1rem 0;">
+      <div style="background: #1a7a34; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 1: Initiation and Planning</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #0c8da0; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 2: Research and Information Gathering</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #e6ac00; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 3: Drafting the Policy</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #c0392b; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 4: Review and Feedback</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #6f42c1; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 5: Approval and Authorization</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #e67e22; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 6: Communication and Training</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #1a7a34; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 7: Implementation and Enforcement</div>
+      <div style="font-size: 1.2rem;">↓</div>
+      <div style="background: #0c8da0; color: white; padding: 0.5rem; text-align: center; width: 100%; max-width: 400px; border-radius: 5px;">Step 8: Review, Update, and Continuous Improvement</div>
+    </div>
+  </div>
+
+  <h3>Step by Step Security Policy Development Process</h3>
+
+  <h4>Step One — Initiation and Planning</h4>
+  <p>The first step is to decide that a policy is needed. This may be because of a security incident, a new regulation, a business change, or a identified gap. The security team creates a plan that defines:</p>
+  <ul>
+    <li>What policy will be developed</li>
+    <li>Who will be involved in developing it</li>
+    <li>What the timeline will be</li>
+    <li>What resources are needed</li>
+  </ul>
+
+  <h4>Step Two — Research and Information Gathering</h4>
+  <p>The policy development team researches existing policies, industry standards, legal requirements, and best practices. They gather information from:</p>
+  <ul>
+    <li>Industry standards such as ISO 27001, NIST, and COBIT</li>
+    <li>Legal requirements such as the Digital Personal Data Protection Act 2023</li>
+    <li>Policies from similar organizations</li>
+    <li>Input from stakeholders such as IT, legal, human resources, and business units</li>
+  </ul>
+
+  <h4>Step Three — Drafting the Policy</h4>
+  <p>The policy is written in clear, simple language. A good policy template includes:</p>
+  <ul>
+    <li><strong>Policy Title:</strong> A clear name for the policy</li>
+    <li><strong>Policy Number:</strong> A unique identifier for tracking</li>
+    <li><strong>Effective Date:</strong> When the policy takes effect</li>
+    <li><strong>Purpose:</strong> Why the policy exists</li>
+    <li><strong>Scope:</strong> Who and what the policy applies to</li>
+    <li><strong>Policy Statements:</strong> The actual rules that must be followed</li>
+    <li><strong>Roles and Responsibilities:</strong> Who is responsible for what</li>
+    <li><strong>Consequences:</strong> What happens if the policy is violated</li>
+    <li><strong>Review Schedule:</strong> When the policy will be reviewed</li>
+    <li><strong>Approval Signature:</strong> Signature of the approving authority</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Sample Policy Template</div>
+    <pre style="background: #f0f0ee; padding: 0.5rem; overflow-x: auto; font-size: 0.7rem;">
+POLICY TITLE:     Password Management Policy
+POLICY NUMBER:    ISSP-PWD-001
+EFFECTIVE DATE:   1 January 2024
+PURPOSE:          To ensure that all user accounts are protected by strong passwords
+SCOPE:            All employees, contractors, and vendors with access to company systems
+POLICY STATEMENTS:
+                  1. All passwords must be at least 12 characters long
+                  2. Passwords must contain uppercase, lowercase, numbers, and special characters
+                  3. Passwords must be changed every 90 days
+                  4. Previous 5 passwords cannot be reused
+                  5. Default passwords must be changed immediately
+ROLES:
+                  IT Department: Enforce password requirements through technical controls
+                  All Users: Create and maintain strong passwords
+CONSEQUENCES:     First violation: Verbal warning; Second violation: Written warning; 
+                  Third violation: Termination
+REVIEW SCHEDULE:  Annually in December
+APPROVED BY:      Chief Information Security Officer
+    </pre>
+  </div>
+
+  <h4>Step Four — Review and Feedback</h4>
+  <p>The draft policy is circulated to stakeholders for review. This includes legal department, human resources, IT, business units, and security team. Feedback is collected and incorporated into a revised draft. Multiple rounds of review may be needed.</p>
+
+  <h4>Step Five — Approval and Authorization</h4>
+  <p>The final policy is submitted for approval. The approval authority depends on the policy level. Program level policies are approved by the Board of Directors or Chief Executive Officer. Issue specific policies are approved by the Chief Information Security Officer or Security Steering Committee. System specific policies may be approved by IT management.</p>
+
+  <h4>Step Six — Communication and Training</h4>
+  <p>A policy is useless if employees do not know about it. The organization must communicate the policy to all affected employees. This includes:</p>
+  <ul>
+    <li>Sending the policy by email</li>
+    <li>Posting the policy on the internal website</li>
+    <li>Conducting training sessions on the policy</li>
+    <li>Having employees sign an acknowledgment form</li>
+    <li>Testing employee understanding through quizzes or assessments</li>
+  </ul>
+
+  <h4>Step Seven — Implementation and Enforcement</h4>
+  <p>The policy is implemented. Technical controls may be put in place to enforce the policy automatically. For example, a password policy can be enforced by the operating system or application. Management must consistently enforce the policy. If violations are ignored, the policy loses its effectiveness.</p>
+
+  <h4>Step Eight — Review, Update, and Continuous Improvement</h4>
+  <p>Security policies are not static. They must be reviewed regularly and updated when needed. The policy should specify its review schedule (for example, annually). When new threats emerge, laws change, or the organization changes, policies must be updated accordingly. Outdated policies can be worse than no policies because they give a false sense of security.</p>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Policy Development Mistakes</div>
+    <ul>
+      <li>Developing policies without involving stakeholders</li>
+      <li>Writing policies that are too technical for general employees to understand</li>
+      <li>Creating policies that cannot be enforced</li>
+      <li>Not getting management approval before communicating policies</li>
+      <li>Not training employees on new policies</li>
+      <li>Never reviewing or updating policies</li>
+      <li>Having policies for some topics but not for important ones</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.6</div>
+    <p>Security policy development is a structured process that includes initiation, research, drafting, review, approval, communication, implementation, and ongoing review. Policies must be written in clear language, approved by appropriate management, communicated to all employees, and enforced consistently. Without a proper development process, policies may be incomplete, unenforceable, or unknown to employees. Regular review and updates are essential to keep policies current with changing threats and business needs.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.7 — EMAIL SECURITY POLICIES -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-7">
+  <div class="topic-label">Topic 4.7</div>
+  <h2 class="topic-title">Email Security Policies</h2>
+
+  <div class="concept-box">
+    <strong>Email security policies</strong> are specific security policies that govern the use of email within an organization. Email is one of the most common vectors for cyber attacks including phishing, malware distribution, and data leakage. A well designed email security policy is essential for protecting the organization.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Email security policies are a common exam topic. Remember the key elements: acceptable use, phishing awareness, attachment handling, link safety, data protection, retention, personal use, encryption, and incident reporting. Also remember that most attacks start with a phishing email.
+  </div>
+
+  <h3>Why Email Security Policies are Critical</h3>
+  <p>Email is the primary communication tool for most organizations, but it is also the primary attack vector. Statistics show that:</p>
+  <ul>
+    <li>More than ninety percent of cyber attacks start with a phishing email.</li>
+    <li>Email is the most common method for delivering malware.</li>
+    <li>Employees regularly send sensitive information by email without thinking about security.</li>
+    <li>Email is often used for business communication with external parties, increasing risk.</li>
+  </ul>
+  <p>An email security policy helps employees understand how to use email safely and what to do when they receive suspicious messages.</p>
+
+  <h3>Key Elements of an Email Security Policy</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📧</div>
+      <h4>Acceptable Use</h4>
+      <p>Defines what types of communication are appropriate for business email. Personal use may be limited or prohibited. The policy should specify that company email should not be used for personal business, illegal activities, harassment, or sending offensive content.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🎣</div>
+      <h4>Phishing Awareness</h4>
+      <p>Requires employees to be vigilant about phishing emails. The policy should describe common phishing indicators such as urgent requests, suspicious sender addresses, spelling errors, unexpected attachments, and requests for passwords or financial information.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📎</div>
+      <h4>Attachment Handling</h4>
+      <p>Specifies rules for opening email attachments. Employees should never open attachments from unknown senders. Even from known senders, unexpected attachments should be verified by phone before opening. Certain file types (such as .exe, .scr, .zip) may be blocked entirely.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔗</div>
+      <h4>Link Safety</h4>
+      <p>Requires employees to be careful about clicking links in emails. Employees should hover over links to see the actual destination before clicking. Links in unexpected emails should not be clicked. Employees should navigate to websites by typing the address directly rather than clicking links.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔒</div>
+      <h4>Data Protection</h4>
+      <p>Prohibits sending sensitive information such as passwords, credit card numbers, or personal data by email unless encrypted. The policy should specify what types of information cannot be sent by email and what encryption methods must be used when sensitive data must be sent.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📁</div>
+      <h4>Email Retention</h4>
+      <p>Specifies how long emails must be kept and when they should be deleted. This is important for legal compliance and data management. The policy should also address what happens to emails when an employee leaves the organization.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">👤</div>
+      <h4>Personal Use</h4>
+      <p>Defines whether employees may use company email for personal communication. If personal use is allowed, the policy should specify limits and make clear that the organization may monitor all email regardless of personal or business nature.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">✉️</div>
+      <h4>Email Forwarding and Auto-Forwarding</h4>
+      <p>Prohibits automatic forwarding of company email to external addresses such as personal Gmail or Yahoo accounts. This prevents data leakage and ensures that security controls are applied to all email.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🚨</div>
+      <h4>Incident Reporting</h4>
+      <p>Requires employees to report suspicious emails to the security team immediately. The policy should specify the process for reporting (for example, a "Report Phishing" button in the email client or a dedicated email address).</p>
+    </div>
+  </div>
+
+  <h3>Sample Email Security Policy</h3>
+  <div class="example-box">
+    <div class="ex-label">Example — Email Security Policy</div>
+    <p><strong>Policy Number:</strong> ISSP-EMAIL-001</p>
+    <p><strong>Purpose:</strong> To protect the organization from email based threats including phishing, malware, and data leakage.</p>
+    <p><strong>Scope:</strong> All employees, contractors, and vendors who use the organization's email system.</p>
+    <p><strong>Policy Statements:</strong></p>
+    <ul>
+      <li>Employees must never open email attachments from unknown senders.</li>
+      <li>Employees must never click links in unexpected emails. Instead, type the website address directly into the browser.</li>
+      <li>Employees must never send passwords, credit card numbers, or personal data by email unless encrypted.</li>
+      <li>Employees must report any suspicious email to the security team immediately using the "Report Phishing" button in the email client.</li>
+      <li>Employees must not forward company email to personal email addresses.</li>
+      <li>Employees must not use company email for personal business, illegal activities, or sending offensive content.</li>
+      <li>All emails are the property of the organization and may be monitored at any time.</li>
+      <li>Employees who violate this policy are subject to disciplinary action up to and including termination.</li>
+    </ul>
+    <p><strong>Consequences of Violation:</strong> First violation: Written warning and mandatory security training. Second violation: Suspension. Third violation: Termination of employment.</p>
+  </div>
+
+  <h3>Technical Controls to Support Email Security Policies</h3>
+  <p>Policies alone are not enough. Organizations must also implement technical controls to enforce email security.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Email Filtering and Anti-Spam</h4>
+      <ul>
+        <li>Block known malicious senders and domains</li>
+        <li>Filter spam and phishing emails</li>
+        <li>Scan all attachments for malware</li>
+        <li>Strip dangerous file types from emails</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Sender Authentication</h4>
+      <ul>
+        <li>SPF (Sender Policy Framework) to verify sender domains</li>
+        <li>DKIM (DomainKeys Identified Mail) to sign outgoing emails</li>
+        <li>DMARC (Domain based Message Authentication, Reporting and Conformance) to handle unauthenticated emails</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Email Encryption</h4>
+      <ul>
+        <li>Encrypt emails containing sensitive information</li>
+        <li>Use TLS for email transmission</li>
+        <li>Implement email encryption for end users</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Data Loss Prevention (DLP)</h4>
+      <ul>
+        <li>Scan outgoing emails for sensitive data</li>
+        <li>Block or encrypt emails containing credit card numbers or personal data</li>
+        <li>Alert security team when sensitive data is detected</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Common Email Security Mistakes</div>
+    <ul>
+      <li>Training employees once and never again (phishing training must be ongoing)</li>
+      <li>Not testing employees with simulated phishing emails</li>
+      <li>Not having a clear process for reporting suspicious emails</li>
+      <li>Not enforcing technical controls to block malicious emails</li>
+      <li>Allowing automatic forwarding of email to external addresses</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.7</div>
+    <p>Email security policies are essential for protecting organizations from email based threats such as phishing, malware, and data leakage. Key elements of an email security policy include acceptable use, phishing awareness, attachment handling, link safety, data protection, email retention, personal use rules, and incident reporting. Policies must be supported by technical controls such as email filtering, sender authentication, encryption, and data loss prevention. Ongoing training and simulated phishing tests are essential for maintaining employee awareness.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.8 — ADVANCED PERSISTENT THREAT (APT) -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-8">
+  <div class="topic-label">Topic 4.8</div>
+  <h2 class="topic-title">Advanced Persistent Threat (APT)</h2>
+
+  <div class="concept-box">
+    <strong>Advanced Persistent Threat (APT)</strong> refers to a sophisticated, long term cyber attack campaign in which an attacker gains unauthorized access to a network and remains undetected for an extended period of time. APT attacks are typically carried out by nation state actors or well funded criminal groups with specific objectives such as espionage, data theft, or sabotage.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    APT stands for Advanced Persistent Threat. Remember what each word means: Advanced (sophisticated techniques), Persistent (long term presence), Threat (potential to cause harm). APTs are not fast attacks. They are slow, patient, and stealthy. APT attackers may remain inside a network for months or years before being detected.
+  </div>
+
+  <h3>What Makes an APT Different from Other Attacks?</h3>
+  <p>Most cyber attacks are opportunistic. The attacker scans for vulnerable systems and exploits them quickly. Once they get what they want, they leave. APT attacks are different in several important ways.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Traditional Attacks</h4>
+      <ul>
+        <li>Opportunistic and broad targeting</li>
+        <li>Quick in and out (minutes to hours)</li>
+        <li>Motivated by quick financial gain</li>
+        <li>Use known, easily detectable tools</li>
+        <li>Leave obvious signs of compromise</li>
+        <li>Attackers are often script kiddies or small criminal groups</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>APT Attacks</h4>
+      <ul>
+        <li>Targeted and specific (a particular organization or sector)</li>
+        <li>Long term presence (months to years)</li>
+        <li>Motivated by espionage, intellectual property theft, or sabotage</li>
+        <li>Use custom, sophisticated tools</li>
+        <li>Cover their tracks and remain hidden</li>
+        <li>Attackers are nation states or advanced criminal groups</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The Three Words of APT — Advanced, Persistent, Threat</h3>
+
+  <h4>Advanced</h4>
+  <p>APT attackers use sophisticated techniques and custom developed tools. They often exploit zero day vulnerabilities (vulnerabilities that are not yet known to the software vendor). They use advanced evasion techniques to avoid detection by antivirus software and intrusion detection systems. They may use multiple attack vectors simultaneously.</p>
+
+  <h4>Persistent</h4>
+  <p>APT attackers are patient. They do not rush. They may spend weeks or months conducting reconnaissance before launching an attack. Once inside, they establish multiple backdoors to ensure they can return even if one entry point is discovered. They maintain long term access, sometimes for years, quietly stealing information over time.</p>
+
+  <h4>Threat</h4>
+  <p>APT attacks pose a serious threat because of their objectives. Nation state APT groups may steal military secrets, intellectual property, or sensitive government information. They may also seek to disrupt critical infrastructure such as power grids or financial systems. The impact of a successful APT attack can be devastating.</p>
+
+  <h3>The APT Attack Lifecycle</h3>
+  <p>APT attacks typically follow a multi phase process.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 4.4 — The APT Attack Lifecycle</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0; margin: 1rem 0;">
+      <div style="background: #1a7a34; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 1: Reconnaissance</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #0c8da0; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 2: Initial Compromise</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #e6ac00; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 3: Establish Foothold</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #c0392b; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 4: Escalate Privileges</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #6f42c1; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 5: Internal Reconnaissance and Lateral Movement</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #e67e22; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 6: Data Exfiltration or Mission Execution</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #1a7a34; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 7: Maintain Persistence</div>
+      <div style="font-size: 1rem;">↓</div>
+      <div style="background: #0c8da0; color: white; padding: 0.3rem; text-align: center; width: 95%; max-width: 450px; border-radius: 3px;">Phase 8: Cover Tracks</div>
+    </div>
+  </div>
+
+  <h4>Phase 1 — Reconnaissance</h4>
+  <p>The attacker gathers information about the target organization. This includes employee names, email addresses, organizational structure, technology used, and business partners. Reconnaissance uses both open source intelligence (publicly available information) and technical scanning.</p>
+
+  <h4>Phase 2 — Initial Compromise</h4>
+  <p>The attacker gains initial access to the target's network. Common methods include spear phishing emails (targeted phishing), watering hole attacks (compromising websites the target visits), or exploiting internet facing systems.</p>
+
+  <h4>Phase 3 — Establish Foothold</h4>
+  <p>Once inside, the attacker installs backdoors and remote access tools to ensure they can return. These tools are often custom made to avoid detection by antivirus software.</p>
+
+  <h4>Phase 4 — Escalate Privileges</h4>
+  <p>The attacker seeks to gain higher level access (administrator or root privileges). With higher privileges, they can access more systems and cover their tracks more effectively.</p>
+
+  <h4>Phase 5 — Internal Reconnaissance and Lateral Movement</h4>
+  <p>The attacker moves through the network, compromising additional systems. They look for valuable data, map the network, and identify high value targets such as database servers or file servers.</p>
+
+  <h4>Phase 6 — Data Exfiltration or Mission Execution</h4>
+  <p>The attacker steals the targeted data (exfiltration) or executes their mission (such as deploying ransomware or preparing for sabotage). Data is often stolen slowly over time to avoid detection.</p>
+
+  <h4>Phase 7 — Maintain Persistence</h4>
+  <p>The attacker ensures they can return even if their access is discovered. They install multiple backdoors, create new user accounts, and compromise backup systems.</p>
+
+  <h4>Phase 8 — Cover Tracks</h4>
+  <p>The attacker deletes logs, removes evidence of their presence, and takes steps to avoid detection. This makes it difficult for the organization to determine how the attack happened.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — The Sunburst Attack (2020)</div>
+    <p><strong>Example: The Sunburst Attack (also called SolarWinds Attack)</strong> In 2020, a sophisticated APT group believed to be Russian state sponsored actors compromised the software build system of SolarWinds, a company that makes network management software used by thousands of organizations including the United States government. The attackers inserted malicious code into a software update. When organizations installed the update, the attackers gained access to their networks. The attackers remained undetected for approximately nine months. The victims included the United States Department of Defense, Department of Homeland Security, Treasury Department, and many Fortune 500 companies. This attack is considered one of the most sophisticated and impactful APT attacks in history.</p>
+  </div>
+
+  <h3>Famous APT Groups</h3>
+  <p>Security researchers have identified many APT groups, often named with animal or theme based names. Some well known APT groups include:</p>
+  <ul>
+    <li><strong>APT28 (Fancy Bear):</strong> Believed to be Russian military intelligence. Responsible for attacks on governments, militaries, and security organizations.</li>
+    <li><strong>APT29 (Cozy Bear):</strong> Also believed to be Russian. Responsible for the Democratic National Committee breach in 2016.</li>
+    <li><strong>Lazarus Group:</strong> Believed to be North Korean. Responsible for the Sony Pictures hack and the WannaCry ransomware attack.</li>
+    <li><strong>APT41:</strong> Believed to be Chinese. Targets technology, healthcare, and education sectors.</li>
+    <li><strong>OilRig:</strong> Believed to be Iranian. Targets Middle Eastern governments and organizations.</li>
+  </ul>
+
+  <h3>How to Defend Against APT Attacks</h3>
+  <p>Defending against APT attacks is challenging because attackers are patient and sophisticated. No single control will stop an APT. Organizations must use multiple layers of defense.</p>
+
+  <ul>
+    <li><strong>Security Awareness Training:</strong> Train employees to recognize spear phishing, which is the most common initial access method for APTs.</li>
+    <li><strong>Patch Management:</strong> Apply security patches promptly. APTs often exploit known vulnerabilities that could have been patched.</li>
+    <li><strong>Network Segmentation:</strong> Divide the network into segments so that a compromise in one area does not give the attacker access to everything.</li>
+    <li><strong>Least Privilege Access:</strong> Give users and systems only the permissions they need. This limits what an attacker can do after a compromise.</li>
+    <li><strong>Multi Factor Authentication (MFA):</strong> Require multi factor authentication for all remote access and for access to sensitive systems.</li>
+    <li><strong>Endpoint Detection and Response (EDR):</strong> Use advanced endpoint security tools that can detect suspicious behavior, not just known malware.</li>
+    <li><strong>Security Information and Event Management (SIEM):</strong> Collect and analyze logs from across the organization to detect patterns that might indicate an APT.</li>
+    <li><strong>Threat Hunting:</strong> Proactively search for indicators of compromise rather than waiting for alerts. APTs are often detected by threat hunting, not automated tools.</li>
+    <li><strong>Incident Response Plan:</strong> Have a plan for responding to APT incidents. The plan should include working with law enforcement and external incident response experts.</li>
+  </ul>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 4.8</div>
+    <p>Advanced Persistent Threats (APTs) are sophisticated, long term cyber attacks typically carried out by nation state actors. APT attackers use advanced techniques, are patient and persistent, and pose a serious threat to governments and large organizations. The APT attack lifecycle includes reconnaissance, initial compromise, establishing foothold, privilege escalation, lateral movement, data exfiltration, maintaining persistence, and covering tracks. Defending against APTs requires multiple layers of defense including security awareness training, patch management, network segmentation, least privilege access, multi factor authentication, endpoint detection and response, security information and event management, threat hunting, and incident response planning.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 4.9 — CASE STUDIES (2 CASE STUDIES) -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t4-9">
+  <div class="topic-label">Topic 4.9</div>
+  <h2 class="topic-title">Case Studies on Security Threats and Policies</h2>
+
+  <div class="concept-box">
+    This section presents two case studies based on the examples provided in your syllabus. Each case study includes a scenario, questions, and complete answers. Study these case studies carefully as similar questions appear in the examination.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Exam Tip</div>
+    In case study questions, read the scenario carefully. Identify the specific threats mentioned. Then recommend policies and controls that directly address those threats. Always explain why you recommend each policy or control. Use the terminology from the unit.
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- CASE STUDY 1 — DDoS ATTACK ON FASTFOOD'S WEBSITE -->
+  <!-- ======================================================== -->
+  <div class="example-box">
+    <div class="ex-label">Case Study 1 — DDoS Attack on FastFood's Website</div>
+    
+    <p><strong>Scenario:</strong> A large scale Distributed Denial of Service (DDoS) attack overwhelmed FastFood's servers, causing its websites to become inaccessible for more than sixty hours. The attackers used a botnet to flood the site with excessive traffic, preventing legitimate users from making purchases or accessing product information.</p>
+    
+    <p><strong>Question (i): What are the different ways by which this attack is going to live its impact on FastFood's services?</strong></p>
+    
+    <p><strong>Answer:</strong> The DDoS attack will impact FastFood's services in the following ways.</p>
+    
+    <ul>
+      <li><strong>Impact One — Loss of Sales Revenue:</strong> During the sixty hours when the website was inaccessible, customers could not place orders online. For an e-commerce food delivery business, this means a complete loss of online revenue for the duration of the attack. If FastFood typically earns fifty lakh rupees per day from online orders, the total loss would be approximately one crore twenty five lakh rupees for sixty hours.</li>
+      
+      <li><strong>Impact Two — Customer Dissatisfaction and Churn:</strong> Customers who tried to order food and found the website inaccessible would be frustrated. Some customers may permanently switch to competing food delivery services. This is called customer churn. Losing customers to competitors has long term revenue impact beyond the immediate attack period.</li>
+      
+      <li><strong>Impact Three — Damage to Brand Reputation:</strong> News of the attack and the prolonged outage would spread through social media and news reports. Customers would perceive FastFood as having poor security and unreliable service. Rebuilding brand reputation after a major incident takes months or years and requires significant marketing investment.</li>
+      
+      <li><strong>Impact Four — Operational Disruption:</strong> The company's internal systems may also be affected. Employees may not be able to access internal applications, process orders, manage inventory, or communicate with customers. The attack may have required the company's information technology team to work around the clock for sixty hours, diverting them from normal operations.</li>
+      
+      <li><strong>Impact Five — Extortion Costs:</strong> The attackers may have demanded a ransom payment to stop the attack. FastFood may have paid the ransom, or if they did not pay, they incurred costs for DDoS mitigation services. Both options represent direct financial costs.</li>
+      
+      <li><strong>Impact Six — Remediation and Security Improvement Costs:</strong> After the attack, FastFood would need to invest in DDoS protection services, upgrade its infrastructure, hire security consultants, and implement new security measures. These costs can be substantial, often running into crores of rupees.</li>
+      
+      <li><strong>Impact Seven — Legal and Regulatory Consequences:</strong> If customer data was compromised during the attack or if the outage violated service level agreements with business partners, FastFood could face lawsuits, penalties, or compensation claims. Regulators may investigate the company's security practices.</li>
+      
+      <li><strong>Impact Eight — Employee Morale and Productivity:</strong> The stress of dealing with a major security incident for sixty hours would affect employee morale. Information technology and security teams would experience burnout. Other departments would be unable to perform their normal duties during the outage.</li>
+    </ul>
+    
+    <p><strong>Question (ii): Suggest the concrete security policy to be practiced in the above context.</strong></p>
+    
+    <p><strong>Answer:</strong> FastFood should implement the following security policies to prevent and respond to DDoS attacks.</p>
+    
+    <ul>
+      <li><strong>Policy One — DDoS Protection Policy:</strong> This policy requires the organization to maintain DDoS protection services for all public facing websites and applications. The policy would specify that all internet facing systems must be protected by a DDoS mitigation service such as Cloudflare, Akamai, or AWS Shield. The policy would require regular testing of DDoS protections through simulated attacks.</li>
+      
+      <li><strong>Policy Two — Incident Response Policy:</strong> This policy defines how the organization will respond to security incidents including DDoS attacks. The policy would specify: who is on the incident response team, how to detect an attack, how to escalate, how to communicate with stakeholders, and how to recover. The policy would require regular tabletop exercises to test the incident response plan.</li>
+      
+      <li><strong>Policy Three — Business Continuity and Disaster Recovery Policy:</strong> This policy ensures that critical business functions can continue during and after an attack. The policy would specify: maximum acceptable downtime for each system (Recovery Time Objective), how much data can be lost (Recovery Point Objective), backup procedures for critical systems, and alternate processing arrangements (such as backup servers in different locations).</li>
+      
+      <li><strong>Policy Four — Network Security Policy:</strong> This policy defines how the network should be configured and protected. The policy would specify: use of firewalls, intrusion detection and prevention systems, network segmentation, rate limiting configuration, and Internet Protocol address reputation filtering to block known malicious sources.</li>
+      
+      <li><strong>Policy Five — Vendor Management Policy:</strong> This policy requires the organization to assess the security of vendors, including Internet Service Providers, cloud providers, and DDoS protection vendors. The policy would require contracts to include security requirements, service level agreements for availability, and right to audit clauses.</li>
+      
+      <li><strong>Policy Six — Communication Policy:</strong> This policy defines how the organization will communicate during a security incident. The policy would specify: who is authorized to speak to the media, what information can be shared with customers, how to notify affected parties, and the process for internal communication during an incident.</li>
+      
+      <li><strong>Policy Seven — Capacity Management Policy:</strong> This policy requires regular assessment of network and server capacity. The policy would specify: how much excess capacity must be maintained, how often capacity assessments are performed, and the process for adding capacity when needed. This helps ensure that the organization can handle traffic spikes, whether legitimate or malicious.</li>
+      
+      <li><strong>Policy Eight — Security Monitoring and Logging Policy:</strong> This policy requires continuous monitoring of network traffic and system logs. The policy would specify: what logs must be collected, how long logs must be retained, how often logs must be reviewed, and what automated alerting must be in place for anomalous traffic patterns that might indicate a DDoS attack.</li>
+    </ul>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- CASE STUDY 2 — BANK DATA BREACH -->
+  <!-- ======================================================== -->
+  <div class="example-box">
+    <div class="ex-label">Case Study 2 — Bank Data Breach</div>
+    
+    <p><strong>Scenario:</strong> A leading bank suffered a data breach where cybercriminals stole sensitive customer data including account details and credit card information. The investigation revealed that attackers exploited weak passwords, unpatched software vulnerabilities, and poor access controls. The bank did not have a robust information security policy in place to prevent such incidents.</p>
+    
+    <p><strong>Question (i): Which security threats were exploited in this case?</strong></p>
+    
+    <p><strong>Answer:</strong> The following security threats were exploited in this case.</p>
+    
+    <ul>
+      <li><strong>Threat One — Weak Password Exploitation:</strong> The attackers exploited weak passwords used by bank employees or customers. Weak passwords are passwords that are short, use common words, lack complexity, or are reused across multiple accounts. Attackers may have used brute force attacks (trying many password combinations), dictionary attacks (using common words), or credential stuffing (using passwords stolen from other websites).</li>
+      
+      <li><strong>Threat Two — Unpatched Software Vulnerabilities:</strong> The attackers exploited known vulnerabilities in software that the bank was using but had not patched. Software vendors regularly release patches to fix security vulnerabilities. If the bank did not apply these patches, attackers could use publicly available exploit code to break into the bank's systems. This is often called a "known vulnerability" attack.</li>
+      
+      <li><strong>Threat Three — Poor Access Controls:</strong> The bank had inadequate access controls, meaning that users had more access than they needed. Attackers who compromised a low privilege account may have been able to escalate their privileges to access sensitive customer data. Poor access controls also include default accounts that were not disabled, shared accounts, and accounts that were not removed when employees left the bank.</li>
+      
+      <li><strong>Threat Four — Insider Threats (Possible):</strong> Although the scenario does not specifically mention insiders, weak passwords and poor access controls make insider threats more dangerous. A disgruntled employee with excessive access could steal large amounts of customer data. A negligent employee could accidentally expose credentials or fail to follow security procedures.</li>
+      
+      <li><strong>Threat Five — Phishing Attacks (Possible):</strong> Attackers may have gained initial access through a phishing email sent to a bank employee. Phishing emails trick employees into clicking malicious links or entering their credentials on fake websites. This is a common entry point for data breaches.</li>
+      
+      <li><strong>Threat Six — Lack of Monitoring and Detection:</strong> The fact that the breach succeeded indicates that the bank did not have adequate monitoring to detect the attack in progress. Attackers may have been inside the network for weeks or months before being discovered. Poor monitoring is a threat because it allows attackers to operate undetected.</li>
+    </ul>
+    
+    <p><strong>Question (ii): How the bank is going to implement security policy to mitigate future network attacks?</strong></p>
+    
+    <p><strong>Answer:</strong> The bank should implement the following security policies to prevent future attacks.</p>
+    
+    <ul>
+      <li><strong>Policy One — Password Policy:</strong> The bank must implement a comprehensive password policy. The policy should require: minimum password length of twelve characters, complexity requirements (uppercase, lowercase, numbers, special characters), password expiration every ninety days, prevention of password reuse (cannot reuse previous five passwords), blocking of common weak passwords (such as "password123" or the bank's name), and multi factor authentication for all remote access and for access to sensitive customer data. The policy must also prohibit sharing passwords and writing passwords down.</li>
+      
+      <li><strong>Policy Two — Patch Management Policy:</strong> The bank must implement a patch management policy. The policy should require: regular scanning for missing patches, a timeline for applying patches based on severity (critical patches within seven days, high severity within thirty days, medium severity within ninety days), testing patches before deployment, automated patch deployment where possible, and documentation of all patches applied. The policy must assign responsibility for patch management to specific individuals and require reporting on patch compliance to management.</li>
+      
+      <li><strong>Policy Three — Access Control Policy:</strong> The bank must implement a strong access control policy based on the principle of least privilege. The policy should require: role based access control where access is granted based on job function, regular access reviews (at least quarterly) to remove unnecessary permissions, separation of duties (no single person has complete control over a sensitive process), disabling of default accounts, removal of accounts when employees leave, and logging of all access to sensitive data.</li>
+      
+      <li><strong>Policy Four — Security Awareness and Training Policy:</strong> The bank must implement a mandatory security awareness training policy for all employees. The policy should require: training upon hiring, annual refresher training, targeted training for high risk roles (such as system administrators and customer service representatives), phishing simulation exercises to test employee awareness, and consequences for failing training or falling for simulated phishing tests.</li>
+      
+      <li><strong>Policy Five — Data Classification and Protection Policy:</strong> The bank must implement a data classification policy that defines how different types of data should be protected. The policy should classify customer data as "confidential" or "restricted." The policy should specify: encryption requirements for data at rest and in transit, access restrictions based on classification level, data retention requirements, and procedures for secure disposal of data when no longer needed.</li>
+      
+      <li><strong>Policy Six — Security Monitoring and Incident Response Policy:</strong> The bank must implement a security monitoring policy that requires: collection of logs from all critical systems, security information and event management to analyze logs for threats, real time alerting for suspicious activity, regular review of logs by security analysts, and a formal incident response plan with defined roles, procedures, and communication protocols.</li>
+      
+      <li><strong>Policy Seven — Vulnerability Management Policy:</strong> The bank must implement a vulnerability management policy that requires: regular vulnerability scans of all systems (weekly for critical systems, monthly for others), penetration testing at least annually, a process for prioritizing and remediating identified vulnerabilities, and reporting of vulnerability status to management.</li>
+      
+      <li><strong>Policy Eight — Third Party Risk Management Policy:</strong> The bank must implement a policy for managing risks from vendors and third parties. The policy should require: security assessment of all vendors before engagement, contractual requirements for security controls, right to audit clauses, regular vendor security reviews, and a process for terminating relationships with vendors that fail to meet security requirements.</li>
+      
+      <li><strong>Policy Nine — Change Management Policy:</strong> The bank must implement a change management policy to ensure that all changes to systems, networks, and applications are properly reviewed, approved, tested, and documented. This policy would help prevent unpatched vulnerabilities and misconfigurations that could be exploited by attackers.</li>
+      
+      <li><strong>Policy Ten — Governance and Compliance Policy:</strong> The bank must implement a policy that establishes security governance. The policy should require: appointment of a Chief Information Security Officer, formation of a security steering committee with senior management, regular security reporting to the Board of Directors, compliance with applicable laws and regulations including the Digital Personal Data Protection Act 2023 and Reserve Bank of India guidelines, and regular internal and external security audits.</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 4 — Key Takeaway</div>
+    <p>Security threats come in many forms including network attacks, DDoS attacks, e-commerce threats, and advanced persistent threats. Understanding these threats is the first step in protecting against them. Security policies are the foundation of an effective security program. They provide direction, define responsibilities, support compliance, reduce liability, and create accountability. Key policies include password policies, patch management policies, access control policies, email security policies, incident response policies, and vendor management policies. The case studies in this unit demonstrate how to analyze security incidents and recommend appropriate policies to prevent future attacks. A well governed organization with strong security policies is much less likely to suffer a major security breach.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>EIS · Essentials of Information Security · Unit 04 · Security Threats and Policies</span>
+    <div class="footer-links">
+      <a href="unit03_EIS.html">← Unit 3</a>
+      <a href="unit05_EIS.html">Unit 5 →</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · SPPU</span>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // Mobile navigation toggle - close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Back to top button visibility
+  window.addEventListener('scroll', function() {
+    var backButton = document.querySelector('.back-top');
+    if (backButton) {
+      if (window.scrollY > 400) {
+        backButton.classList.add('visible');
+      } else {
+        backButton.classList.remove('visible');
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

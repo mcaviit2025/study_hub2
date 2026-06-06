@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essentials of Information Security [EIS 567] NOV DEC 2025 – Complete Answers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf8;
+    --gray-100: #f0f0ee;
+    --gray-200: #ddddd9;
+    --gray-300: #b8b8b2;
+    --gray-500: #7a7a74;
+    --gray-700: #3a3a36;
+    --accent: #1a1a1a;
+    --border: 2px solid #0a0a0a;
+    --border-thin: 1px solid #c0c0bc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+  }
+
+  .exam-header {
+    border-top: 4px solid var(--black);
+    border-bottom: 4px solid var(--black);
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .exam-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .exam-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0.3rem 0;
+  }
+  .exam-header .sub {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    letter-spacing: 0.06em;
+    font-style: italic;
+  }
+  .exam-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gray-700);
+    border-top: var(--border-thin);
+    padding-top: 0.75rem;
+  }
+
+  .toc {
+    background: var(--gray-100);
+    border: var(--border);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+  }
+  .toc h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.5rem;
+  }
+  .toc ol { padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+  .toc li { margin: 0.35rem 0; break-inside: avoid; }
+  .toc a { color: var(--black); text-decoration: none; font-size: 0.88rem; }
+  .toc a:hover { text-decoration: underline; }
+  @media(max-width:600px){ .toc ol { columns: 1; } }
+
+  .question-block {
+    margin-bottom: 4rem;
+    border-top: 3px solid var(--black);
+    padding-top: 1.5rem;
+  }
+  .q-label {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    padding: 0.2rem 0.7rem;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+  }
+  .q-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .marks-badge {
+    display: inline-block;
+    border: var(--border-thin);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.5rem;
+    color: var(--gray-500);
+    margin-bottom: 1.2rem;
+  }
+
+  .concept-box {
+    background: var(--gray-100);
+    border-left: 4px solid var(--black);
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    font-style: italic;
+  }
+  .concept-box strong { font-style: normal; }
+
+  .example-box {
+    border: var(--border-thin);
+    border-left: 4px solid #e67e22;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    background: #fff9f0;
+  }
+  .example-box .ex-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #e67e22;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+
+  .tip-box {
+    background: #edfaf1;
+    border: 1px solid #27ae60;
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .tip-box .tip-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1a7a34;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+
+  .ans h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin: 1.6rem 0 0.5rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.3rem;
+  }
+  .ans h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.2rem 0 0.4rem;
+    color: var(--gray-700);
+  }
+  .ans p { margin: 0.6rem 0; }
+  .ans ul, .ans ol { padding-left: 1.5rem; margin: 0.6rem 0; }
+  .ans li { margin: 0.35rem 0; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+  }
+  .data-table th {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .data-table td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: var(--border-thin);
+  }
+  .data-table tr:nth-child(even) td { background: var(--gray-100); }
+
+  .diagram-wrap {
+    margin: 1.5rem 0;
+    border: var(--border);
+    padding: 1.2rem;
+    background: #fff;
+  }
+  .diagram-wrap .diagram-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+    border-bottom: var(--border-thin);
+    padding-bottom: 0.4rem;
+  }
+
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    max-width: 550px;
+  }
+  .flow-node {
+    flex: 1;
+    padding: 0.65rem 1rem;
+    border: 2px solid var(--black);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: var(--white);
+    position: relative;
+  }
+  .flow-node .step-num {
+    position: absolute;
+    top: -10px; left: -10px;
+    background: var(--black);
+    color: var(--white);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flow-arrow { text-align: center; font-size: 1.4rem; color: var(--gray-500); line-height: 1; padding: 2px 0; }
+
+  .fn-1 { background: #fff3cd; border-color: #e6ac00; }
+  .fn-2 { background: #d1ecf1; border-color: #0c8da0; }
+  .fn-3 { background: #d4edda; border-color: #1a7a34; }
+  .fn-4 { background: #f8d7da; border-color: #c0392b; }
+  .fn-5 { background: #e2d9f3; border-color: #6f42c1; }
+  .fn-6 { background: #fde8d8; border-color: #e67e22; }
+  .fn-7 { background: #cfe2ff; border-color: #1a68d1; }
+  .fn-8 { background: #d4edda; border-color: #28a745; }
+
+  .chart-container { position: relative; width: 100%; max-width: 700px; margin: 0 auto; }
+  .chart-container canvas { max-width: 100%; }
+
+  .formula-box {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .conclusion-box {
+    background: var(--black);
+    color: var(--white);
+    padding: 1rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+  .conclusion-box .con-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-bottom: 0.4rem;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .compare-card { border: var(--border); padding: 1rem; }
+  .compare-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: var(--border-thin);
+  }
+  .compare-card ul { padding-left: 1.2rem; font-size: 0.9rem; }
+  .compare-card li { margin: 0.3rem 0; }
+
+  .or-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gray-500);
+  }
+  .or-divider::before, .or-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background: var(--gray-300);
+  }
+  .or-divider::before { left: 0; }
+  .or-divider::after  { right: 0; }
+
+  .ref-box {
+    background: var(--gray-100);
+    border: var(--border-thin);
+    border-left: 4px solid var(--gray-500);
+    padding: 0.9rem 1.3rem;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+  }
+  .ref-box .ref-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .ref-box ul { padding-left: 0; list-style: none; }
+  .ref-box li { margin: 0.3rem 0; font-size: 0.85rem; }
+  .ref-box li::before { content: "↳ "; color: var(--gray-500); }
+
+  .page-footer {
+    margin-top: 4rem;
+    border-top: 3px solid var(--black);
+    padding-top: 1rem;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    letter-spacing: 0.08em;
+  }
+
+  @media(max-width:700px){
+    .compare-grid { grid-template-columns: 1fr; }
+    body { font-size: 14px; padding: 1rem; }
+    .toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="exam-header">
+  <div class="sub">Savitribai Phule Pune University · [EIS 567] · NOV DEC 2025</div>
+  <h1>F.Y. M.C.A. (Management)</h1>
+  <h2>Essentials of Information Security</h2>
+  <div class="sub">EIS-567-MJ · 2024 Pattern · Semester II</div>
+  <div class="exam-meta">
+    <span>Time: 2½ Hours</span>
+    <span>Complete Detailed Answer Key</span>
+    <span>Max. Marks: 70</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#q1a">Q1a — Domain Name System (DNS): Definition &amp; Purpose [5]</a></li>
+    <li><a href="#q1b">Q1b — Role &amp; Importance of Virtualization in Information Security [5]</a></li>
+    <li><a href="#q1c">Q1c — Information Assurance: Definition &amp; Need [5]</a></li>
+    <li><a href="#q1d">Q1d — Microsoft Security Principles [5]</a></li>
+    <li><a href="#q2a">Q2a — Types of Information Security Threats to an Organisation [5]</a></li>
+    <li><a href="#q2b">Q2b — IT Auditing Reporting Techniques for Security Vulnerabilities [5]</a></li>
+    <li><a href="#q2c">Q2c — Roles of IT Auditing in Ensuring Information Security [5]</a></li>
+    <li><a href="#q2d">Q2d — Information Assurance vs Information Security [5]</a></li>
+    <li><a href="#q3a">Q3a — Tech Startup: Security Policy Key Elements &amp; Application Security [7]</a></li>
+    <li><a href="#q3b">Q3b — Short Note: Application Security [3]</a></li>
+    <li><a href="#q3c">Q3c — CISO: Principles of Security Governance &amp; Policy Elements [7]</a></li>
+    <li><a href="#q3d">Q3d — Short Note: Security Architecture in Information System [3]</a></li>
+    <li><a href="#q4a">Q4a — Government Agency: Phishing Attacks &amp; Email Security Policies [7]</a></li>
+    <li><a href="#q4b">Q4b — Short Note: Denial of Service Attack (DoS) [3]</a></li>
+    <li><a href="#q4c">Q4c — Bank Breach: Threats Exploited &amp; Security Policy Implementation [7]</a></li>
+    <li><a href="#q4d">Q4d — Short Note: Email Security [3]</a></li>
+    <li><a href="#q5a">Q5a — Security Parameters for Wireless Networks [5]</a></li>
+    <li><a href="#q5b">Q5b — Threats to Network Communication [5]</a></li>
+    <li><a href="#q5c">Q5c — Various Network Security Attacks [5]</a></li>
+    <li><a href="#q5d">Q5d — Safety Measures for Operating System Security in Network [5]</a></li>
+  </ol>
+</nav>
+
+<!-- ================================================================ -->
+<!-- QUESTION 1 — ALL COMPULSORY (NO OR)                            -->
+<!-- ================================================================ -->
+
+<!-- Q1a — DOMAIN NAME SYSTEM -->
+<section class="question-block" id="q1a">
+  <div class="q-label">Question 1 · Part A</div>
+  <h2 class="q-title">What is Domain Name System? Explain its purpose.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Domain Name System (DNS)</strong> is a hierarchical naming system for computers, services, and other resources connected to the internet or a private network. It translates human-readable domain names (like www.google.com) into numerical IP addresses (like 142.250.183.46) that computers use to identify each other.
+    </div>
+
+    <h3>What is Domain Name System?</h3>
+    <p>The Domain Name System is often called the "phonebook of the internet." Just as you look up a person's name to find their phone number, computers look up a domain name to find its IP address. Without DNS, users would have to remember long strings of numbers for every website they want to visit.</p>
+    
+    <div class="example-box">
+      <div class="ex-label">Real World Example</div>
+      <p>When you type "www.sppu.ac.in" in your browser, your computer does the following:</p>
+      <ol>
+        <li>Checks its local DNS cache to see if it already knows the IP address.</li>
+        <li>If not, it asks your Internet Service Provider's DNS server.</li>
+        <li>That server queries other DNS servers across the internet.</li>
+        <li>Finally, it receives the IP address (example: 202.88.130.42) and your browser connects to that address.</li>
+        <li>The entire process takes milliseconds and happens without you noticing.</li>
+      </ol>
+    </div>
+
+    <h3>Purpose of Domain Name System</h3>
+    <ul>
+      <li><strong>Human Readable Names:</strong> The main purpose of DNS is to allow users to use easy to remember domain names instead of difficult to remember IP addresses. It is much easier to remember "www.amazon.in" than "205.251.242.103".</li>
+      <li><strong>IP Address Resolution:</strong> DNS converts domain names to IP addresses (forward lookup) and can also convert IP addresses to domain names (reverse lookup).</li>
+      <li><strong>Load Distribution:</strong> DNS can return different IP addresses for the same domain name to distribute traffic across multiple servers. This helps with load balancing and high availability.</li>
+      <li><strong>Email Routing:</strong> DNS is used to route email by providing Mail Exchange (MX) records that tell email servers where to deliver email for a particular domain.</li>
+      <li><strong>Decentralized Database:</strong> DNS provides a distributed, hierarchical database of domain information. No single organization controls all DNS data, making the system resilient and fault-tolerant.</li>
+    </ul>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>RFC 1034 &amp; RFC 1035 — Domain Names: Concepts and Facilities</li>
+        <li>ICANN DNS Resource: https://www.icann.org/resources/pages/dns-2012-02-25-en</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q1b — VIRTUALIZATION IN INFORMATION SECURITY -->
+<section class="question-block" id="q1b">
+  <div class="q-label">Question 1 · Part B</div>
+  <h2 class="q-title">Explain the role and importance of virtualization in Information Security.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Virtualization</strong> is the technology that allows multiple virtual machines to run on a single physical computer, each with its own operating system and applications. A thin software layer called the <strong>hypervisor</strong> manages these virtual machines and isolates them from each other. In information security, virtualization plays a crucial role in isolation, testing, and protection.
+    </div>
+
+    <h3>Role of Virtualization in Information Security</h3>
+    <ul>
+      <li><strong>Isolation and Sandboxing:</strong> Each virtual machine is completely isolated from others. If one virtual machine gets infected with malware, the hypervisor prevents it from spreading to other virtual machines on the same physical server. Security analysts run suspicious files inside an isolated "sandbox" virtual machine. If the file is malware, only that virtual machine is harmed.</li>
+      <li><strong>Secure Testing Environments:</strong> Organizations can create virtual copies of their production systems to test security patches, new configurations, or software updates before deploying them to live systems. This eliminates the risk of breaking production systems.</li>
+      <li><strong>Honeypots:</strong> Virtual machines can be configured as decoys (honeypots) to attract attackers. Security teams can observe attacker behavior without risking real systems.</li>
+      <li><strong>Disaster Recovery:</strong> Virtual machines can be backed up and restored quickly. If a system is compromised by ransomware, the organization can revert to a clean snapshot from before the attack within minutes.</li>
+      <li><strong>Network Segmentation:</strong> Virtual networks can be created to isolate sensitive systems from less secure ones, even when they run on the same physical hardware.</li>
+    </ul>
+
+    <h3>Importance of Virtualization in Information Security</h3>
+    <ul>
+      <li><strong>Cost Effective Security Testing:</strong> Without virtualization, testing security patches would require separate physical computers for each test. Virtualization allows many test environments on a single physical server, saving significant cost.</li>
+      <li><strong>Rapid Incident Response:</strong> When a system is compromised, a clean virtual machine snapshot can be deployed in minutes instead of hours or days needed to rebuild a physical server.</li>
+      <li><strong>Forensic Analysis:</strong> Security investigators can take snapshots of compromised virtual machines and analyze them without altering the original evidence. The entire state of the system is preserved.</li>
+      <li><strong>Training and Education:</strong> Security professionals can practice attacks and defenses in virtual environments without risking real systems.</li>
+      <li><strong>Separation of Duties:</strong> Different security functions can run on separate virtual machines on the same hardware, providing logical isolation without additional physical servers.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Real World Example</div>
+      <p>A bank receives a suspicious email attachment. Instead of opening it on a real computer, the security team runs it in a virtual machine. The attachment turns out to be ransomware that encrypts all files. Because the ransomware is running in a virtual machine, it only encrypts the virtual machine's files. The host computer and the bank's network remain completely safe. The security team can then study the ransomware to understand how it works and develop defenses.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-125 (Guide to Security for Full Virtualization Technologies)</li>
+        <li>VMware Security Hardening Guide: https://docs.vmware.com</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q1c — INFORMATION ASSURANCE -->
+<section class="question-block" id="q1c">
+  <div class="q-label">Question 1 · Part C</div>
+  <h2 class="q-title">What is information assurance? Why do we need information assurance?</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Information Assurance (IA)</strong> is the practice of managing risks related to the use, processing, storage, and transmission of information. It ensures that information systems are reliable and that the information they contain is trustworthy. Information Assurance goes beyond security to include the overall trustworthiness of information.
+    </div>
+
+    <h3>What is Information Assurance?</h3>
+    <p>Information Assurance is built on five pillars: Integrity, Availability, Confidentiality, Authentication, and Non-Repudiation.</p>
+    <ul>
+      <li><strong>Integrity:</strong> Information is accurate and has not been tampered with.</li>
+      <li><strong>Availability:</strong> Information is accessible when authorized users need it.</li>
+      <li><strong>Confidentiality:</strong> Information is protected from unauthorized access.</li>
+      <li><strong>Authentication:</strong> The identity of users is verified.</li>
+      <li><strong>Non-Repudiation:</strong> A person cannot deny having performed an action.</li>
+    </ul>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Fig 1.1 — Five Pillars of Information Assurance</div>
+      <div class="chart-container"><canvas id="iaPillarsChart"></canvas></div>
+    </div>
+
+    <h3>Why Do We Need Information Assurance?</h3>
+    <ul>
+      <li><strong>Trustworthy Decision Making:</strong> Organizations make decisions based on information. If the information is not trustworthy (inaccurate, incomplete, or tampered with), decisions will be wrong. Information Assurance ensures that decision makers can trust the information they use.</li>
+      <li><strong>Legal and Regulatory Compliance:</strong> Laws such as the Digital Personal Data Protection Act 2023 require organizations to protect personal data and ensure its accuracy. Information Assurance helps organizations meet these legal requirements.</li>
+      <li><strong>Protection of Reputation:</strong> When an organization's information is compromised or found to be unreliable, customer trust is damaged. Information Assurance protects the organization's reputation by ensuring information is reliable.</li>
+      <li><strong>Business Continuity:</strong> Information Assurance ensures that critical information is available when needed, even during disruptions. This supports business continuity and disaster recovery.</li>
+      <li><strong>Risk Management:</strong> Information Assurance provides a framework for identifying, assessing, and managing risks to information assets. This helps organizations prioritize their security investments.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Real World Example</div>
+      <p>A hospital uses Information Assurance to ensure patient records are accurate (integrity), available to doctors when needed (availability), kept confidential from unauthorized people (confidentiality), verified as coming from legitimate sources (authentication), and documented so no one can deny changing a record (non-repudiation). Without Information Assurance, a doctor might make a treatment decision based on an incorrect or outdated patient record, with potentially fatal consequences.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-53 (Security &amp; Privacy Controls)</li>
+        <li>CNSS Instruction No. 4009 — National Information Assurance Glossary</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q1d — MICROSOFT SECURITY PRINCIPLES -->
+<section class="question-block" id="q1d">
+  <div class="q-label">Question 1 · Part D</div>
+  <h2 class="q-title">Explain Microsoft security principles in short.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Microsoft Security Principles</strong> are a set of guidelines that Microsoft uses to design, develop, and operate secure software and systems. These principles are based on decades of experience in building software used by billions of people worldwide.
+    </div>
+
+    <h3>Key Microsoft Security Principles</h3>
+
+    <ul>
+      <li><strong>Security by Design:</strong> Security must be built into software from the beginning, not added at the end. This means security requirements are considered during the design phase, not after coding is complete.</li>
+      <li><strong>Security by Default:</strong> Software should be secure in its default configuration. Users should not have to change settings to be secure. This means disabling unnecessary features, using strong encryption by default, and requiring authentication.</li>
+      <li><strong>Security by Deployment:</strong> Software must provide guidance and tools to help customers deploy and operate it securely. This includes security configuration guides, automated tools, and best practice documentation.</li>
+      <li><strong>Assume Breach:</strong> Design systems assuming that attackers are already inside the network. This means using multiple layers of security, monitoring for suspicious activity, and limiting the damage any single compromise can cause.</li>
+      <li><strong>Least Privilege:</strong> Users and processes should have only the minimum permissions necessary to perform their functions. No one should have extra permissions they do not need.</li>
+      <li><strong>Defense in Depth:</strong> Use multiple layers of security controls so that if one layer fails, other layers still provide protection. For example, use firewalls, encryption, access controls, and monitoring together.</li>
+      <li><strong>Secure by Design, Secure by Default, Secure by Deployment:</strong> This is Microsoft's core security mantra. It emphasizes that security must be considered at every stage from design to deployment.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Example in Practice — Windows Operating System</div>
+      <p>Microsoft applies these principles in Windows:</p>
+      <ul>
+        <li><strong>Security by Design:</strong> Windows 11 was designed with hardware based isolation and secure boot from the start.</li>
+        <li><strong>Security by Default:</strong> Windows Defender antivirus is enabled by default. Users do not need to install additional antivirus software.</li>
+        <li><strong>Security by Deployment:</strong> Microsoft provides tools like Windows Update for Business to help organizations deploy security patches.</li>
+        <li><strong>Assume Breach:</strong> Windows includes features like Credential Guard that protect login credentials even if the system is compromised.</li>
+        <li><strong>Least Privilege:</strong> User Account Control prompts for permission before making system changes.</li>
+      </ul>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>Microsoft Security Development Lifecycle (SDL): https://www.microsoft.com/sdl</li>
+        <li>Microsoft Trustworthy Computing: https://www.microsoft.com/trustcenter</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- QUESTION 2 — COMPULSORY a & b, OR c & d                        -->
+<!-- ================================================================ -->
+
+<!-- Q2a — TYPES OF INFORMATION SECURITY THREATS -->
+<section class="question-block" id="q2a">
+  <div class="q-label">Question 2 · Part A</div>
+  <h2 class="q-title">Describe the different types of Information Security threats to an organisation.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Information Security Threats</strong> are any potential dangers that could harm an organization's information assets. These threats can come from various sources and take many forms. Understanding these threats is essential for implementing appropriate security controls.
+    </div>
+
+    <h3>Types of Information Security Threats</h3>
+
+    <ul>
+      <li><strong>Malware (Malicious Software):</strong> Software designed to harm or gain unauthorized access to systems. Types include viruses (self replicating code), worms (spread without user action), Trojans (disguised as legitimate software), ransomware (encrypts data and demands payment), and spyware (collects information secretly).</li>
+      
+      <li><strong>Phishing Attacks:</strong> Attacks that trick users into revealing sensitive information or clicking malicious links. Spear phishing targets specific individuals, whaling targets senior executives, and smishing uses text messages.</li>
+      
+      <li><strong>Insider Threats:</strong> Threats from within the organization. Malicious insiders deliberately misuse access for personal gain or revenge. Negligent insiders accidentally cause breaches through careless actions such as losing laptops or falling for phishing.</li>
+      
+      <li><strong>Denial of Service (DoS) and Distributed Denial of Service (DDoS) Attacks:</strong> Attacks that overwhelm systems with traffic, making them unavailable to legitimate users. These attacks can disrupt business operations and cause significant financial loss.</li>
+      
+      <li><strong>Man in the Middle Attacks:</strong> Attacks where an attacker intercepts and potentially modifies communication between two parties. The parties believe they are communicating directly, but the attacker controls the conversation.</li>
+      
+      <li><strong>SQL Injection:</strong> Attacks that insert malicious SQL code into database queries through vulnerable input fields. Attackers can read, modify, or delete database data.</li>
+      
+      <li><strong>Cross Site Scripting (XSS):</strong> Attacks that inject malicious scripts into websites viewed by other users. The scripts run in victims' browsers and can steal cookies, session tokens, or other sensitive information.</li>
+      
+      <li><strong>Password Attacks:</strong> Attacks that attempt to obtain or crack passwords. Methods include brute force (trying all combinations), dictionary attacks (trying common words), credential stuffing (using passwords stolen from other sites), and keylogging (recording keystrokes).</li>
+      
+      <li><strong>Advanced Persistent Threats (APTs):</strong> Sophisticated, long term attacks typically carried out by nation state actors. Attackers gain access and remain undetected for months or years, slowly stealing sensitive information.</li>
+      
+      <li><strong>Social Engineering:</strong> Attacks that manipulate people into revealing information or performing actions. This includes pretexting (creating a false scenario), baiting (offering something enticing), and tailgating (following authorized people into secure areas).</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Real World Example — Multiple Threats Combined</div>
+      <p>A typical data breach often involves multiple threats. For example: An employee receives a phishing email (social engineering). The email contains a link that downloads malware (malware). The malware captures the employee's password (password attack). The attacker then moves through the network (insider threat using stolen credentials) and steals customer data. The organization only discovers the breach months later because the attacker covered their tracks (APT techniques).</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-30 (Guide for Conducting Risk Assessments)</li>
+        <li>ENISA Threat Landscape Report: https://www.enisa.europa.eu</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q2b — IT AUDIT REPORTING TECHNIQUES -->
+<section class="question-block" id="q2b">
+  <div class="q-label">Question 2 · Part B</div>
+  <h2 class="q-title">How do reporting techniques in IT auditing help to identify and address the security vulnerabilities in an organisation?</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>IT auditing reporting techniques</strong> are methods used to document, communicate, and track security findings discovered during an audit. These techniques transform raw audit data into actionable information that management can use to improve security.
+    </div>
+
+    <h3>How Reporting Techniques Help Identify Vulnerabilities</h3>
+
+    <ul>
+      <li><strong>Executive Summaries:</strong> Provide a high level overview of security posture for senior management. This helps leaders understand the most critical vulnerabilities without reading technical details. Executive summaries highlight the top risks that need immediate attention.</li>
+      
+      <li><strong>Findings Tables:</strong> Organize vulnerabilities in a structured format showing the finding, risk level, recommendation, responsible person, and due date. This makes it easy to track which vulnerabilities exist and who is responsible for fixing them.</li>
+      
+      <li><strong>Risk Heat Maps:</strong> Visual representations of risk that use colors to show severity (red for high risk, yellow for medium, green for low). Heat maps help management quickly identify which areas need immediate attention.</li>
+      
+      <li><strong>Gap Analysis Reports:</strong> Compare current security controls against industry standards or regulatory requirements. Gap analysis explicitly shows what is missing and what needs to be implemented.</li>
+      
+      <li><strong>Trend Analysis:</strong> Track vulnerabilities over time to see if security is improving or worsening. Trend reports show whether the number of open vulnerabilities is increasing or decreasing.</li>
+    </ul>
+
+    <h3>How Reporting Techniques Help Address Vulnerabilities</h3>
+
+    <ul>
+      <li><strong>Clear Recommendations:</strong> Audit reports do not just identify problems. They provide specific, actionable recommendations for fixing each vulnerability. For example, "Install security patch KB5012345 on all Windows servers by March 31."</li>
+      
+      <li><strong>Assignment of Responsibility:</strong> Reporting techniques assign specific individuals or teams to address each vulnerability. This creates accountability and ensures vulnerabilities do not fall through the cracks.</li>
+      
+      <li><strong>Tracking and Follow Up:</strong> Reports track the status of each finding (open, in progress, fixed, accepted risk). Management can see which vulnerabilities have been addressed and which remain open.</li>
+      
+      <li><strong>Prioritization:</strong> Reports rank vulnerabilities by risk level. This helps organizations allocate limited resources to the most critical vulnerabilities first.</li>
+      
+      <li><strong>Evidence for Management Action:</strong> Formal audit reports provide documented evidence that management needs to justify security spending. When a manager requests budget for a firewall, the audit report provides justification.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Example — Audit Report Finding</div>
+      <p><strong>Finding:</strong> Critical security patch missing on customer database server.</p>
+      <p><strong>Risk Level:</strong> High (Exploitable vulnerability allows remote code execution)</p>
+      <p><strong>Recommendation:</strong> Apply security patch KB5012345 within 7 days.</p>
+      <p><strong>Responsible:</strong> Database Administrator</p>
+      <p><strong>Due Date:</strong> January 31, 2026</p>
+      <p><strong>Status:</strong> Open</p>
+      <p>This clear, actionable finding ensures the vulnerability is properly tracked and addressed.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>ISACA: IT Audit Reporting Standards</li>
+        <li>IIA (Institute of Internal Auditors) Standards for Reporting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- Q2c — ROLES OF IT AUDITING (OR Option) -->
+<section class="question-block" id="q2c">
+  <div class="q-label">Question 2 · OR · Part C</div>
+  <h2 class="q-title">Explain various roles of IT auditing in ensuring information security.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>IT auditing</strong> plays a critical role in ensuring information security by providing independent assessment, identifying weaknesses, verifying compliance, and recommending improvements.
+    </div>
+
+    <h3>Various Roles of IT Auditing in Information Security</h3>
+
+    <ul>
+      <li><strong>Independent Assessment Role:</strong> IT auditors provide an objective, unbiased evaluation of security controls. Unlike internal security teams who may have conflicts of interest or blind spots, auditors bring fresh perspective and independence.</li>
+      
+      <li><strong>Compliance Verification Role:</strong> Auditors verify that the organization complies with laws, regulations, and standards such as the Digital Personal Data Protection Act 2023, Payment Card Industry Data Security Standard (PCI DSS), and ISO 27001. This role helps organizations avoid fines and legal penalties.</li>
+      
+      <li><strong>Vulnerability Identification Role:</strong> Auditors use specialized tools and techniques to identify security vulnerabilities that internal teams may have missed. This includes vulnerability scanning, penetration testing, and configuration reviews.</li>
+      
+      <li><strong>Risk Assessment Role:</strong> Auditors assess the organization's security risks by evaluating threats, vulnerabilities, and impacts. They help prioritize which risks need immediate attention based on likelihood and potential damage.</li>
+      
+      <li><strong>Control Testing Role:</strong> Auditors test whether security controls are working as intended. For example, they attempt to bypass access controls, verify that logs are being collected, and confirm that backups can be restored.</li>
+      
+      <li><strong>Advisory and Recommendation Role:</strong> Auditors provide recommendations for improving security based on industry best practices and their audit findings. These recommendations help organizations strengthen their security posture.</li>
+      
+      <li><strong>Assurance Role:</strong> Auditors provide assurance to management, the board of directors, and external stakeholders that security controls are adequate. This assurance builds trust in the organization's security program.</li>
+      
+      <li><strong>Forensic and Investigation Role:</strong> When security incidents occur, auditors may investigate to determine what happened, how it happened, and what data was affected. This role supports incident response and legal proceedings.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Real World Example</div>
+      <p>A bank's internal security team believes their firewalls are properly configured. An IT auditor reviews the firewall rules and discovers that a rule intended for testing was left active, allowing traffic from the internet to reach the internal database server. The auditor's independent assessment identified a critical vulnerability that the internal team had missed. The auditor recommends removing the test rule immediately. The bank addresses the vulnerability before attackers discover it.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>ISACA: IT Audit Framework (ITAF)</li>
+        <li>NIST SP 800-53A (Assessing Security Controls)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q2d — IA vs IS (OR Option) -->
+<section class="question-block" id="q2d">
+  <div class="q-label">Question 2 · OR · Part D</div>
+  <h2 class="q-title">How does information assurance differ from information security? How do both contribute to the overall security posture of an organisation?</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Information Assurance (IA)</strong> and <strong>Information Security (InfoSec)</strong> are related but distinct concepts. Understanding the difference is important for building a comprehensive security program.
+    </div>
+
+    <h3>Differences Between Information Assurance and Information Security</h3>
+
+    <table class="data-table">
+      <thead><tr><th>Aspect</th><th>Information Assurance</th><th>Information Security</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700;">Primary Focus</td><td>Trustworthiness and reliability of information</td><td>Protection of information from unauthorized access</td></tr>
+        <tr><td style="font-weight:700;">Key Question</td><td>Can we trust this information to make decisions?</td><td>Is this information protected from attackers?</td></tr>
+        <tr><td style="font-weight:700;">Scope</td><td>Broader — includes security plus integrity, authenticity, and non-repudiation</td><td>Narrower — focuses on confidentiality, integrity, availability</td></tr>
+        <tr><td style="font-weight:700;">Key Components</td><td>Five pillars: Integrity, Availability, Confidentiality, Authentication, Non-Repudiation</td><td>CIA Triad: Confidentiality, Integrity, Availability</td></tr>
+      </tbody>
+    </table>
+
+    <h3>How Both Contribute to Overall Security Posture</h3>
+
+    <ul>
+      <li><strong>Complementary Roles:</strong> Information Security protects information from external and internal threats. Information Assurance ensures the protected information is actually trustworthy. Together, they provide both protection and confidence.</li>
+      
+      <li><strong>Risk Management:</strong> Information Security identifies and mitigates risks to information assets. Information Assurance ensures that risk mitigation efforts are effective and that residual risk is understood. Together, they provide a complete risk management framework.</li>
+      
+      <li><strong>Compliance:</strong> Information Security helps meet regulatory requirements for data protection. Information Assurance helps meet requirements for data accuracy and reliability. Together, they support comprehensive compliance.</li>
+      
+      <li><strong>Business Enablement:</strong> Information Security enables business by protecting sensitive data so the organization can operate safely. Information Assurance enables business by ensuring decision makers can trust the information they use. Together, they support confident business operations.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Simple Analogy</div>
+      <p>Information Security is like a bank vault. It keeps money safe from thieves. Information Assurance is like an accountant. It ensures the bank's records are accurate and that the money in the vault matches what the records say. Both are essential. A strong vault (Information Security) does not help if the records are wrong (lack of Information Assurance). Accurate records (Information Assurance) do not help if thieves can steal the money (lack of Information Security).</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-53 (Security &amp; Privacy Controls)</li>
+        <li>CNSSI 4009 — National Information Assurance Glossary</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- QUESTION 3 — COMPULSORY a & b, OR c & d                        -->
+<!-- ================================================================ -->
+
+<!-- Q3a — TECH STARTUP CASE STUDY -->
+<section class="question-block" id="q3a">
+  <div class="q-label">Question 3 · Part A</div>
+  <h2 class="q-title">Tech Startup: Security Policy &amp; Application Security</h2>
+  <span class="marks-badge">7 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      A tech startup is growing rapidly and handling sensitive customer data, API keys and intellectual property. However, the company does not have a documented security policy, leading to data leaks, weak passwords and insider threats. The CEO has now asked the security team to come up with a formal information security policy.
+    </div>
+
+    <h3>Part (i) — Essential Key Elements of Security Policy to be Developed</h3>
+
+    <ul>
+      <li><strong>Data Classification and Handling Policy:</strong> Defines how different types of data (customer data, API keys, intellectual property) should be handled. Customer data must be encrypted. API keys must never be stored in code or shared. Intellectual property must have access restrictions. This policy directly addresses the data leak risk.</li>
+      
+      <li><strong>Password Policy:</strong> Requires strong passwords (minimum twelve characters, mixed case, numbers, special characters). Requires multi-factor authentication for all systems. Prohibits password reuse and sharing. Requires regular password changes every ninety days. This policy directly addresses the weak password risk.</li>
+      
+      <li><strong>Access Control Policy:</strong> Implements the principle of least privilege (users only get the access they need). Requires regular access reviews (quarterly). Requires immediate removal of access when employees leave. This policy directly addresses the insider threat risk.</li>
+      
+      <li><strong>Acceptable Use Policy:</strong> Defines what employees can and cannot do with company systems. Prohibits installing unauthorized software. Prohibits accessing personal email on work computers. Prohibits sharing confidential information with unauthorized people.</li>
+      
+      <li><strong>Security Awareness and Training Policy:</strong> Requires all employees to complete security training upon hiring and annually thereafter. Training must cover password security, phishing detection, data handling, and incident reporting. Creates accountability for employee behavior.</li>
+      
+      <li><strong>Incident Response Policy:</strong> Defines what constitutes a security incident, who must be notified, and what steps to take. Specifies how to report suspected data leaks. This ensures quick response when problems occur.</li>
+      
+      <li><strong>API Key Management Policy:</strong> Specific policy for API keys. Requires keys to be stored in secure vaults, not in code. Requires regular key rotation. Requires access logging for all key usage. This directly addresses the API key risk.</li>
+    </ul>
+
+    <h3>Part (ii) — How the Newly Developed Policy Will Ensure Application Security</h3>
+
+    <ul>
+      <li><strong>Secure Development Requirements:</strong> The security policy will require that all applications be developed using secure coding practices. This includes input validation to prevent SQL injection, output encoding to prevent cross-site scripting, and proper authentication and authorization mechanisms.</li>
+      
+      <li><strong>Regular Security Testing:</strong> The policy will require regular application security testing including vulnerability scans, static code analysis, and penetration testing before each major release. This ensures vulnerabilities are found and fixed before attackers can exploit them.</li>
+      
+      <li><strong>API Security Controls:</strong> The policy will require that all APIs be protected with authentication, rate limiting, and input validation. API keys must be rotated regularly and stored securely. All API access must be logged. This directly protects the startup's API keys and intellectual property.</li>
+      
+      <li><strong>Data Protection in Applications:</strong> The policy will require that all customer data be encrypted both when stored (at rest) and when transmitted (in transit). Applications must not log sensitive data. This prevents data leaks through application logs or network interception.</li>
+      
+      <li><strong>Secure Software Development Lifecycle (SSDLC):</strong> The policy will mandate that security is integrated into every phase of development — threat modeling during design, static code analysis during development, penetration testing before release, and runtime monitoring in production.</li>
+    </ul>
+
+    <div class="conclusion-box">
+      <div class="con-label">Immediate Actions for the Startup</div>
+      <p>The startup should: 1) Draft and approve the security policy within 30 days, 2) Train all employees on the new policy, 3) Require signed acknowledgment from every employee, 4) Implement technical controls (MFA, password policy, access reviews) within 60 days, and 5) Conduct an external security audit within 90 days.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-53 (Security and Privacy Controls)</li>
+        <li>OWASP Application Security Verification Standard (ASVS)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q3b — SHORT NOTE: APPLICATION SECURITY -->
+<section class="question-block" id="q3b">
+  <div class="q-label">Question 3 · Part B</div>
+  <h2 class="q-title">Write short note on: Application Security.</h2>
+  <span class="marks-badge">3 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Application Security (AppSec)</strong> is the practice of protecting software applications from security threats throughout their entire lifecycle. This includes designing secure applications, writing secure code, testing for vulnerabilities, and monitoring applications in production.
+    </div>
+
+    <h3>Key Aspects of Application Security</h3>
+
+    <ul>
+      <li><strong>Secure Coding:</strong> Writing code that avoids common vulnerabilities such as SQL injection, cross-site scripting, and buffer overflows. Secure coding standards and guidelines help developers write safer code.</li>
+      
+      <li><strong>Security Testing:</strong> Testing applications for vulnerabilities using static analysis (analyzing source code), dynamic analysis (testing running applications), and penetration testing (simulating real attacks).</li>
+      
+      <li><strong>Authentication and Authorization:</strong> Ensuring only legitimate users can access the application (authentication) and that users can only access what they are permitted to (authorization). Multi-factor authentication is increasingly required.</li>
+      
+      <li><strong>Input Validation:</strong> Checking all data received from users to ensure it is safe before processing. This prevents injection attacks and other input-based vulnerabilities.</li>
+      
+      <li><strong>Output Encoding:</strong> Encoding data before displaying it in web pages to prevent cross-site scripting attacks where attackers inject malicious scripts.</li>
+      
+      <li><strong>OWASP Top 10:</strong> The Open Web Application Security Project (OWASP) publishes a list of the ten most critical web application security risks. Following OWASP guidance is considered best practice for application security.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Example</div>
+      <p>A banking application implements application security by: requiring multi-factor authentication for login (authentication), checking that users can only see their own accounts (authorization), validating that account numbers are numeric and within range (input validation), and encrypting all sensitive data (data protection). Regular penetration testing ensures new vulnerabilities are found and fixed.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>OWASP Top 10: https://owasp.org/Top10</li>
+        <li>NIST SP 800-218 (Secure Software Development Framework)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- Q3c — CISO GOVERNANCE PRINCIPLES (OR Option) -->
+<section class="question-block" id="q3c">
+  <div class="q-label">Question 3 · OR · Part C</div>
+  <h2 class="q-title">CISO: Information Security Governance Principles &amp; Policy Elements</h2>
+  <span class="marks-badge">7 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      Imagine you are the Chief Information Security Officer (CISO) of an organisation. You are supposed to apply the principles of information security governance to create a framework that ensures the security policies and practices are aligned with the organisation's overall business goals and compliance requirements.
+    </div>
+
+    <h3>Part (i) — Principles of Information Security Governance</h3>
+
+    <ul>
+      <li><strong>Strategic Alignment:</strong> Security activities must support business goals and objectives. Security should enable the business to achieve its goals safely, not hinder operations. The CISO must understand business priorities and align security investments accordingly.</li>
+      
+      <li><strong>Risk Management:</strong> The organization must have a formal process for identifying, assessing, and managing security risks. Risks must be prioritized based on likelihood and impact. Risk decisions must be made at the appropriate management level.</li>
+      
+      <li><strong>Resource Management:</strong> Security resources (people, budget, technology) must be allocated effectively and efficiently. Resources should be directed to the highest priority risks. The CISO must justify resource requests based on business value and risk reduction.</li>
+      
+      <li><strong>Performance Measurement:</strong> The organization must measure whether security is working. Metrics such as number of incidents, time to detect, time to respond, and compliance rates must be tracked and reported to management. Without measurement, improvement is impossible.</li>
+      
+      <li><strong>Value Delivery:</strong> Security investments must deliver value to the organization. Every rupee spent on security should reduce risk by more than it costs. The CISO must demonstrate return on security investment.</li>
+      
+      <li><strong>Compliance:</strong> The organization must comply with all applicable laws, regulations, and contractual obligations. This includes data protection laws, industry standards, and customer contracts. Compliance must be documented and auditable.</li>
+      
+      <li><strong>Accountability:</strong> Security responsibilities must be clearly assigned to specific individuals. Senior management must be accountable for security outcomes. The CISO must report regularly to the board of directors.</li>
+      
+      <li><strong>Integration:</strong> Security must be integrated into all business processes, not treated as a separate activity. Security should be part of project management, procurement, human resources, and operations.</li>
+    </ul>
+
+    <h3>Part (ii) — Key Elements of Information Security Policy to be Considered</h3>
+
+    <ul>
+      <li><strong>Purpose and Scope:</strong> Clearly state why the policy exists and who it applies to. The scope should include all employees, contractors, vendors, and third parties who access organizational systems.</li>
+      
+      <li><strong>Roles and Responsibilities:</strong> Define who is responsible for implementing, enforcing, and complying with the policy. This includes the CISO, IT department, managers, and individual employees.</li>
+      
+      <li><strong>Specific Policy Statements:</strong> Clear, actionable rules that employees must follow. For example, "All passwords must be at least twelve characters long" rather than "Use strong passwords."</li>
+      
+      <li><strong>Consequences of Violation:</strong> State what happens if the policy is violated. Consequences may include verbal warnings, written warnings, suspension, termination, or legal action.</li>
+      
+      <li><strong>Review and Update Schedule:</strong> Specify how often the policy will be reviewed and updated. Most organizations review policies annually or when significant changes occur.</li>
+      
+      <li><strong>Acknowledgment:</strong> Require employees to sign a form acknowledging they have read and understood the policy. This creates accountability.</li>
+    </ul>
+
+    <div class="conclusion-box">
+      <div class="con-label">CISO Role Summary</div>
+      <p>The CISO must establish a governance framework with board oversight, risk management processes, security metrics, and clear accountability. Security policies must be practical, enforceable, and aligned with business objectives. Regular audits and continuous improvement are essential for mature security governance.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>ISO/IEC 38500 (Governance of IT)</li>
+        <li>ISACA: COBIT 2019 Governance Framework</li>
+        <li>NIST Cybersecurity Framework — Governance (GV) Function</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q3d — SHORT NOTE: SECURITY ARCHITECTURE (OR Option) -->
+<section class="question-block" id="q3d">
+  <div class="q-label">Question 3 · OR · Part D</div>
+  <h2 class="q-title">Write short note on security architecture in information system.</h2>
+  <span class="marks-badge">3 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Security Architecture</strong> is the high-level structure of security controls within an information system. It is the blueprint that describes how security components such as firewalls, intrusion detection systems, encryption, and access controls work together to protect the system.
+    </div>
+
+    <h3>Key Elements of Security Architecture</h3>
+
+    <ul>
+      <li><strong>Defense in Depth:</strong> Multiple layers of security controls arranged so that if one layer fails, another layer provides protection. For example, firewalls at the network perimeter, intrusion detection inside the network, encryption for data, and access controls for applications.</li>
+      
+      <li><strong>Least Privilege:</strong> Every user, process, and system has only the minimum privileges necessary to perform its function. No one has extra permissions.</li>
+      
+      <li><strong>Network Segmentation:</strong> Dividing the network into smaller, isolated segments. If an attacker compromises one segment, they cannot easily reach other segments containing sensitive data.</li>
+      
+      <li><strong>Zero Trust Architecture:</strong> A modern approach that assumes no user or device is trustworthy, even inside the network. Every access request must be verified, authenticated, and authorized.</li>
+      
+      <li><strong>Security Controls:</strong> The actual measures implemented including firewalls, intrusion detection systems, encryption, authentication systems, and monitoring tools.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Example — Security Architecture for a Bank</div>
+      <p>A bank's security architecture includes: a perimeter firewall blocking internet threats, an internal firewall separating the customer database network, encryption for all customer data, multi-factor authentication for all users, intrusion detection systems monitoring traffic, and a security information and event management system collecting logs. This layered architecture protects the bank even if one control fails.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-160 (Systems Security Engineering)</li>
+        <li>Zero Trust Architecture (NIST SP 800-207)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- QUESTION 4 — COMPULSORY a & b, OR c & d                        -->
+<!-- ================================================================ -->
+
+<!-- Q4a — GOVERNMENT AGENCY PHISHING CASE STUDY -->
+<section class="question-block" id="q4a">
+  <div class="q-label">Question 4 · Part A</div>
+  <h2 class="q-title">Government Agency: Phishing Attacks &amp; Email Security Policies</h2>
+  <span class="marks-badge">7 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      Employees of a government agency received fake emails pretending to be from senior officials, asking them to click on malicious links. As a result, hackers gained access to classified government documents and citizen records. The agency did not have a security awareness training policy and employees were not trained to identify various security threats.
+    </div>
+
+    <h3>Part (i) — Various Attacks from the Above Scenario</h3>
+
+    <ul>
+      <li><strong>Phishing Attack:</strong> The fake emails pretending to be from senior officials are a classic phishing attack. This specific type is called "spear phishing" because the emails were targeted at a specific organization (the government agency) and impersonated specific individuals (senior officials).</li>
+      
+      <li><strong>Social Engineering:</strong> The attackers manipulated human psychology by pretending to be authority figures. People are more likely to trust and obey requests from senior officials. This psychological manipulation is social engineering.</li>
+      
+      <li><strong>Malware Distribution:</strong> The malicious links likely led to websites that downloaded malware onto the employees' computers. Common types include keyloggers (capture passwords), remote access Trojans (give attackers control), or ransomware (encrypt files).</li>
+      
+      <li><strong>Data Exfiltration:</strong> After gaining access, the hackers stole classified government documents and citizen records. This is called data exfiltration or data theft.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Attack Chain Explanation</div>
+      <p>The complete attack chain was:</p>
+      <ol>
+        <li>Employees received fake emails that appeared to come from senior officials (phishing).</li>
+        <li>Employees trusted the emails because they came from authority figures (social engineering).</li>
+        <li>Employees clicked malicious links (social engineering success).</li>
+        <li>Malware installed on their computers (malware attack).</li>
+        <li>Hackers used the malware to gain access to the network.</li>
+        <li>Hackers searched for and stole classified documents and citizen records (data exfiltration).</li>
+      </ol>
+    </div>
+
+    <h3>Part (ii) — How Email Security Policies Prevent Such Attacks</h3>
+
+    <ul>
+      <li><strong>Email Filtering Policy:</strong> A policy requiring email filtering would have blocked many phishing emails before they reached employees. Filters can detect known malicious senders, suspicious links, and spoofed email addresses.</li>
+      
+      <li><strong>Sender Authentication Policy:</strong> A policy implementing email authentication standards (SPF, DKIM, DMARC) would have made it impossible for attackers to spoof the senior officials' email addresses. The fake emails would have been rejected as unauthenticated.</li>
+      
+      <li><strong>Link Safety Policy:</strong> A policy requiring that all links in emails be scanned and rewritten would have detected the malicious links. Employees would see a warning before clicking, or the link would be blocked entirely.</li>
+      
+      <li><strong>Attachment Handling Policy:</strong> A policy restricting attachment types and scanning all attachments for malware would have detected any malware sent as attachments.</li>
+      
+      <li><strong>Security Awareness Training Policy:</strong> The most important policy the agency lacked. A policy requiring regular security awareness training would have taught employees to: verify sender addresses, hover over links to see real destinations, never click unexpected links, report suspicious emails to the security team, and verify urgent requests through a different channel (such as a phone call).</li>
+      
+      <li><strong>Incident Reporting Policy:</strong> A policy requiring employees to report suspicious emails immediately would have allowed the security team to warn other employees and block the attack quickly.</li>
+    </ul>
+
+    <div class="conclusion-box">
+      <div class="con-label">How Policies Would Have Changed the Outcome</div>
+      <p>If the agency had email security policies in place: Sender authentication would have rejected the fake emails. If any emails did get through, trained employees would have recognized them as suspicious and reported them. The security team would have blocked the malicious links and warned all employees. No employee would have clicked the links, so no malware would have been installed. The hackers would not have gained access to classified documents or citizen records.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>RFC 7208 (SPF), RFC 6376 (DKIM), RFC 7489 (DMARC)</li>
+        <li>CISA Email Security Guidance: https://www.cisa.gov/email-security</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q4b — SHORT NOTE: DoS ATTACK -->
+<section class="question-block" id="q4b">
+  <div class="q-label">Question 4 · Part B</div>
+  <h2 class="q-title">Write short note on Denial of Service Attack (DoS).</h2>
+  <span class="marks-badge">3 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Denial of Service (DoS) Attack</strong> is an attack that aims to make a computer system, network, or service unavailable to its intended users. Attackers flood the target with excessive requests or exploit vulnerabilities to crash the system.
+    </div>
+
+    <h3>Types of Denial of Service Attacks</h3>
+
+    <ul>
+      <li><strong>Volume Based Attacks:</strong> Overwhelm the target's network bandwidth with massive amounts of traffic. Examples include UDP floods and ICMP floods. The target's internet connection becomes completely saturated.</li>
+      
+      <li><strong>Protocol Attacks:</strong> Exploit weaknesses in network protocols to consume server resources. Examples include SYN floods (exhaust connection tables) and Ping of Death (send malformed packets).</li>
+      
+      <li><strong>Application Layer Attacks:</strong> Target specific applications or web pages. They send requests that appear legitimate but consume application resources such as database connections or CPU power. Examples include HTTP floods and Slowloris attacks.</li>
+      
+      <li><strong>Distributed Denial of Service (DDoS):</strong> A DoS attack launched from many sources simultaneously (often using a botnet of infected computers). DDoS attacks are much harder to stop because traffic comes from many different IP addresses.</li>
+    </ul>
+
+    <h3>Impact of Denial of Service Attacks</h3>
+    <ul>
+      <li>Business loses revenue (e-commerce sites cannot process orders).</li>
+      <li>Customer trust is damaged (users cannot access services).</li>
+      <li>Reputation suffers (company appears unreliable).</li>
+      <li>Remediation costs money (DDoS protection services, overtime for IT staff).</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Example — DDoS Attack on a Bank</div>
+      <p>A bank's website is hit by a DDoS attack. The attackers send millions of requests per second from thousands of infected computers. The bank's servers cannot handle the traffic and become unresponsive. Customers cannot log in, check balances, or transfer money. The bank loses customer trust and faces regulatory scrutiny.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-61 (Incident Handling Guide — DDoS Section)</li>
+        <li>CISA DDoS Quick Guide: https://www.cisa.gov</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="or-divider">— OR —</div>
+
+<!-- Q4c — BANK BREACH CASE STUDY (OR Option) -->
+<section class="question-block" id="q4c">
+  <div class="q-label">Question 4 · OR · Part C</div>
+  <h2 class="q-title">Bank Data Breach: Threats Exploited &amp; Security Policy Implementation</h2>
+  <span class="marks-badge">7 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      A leading bank suffered a data breach where cyber criminals stole sensitive customer data including account details and credit card information. The investigation revealed that attackers exploited weak passwords, unpatched software vulnerabilities, and poor access controls. The bank did not have a robust information security policy in place to prevent such incidents.
+    </div>
+
+    <h3>Part (i) — Security Threats Exploited in This Case</h3>
+
+    <table class="data-table">
+      <thead><tr><th>Vulnerability</th><th>Threat Exploited</th><th>How Attackers Used It</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700;">Weak Passwords</td><td>Brute Force / Credential Stuffing</td><td>Used automated tools to guess simple passwords (admin123, password). Compromised employee accounts.</td></tr>
+        <tr><td style="font-weight:700;">Unpatched Software</td><td>Known Vulnerability Exploit</td><td>Bank had not applied a critical patch (available for months) for their web server or database.</td></tr>
+        <tr><td style="font-weight:700;">Poor Access Controls</td><td>Privilege Escalation</td><td>A compromised low-level employee account had unnecessary access to customer databases (no least privilege).</td></tr>
+        <tr><td style="font-weight:700;">Missing MFA</td><td>Account Takeover</td><td>No multi-factor authentication — attackers logged in with stolen credentials without any second factor challenge.</td></tr>
+        <tr><td style="font-weight:700;">No Network Segmentation</td><td>Lateral Movement</td><td>Once inside, attackers could move freely from the web server to the customer database because no internal firewalls separated systems.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Part (ii) — Security Policy to Mitigate Future Network Attacks</h3>
+
+    <ul>
+      <li><strong>Strong Password and Authentication Policy:</strong> Mandate: minimum 12 characters, complexity (uppercase, lowercase, numbers, symbols), no common passwords, password expiration every 90 days, password history (can't reuse last 5 passwords). Implement multi-factor authentication (MFA) for all administrative and privileged accounts.</li>
+      
+      <li><strong>Vulnerability and Patch Management Policy:</strong> Establish a formal patch management process: Critical security patches applied within 48 hours, High severity patches within 14 days, Monthly vulnerability scanning of all systems, Quarterly penetration testing by external firm.</li>
+      
+      <li><strong>Least Privilege Access Control Policy:</strong> Implement RBAC (Role-Based Access Control) with strict least privilege. A teller does NOT need database admin access. Perform quarterly access reviews to remove unnecessary permissions. Document and approve all privileged access requests.</li>
+      
+      <li><strong>Network Segmentation and Micro-segmentation:</strong> Isolate critical systems using firewalls and VLANs. East-west traffic (between segments) must be explicitly allowed — blocked by default.</li>
+      
+      <li><strong>Continuous Monitoring and SIEM Policy:</strong> Deploy a Security Information and Event Management (SIEM) system collecting logs from firewalls, servers, databases, and endpoints. Define alerts for: multiple failed logins, database queries exceeding thresholds, access at unusual hours, configuration changes.</li>
+      
+      <li><strong>Incident Response and Breach Notification Policy:</strong> Documented IRP including: who to call (incident response team), containment steps, eradication, recovery, notification (customers, regulators within 6 hours), post-incident review.</li>
+      
+      <li><strong>Security Awareness Training Policy:</strong> All bank employees must complete annual cybersecurity training covering phishing recognition, password hygiene, social engineering, and reporting suspicious activity.</li>
+    </ul>
+
+    <div class="conclusion-box">
+      <div class="con-label">Accountability</div>
+      <p>The bank must assign a CISO with budget authority, conduct an external audit within 60 days, and report findings to the board. Regulators (RBI) should be notified of the breach and remediation plan.</p>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>RBI Guidelines on Information Security for Banks</li>
+        <li>PCI-DSS Requirements for Banks (v4.0)</li>
+        <li>DPDP Act 2023 (Breach Notification Requirements)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q4d — SHORT NOTE: EMAIL SECURITY (OR Option) -->
+<section class="question-block" id="q4d">
+  <div class="q-label">Question 4 · OR · Part D</div>
+  <h2 class="q-title">Write short note on Email Security.</h2>
+  <span class="marks-badge">3 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Email Security</strong> refers to the collective measures used to secure email communications, accounts, and content against threats like phishing, spam, malware, spoofing, and data leakage. Email remains the number one attack vector in cybersecurity.
+    </div>
+
+    <h3>Key Email Security Threats</h3>
+    <ul>
+      <li><strong>Phishing / Spear Phishing:</strong> Fake emails tricking users into credentials or malware</li>
+      <li><strong>Business Email Compromise (BEC):</strong> Impersonating executives to request fraudulent wire transfers</li>
+      <li><strong>Malware Attachments:</strong> Office documents or PDFs containing malicious macros</li>
+      <li><strong>Email Spoofing:</strong> Forging the "From" address to impersonate a trusted sender</li>
+      <li><strong>Spam:</strong> Unsolicited bulk email (often containing malicious links)</li>
+    </ul>
+
+    <h3>Email Security Controls</h3>
+
+    <h4>Authentication Protocols (Prevent Spoofing)</h4>
+    <ul>
+      <li><strong>SPF (Sender Policy Framework):</strong> Specifies which servers can send emails for your domain</li>
+      <li><strong>DKIM (DomainKeys Identified Mail):</strong> Digital signature to verify email integrity</li>
+      <li><strong>DMARC (Domain-based Message Authentication):</strong> Tells receiving servers what to do if SPF/DKIM fails (quarantine or reject)</li>
+    </ul>
+
+    <h4>Technical Controls</h4>
+    <ul>
+      <li><strong>Email Security Gateways:</strong> Filter incoming emails for spam, phishing, and malicious attachments</li>
+      <li><strong>Sandboxing:</strong> Open attachments and links in an isolated environment to detect unknown threats</li>
+      <li><strong>Email Encryption (TLS, S/MIME, PGP):</strong> Encrypt email content in transit and at rest</li>
+      <li><strong>DLP (Data Loss Prevention):</strong> Prevent sensitive data from being emailed externally</li>
+    </ul>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>RFC 7208 (SPF), RFC 6376 (DKIM), RFC 7489 (DMARC)</li>
+        <li>CISA Email Security Guidance: https://www.cisa.gov/email-security</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- QUESTION 5 — ALL COMPULSORY (NO OR)                            -->
+<!-- ================================================================ -->
+
+<!-- Q5a — WIRELESS NETWORK SECURITY PARAMETERS -->
+<section class="question-block" id="q5a">
+  <div class="q-label">Question 5 · Part A</div>
+  <h2 class="q-title">Examine various security parameters for wireless network.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Wireless network security parameters</strong> are the configuration settings and security controls that determine how secure a wireless network is. Wireless is inherently less secure than wired because signals broadcast through the air and can be intercepted without physical access.
+    </div>
+
+    <h3>Security Parameters for Wireless Networks</h3>
+
+    <ul>
+      <li><strong>Encryption Protocol (Most Important):</strong> Always use <strong>WPA3</strong> (Wi-Fi Protected Access 3) — the current standard with 192-bit encryption, protection against brute-force attacks, and forward secrecy. If WPA3 unavailable, use <strong>WPA2-AES</strong> (not WPA-TKIP or WEP, which are broken).</li>
+      
+      <li><strong>Strong Authentication (Passphrase / 802.1X):</strong> WPA3-Personal uses Simultaneous Authentication of Equals (SAE) — resistant to offline dictionary attacks. Requires a long, complex passphrase (20+ random characters). WPA3-Enterprise (802.1X) uses individual username/password or certificates — best for organizations.</li>
+      
+      <li><strong>Hidden SSID (Limited Value):</strong> Disabling SSID broadcast hides the network name from casual users, but attackers can still discover it. This should be used only as a minor inconvenience, not a primary control.</li>
+      
+      <li><strong>MAC Address Filtering (Weak Control):</strong> Allow-listing specific device MAC addresses. Attackers can easily spoof MAC addresses — so this only stops casual users. Use only as an additional layer.</li>
+      
+      <li><strong>Client Isolation (Guest Networks):</strong> Enable AP Isolation on guest networks so that connected devices cannot see or attack each other. Each guest device can only reach the internet, not other internal devices.</li>
+      
+      <li><strong>Firmware and Driver Updates:</strong> Access points, routers, and wireless clients must receive regular security patches. Wireless vulnerabilities (e.g., KRACK, FragAttacks) are discovered regularly — unpatched devices remain vulnerable.</li>
+      
+      <li><strong>Disable Unnecessary Management Interfaces:</strong> Disable remote management (Telnet, HTTP) access from WAN/internet side. Use only local management (LAN side) or VPN + secure management interface on a dedicated VLAN.</li>
+      
+      <li><strong>Rogue Access Point Detection:</strong> Deploy wireless intrusion prevention (WIPS) that continuously scans for unauthorized APs. If an employee plugs in an unapproved personal router (creating a backdoor), WIPS detects and blocks it.</li>
+    </ul>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Table 5.1 — Wireless Security Protocol Comparison</div>
+      <table class="data-table">
+        <thead><tr><th>Protocol</th><th>Status</th><th>Encryption</th><th>Key Management</th></tr></thead>
+        <tbody>
+          <tr><td>WEP</td><td>BROKEN — Never use</td><td>RC4 (cracked)</td><td>Static, reused keys</td></tr>
+          <tr><td>WPA</td><td>DEPRECATED — Use only as last resort</td><td>TKIP (cracked)</td><td>Pre-shared key</td></tr>
+          <tr><td style="font-weight:700;">WPA2-AES</td><td>ACCEPTABLE (minimum standard)</td><td>AES-CCMP</td><td>4-way handshake (vulnerable to KRACK)</td></tr>
+          <tr><td style="font-weight:700; color:#1a7a34;">WPA3</td><td style="color:#1a7a34;">RECOMMENDED (current standard)</td><td style="color:#1a7a34;">AES-GCM-256 + SAE</td><td style="color:#1a7a34;">SAE (resists offline dictionary attacks)</td></tr>
+          <tr><td style="font-weight:700;">WPA3-Enterprise</td><td>BEST (organizations)</td><td>192-bit AES-GCM</td><td>802.1X + EAP per-user credentials</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>IEEE 802.11i / 802.11ac / 802.11ax (Wi-Fi Security Standards)</li>
+        <li>Wi-Fi Alliance WPA3 Specification: https://www.wi-fi.org/wpa3</li>
+        <li>NIST SP 800-97 (Wireless Network Security for IEEE 802.11)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q5b — THREATS TO NETWORK COMMUNICATION -->
+<section class="question-block" id="q5b">
+  <div class="q-label">Question 5 · Part B</div>
+  <h2 class="q-title">Illustrate threats to network communication.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Threats to network communication</strong> are attacks that target the transmission of data between computers, servers, and devices. These threats aim to intercept, modify, disrupt, or eavesdrop on network traffic.
+    </div>
+
+    <h3>Categories of Network Communication Threats</h3>
+
+    <ul>
+      <li><strong>Interception (Eavesdropping):</strong> Attackers capture and read network traffic without modifying it. This is a threat to confidentiality. Examples include packet sniffing and man-in-the-middle attacks. On unencrypted networks, attackers can read passwords, emails, and files.</li>
+      
+      <li><strong>Modification (Tampering):</strong> Attackers intercept and change data before forwarding it to the destination. This is a threat to integrity. Examples include man-in-the-middle modification where attackers change transaction amounts or alter messages.</li>
+      
+      <li><strong>Interruption (Denial of Service):</strong> Attackers make network services unavailable to legitimate users. This is a threat to availability. Examples include DDoS attacks that flood networks with traffic and jamming attacks that interfere with wireless signals.</li>
+      
+      <li><strong>Fabrication (Impersonation):</strong> Attackers create fake network traffic or impersonate legitimate users or systems. This is a threat to authentication and integrity. Examples include IP spoofing, ARP spoofing, and DNS spoofing.</li>
+    </ul>
+
+    <h3>Specific Network Communication Threats</h3>
+
+    <ul>
+      <li><strong>Packet Sniffing:</strong> Capturing network traffic to analyze it. Attackers use packet sniffers to steal unencrypted data such as passwords, emails, and files.</li>
+      
+      <li><strong>Man in the Middle Attack (MITM):</strong> The attacker positions themselves between two communicating parties, intercepting and potentially modifying messages. Both parties believe they are communicating directly.</li>
+      
+      <li><strong>Session Hijacking:</strong> Taking over a user's authenticated session by stealing session cookies or tokens. The attacker impersonates the user without needing the password.</li>
+      
+      <li><strong>Replay Attack:</strong> Capturing valid network traffic and retransmitting it later to trick the system. For example, an attacker might capture a valid login message and replay it to log in without the password.</li>
+      
+      <li><strong>DNS Spoofing (Cache Poisoning):</strong> Corrupting the DNS resolver cache so that legitimate domains (like bank.com) resolve to the attacker's malicious IP address instead.</li>
+      
+      <li><strong>ARP Spoofing (Poisoning):</strong> Attacker sends fake ARP messages linking their MAC address to the IP address of the gateway. All traffic intended for the gateway goes to the attacker instead — enabling MITM.</li>
+      
+      <li><strong>Evil Twin Wi-Fi Attack:</strong> Setting up a fake Wi-Fi access point with a legitimate-sounding name. Users connect, and the attacker captures all their traffic.</li>
+    </ul>
+
+    <table class="data-table">
+      <thead><tr><th>Threat Category</th><th>Specific Attack</th><th>Target (OSI Layer)</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700;">Interruption</td><td>DDoS, DoS, Deauthentication Attack (Wi-Fi)</td><td>Network/Transport</td></tr>
+        <tr><td style="font-weight:700;">Interception</td><td>Packet Sniffing, Wiretapping, Evil Twin</td><td>Data Link/Network</td></tr>
+        <tr><td style="font-weight:700;">Modification</td><td>Man-in-the-Middle, DNS Spoofing, Session Hijacking</td><td>Network/Application</td></tr>
+        <tr><td style="font-weight:700;">Fabrication</td><td>ARP Spoofing, IP Spoofing, MAC Flooding</td><td>Network/Data Link</td></tr>
+      </tbody>
+    </table>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-115 (Technical Guide to Information Security Testing)</li>
+        <li>OWASP: Network Security Attacks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q5c — VARIOUS NETWORK SECURITY ATTACKS -->
+<section class="question-block" id="q5c">
+  <div class="q-label">Question 5 · Part C</div>
+  <h2 class="q-title">Illustrate various network security attacks.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Network security attacks</strong> are deliberate actions taken by attackers to compromise the confidentiality, integrity, or availability of network resources. Understanding these attacks is essential for designing effective defenses.
+    </div>
+
+    <h3>Various Network Security Attacks</h3>
+
+    <ul>
+      <li><strong>Denial of Service (DoS) and Distributed Denial of Service (DDoS) Attacks:</strong> These attacks overwhelm network resources with excessive traffic, making services unavailable. In a DDoS attack, traffic comes from many sources simultaneously (a botnet), making it harder to block.</li>
+      
+      <li><strong>Man in the Middle (MITM) Attacks:</strong> The attacker secretly intercepts communication between two parties. The attacker can eavesdrop (read messages), modify (change messages), or inject (add fake messages).</li>
+      
+      <li><strong>Packet Sniffing (Eavesdropping):</strong> Attackers capture network traffic using packet sniffing tools. On shared networks, attackers can see all traffic. Used to steal passwords, emails, files, and other sensitive information transmitted without encryption.</li>
+      
+      <li><strong>IP Spoofing:</strong> Attackers create IP packets with a fake source address. This hides the attacker's true identity and can bypass firewall rules that trust traffic from specific IP addresses.</li>
+      
+      <li><strong>ARP Spoofing (ARP Poisoning):</strong> Attackers send fake ARP messages to associate their MAC address with a legitimate IP address. This allows the attacker to intercept traffic intended for that IP address.</li>
+      
+      <li><strong>DNS Spoofing (DNS Cache Poisoning):</strong> Attackers corrupt the DNS cache of a DNS server, causing domain names to resolve to the attacker's IP address. Users are redirected to fake websites controlled by the attacker.</li>
+      
+      <li><strong>Session Hijacking:</strong> Attackers steal a user's session token or cookie after the user has authenticated. The attacker can then impersonate the user without needing the password.</li>
+      
+      <li><strong>Replay Attacks:</strong> Attackers capture valid network traffic and retransmit it later. For example, capturing a valid login message and replaying it to gain access without knowing the password.</li>
+      
+      <li><strong>Port Scanning:</strong> Attackers scan a target's network ports to discover which services are running and which ports are open. Port scanning is reconnaissance, not an attack itself, but it helps attackers identify vulnerabilities.</li>
+      
+      <li><strong>Routing Attacks (BGP Hijacking):</strong> Attackers manipulate Border Gateway Protocol (BGP) routing tables to redirect internet traffic to their own networks, allowing them to intercept, monitor, or block traffic.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Multiple Attacks Used Together</div>
+      <p>A sophisticated attacker uses multiple network attacks in sequence:</p>
+      <ol>
+        <li>Port scanning identifies that a web server is running an outdated version with a known vulnerability.</li>
+        <li>The attacker exploits the vulnerability to gain initial access.</li>
+        <li>ARP spoofing is used to perform a man-in-the-middle attack, capturing traffic between the web server and the database server.</li>
+        <li>The attacker steals database credentials from captured traffic.</li>
+        <li>Using those credentials, the attacker accesses the database and steals customer data.</li>
+        <li>The attacker uses IP spoofing to hide the source of the database queries.</li>
+      </ol>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>NIST SP 800-115 (Technical Guide to Information Security Testing)</li>
+        <li>MITRE ATT&CK Framework (Network Attacks)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q5d — OS SECURITY SAFETY MEASURES IN NETWORK -->
+<section class="question-block" id="q5d">
+  <div class="q-label">Question 5 · Part D</div>
+  <h2 class="q-title">Demonstrate various safety measures to ensure operating system security in network.</h2>
+  <span class="marks-badge">5 Marks</span>
+  <div class="ans">
+    <div class="concept-box">
+      <strong>Operating System (OS) security in a network environment</strong> requires measures that protect the OS from both local and network-based threats. A secure operating system is the foundation of a secure network.
+    </div>
+
+    <h3>Safety Measures for Operating System Security in Network</h3>
+
+    <ul>
+      <li><strong>Keep the Operating System Updated (Patch Management):</strong> Regularly apply security patches released by the OS vendor. Patches fix known vulnerabilities that attackers exploit. Critical patches should be applied within seven days. Unpatched operating systems are one of the most common targets for network attacks.</li>
+      
+      <li><strong>Use Host Based Firewall:</strong> Enable the built-in firewall on every OS. The firewall blocks unauthorized network traffic. Configure the firewall to block all incoming connections by default, allowing only necessary services.</li>
+      
+      <li><strong>Disable Unnecessary Services:</strong> Every running service is a potential entry point for attackers. Disable any services that are not needed. Reducing the attack surface makes the system harder to compromise.</li>
+      
+      <li><strong>Implement Strong Authentication:</strong> Require strong passwords (minimum twelve characters with complexity) for all user accounts. Implement multi-factor authentication for remote access and for administrator accounts. Use account lockout policies to prevent brute force attacks.</li>
+      
+      <li><strong>Use Principle of Least Privilege:</strong> Give users only the permissions they need to do their jobs. Regular users should not have administrator access. Even administrators should use separate accounts for administrative tasks.</li>
+      
+      <li><strong>Enable Audit Logging:</strong> Configure the OS to log security events including logins, logouts, failed login attempts, privilege escalations, and changes to security settings. Send logs to a centralized SIEM system for analysis.</li>
+      
+      <li><strong>Install and Maintain Antivirus / EDR:</strong> Install reputable endpoint protection with real-time scanning, scheduled scans, and automatic updates. Modern EDR also includes anti-malware, anti-ransomware, and anti-rootkit capabilities.</li>
+      
+      <li><strong>Configure Secure Remote Access:</strong> If users need remote access, require a Virtual Private Network (VPN) connection. Do not expose Remote Desktop Protocol (RDP) or other remote management interfaces directly to the internet.</li>
+      
+      <li><strong>Application Whitelisting:</strong> Create a list of approved applications that are allowed to run. Any application not on the list is blocked. This prevents users from installing unauthorized software and blocks malware that tries to execute.</li>
+      
+      <li><strong>Regular Security Scanning:</strong> Run vulnerability scanners against operating systems regularly to identify missing patches, weak configurations, and insecure settings. Address identified vulnerabilities promptly.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="ex-label">Example — Securing a Windows Server in a Network</div>
+      <p>A company secures its Windows server as follows:</p>
+      <ul>
+        <li>Windows Update is configured to install security patches automatically within seven days.</li>
+        <li>Windows Firewall is enabled and configured to block all incoming traffic except web traffic (port 443) and remote management from the management subnet.</li>
+        <li>All unnecessary services such as print sharing and remote registry are disabled.</li>
+        <li>Multi-factor authentication is required for all administrator logins.</li>
+        <li>Regular users cannot log into the server at all.</li>
+        <li>Audit logging captures all login attempts and administrative actions, and logs are sent to the SIEM.</li>
+        <li>Microsoft Defender Antivirus is enabled with real-time protection.</li>
+        <li>Remote management is only allowed through a VPN, not directly from the internet.</li>
+        <li>Weekly vulnerability scans identify any missing patches or misconfigurations.</li>
+      </ul>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">Official References</div>
+      <ul>
+        <li>CIS Benchmarks (OS Hardening): https://www.cisecurity.org/cis-benchmarks</li>
+        <li>NIST SP 800-123 (Guide to General Server Security)</li>
+        <li>Microsoft Security Baseline: https://learn.microsoft.com/en-us/windows/security</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  EIS 567 · NOV DEC 2025 · Essentials of Information Security · 2024 Pattern · Complete Answer Key &nbsp;|&nbsp; F.Y. M.C.A. (Management)
+</footer>
+
+<script>
+Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+Chart.defaults.color = '#3a3a36';
+
+// IA Pillars Radar Chart
+new Chart(document.getElementById('iaPillarsChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Availability', 'Integrity', 'Confidentiality', 'Authentication', 'Non-Repudiation'],
+    datasets: [{
+      label: 'IA Pillars Priority',
+      data: [10, 10, 10, 9, 9],
+      backgroundColor: 'rgba(10,10,10,0.15)',
+      borderColor: '#0a0a0a',
+      borderWidth: 3,
+      pointBackgroundColor: '#0a0a0a',
+      pointRadius: 5
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { r: { beginAtZero: true, max: 10, grid: { color: '#ddd' } } }
+  }
+});
+</script>
+
+</body>
+</html>

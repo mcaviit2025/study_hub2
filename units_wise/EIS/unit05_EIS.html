@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 — Securities in Operating System and Networks | Essentials of Information Security Notes</title>
+<link rel="stylesheet" href="/css/unit_css_master.css">
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand"><span>EIS</span> · Essentials of Information Security Notes</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="unit01_EIS.html">Unit 1</a></li>
+    <li><a href="unit02_EIS.html">Unit 2</a></li>
+    <li><a href="unit03_EIS.html">Unit 3</a></li>
+    <li><a href="unit04_EIS.html">Unit 4</a></li>
+    <li><a href="unit05_EIS.html" class="active">Unit 5</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<header class="page-header">
+  <div class="unit-badge">Unit 05 · Essentials of Information Security</div>
+  <h1>Securities in Operating System and Networks</h1>
+  <div class="subject-line">F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · Savitribai Phule Pune University</div>
+  <div class="quick-info">
+    <div class="quick-info-item">Topics Covered<strong>4 Topics</strong></div>
+    <div class="quick-info-item">Exam Weightage<strong>~10-15 Marks</strong></div>
+    <div class="quick-info-item">Study Mode<strong>Regular + Last Night</strong></div>
+    <div class="quick-info-item">Difficulty<strong>Intermediate Level</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h3>Topics in This Unit</h3>
+    <ol>
+      <li><a href="#t5-1">5.1 — Introduction to Securities in Operating System and Network</a></li>
+      <li><a href="#t5-2">5.2 — Rootkit and Anti Rootkit Tools (Antivirus Based)</a></li>
+      <li><a href="#t5-3">5.3 — Threats to Network Communication</a></li>
+      <li><a href="#t5-4">5.4 — Wireless Network Security</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="content-wrap">
+
+<!-- ================================================================ -->
+<!-- TOPIC 5.1 — INTRODUCTION TO SECURITIES IN OPERATING SYSTEM AND NETWORK -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t5-1">
+  <div class="topic-label">Topic 5.1</div>
+  <h2 class="topic-title">Introduction to Securities in Operating System and Network</h2>
+
+  <div class="concept-box">
+    <strong>Operating System Security</strong> refers to the measures and controls implemented to protect the operating system from threats, vulnerabilities, and unauthorized access. <strong>Network Security</strong> refers to the measures taken to protect the confidentiality, integrity, and availability of data as it travels across network connections. Both are essential for overall information security.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember that operating system security and network security work together. The operating system protects the computer from local threats. Network security protects data as it travels between computers. If either one fails, the entire system is vulnerable. Think of it like a house with a strong front door (operating system security) but open windows (network security).
+  </div>
+
+  <h3>What is Operating System Security?</h3>
+  <p>An operating system is the most important software on a computer. It manages hardware, runs applications, and controls access to files and resources. Operating system security is the set of controls that protect the operating system from threats.</p>
+
+  <p>The main goals of operating system security are:</p>
+  <ul>
+    <li>Prevent unauthorized users from accessing the system.</li>
+    <li>Prevent authorized users from accessing data they are not supposed to see.</li>
+    <li>Protect system files and configuration from modification.</li>
+    <li>Ensure the system continues to function correctly even during attacks.</li>
+    <li>Provide audit logs to track who did what and when.</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — Operating System Security in Action</div>
+    <p><strong>Example: Windows Login Screen</strong> When you turn on a Windows computer, the first thing you see is a login screen. You must enter a username and password. This is operating system security. The operating system is checking your identity before allowing you to use the computer. Without this protection, anyone who walked up to your computer could access all your files, emails, and saved passwords.</p>
+  </div>
+
+  <h3>Key Components of Operating System Security</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔑</div>
+      <h4>Authentication</h4>
+      <p>Authentication is the process of verifying that a user is who they claim to be. The most common authentication method is a username and password. More secure methods include biometrics (fingerprint, face recognition), smart cards, and security tokens. Strong authentication is the first line of defense for any operating system.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🛡️</div>
+      <h4>Authorization and Access Control</h4>
+      <p>After a user is authenticated, the operating system must decide what that user is allowed to do. This is called authorization. Operating systems use access control lists and permissions to control access to files, folders, and system settings. For example, a regular user can read their own files but cannot install software or change system settings. An administrator can do everything.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📋</div>
+      <h4>Audit and Logging</h4>
+      <p>Operating systems record events in log files. These logs include successful logins, failed login attempts, file access, system changes, and errors. Audit logs are essential for detecting security incidents, investigating what happened, and meeting compliance requirements.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔒</div>
+      <h4>Memory Protection</h4>
+      <p>Modern operating systems prevent one program from accessing the memory of another program. This is called memory protection. Without memory protection, a malicious program could read passwords, credit card numbers, or other sensitive information from other programs. Memory protection also prevents programs from crashing the operating system.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">👤</div>
+      <h4>User Account Control</h4>
+      <p>User Account Control (UAC) is a feature in Windows that prompts for permission before making system changes. Even if you are logged in as an administrator, User Account Control asks for confirmation before installing software or changing system settings. This prevents malware from making changes without your knowledge.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔄</div>
+      <h4>Patch Management</h4>
+      <p>Operating system vendors regularly release updates called patches. Patches fix security vulnerabilities, add features, and improve performance. Keeping the operating system updated with the latest patches is one of the most important security practices. Unpatched operating systems are a primary target for attackers.</p>
+    </div>
+  </div>
+
+  <h3>What is Network Security?</h3>
+  <p>Network security is the practice of protecting computer networks from intruders, attacks, and data interception. While operating system security protects a single computer, network security protects the communication between computers.</p>
+
+  <p>The main goals of network security are:</p>
+  <ul>
+    <li>Prevent unauthorized access to the network.</li>
+    <li>Prevent attackers from intercepting or modifying data as it travels across the network.</li>
+    <li>Ensure that network resources (servers, printers, internet connection) are available to authorized users.</li>
+    <li>Detect and block malicious network traffic.</li>
+  </ul>
+
+  <h3>Key Components of Network Security</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔥</div>
+      <h4>Firewalls</h4>
+      <p>A firewall is a device or software that controls what traffic is allowed to enter and leave a network. Firewalls examine network packets and block or allow them based on rules. For example, a firewall might allow web traffic (port 80 and 443) but block file sharing traffic (port 445) from the internet.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔐</div>
+      <h4>Encryption</h4>
+      <p>Encryption scrambles data so that it cannot be read by anyone who intercepts it. Network encryption protocols such as Transport Layer Security (TLS) and Internet Protocol Security (IPsec) protect data as it travels across the network. When you see "https" in your browser address bar, your connection to that website is encrypted.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📡</div>
+      <h4>Intrusion Detection and Prevention</h4>
+      <p>Intrusion Detection Systems (IDS) monitor network traffic for suspicious patterns and alert administrators. Intrusion Prevention Systems (IPS) can also block malicious traffic automatically. These systems help detect attacks such as port scans, denial of service attempts, and exploit attempts.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🚪</div>
+      <h4>Network Access Control</h4>
+      <p>Network Access Control (NAC) ensures that only authorized and compliant devices can connect to the network. Before a device is allowed to connect, Network Access Control checks whether it has up to date antivirus software, installed patches, and proper configuration. Devices that do not meet the requirements are placed in a quarantine network until they are fixed.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🌐</div>
+      <h4>Virtual Private Network (VPN)</h4>
+      <p>A Virtual Private Network (VPN) creates an encrypted tunnel between your device and a remote network. This protects your data from interception when using public Wi-Fi or accessing the internet from untrusted locations. VPNs are commonly used by employees to securely connect to their office network from home.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">✂️</div>
+      <h4>Network Segmentation</h4>
+      <p>Network segmentation divides a large network into smaller, isolated segments. If an attacker compromises one segment, they cannot easily reach other segments. For example, a company might put its customer database in a separate network segment that is not accessible from the general office network.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — Network Security in a Bank</div>
+    <p><strong>Example: How a Bank Protects Its Network</strong> A bank uses multiple layers of network security.</p>
+    <ul>
+      <li><strong>Perimeter Firewall:</strong> Blocks unauthorized traffic from the internet.</li>
+      <li><strong>Internal Firewall:</strong> Separates the customer database network from the employee network.</li>
+      <li><strong>Encryption:</strong> All customer data is encrypted before being transmitted over the network.</li>
+      <li><strong>Intrusion Prevention System:</strong> Monitors traffic for attack patterns and blocks them automatically.</li>
+      <li><strong>Virtual Private Network (VPN):</strong> Employees use a Virtual Private Network to connect to the bank's network from home, ensuring that all communication is encrypted.</li>
+      <li><strong>Network Access Control:</strong> Before an employee's laptop is allowed on the network, it is checked for up to date antivirus and patches.</li>
+      <li><strong>Network Segmentation:</strong> The automatic teller machine network is completely separate from the employee network.</li>
+    </ul>
+  </div>
+
+  <h3>Common Operating System Vulnerabilities</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Known Vulnerabilities</h4>
+      <ul>
+        <li>Unpatched software vulnerabilities (missing security updates)</li>
+        <li>Weak password policies (users choosing "password123")</li>
+        <li>Default accounts that were never disabled</li>
+        <li>Unnecessary services running (each service is a potential entry point)</li>
+        <li>Misconfigured permissions (users having too much access)</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>Zero Day Vulnerabilities</h4>
+      <ul>
+        <li>Vulnerabilities that are not yet known to the operating system vendor</li>
+        <li>No patch is available because the vendor does not know about the vulnerability</li>
+        <li>Attackers can exploit zero day vulnerabilities before anyone can protect against them</li>
+        <li>Zero day attacks are rare but very dangerous</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Common Network Vulnerabilities</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📡</div>
+      <h4>Unencrypted Communication</h4>
+      <p>Sending data without encryption allows attackers to intercept and read it. This is especially dangerous on public Wi-Fi networks where many people can see the traffic.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔓</div>
+      <h4>Open Ports and Services</h4>
+      <p>Every open network port is a potential entry point for attackers. Unnecessary open ports increase the attack surface. Attackers scan for open ports to find vulnerable services.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔑</div>
+      <h4>Weak Network Authentication</h4>
+      <p>Wi-Fi networks using old security protocols (Wired Equivalent Privacy or WEP, Wi-Fi Protected Access or WPA) can be easily cracked. Weak passwords on network devices allow attackers to gain access.</p>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Important Note — Defense in Depth</div>
+    <p>No single security control is perfect. Defense in depth means using multiple layers of security so that if one layer fails, other layers still protect the system. For example, an organization might use firewalls, intrusion detection systems, antivirus software, strong passwords, encryption, and employee training. Each layer provides additional protection. Relying on only one security measure (such as a firewall) is dangerous because that one measure could fail or be bypassed.</p>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 5.1</div>
+    <p>Operating system security protects individual computers through authentication, authorization, auditing, memory protection, user account control, and patch management. Network security protects communication between computers through firewalls, encryption, intrusion detection, network access control, virtual private networks, and network segmentation. Both operating system security and network security are essential for overall information security. They work together as layers in a defense in depth strategy. Weakness in either area can lead to a security breach.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 5.2 — ROOTKIT AND ANTI ROOTKIT TOOLS (ANTIVIRUS BASED) -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t5-2">
+  <div class="topic-label">Topic 5.2</div>
+  <h2 class="topic-title">Rootkit and Anti Rootkit Tools (Antivirus Based)</h2>
+
+  <div class="concept-box">
+    <strong>A rootkit</strong> is a malicious software that hides its presence and the presence of other malware on an infected computer. Rootkits are designed to avoid detection by operating systems and security software. <strong>Anti rootkit tools</strong> are specialized security tools designed to detect and remove rootkits.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the word "rootkit" comes from "root" (the administrator account on Unix and Linux systems) and "kit" (a collection of tools). A rootkit gives attackers administrator level access while hiding their presence. Traditional antivirus software often cannot detect rootkits because rootkits hide from the operating system.
+  </div>
+
+  <h3>What is a Rootkit?</h3>
+  <p>A rootkit is a collection of malicious software tools that gives an attacker unauthorized access to a computer while hiding the attacker's presence. The name "rootkit" comes from two words:</p>
+  <ul>
+    <li><strong>Root:</strong> The most powerful user account on Unix and Linux systems (similar to Administrator on Windows).</li>
+    <li><strong>Kit:</strong> A collection of tools and software.</li>
+  </ul>
+  <p>Rootkits are dangerous because they are designed to be invisible. They hide their files, processes, network connections, and registry entries from the operating system and from security software.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — How a Rootkit Works</div>
+    <p><strong>Example: A Rootkit Hiding Itself</strong> Imagine you have a security camera in your office. A thief enters the office. If the thief steals the camera, you will know something happened because the camera is missing. That is like normal malware. Now imagine a thief who hacks into the camera's software. The camera continues to show an empty room even though the thief is there. That is a rootkit. The rootkit hides the attacker's presence by intercepting and changing what the operating system and security software see.</p>
+  </div>
+
+  <h3>How Rootkits Work</h3>
+  <p>Rootkits work by modifying the operating system or intercepting system calls. A system call is a request that a program makes to the operating system to perform an action, such as opening a file or listing running processes.</p>
+
+  <p>When a rootkit is installed, it does the following:</p>
+  <ul>
+    <li><strong>Modifies System Calls:</strong> The rootkit intercepts system calls that ask for information about running processes, files, or network connections. It returns fake information that does not include the rootkit itself.</li>
+    <li><strong>Hides Files:</strong> When the operating system asks for a list of files in a directory, the rootkit removes its own files from the list before returning it.</li>
+    <li><strong>Hides Processes:</strong> When a security tool asks for a list of running processes, the rootkit removes its own processes from the list.</li>
+    <li><strong>Hides Network Connections:</strong> When the system asks for a list of active network connections, the rootkit removes connections used by the rootkit.</li>
+    <li><strong>Maintains Persistence:</strong> The rootkit ensures that it starts every time the computer boots up.</li>
+  </ul>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Fig 5.1 — How a Rootkit Hides from the Operating System</div>
+    <div style="background: #f0f0ee; padding: 1rem; text-align: center; font-family: monospace; font-size: 0.8rem;">
+      Security Tool asks: "What processes are running?"<br>
+      ↓<br>
+      Operating System asks the kernel for process list<br>
+      ↓<br>
+      Rootkit intercepts the request and modifies the list<br>
+      ↓<br>
+      Rootkit removes its own process from the list<br>
+      ↓<br>
+      Security Tool receives the modified list (without the rootkit)<br>
+      ↓<br>
+      Security Tool thinks everything is normal (but the rootkit is running)
+    </div>
+  </div>
+
+  <h3>Types of Rootkits</h3>
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">💿</div>
+      <h4>User Mode Rootkits</h4>
+      <p>User mode rootkits operate at the application level. They intercept system calls by modifying application programming interface (API) functions or replacing system libraries. User mode rootkits are easier to detect than kernel mode rootkits because security tools can also operate at the user level. They are less dangerous than kernel mode rootkits but still very harmful.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⚙️</div>
+      <h4>Kernel Mode Rootkits</h4>
+      <p>Kernel mode rootkits operate at the core of the operating system (the kernel). The kernel has complete control over the computer. Kernel mode rootkits are extremely dangerous and difficult to detect because they run at the same privilege level as the operating system itself. They can intercept and modify any system call, hide any information, and control everything on the computer.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📀</div>
+      <h4>Bootkit (Boot Sector Rootkit)</h4>
+      <p>A bootkit infects the master boot record or the boot loader. It loads before the operating system starts. This means the rootkit is active from the moment the computer is turned on. Bootkits are very difficult to detect because they load before any security software. They can survive operating system reinstallation.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🧠</div>
+      <h4>Firmware Rootkit</h4>
+      <p>A firmware rootkit infects the firmware of a hardware device such as the computer's Basic Input Output System (BIOS) or Unified Extensible Firmware Interface (UEFI), a network card, or a hard drive controller. Firmware rootkits are extremely rare but very sophisticated. They can survive operating system reinstallation and even hard drive replacement.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📱</div>
+      <h4>Virtual Rootkit</h4>
+      <p>A virtual rootkit installs a virtual machine monitor (hypervisor) below the operating system. The rootkit then runs the original operating system inside a virtual machine. The rootkit can observe and control everything the operating system does without the operating system knowing. This is called a hypervisor rootkit or virtual rootkit.</p>
+    </div>
+  </div>
+
+  <h3>How Rootkits Get Installed</h3>
+  <p>Rootkits do not install themselves. They are delivered by other malware or installed by attackers who have already gained access to the computer. Common delivery methods include:</p>
+  <ul>
+    <li><strong>Trojan Horses:</strong> A rootkit is hidden inside seemingly legitimate software. When the user installs the software, the rootkit is also installed.</li>
+    <li><strong>Exploits:</strong> Attackers exploit a vulnerability in the operating system or an application to install the rootkit remotely.</li>
+    <li><strong>Drive by Downloads:</strong> A user visits a malicious website, and the website automatically downloads and installs the rootkit without the user's knowledge.</li>
+    <li><strong>Physical Access:</strong> An attacker with physical access to the computer can install a rootkit directly, such as by booting from a USB drive.</li>
+    <li><strong>Other Malware:</strong> A virus or worm may download and install a rootkit after infecting the computer.</li>
+  </ul>
+
+  <h3>Signs of a Rootkit Infection</h3>
+  <p>Rootkits are designed to be invisible, but there may still be signs of infection.</p>
+  <ul>
+    <li>The computer becomes slow or behaves strangely.</li>
+    <li>Antivirus software stops working or cannot be updated.</li>
+    <li>Security software cannot be installed or runs but finds nothing even though you know there is a problem.</li>
+    <li>Task Manager shows high central processing unit (CPU) usage but no obvious processes are using the CPU.</li>
+    <li>Network activity is high even when no programs are using the network.</li>
+    <li>System settings change by themselves.</li>
+    <li>New user accounts appear that you did not create.</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ Important Note — Rootkits are Hard to Detect</div>
+    <p>Traditional antivirus software often cannot detect rootkits. Antivirus software relies on the operating system to provide information about files, processes, and registry entries. Because rootkits modify what the operating system reports, antivirus software cannot see the rootkit. This is why rootkits are so dangerous. Specialized anti rootkit tools are needed to detect and remove them.</p>
+  </div>
+
+  <h3>Anti Rootkit Tools</h3>
+  <p>Anti rootkit tools are specialized security tools designed to detect and remove rootkits. They use different techniques than traditional antivirus software to find hidden malware.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Common Anti Rootkit Tools</h4>
+      <ul>
+        <li><strong>Malwarebytes Anti-Rootkit:</strong> A free tool that scans for and removes rootkits. It is one of the most popular anti rootkit tools.</li>
+        <li><strong>Kaspersky TDSSKiller:</strong> A free tool specifically designed to remove the TDSS rootkit and similar threats.</li>
+        <li><strong>Sophos Virus Removal Tool:</strong> Includes anti rootkit scanning capabilities.</li>
+        <li><strong>Bitdefender Rootkit Remover:</strong> A standalone tool for detecting and removing rootkits.</li>
+        <li><strong>McAfee Rootkit Remover:</strong> A command line tool that scans for and removes rootkits.</li>
+        <li><strong>GMER:</strong> An advanced tool for detecting rootkits by comparing low level system information with what the operating system reports.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>How Anti Rootkit Tools Detect Rootkits</h4>
+      <ul>
+        <li><strong>Cross View Detection:</strong> The tool reads system information directly from the kernel or from raw disk access, bypassing the operating system's application programming interface (API). Then it compares this low level information with what the operating system reports. If there are differences, a rootkit is likely present.</li>
+        <li><strong>Integrity Checking:</strong> The tool checks the integrity of system files, system call tables, and kernel data structures. Rootkits often modify these to hide themselves. The tool compares the current state with known good values.</li>
+        <li><strong>Behavioral Analysis:</strong> The tool monitors system behavior for suspicious patterns that might indicate a rootkit, such as hidden processes or unusual system call patterns.</li>
+        <li><strong>Memory Scanning:</strong> The tool scans system memory for known rootkit signatures, bypassing the rootkit's attempts to hide from the operating system.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Using Malwarebytes Anti-Rootkit</div>
+    <p><strong>Step by Step Process:</strong></p>
+    <ol>
+      <li>Download Malwarebytes Anti-Rootkit from the official website.</li>
+      <li>Run the tool as an administrator.</li>
+      <li>The tool scans the system for rootkits. It may take thirty minutes to several hours depending on the size of the hard drive.</li>
+      <li>If a rootkit is found, the tool displays the results.</li>
+      <li>The user clicks "Clean" to remove the rootkit.</li>
+      <li>The computer may need to restart to complete removal.</li>
+      <li>After restarting, the tool runs again to verify the rootkit is gone.</li>
+    </ol>
+    <p><strong>Important Note:</strong> Some rootkits are so deep that they cannot be removed without reinstalling the operating system. In severe cases, the only way to be sure the rootkit is gone is to wipe the hard drive completely and reinstall everything from scratch.</p>
+  </div>
+
+  <h3>How Antivirus Software Detects Rootkits</h3>
+  <p>Modern antivirus software includes anti rootkit capabilities. They use several techniques:</p>
+  <ul>
+    <li><strong>Signature Based Detection:</strong> Antivirus software maintains a database of known rootkit signatures. When a file matches a signature, it is flagged as malware. This does not work for new or modified rootkits.</li>
+    <li><strong>Heuristic Detection:</strong> Antivirus software analyzes the behavior of programs. If a program tries to hide files or processes, it may be flagged as a potential rootkit.</li>
+    <li><strong>Cloud Based Detection:</strong> Antivirus software sends suspicious files to the vendor's cloud for analysis. The cloud uses many different detection engines to identify rootkits.</li>
+    <li><strong>Boot Time Scanning:</strong> Some antivirus software can scan the system before the operating system loads. Since rootkits are not active yet, they cannot hide from the scan.</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ What to Do If You Find a Rootkit</div>
+    <ul>
+      <li>Disconnect the computer from the network immediately to prevent the attacker from accessing your data or spreading to other computers.</li>
+      <li>Run a trusted anti rootkit tool (download from a clean computer and transfer using a USB drive, not from the infected computer).</li>
+      <li>Change all passwords (email, banking, social media) from a different, clean computer.</li>
+      <li>Consider wiping the hard drive completely and reinstalling the operating system. This is the only way to be 100 percent sure the rootkit is gone.</li>
+      <li>Restore data from backups created before the infection.</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 5.2</div>
+    <p>A rootkit is malicious software that hides its presence on an infected computer. Rootkits intercept system calls and modify what the operating system reports. Types of rootkits include user mode rootkits, kernel mode rootkits, bootkits, firmware rootkits, and virtual rootkits. Rootkits are difficult to detect because they hide from the operating system. Anti rootkit tools use cross view detection, integrity checking, and memory scanning to find rootkits. Modern antivirus software includes anti rootkit capabilities. In severe cases, the only way to remove a rootkit is to wipe the hard drive and reinstall the operating system.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 5.3 — THREATS TO NETWORK COMMUNICATION -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t5-3">
+  <div class="topic-label">Topic 5.3</div>
+  <h2 class="topic-title">Threats to Network Communication</h2>
+
+  <div class="concept-box">
+    <strong>Threats to network communication</strong> are attacks that target data as it travels across computer networks. These threats can intercept, modify, disrupt, or block network traffic. Understanding these threats is essential for designing secure networks and protecting sensitive information.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the four main categories of network threats: Interception (eavesdropping), Interruption (denial of service), Modification (tampering with data), and Fabrication (creating fake data). These are sometimes called the "four I's" of network security.
+  </div>
+
+  <h3>Categories of Network Threats</h3>
+  <p>Network threats can be classified into four main categories.</p>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">👂</div>
+      <h4>Interception (Eavesdropping)</h4>
+      <p>Interception occurs when an unauthorized party gains access to data as it travels across the network. The attacker listens to network traffic without modifying it. This is a threat to confidentiality.</p>
+      <p><strong>Examples:</strong> Packet sniffing, wiretapping, man in the middle attacks</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">⛔</div>
+      <h4>Interruption (Denial of Service)</h4>
+      <p>Interruption occurs when network services become unavailable to authorized users. The attacker blocks, delays, or disrupts network communication. This is a threat to availability.</p>
+      <p><strong>Examples:</strong> DDoS attacks, network jamming, routing attacks</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">✏️</div>
+      <h4>Modification (Tampering)</h4>
+      <p>Modification occurs when an attacker changes data while it is being transmitted. The attacker intercepts the data, modifies it, and then sends it to the destination. This is a threat to integrity.</p>
+      <p><strong>Examples:</strong> Man in the middle modification, data alteration, session hijacking</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🎭</div>
+      <h4>Fabrication (Impersonation)</h4>
+      <p>Fabrication occurs when an attacker creates fake network traffic or impersonates a legitimate user or system. The attacker may send false data, replay captured data, or pretend to be someone else. This is a threat to authentication and integrity.</p>
+      <p><strong>Examples:</strong> Spoofing, replay attacks, session hijacking, man in the middle attacks</p>
+    </div>
+  </div>
+
+  <h3>Detailed Network Threats</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Packet Sniffing</h4>
+      <p>Packet sniffing is the practice of capturing network traffic to analyze it. Network administrators use packet sniffers legitimately to troubleshoot network problems. Attackers use packet sniffers to steal unencrypted data such as passwords, emails, and files.</p>
+      <p><strong>How it works:</strong> The attacker places a network interface in "promiscuous mode," which allows it to capture all traffic on the network segment, not just traffic addressed to that computer.</p>
+      <p><strong>Protection:</strong> Encryption makes sniffed data unreadable. Using switched networks instead of hubs reduces exposure. Virtual Private Networks (VPNs) encrypt all traffic.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Man in the Middle Attack (MITM)</h4>
+      <p>In a man in the middle attack, the attacker secretly positions themselves between two communicating parties. The attacker can intercept, read, modify, and forward messages. Both parties believe they are communicating directly with each other, but the attacker is relaying the messages.</p>
+      <p><strong>How it works:</strong> The attacker intercepts the initial connection establishment and tricks both parties into connecting to the attacker instead of to each other.</p>
+      <p><strong>Protection:</strong> Mutual authentication using certificates, using encrypted connections (HTTPS, TLS), and avoiding public Wi-Fi for sensitive transactions.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Spoofing Attacks</h4>
+      <p>Spoofing is when an attacker pretends to be someone or something else. There are several types of spoofing.</p>
+      <ul>
+        <li><strong>Internet Protocol (IP) Spoofing:</strong> The attacker sends packets with a fake source IP address to hide their identity or impersonate a trusted system.</li>
+        <li><strong>Address Resolution Protocol (ARP) Spoofing:</strong> The attacker sends fake ARP messages to associate their media access control (MAC) address with a legitimate IP address, allowing them to intercept traffic.</li>
+        <li><strong>Domain Name System (DNS) Spoofing:</strong> The attacker poisons the DNS cache so that a domain name resolves to the attacker's IP address instead of the legitimate one.</li>
+        <li><strong>Email Spoofing:</strong> The attacker sends emails with a fake sender address, making it appear that the email came from someone else.</li>
+      </ul>
+      <p><strong>Protection:</strong> Packet filtering, ARP inspection, DNS security extensions (DNSSEC), email authentication (SPF, DKIM, DMARC).</p>
+    </div>
+    <div class="compare-card">
+      <h4>Replay Attack</h4>
+      <p>In a replay attack, the attacker captures valid network traffic and then retransmits it later to trick the system. For example, an attacker might capture a valid login message and then replay it to log in without knowing the password.</p>
+      <p><strong>How it works:</strong> The attacker captures network packets using a packet sniffer. Then they retransmit those packets later. If the system does not have protection against replay attacks, it will accept the replayed messages as valid.</p>
+      <p><strong>Protection:</strong> Use timestamps and sequence numbers in messages. Use one time passwords or challenge response authentication. Use session tokens that expire quickly.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Session Hijacking</h4>
+      <p>Session hijacking is when an attacker takes over a user's active session after the user has already authenticated. The attacker steals the session cookie or token and uses it to impersonate the user without needing the password.</p>
+      <p><strong>How it works:</strong> After a user logs into a website, the website gives the user's browser a session token. If the attacker can steal this token (through packet sniffing, cross site scripting, or other methods), they can present that token to the website and be logged in as the user.</p>
+      <p><strong>Protection:</strong> Use HTTPS for all traffic to prevent token theft. Use short session timeouts. Bind sessions to specific IP addresses. Regenerate session tokens after login.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Denial of Service (DoS) and Distributed Denial of Service (DDoS)</h4>
+      <p>Denial of Service attacks overwhelm a network, server, or application with traffic, making it unavailable to legitimate users. Distributed Denial of Service attacks use many computers (a botnet) to launch the attack simultaneously from many sources.</p>
+      <p><strong>How it works:</strong> The attacker sends more traffic than the target can handle. The target's resources (bandwidth, central processing unit, memory, or connection table) become exhausted. Legitimate requests cannot be processed.</p>
+      <p><strong>Protection:</strong> DDoS protection services (Cloudflare, Akamai, AWS Shield), rate limiting, load balancers, network capacity planning.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Port Scanning</h4>
+      <p>Port scanning is not an attack itself, but it is a reconnaissance technique used by attackers to find vulnerable services. The attacker sends packets to different ports on a target system to see which ports are open and what services are running.</p>
+      <p><strong>How it works:</strong> The attacker uses tools like Nmap to send connection attempts to thousands of ports. Open ports indicate that a service is listening. The attacker then researches known vulnerabilities for those services.</p>
+      <p><strong>Protection:</strong> Close unnecessary ports using a firewall. Use port knocking or port hiding techniques. Monitor for port scans using intrusion detection systems.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Routing Attacks</h4>
+      <p>Routing attacks manipulate the routing protocols that direct traffic across the internet or within a network. Attackers can redirect traffic to their own systems or cause network outages.</p>
+      <p><strong>Types:</strong> Border Gateway Protocol (BGP) hijacking (redirecting internet traffic), routing table poisoning, route flapping.</p>
+      <p><strong>Protection:</strong> Use route filtering and authentication for routing protocols. Monitor for unexpected routing changes.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — Man in the Middle Attack on Public Wi-Fi</div>
+    <p><strong>Example: The Evil Twin Attack</strong> An attacker sets up a fake Wi-Fi network with a name similar to a legitimate network, such as "Starbucks_WiFi_Free" instead of the real "Starbucks WiFi." A customer connects to the fake network because it looks legitimate. Once connected, the attacker can see all of the customer's internet traffic. The customer logs into their email, Facebook, and bank account. The attacker captures the usernames and passwords. The attacker now has access to the customer's accounts. This is why you should always verify the exact network name and use a Virtual Private Network (VPN) on public Wi-Fi.</p>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ How to Protect Against Network Threats</div>
+    <ul>
+      <li><strong>Use Encryption:</strong> Encrypt all sensitive data before sending it over the network. Use HTTPS for websites, TLS for email, and VPNs for remote access.</li>
+      <li><strong>Use Firewalls:</strong> Firewalls block unauthorized traffic and prevent attackers from reaching vulnerable services.</li>
+      <li><strong>Use Strong Authentication:</strong> Use multi factor authentication to prevent attackers from impersonating legitimate users even if they steal credentials.</li>
+      <li><strong>Keep Systems Updated:</strong> Apply security patches promptly to close vulnerabilities that attackers could exploit.</li>
+      <li><strong>Monitor Network Traffic:</strong> Use intrusion detection systems to detect attacks in progress.</li>
+      <li><strong>Segment the Network:</strong> Divide the network into segments so that a compromise in one area does not give the attacker access to everything.</li>
+      <li><strong>Train Employees:</strong> Educate employees about network threats such as evil twin attacks and phishing.</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Key Takeaways for Topic 5.3</div>
+    <p>Threats to network communication include interception (packet sniffing, man in the middle), interruption (DDoS attacks), modification (tampering with data), and fabrication (spoofing, replay attacks, session hijacking). Other threats include port scanning and routing attacks. These threats can compromise the confidentiality, integrity, and availability of network data. Protection measures include encryption, firewalls, strong authentication, patching, monitoring, network segmentation, and employee training. On public networks, using a Virtual Private Network (VPN) is essential for protecting sensitive data.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ================================================================ -->
+<!-- TOPIC 5.4 — WIRELESS NETWORK SECURITY -->
+<!-- ================================================================ -->
+<section class="topic-section" id="t5-4">
+  <div class="topic-label">Topic 5.4</div>
+  <h2 class="topic-title">Wireless Network Security</h2>
+
+  <div class="concept-box">
+    <strong>Wireless network security</strong> is the practice of protecting wireless networks from unauthorized access, eavesdropping, and attacks. Wireless networks are inherently less secure than wired networks because radio signals travel through the air and can be intercepted by anyone within range.
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 Last Night Tip</div>
+    Remember the evolution of Wi-Fi security protocols: Wired Equivalent Privacy (WEP) is broken (do not use), Wi-Fi Protected Access (WPA) is better but still vulnerable, Wi-Fi Protected Access 2 (WPA2) is standard but has KRACK vulnerability, Wi-Fi Protected Access 3 (WPA3) is the current strongest standard. Always use WPA2 or WPA3 with a strong password.
+  </div>
+
+  <h3>Why is Wireless Network Security Different?</h3>
+  <p>Wireless networks are different from wired networks in several important ways.</p>
+  <ul>
+    <li><strong>No Physical Boundary:</strong> In a wired network, an attacker needs physical access to a network cable to intercept traffic. In a wireless network, radio signals travel through walls, ceilings, and floors. Anyone within range (often hundreds of meters with a good antenna) can attempt to intercept the signal.</li>
+    <li><strong>Broadcast Nature:</strong> Wired networks send data only to the intended recipient. Wireless networks broadcast data through the air. Anyone listening can potentially receive the data.</li>
+    <li><strong>Easy to Deploy but Hard to Secure:</strong> Setting up a wireless network is very easy. But securing it properly requires knowledge of encryption, authentication, and configuration.</li>
+    <li><strong>Portable Devices:</strong> Wireless networks are often used with laptops, phones, and tablets that can be lost or stolen. Lost devices can give attackers access to the network.</li>
+  </ul>
+
+  <div class="example-box">
+    <div class="ex-label">Real World Example — Wireless Network Risk</div>
+    <p><strong>Example: A Coffee Shop Wi-Fi</strong> A coffee shop offers free Wi-Fi to customers. The signal reaches the coffee shop, the parking lot, the street outside, and the apartment building across the street. Anyone within range can attempt to connect to the network. If the network has no password or uses weak encryption, anyone can see all the traffic of all customers. This is why you should never do banking or enter passwords on public Wi-Fi without a Virtual Private Network (VPN).</p>
+  </div>
+
+  <h3>Wireless Security Protocols</h3>
+  <p>Wireless networks use protocols to encrypt data and authenticate users. The following protocols have been developed over time, each improving security.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Wired Equivalent Privacy (WEP)</h4>
+      <p>Wired Equivalent Privacy was the original security protocol for Wi-Fi networks, introduced in 1999. It was designed to provide the same level of privacy as a wired network.</p>
+      <p><strong>Security Level:</strong> Very weak (broken)</p>
+      <p><strong>Why it is insecure:</strong> Wired Equivalent Privacy uses a weak encryption algorithm called RC4. The same encryption keys are used for all traffic (no per packet keys). Attackers can crack a Wired Equivalent Privacy key in minutes using freely available tools. Wired Equivalent Privacy should never be used.</p>
+      <p><strong>Attack:</strong> An attacker can capture enough packets and use tools like Aircrack ng to recover the password in less than one minute.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Wi-Fi Protected Access (WPA)</h4>
+      <p>Wi-Fi Protected Access was introduced in 2003 as a temporary improvement over Wired Equivalent Privacy while the final 802.11i standard was being developed. It uses Temporal Key Integrity Protocol (TKIP) for encryption.</p>
+      <p><strong>Security Level:</strong> Weak (better than Wired Equivalent Privacy but still vulnerable)</p>
+      <p><strong>Why it is insecure:</strong> Wi-Fi Protected Access uses the same RC4 encryption as Wired Equivalent Privacy but adds per packet keys. However, vulnerabilities have been discovered. The KRACK attack can break WPA in some configurations.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Wi-Fi Protected Access 2 (WPA2)</h4>
+      <p>Wi-Fi Protected Access 2 was introduced in 2004 and is the current standard for most networks. It uses the Advanced Encryption Standard (AES) for encryption, which is much stronger than RC4. Wi-Fi Protected Access 2 also uses stronger authentication methods.</p>
+      <p><strong>Security Level:</strong> Strong (but has known vulnerabilities)</p>
+      <p><strong>Limitations:</strong> Wi-Fi Protected Access 2 Personal (used in homes) is vulnerable to dictionary attacks if the password is weak. The KRACK attack (Key Reinstallation Attack) discovered in 2017 can break WPA2 under certain conditions. However, these attacks have been patched in most modern devices.</p>
+      <p><strong>Recommendation:</strong> Use Wi-Fi Protected Access 2 with a strong password (at least twelve characters, mixed case, numbers, symbols). Keep devices updated with the latest patches.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Wi-Fi Protected Access 3 (WPA3)</h4>
+      <p>Wi-Fi Protected Access 3 was introduced in 2018 as the replacement for Wi-Fi Protected Access 2. It includes several significant security improvements.</p>
+      <p><strong>Security Level:</strong> Very strong (current best practice)</p>
+      <p><strong>Improvements over Wi-Fi Protected Access 2:</strong></p>
+      <ul>
+        <li>Simultaneous Authentication of Equals (SAE) replaces Pre Shared Key (PSK), making dictionary attacks much harder</li>
+        <li>Individualized data encryption (each device has its own encryption key)</li>
+        <li>Stronger encryption (192 bit security mode for government and enterprise)</li>
+        <li>Better protection for open networks (Opportunistic Wireless Encryption)</li>
+      </ul>
+      <p><strong>Recommendation:</strong> Use Wi-Fi Protected Access 3 if all your devices support it. Otherwise, use WPA2 with a strong password.</p>
+    </div>
+  </div>
+
+  <h3>Common Wireless Network Attacks</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Evil Twin Attack</h4>
+      <p>An attacker sets up a fake Wi-Fi access point with a name similar to a legitimate network. Users connect to the fake network because it looks legitimate. The attacker can then intercept all traffic, steal passwords, and inject malware.</p>
+      <p><strong>Protection:</strong> Verify the exact network name. Use a Virtual Private Network (VPN) on public Wi-Fi. Use Wi-Fi Protected Access 3 or WPA2 Enterprise which authenticates the network, not just the user.</p>
+    </div>
+    <div class="compare-card">
+      <h4>KRACK Attack (Key Reinstallation Attack)</h4>
+      <p>The Key Reinstallation Attack exploits a weakness in the Wi-Fi Protected Access 2 handshake process. The attacker forces the device to reinstall an already used encryption key, resetting the nonce and replay counter. This allows the attacker to decrypt and replay packets.</p>
+      <p><strong>Protection:</strong> Apply security patches to all devices and access points. Most vendors have released patches. Use Wi-Fi Protected Access 3 which is not vulnerable to this attack.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Dictionary Attack on Wi-Fi Password</h4>
+      <p>Attackers capture the Wi-Fi Protected Access 2 handshake (the initial exchange when a device connects) and then try thousands of passwords from a dictionary to find the correct one. Weak passwords can be cracked in hours or days.</p>
+      <p><strong>Protection:</strong> Use a strong, random password. A twelve character password with mixed case, numbers, and symbols would take many years to crack.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Deauthentication Attack</h4>
+      <p>The attacker sends deauthentication frames (which tell a device to disconnect from the access point) to a connected client. The client disconnects and then reconnects. The attacker captures the handshake during reconnection.</p>
+      <p><strong>Protection:</strong> Use management frame protection (802.11w) which is available in Wi-Fi Protected Access 2 and Wi-Fi Protected Access 3. Keep devices updated.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Jamming Attack</h4>
+      <p>An attacker floods the wireless frequency with noise or interference, making it impossible for legitimate devices to communicate. This is a denial of service attack against the wireless network.</p>
+      <p><strong>Protection:</strong> Jamming is difficult to prevent because wireless frequencies are shared. Use frequency hopping or switch to a different channel. In extreme cases, use a wired connection for critical systems.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Rogue Access Point</h4>
+      <p>An attacker or an employee plugs an unauthorized access point into the wired network. This access point is not managed by the organization and may have weak security. Attackers can connect to the rogue access point and then access the internal network.</p>
+      <p><strong>Protection:</strong> Use wireless intrusion prevention systems (WIPS) to detect rogue access points. Use network access control to prevent unauthorized devices from connecting to the network. Physically secure network ports.</p>
+    </div>
+  </div>
+
+  <h3>Best Practices for Wireless Network Security</h3>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">🔒</div>
+      <h4>Use Strong Encryption</h4>
+      <p>Never use Wired Equivalent Privacy. Use Wi-Fi Protected Access 2 or Wi-Fi Protected Access 3 with Advanced Encryption Standard (AES) encryption. Do not use Temporal Key Integrity Protocol (TKIP) because it is weaker.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔑</div>
+      <h4>Use a Strong Password</h4>
+      <p>The Wi-Fi password should be at least twelve characters long and include uppercase letters, lowercase letters, numbers, and special characters. Do not use dictionary words or personal information. A strong password prevents dictionary attacks.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔄</div>
+      <h4>Change Default Settings</h4>
+      <p>Change the default administrator password on the wireless router or access point. Change the default network name (Service Set Identifier or SSID). Disable remote administration. Disable Wi-Fi Protected Setup (WPS) because it has known vulnerabilities.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📡</div>
+      <h4>Disable SSID Broadcasting</h4>
+      <p>Disabling Service Set Identifier (SSID) broadcast prevents the network name from appearing in the list of available networks. This is security by obscurity (not strong on its own) but it adds a layer of difficulty for casual attackers.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">👥</div>
+      <h4>Use MAC Address Filtering</h4>
+      <p>Media access control (MAC) address filtering allows only specific devices to connect to the network. This is not strong because MAC addresses can be spoofed, but it adds another layer of protection.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📶</div>
+      <h4>Reduce Signal Strength</h4>
+      <p>If possible, reduce the power of the wireless transmitter so the signal does not extend beyond the building. This reduces the number of people who can attempt to attack the network.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">✂️</div>
+      <h4>Segment the Wireless Network</h4>
+      <p>Place guest Wi-Fi on a separate network segment from the main business network. Guest users should not have access to internal servers, printers, or sensitive data. This is called network segmentation.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🛡️</div>
+      <h4>Use a Virtual Private Network (VPN)</h4>
+      <p>Even on a trusted wireless network, use a Virtual Private Network (VPN) for sensitive activities. The Virtual Private Network (VPN) adds an additional layer of encryption and authentication.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">🔄</div>
+      <h4>Keep Firmware Updated</h4>
+      <p>Wireless routers and access points receive firmware updates that fix security vulnerabilities. Check for updates regularly and install them promptly. Many devices now support automatic updates.</p>
+    </div>
+  </div>
+
+  <div class="three-grid">
+    <div class="three-card">
+      <div class="card-icon">📋</div>
+      <h4>Use WPA2 Enterprise or WPA3 Enterprise</h4>
+      <p>For businesses, use the Enterprise version of Wi-Fi Protected Access 2 or Wi-Fi Protected Access 3. Enterprise mode uses a Remote Authentication Dial In User Service (RADIUS) server to authenticate each user individually with their own username and password. This is much more secure than using a shared password for everyone.</p>
+    </div>
+    <div class="three-card">
+      <div class="card-icon">📊</div>
+      <h4>Monitor the Wireless Network</h4>
+      <p>Use wireless intrusion prevention systems (WIPS) to monitor for rogue access points, evil twin attacks, and other wireless threats. Log and investigate unusual activity.</p>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Example — Configuring a Secure Home Wi-Fi Network</div>
+    <p><strong>Step by Step Configuration:</strong></p>
+    <ol>
+      <li>Log into the router's administration page (usually at 192.168.1.1 or 192.168.0.1).</li>
+      <li>Change the default administrator password to a strong, unique password.</li>
+      <li>Change the network name (SSID) to something that does not identify you personally.</li>
+      <li>Set the security mode to Wi-Fi Protected Access 2 with Advanced Encryption Standard (WPA2-PSK AES) or Wi-Fi Protected Access 3 (WPA3) if available.</li>
+      <li>Set a strong Wi-Fi password (at least twelve characters, mixed case, numbers, symbols).</li>
+      <li>Disable Wi-Fi Protected Setup (WPS).</li>
+      <li>Disable remote administration (so you can only configure the router from inside your network).</li>
+      <li>Enable the firewall on the router.</li>
+      <li>Check for and install any firmware updates.</li>
+      <li>Create a separate guest network for visitors.</li>
+    </ol>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ What Not to Do</div>
+    <ul>
+      <li>Do not use Wired Equivalent Privacy (WEP). It can be cracked in minutes.</li>
+      <li>Do not use an open network (no password) unless you have a specific reason and use a Virtual Private Network (VPN).</li>
+      <li>Do not leave the default administrator password on the router.</li>
+      <li>Do not use a weak password like "password" or "12345678".</li>
+      <li>Do not ignore firmware update notifications.</li>
+      <li>Do not assume that Wi-Fi Protected Access 2 is completely secure. Use a Virtual Private Network (VPN) for sensitive activities.</li>
+      <li>Do not connect to unknown or suspicious Wi-Fi networks.</li>
+    </ul>
+  </div>
+
+  <div class="conclusion-box">
+    <div class="con-label">Unit 5 — Key Takeaway</div>
+    <p>Securing operating systems and networks is essential for protecting information assets. Operating system security includes authentication, authorization, auditing, memory protection, user account control, and patch management. Rootkits are sophisticated malware that hide from the operating system, requiring specialized anti rootkit tools for detection. Threats to network communication include interception, interruption, modification, and fabrication attacks such as packet sniffing, man in the middle, spoofing, replay attacks, session hijacking, and denial of service attacks. Wireless networks present unique security challenges because radio signals travel through the air. Strong wireless security requires using Wi-Fi Protected Access 2 or Wi-Fi Protected Access 3 encryption, strong passwords, updated firmware, network segmentation, and monitoring. A defense in depth approach combining multiple layers of security provides the best protection.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span>EIS · Essentials of Information Security · Unit 05 · Securities in Operating System and Networks</span>
+    <div class="footer-links">
+      <a href="unit04_EIS.html">← Unit 4</a>
+      <a href="unit01_EIS.html">Home</a>
+    </div>
+    <span>F.Y. M.C.A. (Management) · Semester II · 2024 Pattern · SPPU</span>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // Mobile navigation toggle - close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Back to top button visibility
+  window.addEventListener('scroll', function() {
+    var backButton = document.querySelector('.back-top');
+    if (backButton) {
+      if (window.scrollY > 400) {
+        backButton.classList.add('visible');
+      } else {
+        backButton.classList.remove('visible');
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
